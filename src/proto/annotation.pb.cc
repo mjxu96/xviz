@@ -2,7 +2,7 @@
 // source: annotation.proto
 
 #define INTERNAL_SUPPRESS_PROTOBUF_FIELD_DEPRECATION
-#include "annotation.pb.h"
+#include "proto/annotation.pb.h"
 
 #include <algorithm>
 

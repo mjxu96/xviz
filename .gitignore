@@ -1,5 +1,7 @@
 /.vscode
 /pb
+/bin
+/build
 
 # Prerequisites
 *.d

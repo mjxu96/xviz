@@ -2,7 +2,7 @@
 // source: primitives.proto
 
 #define INTERNAL_SUPPRESS_PROTOBUF_FIELD_DEPRECATION
-#include "primitives.pb.h"
+#include "proto/primitives.pb.h"
 
 #include <algorithm>
 

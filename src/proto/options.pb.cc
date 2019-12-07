@@ -2,7 +2,7 @@
 // source: options.proto
 
 #define INTERNAL_SUPPRESS_PROTOBUF_FIELD_DEPRECATION
-#include "options.pb.h"
+#include "proto/options.pb.h"
 
 #include <algorithm>
 

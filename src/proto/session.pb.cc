@@ -2,7 +2,7 @@
 // source: session.proto
 
 #define INTERNAL_SUPPRESS_PROTOBUF_FIELD_DEPRECATION
-#include "session.pb.h"
+#include "proto/session.pb.h"
 
 #include <algorithm>
 

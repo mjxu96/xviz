@@ -2,7 +2,7 @@
 // source: uiprimitives.proto
 
 #define INTERNAL_SUPPRESS_PROTOBUF_FIELD_DEPRECATION
-#include "uiprimitives.pb.h"
+#include "proto/uiprimitives.pb.h"
 
 #include <algorithm>
 

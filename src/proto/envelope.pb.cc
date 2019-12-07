@@ -2,7 +2,7 @@
 // source: envelope.proto
 
 #define INTERNAL_SUPPRESS_PROTOBUF_FIELD_DEPRECATION
-#include "envelope.pb.h"
+#include "proto/envelope.pb.h"
 
 #include <algorithm>
 
