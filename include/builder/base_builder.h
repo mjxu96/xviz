@@ -7,7 +7,7 @@
 #ifndef MINJUN_BASE_BUILDER_H_
 #define MINJUN_BASE_BUILDER_H_
 
-#include "utils/defines.h"
+#include "utils/definitions.h"
 
 #include <string>
 #include <memory>

@@ -1,5 +1,5 @@
 /*
- * File: defines.h
+ * File: definitions.h
  * Author: Minjun Xu (mjxu96@gmail.com)
  * File Created: Saturday, 7th December 2019 2:46:43 pm
  */
