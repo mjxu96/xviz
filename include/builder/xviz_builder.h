@@ -18,7 +18,7 @@ namespace xviz {
 class XVIZBuilder {
 public:
   // TODO add "disabled stream var"
-  XVIZBuilder(const Metadata& metadata);
+  XVIZBuilder(std::shared_ptr<xviz::Metadata> metadata);
   std::shared_ptr<XVIZPoseBuilder> Pose(const std::string& stream_id);
   XVIZFrame GetData();
   XVIZMessage GetMessage();
@@ -29,7 +29,7 @@ private:
 
   std::shared_ptr<XVIZPoseBuilder> pose_{nullptr};
   // TODO do I need optional?
-  std::optional<Metadata> metadata_{std::nullopt};
+  std::shared_ptr<Metadata> metadata_{nullptr};
 };
   
 } // namespace xviz

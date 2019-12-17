@@ -8,6 +8,8 @@
 
 using namespace xviz;
 
+std::string primary_pose_stream = "/vehicle_pose";
+
 template<typename K, typename V>
 void ConvertFromStdMapToProtoBufMap(google::protobuf::Map<K, V>* map, std::unordered_map<K, V>& m) {
   map->clear();
@@ -16,10 +18,10 @@ void ConvertFromStdMapToProtoBufMap(google::protobuf::Map<K, V>* map, std::unord
   }
 }
 
-XVIZBuilder::XVIZBuilder(const Metadata& metadata) :
+XVIZBuilder::XVIZBuilder(std::shared_ptr<Metadata> metadata) :
   metadata_(metadata) {
 
-  pose_ = std::make_shared<XVIZPoseBuilder>(metadata_.value());
+  pose_ = std::make_shared<XVIZPoseBuilder>(metadata_);
 }
 
 std::shared_ptr<XVIZPoseBuilder> XVIZBuilder::Pose(const std::string& stream_id) {
@@ -29,6 +31,10 @@ std::shared_ptr<XVIZPoseBuilder> XVIZBuilder::Pose(const std::string& stream_id)
 XVIZFrame XVIZBuilder::GetData() {
   auto data = std::make_shared<StreamSet>();
   auto poses = pose_->GetData();
+  if (poses->find(primary_pose_stream) == poses->end()) {
+    LOG_ERROR("every frame requires a %s message", primary_pose_stream.c_str());
+  }
+  data->set_timestamp((*poses)[primary_pose_stream].timestamp());
   auto map = data->mutable_poses();
   ConvertFromStdMapToProtoBufMap<std::string, xviz::Pose>(map, *poses);
 

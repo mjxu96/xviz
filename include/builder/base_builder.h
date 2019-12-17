@@ -17,13 +17,13 @@ namespace xviz {
 
 class XVIZBaseBuilder {
 public:
-  XVIZBaseBuilder(Category category, const xviz::Metadata& metadata);
+  XVIZBaseBuilder(Category category, std::shared_ptr<xviz::Metadata> metadata);
   // std::shared_ptr<XVIZBaseBuilder> Stream(std::string stream_id);
 
 protected:
   std::string stream_id_{};
   Category category_{};
-  xviz::Metadata metadata_{};
+  std::shared_ptr<xviz::Metadata> metadata_{nullptr};
   virtual void Flush() = 0;
 
 };
