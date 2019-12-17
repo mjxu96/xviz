@@ -7,7 +7,7 @@ else()
 endif()
 
 
-include_directories(${CLIENT_ROOT_FOLDER}/include)
+include_directories(${XVIZ_ROOT_FOLDER}/include)
 include_directories(${PROTOBUF_INCLUDE_DIRS})
 
 add_library(xviz-pb
