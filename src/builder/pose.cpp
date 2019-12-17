@@ -6,7 +6,7 @@
 
 #include "builder/pose.h"
 
-using namespace minjun;
+using namespace xviz;
 
 XVIZPoseBuilder::XVIZPoseBuilder(const xviz::Metadata& metadata) : XVIZBaseBuilder(xviz::StreamMetadata::PRIMITIVE, metadata_) {
   poses_ = nullptr;

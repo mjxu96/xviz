@@ -5,13 +5,13 @@
  */
 
 
-#ifndef MINJUN_DEFINES_H_
-#define MINJUN_DEFINES_H_
+#ifndef XVIZ_DEFINES_H_
+#define XVIZ_DEFINES_H_
 
 #include "proto/session.pb.h"
 #include "proto/style.pb.h"
 
-namespace minjun {
+namespace xviz {
 
 using AnnotationType = xviz::StreamMetadata::AnnotationType;
 using Category = xviz::StreamMetadata::Category;

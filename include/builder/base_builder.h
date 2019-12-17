@@ -4,15 +4,15 @@
  * File Created: Saturday, 7th December 2019 2:22:21 pm
  */
 
-#ifndef MINJUN_BASE_BUILDER_H_
-#define MINJUN_BASE_BUILDER_H_
+#ifndef XVIZ_BASE_BUILDER_H_
+#define XVIZ_BASE_BUILDER_H_
 
 #include "utils/definitions.h"
 
 #include <string>
 #include <memory>
 
-namespace minjun {
+namespace xviz {
 
 
 class XVIZBaseBuilder {

@@ -6,7 +6,7 @@
 
 #include "builder/base_builder.h"
 
-using namespace minjun;
+using namespace xviz;
 
 XVIZBaseBuilder::XVIZBaseBuilder(Category category, const xviz::Metadata& metadata) {
   category_ = category;

@@ -15,7 +15,7 @@ using namespace xviz;
 int main() {
   Circle circle;
   circle.add_center(0);
-  auto builder = std::make_shared<minjun::XVIZPoseBuilder>(xviz::Metadata());
+  auto builder = std::make_shared<XVIZPoseBuilder>(Metadata());
   builder->Stream("123")
     ->Timestamp(123.0)
     ->MapOrigin(1, 2, 3)

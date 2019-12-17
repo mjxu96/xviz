@@ -4,8 +4,8 @@
  * File Created: Saturday, 7th December 2019 2:21:32 pm
  */
 
-#ifndef MINJUN_POSE_BUILDER_H_
-#define MINJUN_POSE_BUILDER_H_
+#ifndef XVIZ_POSE_BUILDER_H_
+#define XVIZ_POSE_BUILDER_H_
 
 #include "builder/base_builder.h"
 #include "proto/core.pb.h"
@@ -14,7 +14,7 @@
 #include <unordered_map>
 #include <string>
 
-namespace minjun {
+namespace xviz {
 
 class XVIZPoseBuilder : public XVIZBaseBuilder, public std::enable_shared_from_this<XVIZPoseBuilder> {
 public:
