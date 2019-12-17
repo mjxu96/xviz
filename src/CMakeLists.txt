@@ -7,7 +7,11 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${XVIZ_ROOT_FOLDER}/bin)
 
 add_executable(mmm main.cpp)
 
+add_library(xviz-message
+  message.cpp
+)
+
 add_library(xviz)
-target_link_libraries(xviz xviz-builder xviz-pb)
+target_link_libraries(xviz xviz-message xviz-builder xviz-pb)
 
 target_link_libraries(mmm xviz)
