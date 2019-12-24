@@ -16,7 +16,14 @@ namespace xviz {
 using AnnotationType = xviz::StreamMetadata::AnnotationType;
 using Category = xviz::StreamMetadata::Category;
 using CoordinateType = xviz::StreamMetadata::CoordinateType;
-  
+using Primitive = xviz::StreamMetadata::PrimitiveType;
+
+// struct PurePoint {
+//   double x, y, z;
+//   PurePoint(double xx, double yy, double zz) :
+//     x(xx), y(yy), z(zz) {}
+// };
+
 } // namespace minjun
 
 

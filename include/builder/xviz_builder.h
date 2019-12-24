@@ -9,6 +9,7 @@
 
 #include "base_builder.h"
 #include "pose.h"
+#include "primitive.h"
 #include "message.h"
 
 #include <optional>
@@ -20,6 +21,7 @@ public:
   // TODO add "disabled stream var"
   XVIZBuilder(std::shared_ptr<xviz::Metadata> metadata);
   std::shared_ptr<XVIZPoseBuilder> Pose(const std::string& stream_id);
+  std::shared_ptr<XVIZPrimitiveBuilder> Primitive(const std::string& stream_id);
   XVIZFrame GetData();
   XVIZMessage GetMessage();
 
@@ -27,7 +29,8 @@ private:
   void Reset();
 
 
-  std::shared_ptr<XVIZPoseBuilder> pose_{nullptr};
+  std::shared_ptr<XVIZPoseBuilder> pose_builder_{nullptr};
+  std::shared_ptr<XVIZPrimitiveBuilder> primitive_builder_{nullptr};
   // TODO do I need optional?
   std::shared_ptr<Metadata> metadata_{nullptr};
 };

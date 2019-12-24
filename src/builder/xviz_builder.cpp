@@ -21,22 +21,34 @@ void ConvertFromStdMapToProtoBufMap(google::protobuf::Map<K, V>* map, std::unord
 XVIZBuilder::XVIZBuilder(std::shared_ptr<Metadata> metadata) :
   metadata_(metadata) {
 
-  pose_ = std::make_shared<XVIZPoseBuilder>(metadata_);
+  pose_builder_ = std::make_shared<XVIZPoseBuilder>(metadata_);
+  primitive_builder_ = std::make_shared<XVIZPrimitiveBuilder>(metadata_);
 }
 
 std::shared_ptr<XVIZPoseBuilder> XVIZBuilder::Pose(const std::string& stream_id) {
-  return pose_->Stream(stream_id);
+  return pose_builder_->Stream(stream_id);
+}
+std::shared_ptr<XVIZPrimitiveBuilder> XVIZBuilder::Primitive(const std::string& stream_id) {
+  return primitive_builder_->Stream(stream_id);
 }
 
 XVIZFrame XVIZBuilder::GetData() {
   auto data = std::make_shared<StreamSet>();
-  auto poses = pose_->GetData();
+  auto poses = pose_builder_->GetData();
   if (poses->find(primary_pose_stream) == poses->end()) {
     LOG_ERROR("every frame requires a %s message", primary_pose_stream.c_str());
   }
   data->set_timestamp((*poses)[primary_pose_stream].timestamp());
-  auto map = data->mutable_poses();
-  ConvertFromStdMapToProtoBufMap<std::string, xviz::Pose>(map, *poses);
+  auto pose_map = data->mutable_poses();
+  if (poses != nullptr) {
+    ConvertFromStdMapToProtoBufMap<std::string, xviz::Pose>(pose_map, *poses);
+  }
+
+  auto primitives = primitive_builder_->GetData();
+  auto primitives_map = data->mutable_primitives();
+  if (primitives != nullptr) {
+    ConvertFromStdMapToProtoBufMap<std::string, xviz::PrimitiveState>(primitives_map, *primitives);
+  }
 
   return XVIZFrame(data);
 }

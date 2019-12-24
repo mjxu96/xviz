@@ -24,6 +24,7 @@ public:
   std::shared_ptr<XVIZPoseBuilder> Position(double x, double y, double z);
   std::shared_ptr<XVIZPoseBuilder> Orientation(double roll, double pitch, double yaw);
   std::shared_ptr<XVIZPoseBuilder> Timestamp(double timestamp);
+
   std::shared_ptr<XVIZPoseBuilder> Stream(const std::string& stream_id);
 
   std::shared_ptr<std::unordered_map<std::string, xviz::Pose>> GetData();

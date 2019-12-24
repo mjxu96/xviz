@@ -28,6 +28,7 @@ private:
 
 class XVIZMessage {
 public:
+  // TODO use overload method ?????
   XVIZMessage(std::shared_ptr<StateUpdate> update = nullptr, std::shared_ptr<Metadata> meatadata = nullptr);
 
   nlohmann::json ToObject(bool unravel = true);
