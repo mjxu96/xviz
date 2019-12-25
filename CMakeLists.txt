@@ -13,3 +13,7 @@ unset(USE_CLANG CACHE)
 SET(XVIZ_ROOT_FOLDER ${CMAKE_CURRENT_SOURCE_DIR})
 
 add_subdirectory("src")
+
+include_directories(${XVIZ_ROOT_FOLDER}/include)
+add_executable(mmm main.cpp)
+target_link_libraries(mmm xviz)
