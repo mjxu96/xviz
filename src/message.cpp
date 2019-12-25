@@ -39,8 +39,16 @@ std::shared_ptr<StreamSet> XVIZFrame::Data() {
   return data_;
 }
 
-XVIZMessage::XVIZMessage(std::shared_ptr<StateUpdate> update, std::shared_ptr<Metadata> meatadata) :
-  update_(update), meatadata_(meatadata) {
+// XVIZMessage::XVIZMessage(std::shared_ptr<StateUpdate> update, std::shared_ptr<Metadata> meatadata) :
+//   update_(update), meatadata_(meatadata) {
+// }
+
+XVIZMessage::XVIZMessage(std::shared_ptr<Metadata> meatadata) : 
+  meatadata_(meatadata), update_(nullptr) {
+}
+
+XVIZMessage::XVIZMessage(std::shared_ptr<StateUpdate> update) :
+  meatadata_(nullptr), update_(update) {
 }
 
 nlohmann::json XVIZMessage::ToObject(bool unravel) {

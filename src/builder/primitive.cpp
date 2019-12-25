@@ -37,14 +37,11 @@ std::shared_ptr<XVIZPrimitiveBuilder> XVIZPrimitiveBuilder::Stream(const std::st
 
 // Polygon
 std::shared_ptr<XVIZPrimitiveBuilder> XVIZPrimitiveBuilder::Polygon(const std::vector<double>& vertices) {
-  auto vertices_to_move = vertices;
-  return Polygon(std::move(vertices_to_move));
+  auto vertices_ptr = std::make_shared<std::vector<double>>(vertices);
+  return Polygon(vertices_ptr);
 }
 
 std::shared_ptr<XVIZPrimitiveBuilder> XVIZPrimitiveBuilder::Polygon(std::vector<double>&& vertices) {
-  // if (type_ != nullptr) {
-  //   Flush();
-  // }
   auto vertices_ptr = std::make_shared<std::vector<double>>(std::move(vertices));
   return Polygon(vertices_ptr);
 }
@@ -59,6 +56,45 @@ std::shared_ptr<XVIZPrimitiveBuilder> XVIZPrimitiveBuilder::Polygon(const std::s
   return shared_from_this();
 }
 
+std::shared_ptr<XVIZPrimitiveBuilder> XVIZPrimitiveBuilder::Polyline(const std::vector<double>& vertices) {
+  auto vertices_ptr = std::make_shared<std::vector<double>>(vertices);
+  return Polyline(vertices_ptr);
+}
+
+std::shared_ptr<XVIZPrimitiveBuilder> XVIZPrimitiveBuilder::Polyline(std::vector<double>&& vertices) {
+  auto vertices_ptr = std::make_shared<std::vector<double>>(vertices);
+  return Polyline(vertices_ptr);
+}
+
+std::shared_ptr<XVIZPrimitiveBuilder> XVIZPrimitiveBuilder::Polyline(const std::shared_ptr<std::vector<double>>& vertices_ptr) {
+  if (type_ != nullptr) {
+    Flush();
+  }
+  vertices_ = std::shared_ptr<std::vector<double>>(vertices_ptr);
+  type_ = std::make_shared<Primitive>();
+  *type_ = Primitive::StreamMetadata_PrimitiveType_POLYLINE;
+  return shared_from_this();
+}
+
+std::shared_ptr<XVIZPrimitiveBuilder> XVIZPrimitiveBuilder::Points(const std::vector<double>& vertices) {
+  auto vertices_ptr = std::make_shared<std::vector<double>>(vertices);
+  return Points(vertices_ptr);
+}
+
+std::shared_ptr<XVIZPrimitiveBuilder> XVIZPrimitiveBuilder::Points(std::vector<double>&& vertices) {
+  auto vertices_ptr = std::make_shared<std::vector<double>>(vertices);
+  return Points(vertices_ptr);
+}
+
+std::shared_ptr<XVIZPrimitiveBuilder> XVIZPrimitiveBuilder::Points(const std::shared_ptr<std::vector<double>>& vertices_ptr) {
+  if (type_ != nullptr) {
+    Flush();
+  }
+  vertices_ = std::shared_ptr<std::vector<double>>(vertices_ptr);
+  type_ = std::make_shared<Primitive>();
+  *type_ = Primitive::StreamMetadata_PrimitiveType_POINT;
+  return shared_from_this();
+}
 
 // Style
 std::shared_ptr<XVIZPrimitiveBuilder> XVIZPrimitiveBuilder::Style(const std::string& style_json_str) {
@@ -200,7 +236,8 @@ std::pair<bool, PrimitiveBase> XVIZPrimitiveBuilder::FlushPrimitiveBase() {
     has_base = true;
     auto style_ptr = base.mutable_style();
     // TODO style?
-    *style_ptr = *style_;
+    style_ptr->MergeFrom(*style_);
+    // *style_ptr = *style_;
   }
 
   if (classes_ != nullptr) {

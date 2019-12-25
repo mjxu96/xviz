@@ -28,7 +28,6 @@ public:
 private:
   void Reset();
 
-
   std::shared_ptr<XVIZPoseBuilder> pose_builder_{nullptr};
   std::shared_ptr<XVIZPrimitiveBuilder> primitive_builder_{nullptr};
   // TODO do I need optional?

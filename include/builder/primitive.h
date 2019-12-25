@@ -26,6 +26,13 @@ public:
   std::shared_ptr<XVIZPrimitiveBuilder> Polygon(std::vector<double>&& vertices);
   std::shared_ptr<XVIZPrimitiveBuilder> Polygon(const std::shared_ptr<std::vector<double>>& vertices_ptr);
 
+  std::shared_ptr<XVIZPrimitiveBuilder> Polyline(const std::vector<double>& vertices);
+  std::shared_ptr<XVIZPrimitiveBuilder> Polyline(std::vector<double>&& vertices);
+  std::shared_ptr<XVIZPrimitiveBuilder> Polyline(const std::shared_ptr<std::vector<double>>& vertices_ptr);
+
+  std::shared_ptr<XVIZPrimitiveBuilder> Points(const std::vector<double>& vertices);
+  std::shared_ptr<XVIZPrimitiveBuilder> Points(std::vector<double>&& vertices);
+  std::shared_ptr<XVIZPrimitiveBuilder> Points(const std::shared_ptr<std::vector<double>>& vertices_ptr);
 
   std::shared_ptr<XVIZPrimitiveBuilder> Style(const nlohmann::json& style_json);
   // std::shared_ptr<XVIZPrimitiveBuilder> Style(std::shared_ptr<nlohmann::json>& style_json_ptr);
@@ -39,6 +46,8 @@ private:
   std::pair<bool, PrimitiveBase> FlushPrimitiveBase();
   void Validate();
   void ValidatePrerequisite();
+
+  // void SetVertices(const std::shared_ptr<std::vector<double>>& vertices_ptr);
   
 
   std::shared_ptr<std::unordered_map<std::string, PrimitiveState>> primitives_{nullptr};

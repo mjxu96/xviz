@@ -31,9 +31,19 @@ int main() {
     ->Timestamp(222);
 
   std::string s = "{\"fill_color\": \"#FFFFFF\"}"; 
-  builder->Primitive("qqq")
-    ->Polygon({1, 2, 3})
-    ->Style(s);
+  std::string s1 = "{\"fill_color\": \"#EEEEEE\"}"; 
+  builder->Primitive("/vehicles")
+      ->Polygon({1, 2, 3})
+      ->Style(s)
+      ->Polygon({2, 3, 4})
+      ->Style(s1)
+      ->Points({1, 2, 3, 3, 3, 3})
+      ->Style(s1)
+      ->Polyline({4, 4, 4})
+      ->Style(s);
+  builder->Primitive("/peds")
+      ->Polygon({2, 2, 2})
+      ->Style(s1);
   auto res = builder->GetMessage();
   // for (const auto& pa : *res) {
   //   std::cout << pa.first << std::endl;
