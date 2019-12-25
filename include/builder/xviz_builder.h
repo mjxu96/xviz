@@ -20,8 +20,8 @@ class XVIZBuilder {
 public:
   // TODO add "disabled stream var"
   XVIZBuilder(std::shared_ptr<xviz::Metadata> metadata);
-  std::shared_ptr<XVIZPoseBuilder> Pose(const std::string& stream_id);
-  std::shared_ptr<XVIZPrimitiveBuilder> Primitive(const std::string& stream_id);
+  XVIZPoseBuilder& Pose(const std::string& stream_id);
+  XVIZPrimitiveBuilder& Primitive(const std::string& stream_id);
   XVIZFrame GetData();
   XVIZMessage GetMessage();
 

@@ -17,13 +17,14 @@ using namespace xviz;
 int main() {
   Circle circle;
   circle.add_center(0);
-  auto builder = std::make_shared<XVIZBuilder>(std::make_shared<Metadata>());
+  // auto builder = std::make_shared<XVIZBuilder>(std::make_shared<Metadata>());
+  XVIZBuilder builder(std::make_shared<Metadata>());
   // XVIZBuilder builder(std::make_shared<Metadata>());
   // auto builder = std::make_shared<XVIZPoseBuilder>(Metadata());
-  builder->Pose("/vehicle_pose")
-    ->Timestamp(1000)
-    ->MapOrigin(0.00, 0.00, 0.000)
-    ->Orientation(0, 0, 0);
+  builder.Pose("/vehicle_pose")
+    .Timestamp(1000)
+    .MapOrigin(0.00, 0.00, 0.000)
+    .Orientation(0, 0, 0);
     // ->Stream("234")
     // ->Timestamp(123123123)
     // ->Position(1, 2, 3);
@@ -34,10 +35,10 @@ int main() {
 
   std::string s = "{\"fill_color\": \"#fff\"}"; 
   std::string s1 = "{\"fill_color\": \"#fff\"}"; 
-  builder->Primitive("/object/shape")
-      ->Polygon({10, 14, 0, 7, 10, 0, 13, 6, 0})
-      ->Polygon({-2, 20, 0, 5, 14, 0, 8, 17, 0, 1, 23, 0})
-      ->Style(s);
+  builder.Primitive("/object/shape")
+      .Polygon({10, 14, 0, 7, 10, 0, 13, 6, 0})
+      .Polygon({-2, 20, 0, 5, 14, 0, 8, 17, 0, 1, 23, 0})
+      .Style(s);
   //     ->Style(s)
   //     ->Polygon({2, 3, 4})
   //     ->Style(s1)
@@ -48,7 +49,7 @@ int main() {
   // builder->Primitive("/peds")
   //     ->Polygon({2, 2, 2})
   //     ->Style(nlohmann::json::parse(s1));
-  auto res = builder->GetMessage();
+  auto res = builder.GetMessage();
 
   XVIZMetadataBuilder metadata_builder;
   metadata_builder.Stream("/vehicle_pose").Category(Category::StreamMetadata_Category_POSE)

@@ -20,26 +20,26 @@ class XVIZPrimitiveBuilder : public XVIZBaseBuilder, public std::enable_shared_f
 public:
   XVIZPrimitiveBuilder(std::shared_ptr<Metadata> metadata);
 
-  std::shared_ptr<XVIZPrimitiveBuilder> Stream(const std::string& stream_id);
+  XVIZPrimitiveBuilder& Stream(const std::string& stream_id);
   std::shared_ptr<std::unordered_map<std::string, PrimitiveState>> GetData();
 
-  std::shared_ptr<XVIZPrimitiveBuilder> Polygon(const std::vector<double>& vertices);
-  std::shared_ptr<XVIZPrimitiveBuilder> Polygon(std::vector<double>&& vertices);
-  std::shared_ptr<XVIZPrimitiveBuilder> Polygon(const std::shared_ptr<std::vector<double>>& vertices_ptr);
+  XVIZPrimitiveBuilder& Polygon(const std::vector<double>& vertices);
+  XVIZPrimitiveBuilder& Polygon(std::vector<double>&& vertices);
+  XVIZPrimitiveBuilder& Polygon(const std::shared_ptr<std::vector<double>>& vertices_ptr);
 
-  std::shared_ptr<XVIZPrimitiveBuilder> Polyline(const std::vector<double>& vertices);
-  std::shared_ptr<XVIZPrimitiveBuilder> Polyline(std::vector<double>&& vertices);
-  std::shared_ptr<XVIZPrimitiveBuilder> Polyline(const std::shared_ptr<std::vector<double>>& vertices_ptr);
+  XVIZPrimitiveBuilder& Polyline(const std::vector<double>& vertices);
+  XVIZPrimitiveBuilder& Polyline(std::vector<double>&& vertices);
+  XVIZPrimitiveBuilder& Polyline(const std::shared_ptr<std::vector<double>>& vertices_ptr);
 
-  std::shared_ptr<XVIZPrimitiveBuilder> Points(const std::vector<double>& vertices);
-  std::shared_ptr<XVIZPrimitiveBuilder> Points(std::vector<double>&& vertices);
-  std::shared_ptr<XVIZPrimitiveBuilder> Points(const std::shared_ptr<std::vector<double>>& vertices_ptr);
+  XVIZPrimitiveBuilder& Points(const std::vector<double>& vertices);
+  XVIZPrimitiveBuilder& Points(std::vector<double>&& vertices);
+  XVIZPrimitiveBuilder& Points(const std::shared_ptr<std::vector<double>>& vertices_ptr);
 
-  std::shared_ptr<XVIZPrimitiveBuilder> Style(const nlohmann::json& style_json);
-  // std::shared_ptr<XVIZPrimitiveBuilder> Style(std::shared_ptr<nlohmann::json>& style_json_ptr);
-  std::shared_ptr<XVIZPrimitiveBuilder> Style(const std::string& style_json_str);
-  // std::shared_ptr<XVIZPrimitiveBuilder> Style(std::shared_ptr<std::string>& style_json_str_ptr);
-  std::shared_ptr<XVIZPrimitiveBuilder> Style(const std::shared_ptr<StyleObjectValue>& style_object);
+  XVIZPrimitiveBuilder& Style(const nlohmann::json& style_json);
+  // XVIZPrimitiveBuilder& Style(std::shared_ptr<nlohmann::json>& style_json_ptr);
+  XVIZPrimitiveBuilder& Style(const std::string& style_json_str);
+  // XVIZPrimitiveBuilder& Style(std::shared_ptr<std::string>& style_json_str_ptr);
+  XVIZPrimitiveBuilder& Style(const std::shared_ptr<StyleObjectValue>& style_object);
 private:
   void Reset();
   void Flush() override;

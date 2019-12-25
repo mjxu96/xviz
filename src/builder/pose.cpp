@@ -13,38 +13,38 @@ XVIZPoseBuilder::XVIZPoseBuilder(std::shared_ptr<xviz::Metadata> metadata) : XVI
   temp_poses_ = xviz::Pose();
 }
 
-std::shared_ptr<XVIZPoseBuilder> XVIZPoseBuilder::Stream(const std::string& stream_id) {
+XVIZPoseBuilder& XVIZPoseBuilder::Stream(const std::string& stream_id) {
   if (stream_id_.size() > 0) {
     this->Flush();
   }
   stream_id_ = stream_id;
-  return shared_from_this();
+  return *this;
 }
 
-std::shared_ptr<XVIZPoseBuilder> XVIZPoseBuilder::MapOrigin(double longitude, double latitude, double altitude) {
+XVIZPoseBuilder& XVIZPoseBuilder::MapOrigin(double longitude, double latitude, double altitude) {
   temp_poses_.mutable_map_origin()->set_longitude(longitude);
   temp_poses_.mutable_map_origin()->set_latitude(latitude);
   temp_poses_.mutable_map_origin()->set_altitude(altitude);
-  return shared_from_this();
+  return *this;
 }
 
-std::shared_ptr<XVIZPoseBuilder> XVIZPoseBuilder::Position(double x, double y, double z) {
+XVIZPoseBuilder& XVIZPoseBuilder::Position(double x, double y, double z) {
   temp_poses_.add_position(x);
   temp_poses_.add_position(y);
   temp_poses_.add_position(z);
-  return shared_from_this();
+  return *this;
 }
 
-std::shared_ptr<XVIZPoseBuilder> XVIZPoseBuilder::Orientation(double roll, double pitch, double yaw) {
+XVIZPoseBuilder& XVIZPoseBuilder::Orientation(double roll, double pitch, double yaw) {
   temp_poses_.add_orientation(roll);
   temp_poses_.add_orientation(pitch);
   temp_poses_.add_orientation(yaw);
-  return shared_from_this();
+  return *this;
 }
 
-std::shared_ptr<XVIZPoseBuilder> XVIZPoseBuilder::Timestamp(double timestamp) {
+XVIZPoseBuilder& XVIZPoseBuilder::Timestamp(double timestamp) {
   temp_poses_.set_timestamp(timestamp);
-  return shared_from_this();
+  return *this;
 }
 
 void XVIZPoseBuilder::Flush() {

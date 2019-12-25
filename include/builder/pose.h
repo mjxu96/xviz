@@ -20,12 +20,12 @@ class XVIZPoseBuilder : public XVIZBaseBuilder, public std::enable_shared_from_t
 public:
 
   XVIZPoseBuilder(std::shared_ptr<xviz::Metadata> metadata);
-  std::shared_ptr<XVIZPoseBuilder> MapOrigin(double longitude, double latitude, double altitude);
-  std::shared_ptr<XVIZPoseBuilder> Position(double x, double y, double z);
-  std::shared_ptr<XVIZPoseBuilder> Orientation(double roll, double pitch, double yaw);
-  std::shared_ptr<XVIZPoseBuilder> Timestamp(double timestamp);
+  XVIZPoseBuilder& MapOrigin(double longitude, double latitude, double altitude);
+  XVIZPoseBuilder& Position(double x, double y, double z);
+  XVIZPoseBuilder& Orientation(double roll, double pitch, double yaw);
+  XVIZPoseBuilder& Timestamp(double timestamp);
 
-  std::shared_ptr<XVIZPoseBuilder> Stream(const std::string& stream_id);
+  XVIZPoseBuilder& Stream(const std::string& stream_id);
 
   std::shared_ptr<std::unordered_map<std::string, xviz::Pose>> GetData();
 

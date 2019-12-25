@@ -25,10 +25,10 @@ XVIZBuilder::XVIZBuilder(std::shared_ptr<Metadata> metadata) :
   primitive_builder_ = std::make_shared<XVIZPrimitiveBuilder>(metadata_);
 }
 
-std::shared_ptr<XVIZPoseBuilder> XVIZBuilder::Pose(const std::string& stream_id) {
+XVIZPoseBuilder& XVIZBuilder::Pose(const std::string& stream_id) {
   return pose_builder_->Stream(stream_id);
 }
-std::shared_ptr<XVIZPrimitiveBuilder> XVIZBuilder::Primitive(const std::string& stream_id) {
+XVIZPrimitiveBuilder& XVIZBuilder::Primitive(const std::string& stream_id) {
   return primitive_builder_->Stream(stream_id);
 }
 
