@@ -98,17 +98,11 @@ std::shared_ptr<XVIZPrimitiveBuilder> XVIZPrimitiveBuilder::Points(const std::sh
 
 // Style
 std::shared_ptr<XVIZPrimitiveBuilder> XVIZPrimitiveBuilder::Style(const std::string& style_json_str) {
-  return Style(Json::parse(style_json_str));
+  return Style(JsonStringToStyleObject(style_json_str));
 }
 
 std::shared_ptr<XVIZPrimitiveBuilder> XVIZPrimitiveBuilder::Style(const Json& style_json) {
-  auto style_object = std::make_shared<StyleObjectValue>();
-  if (style_json.find("fill_color") != style_json.end()) {
-    auto fill_color = style_json.value("fill_color", "#FFFFFF");
-    style_object->set_fill_color(fill_color.c_str());
-  }
-
-  return Style(style_object);
+  return Style(JsonObjectToStyleObject(style_json));
 }
 
 std::shared_ptr<XVIZPrimitiveBuilder> XVIZPrimitiveBuilder::Style(const std::shared_ptr<StyleObjectValue>& style_object) {

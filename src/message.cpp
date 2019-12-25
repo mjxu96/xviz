@@ -16,7 +16,9 @@ Json MessageObjectToJson(std::shared_ptr<google::protobuf::Message> data) {
     return Json();
   }
   std::string json_str;
-  google::protobuf::util::MessageToJsonString(*data, &json_str);
+  google::protobuf::util::JsonOptions options;
+  options.preserve_proto_field_names = true;
+  google::protobuf::util::MessageToJsonString(*data, &json_str, options);
   return Json::parse(json_str);
 }
 
@@ -59,7 +61,7 @@ nlohmann::json XVIZMessage::ToObject(bool unravel) {
     }
     return MessageObjectToJson(message_ptr);
   } else if (meatadata_ != nullptr) {
-    auto message_ptr = std::dynamic_pointer_cast<google::protobuf::Message>(update_);
+    auto message_ptr = std::dynamic_pointer_cast<google::protobuf::Message>(meatadata_);
     if (!unravel) {
       return MessageObjectToJson(message_ptr);
     }

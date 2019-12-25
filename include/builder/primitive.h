@@ -10,6 +10,7 @@
 #include "base_builder.h"
 #include "utils/json.hpp"
 #include "utils/macrologger.h"
+#include "utils/utils.h"
 #include "proto/core.pb.h"
 #include "proto/primitives.pb.h"
 
