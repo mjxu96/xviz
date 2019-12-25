@@ -11,6 +11,7 @@
 #include "proto/session.pb.h"
 #include "utils/json.hpp"
 #include "utils/macrologger.h"
+#include "utils/utils.h"
 
 #include <google/protobuf/util/json_util.h>
 #include <iostream>

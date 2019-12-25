@@ -22,7 +22,7 @@ int main() {
   // auto builder = std::make_shared<XVIZPoseBuilder>(Metadata());
   builder->Pose("/vehicle_pose")
     ->Timestamp(1000)
-    ->MapOrigin(0.001, 0.001, 0.0001)
+    ->MapOrigin(0.00, 0.00, 0.000)
     ->Orientation(0, 0, 0);
     // ->Stream("234")
     // ->Timestamp(123123123)
@@ -32,8 +32,8 @@ int main() {
   //   ->Position(3, 4, 5)
   //   ->Timestamp(222);
 
-  std::string s = "{\"fill_color\": \"#08f\"}"; 
-  std::string s1 = "{\"fill_color\": \"#fb0\"}"; 
+  std::string s = "{\"fill_color\": \"#fff\"}"; 
+  std::string s1 = "{\"fill_color\": \"#fff\"}"; 
   builder->Primitive("/object/shape")
       ->Polygon({10, 14, 0, 7, 10, 0, 13, 6, 0})
       ->Polygon({-2, 20, 0, 5, 14, 0, 8, 17, 0, 1, 23, 0})

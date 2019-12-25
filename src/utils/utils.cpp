@@ -12,6 +12,8 @@ std::shared_ptr<xviz::StyleObjectValue> xviz::JsonObjectToStyleObject(const nloh
   auto style_object = std::make_shared<xviz::StyleObjectValue>();
   if (json.find("fill_color") != json.end()) {
     auto fill_color = json.value("fill_color", "#FFFFFF");
+    // auto fill_color = json.value("fill_color", std::vector<unsigned char>(3, 0u));
+    // style_object->set_fill_color(base64_encode((const unsigned char*)fill_color.data(), fill_color.size()));
     style_object->set_fill_color(fill_color.c_str());
   }
   return style_object;
@@ -21,6 +23,9 @@ std::shared_ptr<xviz::StyleObjectValue> xviz::JsonObjectToStyleObject(nlohmann::
   auto style_object = std::make_shared<xviz::StyleObjectValue>();
   if (json.find("fill_color") != json.end()) {
     auto fill_color = json.value("fill_color", "#FFFFFF");
+    // style_object->set_fill_color(base64_encode((const unsigned char*)fill_color.c_str(), fill_color.size()));
+    // auto fill_color = json.value("fill_color", std::vector<unsigned char>(3, 0u));
+    // style_object->set_fill_color(base64_encode((const unsigned char*)fill_color.data(), fill_color.size()));
     style_object->set_fill_color(fill_color.c_str());
   }
   return style_object;
@@ -38,6 +43,10 @@ std::shared_ptr<xviz::StyleStreamValue> xviz::JsonObjectToStyleStream(const nloh
   auto style_stream = std::make_shared<xviz::StyleStreamValue>();
   if (json.find("fill_color") != json.end()) {
     auto fill_color = json.value("fill_color", "#FFFFFF");
+    // style_stream->set_fill_color(base64_encode((const unsigned char*)fill_color.c_str(), fill_color.size()));
+    // auto fill_color = json.value("fill_color", std::vector<unsigned char>(3, 0u));
+    // std::cout << fill_color.size();
+    // style_stream->set_fill_color(base64_encode((const unsigned char*)fill_color.data(), fill_color.size()));
     style_stream->set_fill_color(fill_color.c_str());
   }
   return style_stream;
@@ -47,6 +56,10 @@ std::shared_ptr<xviz::StyleStreamValue> xviz::JsonObjectToStyleStream(nlohmann::
   auto style_stream = std::make_shared<xviz::StyleStreamValue>();
   if (json.find("fill_color") != json.end()) {
     auto fill_color = json.value("fill_color", "#FFFFFF");
+    // style_stream->set_fill_color(base64_encode((const unsigned char*)fill_color.c_str(), fill_color.size()));
+    // auto fill_color = json.value("fill_color", std::vector<unsigned char>(3, 0u));
+    // std::cout << fill_color.size();
+    // style_stream->set_fill_color(base64_encode((const unsigned char*)fill_color.data(), fill_color.size()));
     style_stream->set_fill_color(fill_color.c_str());
   }
   return style_stream;
@@ -59,3 +72,4 @@ std::shared_ptr<xviz::StyleStreamValue> xviz::JsonStringToStyleStream(const std:
 std::shared_ptr<xviz::StyleStreamValue> xviz::JsonStringToStyleStream(std::string&& json_str) {
   return JsonObjectToStyleStream(Json::parse(std::move(json_str)));
 }
+

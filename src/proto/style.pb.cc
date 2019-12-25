@@ -205,15 +205,15 @@ void AddDescriptorsImpl() {
       "\n\013style.proto\022\004xviz\032\roptions.proto\"R\n\nSt"
       "yleClass\022\014\n\004name\030\001 \001(\t\022%\n\005style\030\002 \001(\0132\026."
       "xviz.StyleObjectValue:\017\302\273\032\013style/class\"\217"
-      "\002\n\020StyleObjectValue\022\022\n\nfill_color\030\001 \001(\014\022"
-      "\024\n\014stroke_color\030\002 \001(\014\022\024\n\014stroke_width\030\003 "
+      "\002\n\020StyleObjectValue\022\022\n\nfill_color\030\001 \001(\t\022"
+      "\024\n\014stroke_color\030\002 \001(\t\022\024\n\014stroke_width\030\003 "
       "\001(\002\022\016\n\006radius\030\004 \001(\002\022\021\n\ttext_size\030\005 \001(\002\022\025"
       "\n\rtext_rotation\030\006 \001(\002\022%\n\013text_anchor\030\007 \001"
       "(\0162\020.xviz.TextAnchor\0222\n\rtext_baseline\030\010 "
       "\001(\0162\033.xviz.TextAlignmentBaseline\022\016\n\006heig"
       "ht\030\t \001(\002:\026\302\273\032\022style/object_value\"\246\004\n\020Sty"
-      "leStreamValue\022\022\n\nfill_color\030\001 \001(\014\022\024\n\014str"
-      "oke_color\030\002 \001(\014\022\024\n\014stroke_width\030\003 \001(\002\022\016\n"
+      "leStreamValue\022\022\n\nfill_color\030\001 \001(\t\022\024\n\014str"
+      "oke_color\030\002 \001(\t\022\024\n\014stroke_width\030\003 \001(\002\022\016\n"
       "\006radius\030\004 \001(\002\022\021\n\ttext_size\030\005 \001(\002\022\025\n\rtext"
       "_rotation\030\006 \001(\002\022%\n\013text_anchor\030\007 \001(\0162\020.x"
       "viz.TextAnchor\0222\n\rtext_baseline\030\010 \001(\0162\033."
@@ -674,24 +674,32 @@ bool StyleObjectValue::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes fill_color = 1;
+      // string fill_color = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_fill_color()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->fill_color().data(), static_cast<int>(this->fill_color().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "xviz.StyleObjectValue.fill_color"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // bytes stroke_color = 2;
+      // string stroke_color = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_stroke_color()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->stroke_color().data(), static_cast<int>(this->stroke_color().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "xviz.StyleObjectValue.stroke_color"));
         } else {
           goto handle_unusual;
         }
@@ -824,15 +832,23 @@ void StyleObjectValue::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes fill_color = 1;
+  // string fill_color = 1;
   if (this->fill_color().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->fill_color().data(), static_cast<int>(this->fill_color().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "xviz.StyleObjectValue.fill_color");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       1, this->fill_color(), output);
   }
 
-  // bytes stroke_color = 2;
+  // string stroke_color = 2;
   if (this->stroke_color().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->stroke_color().data(), static_cast<int>(this->stroke_color().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "xviz.StyleObjectValue.stroke_color");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       2, this->stroke_color(), output);
   }
 
@@ -887,17 +903,25 @@ void StyleObjectValue::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes fill_color = 1;
+  // string fill_color = 1;
   if (this->fill_color().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->fill_color().data(), static_cast<int>(this->fill_color().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "xviz.StyleObjectValue.fill_color");
     target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->fill_color(), target);
   }
 
-  // bytes stroke_color = 2;
+  // string stroke_color = 2;
   if (this->stroke_color().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->stroke_color().data(), static_cast<int>(this->stroke_color().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "xviz.StyleObjectValue.stroke_color");
     target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->stroke_color(), target);
   }
 
@@ -955,17 +979,17 @@ size_t StyleObjectValue::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // bytes fill_color = 1;
+  // string fill_color = 1;
   if (this->fill_color().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
+      ::google::protobuf::internal::WireFormatLite::StringSize(
         this->fill_color());
   }
 
-  // bytes stroke_color = 2;
+  // string stroke_color = 2;
   if (this->stroke_color().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
+      ::google::protobuf::internal::WireFormatLite::StringSize(
         this->stroke_color());
   }
 
@@ -1231,24 +1255,32 @@ bool StyleStreamValue::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes fill_color = 1;
+      // string fill_color = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_fill_color()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->fill_color().data(), static_cast<int>(this->fill_color().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "xviz.StyleStreamValue.fill_color"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // bytes stroke_color = 2;
+      // string stroke_color = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_stroke_color()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->stroke_color().data(), static_cast<int>(this->stroke_color().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "xviz.StyleStreamValue.stroke_color"));
         } else {
           goto handle_unusual;
         }
@@ -1553,15 +1585,23 @@ void StyleStreamValue::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes fill_color = 1;
+  // string fill_color = 1;
   if (this->fill_color().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->fill_color().data(), static_cast<int>(this->fill_color().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "xviz.StyleStreamValue.fill_color");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       1, this->fill_color(), output);
   }
 
-  // bytes stroke_color = 2;
+  // string stroke_color = 2;
   if (this->stroke_color().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->stroke_color().data(), static_cast<int>(this->stroke_color().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "xviz.StyleStreamValue.stroke_color");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       2, this->stroke_color(), output);
   }
 
@@ -1686,17 +1726,25 @@ void StyleStreamValue::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes fill_color = 1;
+  // string fill_color = 1;
   if (this->fill_color().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->fill_color().data(), static_cast<int>(this->fill_color().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "xviz.StyleStreamValue.fill_color");
     target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->fill_color(), target);
   }
 
-  // bytes stroke_color = 2;
+  // string stroke_color = 2;
   if (this->stroke_color().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->stroke_color().data(), static_cast<int>(this->stroke_color().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "xviz.StyleStreamValue.stroke_color");
     target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->stroke_color(), target);
   }
 
@@ -1826,17 +1874,17 @@ size_t StyleStreamValue::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // bytes fill_color = 1;
+  // string fill_color = 1;
   if (this->fill_color().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
+      ::google::protobuf::internal::WireFormatLite::StringSize(
         this->fill_color());
   }
 
-  // bytes stroke_color = 2;
+  // string stroke_color = 2;
   if (this->stroke_color().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
+      ::google::protobuf::internal::WireFormatLite::StringSize(
         this->stroke_color());
   }
 

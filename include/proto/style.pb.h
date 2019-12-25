@@ -330,7 +330,7 @@ class StyleObjectValue : public ::google::protobuf::Message /* @@protoc_insertio
 
   // accessors -------------------------------------------------------
 
-  // bytes fill_color = 1;
+  // string fill_color = 1;
   void clear_fill_color();
   static const int kFillColorFieldNumber = 1;
   const ::std::string& fill_color() const;
@@ -339,12 +339,12 @@ class StyleObjectValue : public ::google::protobuf::Message /* @@protoc_insertio
   void set_fill_color(::std::string&& value);
   #endif
   void set_fill_color(const char* value);
-  void set_fill_color(const void* value, size_t size);
+  void set_fill_color(const char* value, size_t size);
   ::std::string* mutable_fill_color();
   ::std::string* release_fill_color();
   void set_allocated_fill_color(::std::string* fill_color);
 
-  // bytes stroke_color = 2;
+  // string stroke_color = 2;
   void clear_stroke_color();
   static const int kStrokeColorFieldNumber = 2;
   const ::std::string& stroke_color() const;
@@ -353,7 +353,7 @@ class StyleObjectValue : public ::google::protobuf::Message /* @@protoc_insertio
   void set_stroke_color(::std::string&& value);
   #endif
   void set_stroke_color(const char* value);
-  void set_stroke_color(const void* value, size_t size);
+  void set_stroke_color(const char* value, size_t size);
   ::std::string* mutable_stroke_color();
   ::std::string* release_stroke_color();
   void set_allocated_stroke_color(::std::string* stroke_color);
@@ -505,7 +505,7 @@ class StyleStreamValue : public ::google::protobuf::Message /* @@protoc_insertio
 
   // accessors -------------------------------------------------------
 
-  // bytes fill_color = 1;
+  // string fill_color = 1;
   void clear_fill_color();
   static const int kFillColorFieldNumber = 1;
   const ::std::string& fill_color() const;
@@ -514,12 +514,12 @@ class StyleStreamValue : public ::google::protobuf::Message /* @@protoc_insertio
   void set_fill_color(::std::string&& value);
   #endif
   void set_fill_color(const char* value);
-  void set_fill_color(const void* value, size_t size);
+  void set_fill_color(const char* value, size_t size);
   ::std::string* mutable_fill_color();
   ::std::string* release_fill_color();
   void set_allocated_fill_color(::std::string* fill_color);
 
-  // bytes stroke_color = 2;
+  // string stroke_color = 2;
   void clear_stroke_color();
   static const int kStrokeColorFieldNumber = 2;
   const ::std::string& stroke_color() const;
@@ -528,7 +528,7 @@ class StyleStreamValue : public ::google::protobuf::Message /* @@protoc_insertio
   void set_stroke_color(::std::string&& value);
   #endif
   void set_stroke_color(const char* value);
-  void set_stroke_color(const void* value, size_t size);
+  void set_stroke_color(const char* value, size_t size);
   ::std::string* mutable_stroke_color();
   ::std::string* release_stroke_color();
   void set_allocated_stroke_color(::std::string* stroke_color);
@@ -924,7 +924,7 @@ inline void StyleClass::set_allocated_style(::xviz::StyleObjectValue* style) {
 
 // StyleObjectValue
 
-// bytes fill_color = 1;
+// string fill_color = 1;
 inline void StyleObjectValue::clear_fill_color() {
   fill_color_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -951,7 +951,7 @@ inline void StyleObjectValue::set_fill_color(const char* value) {
   fill_color_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:xviz.StyleObjectValue.fill_color)
 }
-inline void StyleObjectValue::set_fill_color(const void* value, size_t size) {
+inline void StyleObjectValue::set_fill_color(const char* value, size_t size) {
   
   fill_color_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -977,7 +977,7 @@ inline void StyleObjectValue::set_allocated_fill_color(::std::string* fill_color
   // @@protoc_insertion_point(field_set_allocated:xviz.StyleObjectValue.fill_color)
 }
 
-// bytes stroke_color = 2;
+// string stroke_color = 2;
 inline void StyleObjectValue::clear_stroke_color() {
   stroke_color_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1004,7 +1004,7 @@ inline void StyleObjectValue::set_stroke_color(const char* value) {
   stroke_color_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:xviz.StyleObjectValue.stroke_color)
 }
-inline void StyleObjectValue::set_stroke_color(const void* value, size_t size) {
+inline void StyleObjectValue::set_stroke_color(const char* value, size_t size) {
   
   stroke_color_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -1132,7 +1132,7 @@ inline void StyleObjectValue::set_height(float value) {
 
 // StyleStreamValue
 
-// bytes fill_color = 1;
+// string fill_color = 1;
 inline void StyleStreamValue::clear_fill_color() {
   fill_color_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1159,7 +1159,7 @@ inline void StyleStreamValue::set_fill_color(const char* value) {
   fill_color_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:xviz.StyleStreamValue.fill_color)
 }
-inline void StyleStreamValue::set_fill_color(const void* value, size_t size) {
+inline void StyleStreamValue::set_fill_color(const char* value, size_t size) {
   
   fill_color_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -1185,7 +1185,7 @@ inline void StyleStreamValue::set_allocated_fill_color(::std::string* fill_color
   // @@protoc_insertion_point(field_set_allocated:xviz.StyleStreamValue.fill_color)
 }
 
-// bytes stroke_color = 2;
+// string stroke_color = 2;
 inline void StyleStreamValue::clear_stroke_color() {
   stroke_color_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1212,7 +1212,7 @@ inline void StyleStreamValue::set_stroke_color(const char* value) {
   stroke_color_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:xviz.StyleStreamValue.stroke_color)
 }
-inline void StyleStreamValue::set_stroke_color(const void* value, size_t size) {
+inline void StyleStreamValue::set_stroke_color(const char* value, size_t size) {
   
   stroke_color_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
