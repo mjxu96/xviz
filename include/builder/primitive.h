@@ -16,7 +16,7 @@
 
 namespace xviz {
 
-class XVIZPrimitiveBuilder : public XVIZBaseBuilder, public std::enable_shared_from_this<XVIZPrimitiveBuilder> {
+class XVIZPrimitiveBuilder : public XVIZBaseBuilder {
 public:
   XVIZPrimitiveBuilder(std::shared_ptr<Metadata> metadata);
 
