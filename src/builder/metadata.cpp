@@ -40,12 +40,58 @@ XVIZMetadataBuilder& XVIZMetadataBuilder::Stream(const std::string& stream_id) {
   return *this;
 }
 
+XVIZMetadataBuilder& XVIZMetadataBuilder::StartTime(double time) {
+  data_->mutable_log_info()->set_start_time(time);
+  return *this;
+}
+
+XVIZMetadataBuilder& XVIZMetadataBuilder::EndTime(double time) {
+  data_->mutable_log_info()->set_end_time(time);
+  return *this;
+}
+
+// TODO IMPLE UI
+XVIZMetadataBuilder& XVIZMetadataBuilder::UI() {
+  LOG_ERROR("NOT IMPLEMENT UI");
+  throw std::runtime_error("not implement ui");
+  return *this;
+}
+
+XVIZMetadataBuilder& XVIZMetadataBuilder::Source(const std::string& source) {
+  temp_stream_.set_source(source);
+  return *this;
+}
+
+XVIZMetadataBuilder& XVIZMetadataBuilder::Source(std::string&& source) {
+  temp_stream_.set_source(std::move(source));
+  return *this;
+}
+
+XVIZMetadataBuilder& XVIZMetadataBuilder::Source(const char* source) {
+  temp_stream_.set_source(source);
+  return *this;
+}
+
+XVIZMetadataBuilder& XVIZMetadataBuilder::Unit(const std::string& unit) {
+  temp_stream_.set_units(unit);
+  return *this;
+}
+
+XVIZMetadataBuilder& XVIZMetadataBuilder::Unit(std::string&& unit) {
+  temp_stream_.set_units(std::move(unit));
+  return *this;
+}
+
+XVIZMetadataBuilder& XVIZMetadataBuilder::Unit(const char* unit) {
+  temp_stream_.set_units(unit);
+  return *this;
+}
+
 XVIZMetadataBuilder& XVIZMetadataBuilder::Category(xviz::Category category) {
   temp_stream_.set_category(category);
   return *this;
 }
 
-// TODO determine this type
 XVIZMetadataBuilder& XVIZMetadataBuilder::Coordinate(CoordinateType coordinate_type) {
   temp_stream_.set_coordinate(coordinate_type);
   return *this;
@@ -61,16 +107,39 @@ XVIZMetadataBuilder& XVIZMetadataBuilder::Type(ScalarType scalar_type) {
   return *this;
 }
 
+XVIZMetadataBuilder& XVIZMetadataBuilder::TransformMatrix(const std::vector<double>& matrix) {
+  for (auto v : matrix) {
+    auto v_ptr = temp_stream_.mutable_transform()->Add();
+    *v_ptr = v;
+  }
+  return *this;
+}
+
 XVIZMetadataBuilder& XVIZMetadataBuilder::StreamStyle(const std::string& style_str) {
   auto stream_style = temp_stream_.mutable_stream_style();
   stream_style->MergeFrom(*JsonStringToStyleStream(style_str));
   return *this;
 }
 
+// TODO 
+XVIZMetadataBuilder& XVIZMetadataBuilder::StyleClass() {
+  LOG_ERROR("NOT IMPLEMENT STYLECLASS");
+  throw std::runtime_error("not implement STYLECLASS");
+  return *this;
+}
+
+// TODO 
+XVIZMetadataBuilder& XVIZMetadataBuilder::LogInfo() {
+  LOG_ERROR("NOT IMPLEMENT LOGINFO");
+  throw std::runtime_error("not implement LOGINFO");
+  return *this;
+}
+
 void XVIZMetadataBuilder::Reset() {
   stream_id_ = "";
   temp_stream_ = StreamMetadata();
-  // TODO TMP TYPE
+  // TODO is this value correct?
+  type_ = 0u;
 }
 
 void XVIZMetadataBuilder::Flush() {

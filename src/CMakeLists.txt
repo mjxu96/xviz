@@ -38,8 +38,6 @@ add_library(xviz-builder
   builder/xviz_builder.cpp
 )
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${XVIZ_ROOT_FOLDER}/bin)
-
 
 add_library(xviz-message
   message.cpp

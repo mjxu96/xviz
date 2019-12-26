@@ -27,14 +27,33 @@ public:
   XVIZMetadataBuilder& Stream(const std::string& stream_id);
   // XVIZMetadataBuilder& Stream(std::string&& stream_id);
 
+  XVIZMetadataBuilder& StartTime(double time);
+  XVIZMetadataBuilder& EndTime(double time);
+
+  // TODO
+  XVIZMetadataBuilder& UI();
+
+  XVIZMetadataBuilder& Source(const std::string& source);
+  XVIZMetadataBuilder& Source(std::string&& source);
+  XVIZMetadataBuilder& Source(const char* source);
+  XVIZMetadataBuilder& Unit(const std::string& unit);
+  XVIZMetadataBuilder& Unit(std::string&& unit);
+  XVIZMetadataBuilder& Unit(const char* unit);
+
   XVIZMetadataBuilder& Category(Category category);
   XVIZMetadataBuilder& Type(Primitive primitive_type);
   XVIZMetadataBuilder& Type(ScalarType scalar_type);
 
-  // TODO determine this type
   XVIZMetadataBuilder& Coordinate(CoordinateType coordinate_type);
 
+  XVIZMetadataBuilder& TransformMatrix(const std::vector<double>& matrix);
+
   XVIZMetadataBuilder& StreamStyle(const std::string& style_str);
+  XVIZMetadataBuilder& StyleClass();
+
+  // TODO to imple
+  XVIZMetadataBuilder& LogInfo();
+
 private:
   void Flush();
   void Reset();

@@ -54,8 +54,9 @@ int main() {
   XVIZMetadataBuilder metadata_builder;
   metadata_builder.Stream("/vehicle_pose").Category(Category::StreamMetadata_Category_POSE)
     .Stream("/object/shape").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_POLYGON)
-    .Coordinate(CoordinateType::StreamMetadata_CoordinateType_VEHICLE_RELATIVE)
+    .Coordinate(CoordinateType::StreamMetadata_CoordinateType_VEHICLE_RELATIVE)//.Unit("123").Source("123")
     .StreamStyle(s1);
+  metadata_builder.StartTime(1000).EndTime(1010);
   auto metadata_res = metadata_builder.GetMessage();
   // for (const auto& pa : *res) {
   //   std::cout << pa.first << std::endl;
