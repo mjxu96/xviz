@@ -30,8 +30,9 @@ public:
   XVIZMetadataBuilder& StartTime(double time);
   XVIZMetadataBuilder& EndTime(double time);
 
-  // TODO
-  XVIZMetadataBuilder& UI();
+  XVIZMetadataBuilder& UI(const std::unordered_map<std::string, ::google::protobuf::Struct>& ui);
+  XVIZMetadataBuilder& UI(std::unordered_map<std::string, ::google::protobuf::Struct>&& ui);
+  XVIZMetadataBuilder& UI(const std::shared_ptr<std::unordered_map<std::string, ::google::protobuf::Struct>>& ui_ptr);
 
   XVIZMetadataBuilder& Source(const std::string& source);
   XVIZMetadataBuilder& Source(std::string&& source);
@@ -59,6 +60,7 @@ private:
   void Reset();
 
   std::shared_ptr<Metadata> data_{nullptr};
+  std::shared_ptr<std::unordered_map<std::string, ::google::protobuf::Struct>> ui_{nullptr};
   std::string stream_id_{};
   StreamMetadata temp_stream_{};
   uint32_t type_ = -1;

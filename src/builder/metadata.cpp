@@ -19,12 +19,18 @@ XVIZMetadataBuilder::XVIZMetadataBuilder() {
 
 std::shared_ptr<Metadata> XVIZMetadataBuilder::GetData() {
   Flush();
-  // Metadata metadata;
-  // metadata.CopyFrom(*data_);
 
-  // TODO UI
+  if (ui_ != nullptr) {
+    auto ui_config_ptr = data_->mutable_ui_config();
 
-  // return metadata;
+    for (auto& [panel_key, cfg] : *ui_) {
+      auto ui_panel_info = UIPanelInfo();
+      ui_panel_info.set_name(panel_key);
+      ui_panel_info.mutable_config()->CopyFrom(cfg);
+      (*ui_config_ptr)[panel_key] = std::move(ui_panel_info);
+    }
+  }
+
   return data_;
 }
 
@@ -50,10 +56,16 @@ XVIZMetadataBuilder& XVIZMetadataBuilder::EndTime(double time) {
   return *this;
 }
 
-// TODO IMPLE UI
-XVIZMetadataBuilder& XVIZMetadataBuilder::UI() {
-  LOG_ERROR("NOT IMPLEMENT UI");
-  throw std::runtime_error("not implement ui");
+XVIZMetadataBuilder& XVIZMetadataBuilder::UI(const std::unordered_map<std::string, ::google::protobuf::Struct>& ui) {
+  return UI(std::make_shared<std::unordered_map<std::string, ::google::protobuf::Struct>>(ui));
+}
+
+XVIZMetadataBuilder& XVIZMetadataBuilder::UI(std::unordered_map<std::string, ::google::protobuf::Struct>&& ui) {
+  return UI(std::make_shared<std::unordered_map<std::string, ::google::protobuf::Struct>>(std::move(ui)));
+}
+
+XVIZMetadataBuilder& XVIZMetadataBuilder::UI(const std::shared_ptr<std::unordered_map<std::string, ::google::protobuf::Struct>>& ui_ptr) {
+  ui_ = ui_ptr;
   return *this;
 }
 
