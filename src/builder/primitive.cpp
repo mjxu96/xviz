@@ -98,13 +98,43 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Points(const std::shared_ptr<std::ve
   return *this;
 }
 
+// Image
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Dimensions(uint32_t width_pixel, uint32_t height_pixel) {
+  if (image_ == nullptr) {
+    LOG_ERROR("An image must be set before call Dimensions()");
+    return *this;
+  }
+
+  image_->set_width_px(width_pixel);
+  image_->set_height_px(height_pixel);
+  return *this;
+}
+
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Image(const std::string& encoded_data_str) {
+  image_->set_data(encoded_data_str);
+  return *this;
+}
+
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Image(std::string&& encoded_data_str) {
+  image_->set_data(std::move(encoded_data_str));
+  return *this;
+}
+
 // Style
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Style(const std::string& style_json_str) {
   return Style(JsonStringToStyleObject(style_json_str));
 }
 
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Style(std::string&& style_json_str) {
+  return Style(JsonStringToStyleObject(std::move(style_json_str)));
+}
+
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Style(const Json& style_json) {
   return Style(JsonObjectToStyleObject(style_json));
+}
+
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Style(Json&& style_json) {
+  return Style(JsonObjectToStyleObject(std::move(style_json)));
 }
 
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Style(const std::shared_ptr<StyleObjectValue>& style_object) {

@@ -22,6 +22,7 @@ class XVIZFrame {
 public:
   XVIZFrame(std::shared_ptr<StreamSet> data);
   nlohmann::json ToObject(bool unravel = true);
+  std::string ToObjectString(bool unravel = true);
   std::shared_ptr<StreamSet> Data();
 private:
   std::shared_ptr<StreamSet> data_{nullptr};
@@ -35,6 +36,7 @@ public:
   XVIZMessage(std::shared_ptr<StateUpdate> update = nullptr);
 
   nlohmann::json ToObject(bool unravel = true);
+  std::string ToObjectString(bool unravel = true);
 
 private:
   std::shared_ptr<StateUpdate> update_{nullptr};

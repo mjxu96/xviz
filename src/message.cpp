@@ -10,6 +10,18 @@
 using Json = nlohmann::json;
 using namespace xviz;
 
+Json MessageObjectToString(std::shared_ptr<google::protobuf::Message> data) {
+  if (data == nullptr) {
+    throw std::runtime_error("dynamic cast from StreamSet to google::protobuf::Message error");
+    return Json();
+  }
+  std::string json_str;
+  google::protobuf::util::JsonOptions options;
+  options.preserve_proto_field_names = true;
+  google::protobuf::util::MessageToJsonString(*data, &json_str, options);
+  return json_str;
+}
+
 Json MessageObjectToJson(std::shared_ptr<google::protobuf::Message> data) {
   if (data == nullptr) {
     throw std::runtime_error("dynamic cast from StreamSet to google::protobuf::Message error");
@@ -35,6 +47,11 @@ Json XVIZFrame::ToObject(bool unravel) {
   // std::string json_str;
   // google::protobuf::util::MessageToJsonString(*message_ptr, &json_str);
   // return Json(json_str);
+}
+
+std::string XVIZFrame::ToObjectString(bool unravel) {
+  auto message_ptr = std::dynamic_pointer_cast<google::protobuf::Message>(data_);
+  return MessageObjectToString(message_ptr);
 }
 
 std::shared_ptr<StreamSet> XVIZFrame::Data() {
@@ -70,4 +87,23 @@ nlohmann::json XVIZMessage::ToObject(bool unravel) {
     throw std::runtime_error("no message needs to be output");
   }
   return Json();
+}
+
+std::string XVIZMessage::ToObjectString(bool unravel) {
+  if (update_ != nullptr) {
+    auto message_ptr = std::dynamic_pointer_cast<google::protobuf::Message>(update_);
+    if (!unravel) {
+      return MessageObjectToString(message_ptr);
+    }
+    return MessageObjectToString(message_ptr);
+  } else if (meatadata_ != nullptr) {
+    auto message_ptr = std::dynamic_pointer_cast<google::protobuf::Message>(meatadata_);
+    if (!unravel) {
+      return MessageObjectToString(message_ptr);
+    }
+    return MessageObjectToString(message_ptr);
+  } else {
+    throw std::runtime_error("no message needs to be output");
+  }
+  return std::string();
 }

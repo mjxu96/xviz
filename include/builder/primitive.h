@@ -35,10 +35,14 @@ public:
   XVIZPrimitiveBuilder& Points(std::vector<double>&& vertices);
   XVIZPrimitiveBuilder& Points(const std::shared_ptr<std::vector<double>>& vertices_ptr);
 
+  XVIZPrimitiveBuilder& Dimensions(uint32_t width_pixel, uint32_t height_pixel);
+  XVIZPrimitiveBuilder& Image(const std::string& encoded_data_str);
+  XVIZPrimitiveBuilder& Image(std::string&& encoded_data_str);
+
   XVIZPrimitiveBuilder& Style(const nlohmann::json& style_json);
-  // XVIZPrimitiveBuilder& Style(std::shared_ptr<nlohmann::json>& style_json_ptr);
+  XVIZPrimitiveBuilder& Style(nlohmann::json&& style_json);
   XVIZPrimitiveBuilder& Style(const std::string& style_json_str);
-  // XVIZPrimitiveBuilder& Style(std::shared_ptr<std::string>& style_json_str_ptr);
+  XVIZPrimitiveBuilder& Style(std::string&& style_json_str);
   XVIZPrimitiveBuilder& Style(const std::shared_ptr<StyleObjectValue>& style_object);
 private:
   void Reset();
@@ -55,7 +59,7 @@ private:
 
   std::shared_ptr<Primitive> type_{nullptr};
 
-  std::shared_ptr<Image> image_{nullptr};
+  std::shared_ptr<xviz::Image> image_{nullptr};
   std::shared_ptr<std::vector<double>> vertices_{nullptr};
   std::shared_ptr<double> radius_{nullptr};
   std::shared_ptr<std::string> text_{nullptr};
