@@ -28,6 +28,7 @@ protected:
   Category category_{};
   std::shared_ptr<xviz::Metadata> metadata_{nullptr};
 
+  void Validate();
   void ValidateMatchMetadata();
   virtual void Flush() = 0;
 

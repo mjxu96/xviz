@@ -56,6 +56,7 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Polygon(const std::shared_ptr<std::v
   return *this;
 }
 
+// Polyline
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Polyline(const std::vector<double>& vertices) {
   auto vertices_ptr = std::make_shared<std::vector<double>>(vertices);
   return Polyline(vertices_ptr);
@@ -76,6 +77,7 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Polyline(const std::shared_ptr<std::
   return *this;
 }
 
+// Points
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Points(const std::vector<double>& vertices) {
   auto vertices_ptr = std::make_shared<std::vector<double>>(vertices);
   return Points(vertices_ptr);
@@ -127,6 +129,7 @@ void XVIZPrimitiveBuilder::Flush() {
 }
 
 void XVIZPrimitiveBuilder::Validate() {
+  XVIZBaseBuilder::Validate();
   // SUPER :: VALIDATE
   // TODO imple this function
 }

@@ -9,6 +9,7 @@
 #define XVIZ_UTILS_H_
 
 #include "utils/definitions.h"
+#include "utils/macrologger.h"
 #include "utils/json.hpp"
 #include "proto/style.pb.h"
 

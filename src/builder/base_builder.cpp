@@ -13,6 +13,10 @@ XVIZBaseBuilder::XVIZBaseBuilder(Category category, std::shared_ptr<xviz::Metada
   metadata_ = metadata;
 }
 
+void XVIZBaseBuilder::Validate() {
+  ValidateMatchMetadata();
+}
+
 void XVIZBaseBuilder::ValidateMatchMetadata() {
   if (metadata_ == nullptr) {
     LOG_WARNING("Metadata is missing.");
