@@ -13,6 +13,19 @@ XVIZBaseBuilder::XVIZBaseBuilder(Category category, std::shared_ptr<xviz::Metada
   metadata_ = metadata;
 }
 
+void XVIZBaseBuilder::ValidateMatchMetadata() {
+  if (metadata_ == nullptr) {
+    LOG_WARNING("Metadata is missing.");
+  } else if (metadata_->streams().find(stream_id_) == metadata_->streams().end()) {
+    LOG_WARNING("%s is not defined in metadata.", stream_id_.c_str());
+  } else {
+    auto cat = (*(metadata_->streams().find(stream_id_))).second.category();
+    if (cat != category_) {
+      LOG_WARNING("Stream %s category %s does not match metadata definition %s", stream_id_.c_str(), 
+        StreamMetadata::Category_Name(category_).c_str(), StreamMetadata::Category_Name(cat).c_str());
+    }
+  }
+}
 
 // std::shared_ptr<XVIZBaseBuilder> XVIZBaseBuilder::Stream(std::string stream_id) {
 //   if (stream_id_.size() != 0) {

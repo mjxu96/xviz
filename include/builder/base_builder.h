@@ -8,6 +8,9 @@
 #define XVIZ_BASE_BUILDER_H_
 
 #include "utils/definitions.h"
+#include "utils/macrologger.h"
+
+#include "proto/session.pb.h"
 
 #include <string>
 #include <memory>
@@ -24,6 +27,8 @@ protected:
   std::string stream_id_{};
   Category category_{};
   std::shared_ptr<xviz::Metadata> metadata_{nullptr};
+
+  void ValidateMatchMetadata();
   virtual void Flush() = 0;
 
 };

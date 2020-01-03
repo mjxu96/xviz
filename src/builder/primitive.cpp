@@ -62,7 +62,7 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Polyline(const std::vector<double>& 
 }
 
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Polyline(std::vector<double>&& vertices) {
-  auto vertices_ptr = std::make_shared<std::vector<double>>(vertices);
+  auto vertices_ptr = std::make_shared<std::vector<double>>(std::move(vertices));
   return Polyline(vertices_ptr);
 }
 
@@ -82,7 +82,7 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Points(const std::vector<double>& ve
 }
 
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Points(std::vector<double>&& vertices) {
-  auto vertices_ptr = std::make_shared<std::vector<double>>(vertices);
+  auto vertices_ptr = std::make_shared<std::vector<double>>(std::move(vertices));
   return Points(vertices_ptr);
 }
 
