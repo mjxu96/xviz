@@ -5,216 +5,242 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
-#include <google/protobuf/stubs/port.h>
 #include <google/protobuf/io/coded_stream.h>
-#include <google/protobuf/wire_format_lite_inl.h>
+#include <google/protobuf/extension_set.h>
+#include <google/protobuf/wire_format_lite.h>
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/generated_message_reflection.h>
 #include <google/protobuf/reflection_ops.h>
 #include <google/protobuf/wire_format.h>
-// This is a temporary google only hack
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-#include "third_party/protobuf/version.h"
-#endif
 // @@protoc_insertion_point(includes)
-
-namespace protobuf_annotation_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_annotation_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_Visual;
-}  // namespace protobuf_annotation_2eproto
-namespace protobuf_core_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Link;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_MapOrigin;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Values;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_VariableBase;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_AnnotationState;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_FutureInstances;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Pose;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_StreamSet_AnnotationsEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_StreamSet_FutureInstancesEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_StreamSet_LinksEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_StreamSet_PosesEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_StreamSet_PrimitivesEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_StreamSet_UiPrimitivesEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_StreamSet_VariablesEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_TimeSeriesState;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_UIPrimitiveState;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_VariableState;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_Variable;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<7> scc_info_PrimitiveState;
-}  // namespace protobuf_core_2eproto
-namespace protobuf_primitives_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_primitives_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Circle;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_primitives_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Image;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_primitives_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Point;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_primitives_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Polygon;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_primitives_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Polyline;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_primitives_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Stadium;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_primitives_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Text;
-}  // namespace protobuf_primitives_2eproto
-namespace protobuf_uiprimitives_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_uiprimitives_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_TreeTable;
-}  // namespace protobuf_uiprimitives_2eproto
+#include <google/protobuf/port_def.inc>
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_AnnotationState_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_primitives_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Circle_primitives_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_FutureInstances_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_primitives_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Image_primitives_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Link_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_MapOrigin_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_primitives_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Point_primitives_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_primitives_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Polygon_primitives_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_primitives_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Polyline_primitives_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Pose_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<7> scc_info_PrimitiveState_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_primitives_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Stadium_primitives_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_StreamSet_AnnotationsEntry_DoNotUse_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_StreamSet_FutureInstancesEntry_DoNotUse_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_StreamSet_LinksEntry_DoNotUse_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_StreamSet_PosesEntry_DoNotUse_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_StreamSet_PrimitivesEntry_DoNotUse_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_StreamSet_UiPrimitivesEntry_DoNotUse_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_StreamSet_VariablesEntry_DoNotUse_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_primitives_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Text_primitives_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_TimeSeriesState_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_uiprimitives_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_TreeTable_uiprimitives_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_UIPrimitiveState_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Values_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_Variable_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_VariableBase_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_VariableState_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_annotation_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_Visual_annotation_2eproto;
 namespace xviz {
 class StreamSet_PosesEntry_DoNotUseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<StreamSet_PosesEntry_DoNotUse>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<StreamSet_PosesEntry_DoNotUse> _instance;
 } _StreamSet_PosesEntry_DoNotUse_default_instance_;
 class StreamSet_PrimitivesEntry_DoNotUseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<StreamSet_PrimitivesEntry_DoNotUse>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<StreamSet_PrimitivesEntry_DoNotUse> _instance;
 } _StreamSet_PrimitivesEntry_DoNotUse_default_instance_;
 class StreamSet_FutureInstancesEntry_DoNotUseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<StreamSet_FutureInstancesEntry_DoNotUse>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<StreamSet_FutureInstancesEntry_DoNotUse> _instance;
 } _StreamSet_FutureInstancesEntry_DoNotUse_default_instance_;
 class StreamSet_VariablesEntry_DoNotUseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<StreamSet_VariablesEntry_DoNotUse>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<StreamSet_VariablesEntry_DoNotUse> _instance;
 } _StreamSet_VariablesEntry_DoNotUse_default_instance_;
 class StreamSet_AnnotationsEntry_DoNotUseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<StreamSet_AnnotationsEntry_DoNotUse>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<StreamSet_AnnotationsEntry_DoNotUse> _instance;
 } _StreamSet_AnnotationsEntry_DoNotUse_default_instance_;
 class StreamSet_UiPrimitivesEntry_DoNotUseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<StreamSet_UiPrimitivesEntry_DoNotUse>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<StreamSet_UiPrimitivesEntry_DoNotUse> _instance;
 } _StreamSet_UiPrimitivesEntry_DoNotUse_default_instance_;
 class StreamSet_LinksEntry_DoNotUseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<StreamSet_LinksEntry_DoNotUse>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<StreamSet_LinksEntry_DoNotUse> _instance;
 } _StreamSet_LinksEntry_DoNotUse_default_instance_;
 class StreamSetDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<StreamSet>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<StreamSet> _instance;
 } _StreamSet_default_instance_;
 class PoseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Pose>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Pose> _instance;
 } _Pose_default_instance_;
 class MapOriginDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<MapOrigin>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<MapOrigin> _instance;
 } _MapOrigin_default_instance_;
 class PrimitiveStateDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<PrimitiveState>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<PrimitiveState> _instance;
 } _PrimitiveState_default_instance_;
 class UIPrimitiveStateDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<UIPrimitiveState>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<UIPrimitiveState> _instance;
 } _UIPrimitiveState_default_instance_;
 class TimeSeriesStateDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TimeSeriesState>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<TimeSeriesState> _instance;
 } _TimeSeriesState_default_instance_;
 class FutureInstancesDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<FutureInstances>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<FutureInstances> _instance;
 } _FutureInstances_default_instance_;
 class VariableStateDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<VariableState>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<VariableState> _instance;
 } _VariableState_default_instance_;
 class AnnotationStateDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<AnnotationState>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<AnnotationState> _instance;
 } _AnnotationState_default_instance_;
 class VariableDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Variable>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Variable> _instance;
 } _Variable_default_instance_;
 class VariableBaseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<VariableBase>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<VariableBase> _instance;
 } _VariableBase_default_instance_;
 class ValuesDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Values>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Values> _instance;
 } _Values_default_instance_;
 class LinkDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Link>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Link> _instance;
 } _Link_default_instance_;
 }  // namespace xviz
-namespace protobuf_core_2eproto {
-static void InitDefaultsStreamSet_PosesEntry_DoNotUse() {
+static void InitDefaultsscc_info_AnnotationState_core_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_StreamSet_PosesEntry_DoNotUse_default_instance_;
-    new (ptr) ::xviz::StreamSet_PosesEntry_DoNotUse();
+    void* ptr = &::xviz::_AnnotationState_default_instance_;
+    new (ptr) ::xviz::AnnotationState();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::xviz::StreamSet_PosesEntry_DoNotUse::InitAsDefaultInstance();
+  ::xviz::AnnotationState::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_StreamSet_PosesEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsStreamSet_PosesEntry_DoNotUse}, {
-      &protobuf_core_2eproto::scc_info_Pose.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_AnnotationState_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_AnnotationState_core_2eproto}, {
+      &scc_info_Visual_annotation_2eproto.base,}};
 
-static void InitDefaultsStreamSet_PrimitivesEntry_DoNotUse() {
+static void InitDefaultsscc_info_FutureInstances_core_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_StreamSet_PrimitivesEntry_DoNotUse_default_instance_;
-    new (ptr) ::xviz::StreamSet_PrimitivesEntry_DoNotUse();
+    void* ptr = &::xviz::_FutureInstances_default_instance_;
+    new (ptr) ::xviz::FutureInstances();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::xviz::StreamSet_PrimitivesEntry_DoNotUse::InitAsDefaultInstance();
+  ::xviz::FutureInstances::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_StreamSet_PrimitivesEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsStreamSet_PrimitivesEntry_DoNotUse}, {
-      &protobuf_core_2eproto::scc_info_PrimitiveState.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_FutureInstances_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_FutureInstances_core_2eproto}, {
+      &scc_info_PrimitiveState_core_2eproto.base,}};
 
-static void InitDefaultsStreamSet_FutureInstancesEntry_DoNotUse() {
+static void InitDefaultsscc_info_Link_core_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_StreamSet_FutureInstancesEntry_DoNotUse_default_instance_;
-    new (ptr) ::xviz::StreamSet_FutureInstancesEntry_DoNotUse();
+    void* ptr = &::xviz::_Link_default_instance_;
+    new (ptr) ::xviz::Link();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::xviz::StreamSet_FutureInstancesEntry_DoNotUse::InitAsDefaultInstance();
+  ::xviz::Link::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_StreamSet_FutureInstancesEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsStreamSet_FutureInstancesEntry_DoNotUse}, {
-      &protobuf_core_2eproto::scc_info_FutureInstances.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Link_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Link_core_2eproto}, {}};
 
-static void InitDefaultsStreamSet_VariablesEntry_DoNotUse() {
+static void InitDefaultsscc_info_MapOrigin_core_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_StreamSet_VariablesEntry_DoNotUse_default_instance_;
-    new (ptr) ::xviz::StreamSet_VariablesEntry_DoNotUse();
+    void* ptr = &::xviz::_MapOrigin_default_instance_;
+    new (ptr) ::xviz::MapOrigin();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::xviz::StreamSet_VariablesEntry_DoNotUse::InitAsDefaultInstance();
+  ::xviz::MapOrigin::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_StreamSet_VariablesEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsStreamSet_VariablesEntry_DoNotUse}, {
-      &protobuf_core_2eproto::scc_info_VariableState.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_MapOrigin_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_MapOrigin_core_2eproto}, {}};
 
-static void InitDefaultsStreamSet_AnnotationsEntry_DoNotUse() {
+static void InitDefaultsscc_info_Pose_core_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::xviz::_Pose_default_instance_;
+    new (ptr) ::xviz::Pose();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::xviz::Pose::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Pose_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_Pose_core_2eproto}, {
+      &scc_info_MapOrigin_core_2eproto.base,}};
+
+static void InitDefaultsscc_info_PrimitiveState_core_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::xviz::_PrimitiveState_default_instance_;
+    new (ptr) ::xviz::PrimitiveState();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::xviz::PrimitiveState::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<7> scc_info_PrimitiveState_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 7, 0, InitDefaultsscc_info_PrimitiveState_core_2eproto}, {
+      &scc_info_Polygon_primitives_2eproto.base,
+      &scc_info_Polyline_primitives_2eproto.base,
+      &scc_info_Text_primitives_2eproto.base,
+      &scc_info_Circle_primitives_2eproto.base,
+      &scc_info_Point_primitives_2eproto.base,
+      &scc_info_Stadium_primitives_2eproto.base,
+      &scc_info_Image_primitives_2eproto.base,}};
+
+static void InitDefaultsscc_info_StreamSet_core_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::xviz::_StreamSet_default_instance_;
+    new (ptr) ::xviz::StreamSet();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::xviz::StreamSet::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<8> scc_info_StreamSet_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 8, 0, InitDefaultsscc_info_StreamSet_core_2eproto}, {
+      &scc_info_StreamSet_PosesEntry_DoNotUse_core_2eproto.base,
+      &scc_info_StreamSet_PrimitivesEntry_DoNotUse_core_2eproto.base,
+      &scc_info_TimeSeriesState_core_2eproto.base,
+      &scc_info_StreamSet_FutureInstancesEntry_DoNotUse_core_2eproto.base,
+      &scc_info_StreamSet_VariablesEntry_DoNotUse_core_2eproto.base,
+      &scc_info_StreamSet_AnnotationsEntry_DoNotUse_core_2eproto.base,
+      &scc_info_StreamSet_UiPrimitivesEntry_DoNotUse_core_2eproto.base,
+      &scc_info_StreamSet_LinksEntry_DoNotUse_core_2eproto.base,}};
+
+static void InitDefaultsscc_info_StreamSet_AnnotationsEntry_DoNotUse_core_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -224,25 +250,25 @@ static void InitDefaultsStreamSet_AnnotationsEntry_DoNotUse() {
   ::xviz::StreamSet_AnnotationsEntry_DoNotUse::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_StreamSet_AnnotationsEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsStreamSet_AnnotationsEntry_DoNotUse}, {
-      &protobuf_core_2eproto::scc_info_AnnotationState.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_StreamSet_AnnotationsEntry_DoNotUse_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_StreamSet_AnnotationsEntry_DoNotUse_core_2eproto}, {
+      &scc_info_AnnotationState_core_2eproto.base,}};
 
-static void InitDefaultsStreamSet_UiPrimitivesEntry_DoNotUse() {
+static void InitDefaultsscc_info_StreamSet_FutureInstancesEntry_DoNotUse_core_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_StreamSet_UiPrimitivesEntry_DoNotUse_default_instance_;
-    new (ptr) ::xviz::StreamSet_UiPrimitivesEntry_DoNotUse();
+    void* ptr = &::xviz::_StreamSet_FutureInstancesEntry_DoNotUse_default_instance_;
+    new (ptr) ::xviz::StreamSet_FutureInstancesEntry_DoNotUse();
   }
-  ::xviz::StreamSet_UiPrimitivesEntry_DoNotUse::InitAsDefaultInstance();
+  ::xviz::StreamSet_FutureInstancesEntry_DoNotUse::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_StreamSet_UiPrimitivesEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsStreamSet_UiPrimitivesEntry_DoNotUse}, {
-      &protobuf_core_2eproto::scc_info_UIPrimitiveState.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_StreamSet_FutureInstancesEntry_DoNotUse_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_StreamSet_FutureInstancesEntry_DoNotUse_core_2eproto}, {
+      &scc_info_FutureInstances_core_2eproto.base,}};
 
-static void InitDefaultsStreamSet_LinksEntry_DoNotUse() {
+static void InitDefaultsscc_info_StreamSet_LinksEntry_DoNotUse_core_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -252,412 +278,331 @@ static void InitDefaultsStreamSet_LinksEntry_DoNotUse() {
   ::xviz::StreamSet_LinksEntry_DoNotUse::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_StreamSet_LinksEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsStreamSet_LinksEntry_DoNotUse}, {
-      &protobuf_core_2eproto::scc_info_Link.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_StreamSet_LinksEntry_DoNotUse_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_StreamSet_LinksEntry_DoNotUse_core_2eproto}, {
+      &scc_info_Link_core_2eproto.base,}};
 
-static void InitDefaultsStreamSet() {
+static void InitDefaultsscc_info_StreamSet_PosesEntry_DoNotUse_core_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_StreamSet_default_instance_;
-    new (ptr) ::xviz::StreamSet();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    void* ptr = &::xviz::_StreamSet_PosesEntry_DoNotUse_default_instance_;
+    new (ptr) ::xviz::StreamSet_PosesEntry_DoNotUse();
   }
-  ::xviz::StreamSet::InitAsDefaultInstance();
+  ::xviz::StreamSet_PosesEntry_DoNotUse::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<8> scc_info_StreamSet =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 8, InitDefaultsStreamSet}, {
-      &protobuf_core_2eproto::scc_info_StreamSet_PosesEntry_DoNotUse.base,
-      &protobuf_core_2eproto::scc_info_StreamSet_PrimitivesEntry_DoNotUse.base,
-      &protobuf_core_2eproto::scc_info_TimeSeriesState.base,
-      &protobuf_core_2eproto::scc_info_StreamSet_FutureInstancesEntry_DoNotUse.base,
-      &protobuf_core_2eproto::scc_info_StreamSet_VariablesEntry_DoNotUse.base,
-      &protobuf_core_2eproto::scc_info_StreamSet_AnnotationsEntry_DoNotUse.base,
-      &protobuf_core_2eproto::scc_info_StreamSet_UiPrimitivesEntry_DoNotUse.base,
-      &protobuf_core_2eproto::scc_info_StreamSet_LinksEntry_DoNotUse.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_StreamSet_PosesEntry_DoNotUse_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_StreamSet_PosesEntry_DoNotUse_core_2eproto}, {
+      &scc_info_Pose_core_2eproto.base,}};
 
-static void InitDefaultsPose() {
+static void InitDefaultsscc_info_StreamSet_PrimitivesEntry_DoNotUse_core_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_Pose_default_instance_;
-    new (ptr) ::xviz::Pose();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    void* ptr = &::xviz::_StreamSet_PrimitivesEntry_DoNotUse_default_instance_;
+    new (ptr) ::xviz::StreamSet_PrimitivesEntry_DoNotUse();
   }
-  ::xviz::Pose::InitAsDefaultInstance();
+  ::xviz::StreamSet_PrimitivesEntry_DoNotUse::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_Pose =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsPose}, {
-      &protobuf_core_2eproto::scc_info_MapOrigin.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_StreamSet_PrimitivesEntry_DoNotUse_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_StreamSet_PrimitivesEntry_DoNotUse_core_2eproto}, {
+      &scc_info_PrimitiveState_core_2eproto.base,}};
 
-static void InitDefaultsMapOrigin() {
+static void InitDefaultsscc_info_StreamSet_UiPrimitivesEntry_DoNotUse_core_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_MapOrigin_default_instance_;
-    new (ptr) ::xviz::MapOrigin();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    void* ptr = &::xviz::_StreamSet_UiPrimitivesEntry_DoNotUse_default_instance_;
+    new (ptr) ::xviz::StreamSet_UiPrimitivesEntry_DoNotUse();
   }
-  ::xviz::MapOrigin::InitAsDefaultInstance();
+  ::xviz::StreamSet_UiPrimitivesEntry_DoNotUse::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_MapOrigin =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMapOrigin}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_StreamSet_UiPrimitivesEntry_DoNotUse_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_StreamSet_UiPrimitivesEntry_DoNotUse_core_2eproto}, {
+      &scc_info_UIPrimitiveState_core_2eproto.base,}};
 
-static void InitDefaultsPrimitiveState() {
+static void InitDefaultsscc_info_StreamSet_VariablesEntry_DoNotUse_core_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_PrimitiveState_default_instance_;
-    new (ptr) ::xviz::PrimitiveState();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    void* ptr = &::xviz::_StreamSet_VariablesEntry_DoNotUse_default_instance_;
+    new (ptr) ::xviz::StreamSet_VariablesEntry_DoNotUse();
   }
-  ::xviz::PrimitiveState::InitAsDefaultInstance();
+  ::xviz::StreamSet_VariablesEntry_DoNotUse::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<7> scc_info_PrimitiveState =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 7, InitDefaultsPrimitiveState}, {
-      &protobuf_primitives_2eproto::scc_info_Polygon.base,
-      &protobuf_primitives_2eproto::scc_info_Polyline.base,
-      &protobuf_primitives_2eproto::scc_info_Text.base,
-      &protobuf_primitives_2eproto::scc_info_Circle.base,
-      &protobuf_primitives_2eproto::scc_info_Point.base,
-      &protobuf_primitives_2eproto::scc_info_Stadium.base,
-      &protobuf_primitives_2eproto::scc_info_Image.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_StreamSet_VariablesEntry_DoNotUse_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_StreamSet_VariablesEntry_DoNotUse_core_2eproto}, {
+      &scc_info_VariableState_core_2eproto.base,}};
 
-static void InitDefaultsUIPrimitiveState() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::xviz::_UIPrimitiveState_default_instance_;
-    new (ptr) ::xviz::UIPrimitiveState();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::xviz::UIPrimitiveState::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_UIPrimitiveState =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsUIPrimitiveState}, {
-      &protobuf_uiprimitives_2eproto::scc_info_TreeTable.base,}};
-
-static void InitDefaultsTimeSeriesState() {
+static void InitDefaultsscc_info_TimeSeriesState_core_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
     void* ptr = &::xviz::_TimeSeriesState_default_instance_;
     new (ptr) ::xviz::TimeSeriesState();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
   ::xviz::TimeSeriesState::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_TimeSeriesState =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsTimeSeriesState}, {
-      &protobuf_core_2eproto::scc_info_Values.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_TimeSeriesState_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_TimeSeriesState_core_2eproto}, {
+      &scc_info_Values_core_2eproto.base,}};
 
-static void InitDefaultsFutureInstances() {
+static void InitDefaultsscc_info_UIPrimitiveState_core_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_FutureInstances_default_instance_;
-    new (ptr) ::xviz::FutureInstances();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    void* ptr = &::xviz::_UIPrimitiveState_default_instance_;
+    new (ptr) ::xviz::UIPrimitiveState();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::xviz::FutureInstances::InitAsDefaultInstance();
+  ::xviz::UIPrimitiveState::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_FutureInstances =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsFutureInstances}, {
-      &protobuf_core_2eproto::scc_info_PrimitiveState.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_UIPrimitiveState_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_UIPrimitiveState_core_2eproto}, {
+      &scc_info_TreeTable_uiprimitives_2eproto.base,}};
 
-static void InitDefaultsVariableState() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::xviz::_VariableState_default_instance_;
-    new (ptr) ::xviz::VariableState();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::xviz::VariableState::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_VariableState =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsVariableState}, {
-      &protobuf_core_2eproto::scc_info_Variable.base,}};
-
-static void InitDefaultsAnnotationState() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::xviz::_AnnotationState_default_instance_;
-    new (ptr) ::xviz::AnnotationState();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::xviz::AnnotationState::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_AnnotationState =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsAnnotationState}, {
-      &protobuf_annotation_2eproto::scc_info_Visual.base,}};
-
-static void InitDefaultsVariable() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::xviz::_Variable_default_instance_;
-    new (ptr) ::xviz::Variable();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::xviz::Variable::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<2> scc_info_Variable =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsVariable}, {
-      &protobuf_core_2eproto::scc_info_VariableBase.base,
-      &protobuf_core_2eproto::scc_info_Values.base,}};
-
-static void InitDefaultsVariableBase() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::xviz::_VariableBase_default_instance_;
-    new (ptr) ::xviz::VariableBase();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::xviz::VariableBase::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_VariableBase =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsVariableBase}, {}};
-
-static void InitDefaultsValues() {
+static void InitDefaultsscc_info_Values_core_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
     void* ptr = &::xviz::_Values_default_instance_;
     new (ptr) ::xviz::Values();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
   ::xviz::Values::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Values =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsValues}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Values_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Values_core_2eproto}, {}};
 
-static void InitDefaultsLink() {
+static void InitDefaultsscc_info_Variable_core_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_Link_default_instance_;
-    new (ptr) ::xviz::Link();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    void* ptr = &::xviz::_Variable_default_instance_;
+    new (ptr) ::xviz::Variable();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::xviz::Link::InitAsDefaultInstance();
+  ::xviz::Variable::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Link =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsLink}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_Variable_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_Variable_core_2eproto}, {
+      &scc_info_VariableBase_core_2eproto.base,
+      &scc_info_Values_core_2eproto.base,}};
 
-void InitDefaults() {
-  ::google::protobuf::internal::InitSCC(&scc_info_StreamSet_PosesEntry_DoNotUse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_StreamSet_PrimitivesEntry_DoNotUse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_StreamSet_FutureInstancesEntry_DoNotUse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_StreamSet_VariablesEntry_DoNotUse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_StreamSet_AnnotationsEntry_DoNotUse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_StreamSet_UiPrimitivesEntry_DoNotUse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_StreamSet_LinksEntry_DoNotUse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_StreamSet.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Pose.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_MapOrigin.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_PrimitiveState.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_UIPrimitiveState.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TimeSeriesState.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_FutureInstances.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_VariableState.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_AnnotationState.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Variable.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_VariableBase.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Values.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Link.base);
+static void InitDefaultsscc_info_VariableBase_core_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::xviz::_VariableBase_default_instance_;
+    new (ptr) ::xviz::VariableBase();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::xviz::VariableBase::InitAsDefaultInstance();
 }
 
-::google::protobuf::Metadata file_level_metadata[20];
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_VariableBase_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_VariableBase_core_2eproto}, {}};
 
-const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_PosesEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_PosesEntry_DoNotUse, _internal_metadata_),
+static void InitDefaultsscc_info_VariableState_core_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::xviz::_VariableState_default_instance_;
+    new (ptr) ::xviz::VariableState();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::xviz::VariableState::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_VariableState_core_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_VariableState_core_2eproto}, {
+      &scc_info_Variable_core_2eproto.base,}};
+
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_core_2eproto[20];
+static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_core_2eproto = nullptr;
+static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_core_2eproto = nullptr;
+
+const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_core_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_PosesEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_PosesEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_PosesEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_PosesEntry_DoNotUse, value_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_PosesEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_PosesEntry_DoNotUse, value_),
   0,
   1,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_PrimitivesEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_PrimitivesEntry_DoNotUse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_PrimitivesEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_PrimitivesEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_PrimitivesEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_PrimitivesEntry_DoNotUse, value_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_PrimitivesEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_PrimitivesEntry_DoNotUse, value_),
   0,
   1,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_FutureInstancesEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_FutureInstancesEntry_DoNotUse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_FutureInstancesEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_FutureInstancesEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_FutureInstancesEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_FutureInstancesEntry_DoNotUse, value_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_FutureInstancesEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_FutureInstancesEntry_DoNotUse, value_),
   0,
   1,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_VariablesEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_VariablesEntry_DoNotUse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_VariablesEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_VariablesEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_VariablesEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_VariablesEntry_DoNotUse, value_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_VariablesEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_VariablesEntry_DoNotUse, value_),
   0,
   1,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_AnnotationsEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_AnnotationsEntry_DoNotUse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_AnnotationsEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_AnnotationsEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_AnnotationsEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_AnnotationsEntry_DoNotUse, value_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_AnnotationsEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_AnnotationsEntry_DoNotUse, value_),
   0,
   1,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_UiPrimitivesEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_UiPrimitivesEntry_DoNotUse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_UiPrimitivesEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_UiPrimitivesEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_UiPrimitivesEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_UiPrimitivesEntry_DoNotUse, value_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_UiPrimitivesEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_UiPrimitivesEntry_DoNotUse, value_),
   0,
   1,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_LinksEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_LinksEntry_DoNotUse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_LinksEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_LinksEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_LinksEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet_LinksEntry_DoNotUse, value_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_LinksEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet_LinksEntry_DoNotUse, value_),
   0,
   1,
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet, timestamp_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet, poses_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet, primitives_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet, time_series_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet, future_instances_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet, variables_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet, annotations_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet, ui_primitives_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet, no_data_streams_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamSet, links_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet, timestamp_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet, poses_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet, primitives_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet, time_series_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet, future_instances_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet, variables_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet, annotations_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet, ui_primitives_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet, no_data_streams_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamSet, links_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Pose, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Pose, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Pose, timestamp_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Pose, map_origin_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Pose, position_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Pose, orientation_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Pose, timestamp_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Pose, map_origin_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Pose, position_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Pose, orientation_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::MapOrigin, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::MapOrigin, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::MapOrigin, longitude_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::MapOrigin, latitude_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::MapOrigin, altitude_),
+  PROTOBUF_FIELD_OFFSET(::xviz::MapOrigin, longitude_),
+  PROTOBUF_FIELD_OFFSET(::xviz::MapOrigin, latitude_),
+  PROTOBUF_FIELD_OFFSET(::xviz::MapOrigin, altitude_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::PrimitiveState, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::PrimitiveState, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::PrimitiveState, polygons_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::PrimitiveState, polylines_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::PrimitiveState, texts_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::PrimitiveState, circles_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::PrimitiveState, points_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::PrimitiveState, stadiums_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::PrimitiveState, images_),
+  PROTOBUF_FIELD_OFFSET(::xviz::PrimitiveState, polygons_),
+  PROTOBUF_FIELD_OFFSET(::xviz::PrimitiveState, polylines_),
+  PROTOBUF_FIELD_OFFSET(::xviz::PrimitiveState, texts_),
+  PROTOBUF_FIELD_OFFSET(::xviz::PrimitiveState, circles_),
+  PROTOBUF_FIELD_OFFSET(::xviz::PrimitiveState, points_),
+  PROTOBUF_FIELD_OFFSET(::xviz::PrimitiveState, stadiums_),
+  PROTOBUF_FIELD_OFFSET(::xviz::PrimitiveState, images_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::UIPrimitiveState, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::UIPrimitiveState, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::UIPrimitiveState, treetable_),
+  PROTOBUF_FIELD_OFFSET(::xviz::UIPrimitiveState, treetable_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TimeSeriesState, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TimeSeriesState, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TimeSeriesState, timestamp_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TimeSeriesState, object_id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TimeSeriesState, streams_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TimeSeriesState, values_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TimeSeriesState, timestamp_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TimeSeriesState, object_id_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TimeSeriesState, streams_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TimeSeriesState, values_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::FutureInstances, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::FutureInstances, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::FutureInstances, timestamps_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::FutureInstances, primitives_),
+  PROTOBUF_FIELD_OFFSET(::xviz::FutureInstances, timestamps_),
+  PROTOBUF_FIELD_OFFSET(::xviz::FutureInstances, primitives_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::VariableState, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::VariableState, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::VariableState, variables_),
+  PROTOBUF_FIELD_OFFSET(::xviz::VariableState, variables_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::AnnotationState, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::AnnotationState, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::AnnotationState, visuals_),
+  PROTOBUF_FIELD_OFFSET(::xviz::AnnotationState, visuals_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Variable, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Variable, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Variable, base_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Variable, values_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Variable, base_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Variable, values_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::VariableBase, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::VariableBase, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::VariableBase, object_id_),
+  PROTOBUF_FIELD_OFFSET(::xviz::VariableBase, object_id_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Values, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Values, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Values, doubles_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Values, int32s_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Values, bools_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Values, strings_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Values, doubles_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Values, int32s_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Values, bools_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Values, strings_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Link, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Link, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Link, target_pose_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Link, target_pose_),
 };
-static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 7, sizeof(::xviz::StreamSet_PosesEntry_DoNotUse)},
   { 9, 16, sizeof(::xviz::StreamSet_PrimitivesEntry_DoNotUse)},
   { 18, 25, sizeof(::xviz::StreamSet_FutureInstancesEntry_DoNotUse)},
@@ -680,249 +625,247 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 163, -1, sizeof(::xviz::Link)},
 };
 
-static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_StreamSet_PosesEntry_DoNotUse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_StreamSet_PrimitivesEntry_DoNotUse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_StreamSet_FutureInstancesEntry_DoNotUse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_StreamSet_VariablesEntry_DoNotUse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_StreamSet_AnnotationsEntry_DoNotUse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_StreamSet_UiPrimitivesEntry_DoNotUse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_StreamSet_LinksEntry_DoNotUse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_StreamSet_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_Pose_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_MapOrigin_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_PrimitiveState_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_UIPrimitiveState_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_TimeSeriesState_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_FutureInstances_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_VariableState_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_AnnotationState_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_Variable_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_VariableBase_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_Values_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_Link_default_instance_),
+static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_StreamSet_PosesEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_StreamSet_PrimitivesEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_StreamSet_FutureInstancesEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_StreamSet_VariablesEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_StreamSet_AnnotationsEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_StreamSet_UiPrimitivesEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_StreamSet_LinksEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_StreamSet_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_Pose_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_MapOrigin_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_PrimitiveState_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_UIPrimitiveState_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_TimeSeriesState_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_FutureInstances_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_VariableState_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_AnnotationState_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_Variable_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_VariableBase_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_Values_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_Link_default_instance_),
 };
 
-void protobuf_AssignDescriptors() {
-  AddDescriptors();
-  AssignDescriptors(
-      "core.proto", schemas, file_default_instances, TableStruct::offsets,
-      file_level_metadata, NULL, NULL);
-}
+const char descriptor_table_protodef_core_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
+  "\n\ncore.proto\022\004xviz\032\020annotation.proto\032\rop"
+  "tions.proto\032\020primitives.proto\032\022uiprimiti"
+  "ves.proto\"\322\007\n\tStreamSet\022\021\n\ttimestamp\030\001 \001"
+  "(\001\022)\n\005poses\030\002 \003(\0132\032.xviz.StreamSet.Poses"
+  "Entry\0223\n\nprimitives\030\003 \003(\0132\037.xviz.StreamS"
+  "et.PrimitivesEntry\022*\n\013time_series\030\004 \003(\0132"
+  "\025.xviz.TimeSeriesState\022>\n\020future_instanc"
+  "es\030\006 \003(\0132$.xviz.StreamSet.FutureInstance"
+  "sEntry\0221\n\tvariables\030\007 \003(\0132\036.xviz.StreamS"
+  "et.VariablesEntry\0225\n\013annotations\030\010 \003(\0132 "
+  ".xviz.StreamSet.AnnotationsEntry\0228\n\rui_p"
+  "rimitives\030\t \003(\0132!.xviz.StreamSet.UiPrimi"
+  "tivesEntry\022\027\n\017no_data_streams\030\n \003(\t\022)\n\005l"
+  "inks\030\013 \003(\0132\032.xviz.StreamSet.LinksEntry\0328"
+  "\n\nPosesEntry\022\013\n\003key\030\001 \001(\t\022\031\n\005value\030\002 \001(\013"
+  "2\n.xviz.Pose:\0028\001\032G\n\017PrimitivesEntry\022\013\n\003k"
+  "ey\030\001 \001(\t\022#\n\005value\030\002 \001(\0132\024.xviz.Primitive"
+  "State:\0028\001\032M\n\024FutureInstancesEntry\022\013\n\003key"
+  "\030\001 \001(\t\022$\n\005value\030\002 \001(\0132\025.xviz.FutureInsta"
+  "nces:\0028\001\032E\n\016VariablesEntry\022\013\n\003key\030\001 \001(\t\022"
+  "\"\n\005value\030\002 \001(\0132\023.xviz.VariableState:\0028\001\032"
+  "I\n\020AnnotationsEntry\022\013\n\003key\030\001 \001(\t\022$\n\005valu"
+  "e\030\002 \001(\0132\025.xviz.AnnotationState:\0028\001\032K\n\021Ui"
+  "PrimitivesEntry\022\013\n\003key\030\001 \001(\t\022%\n\005value\030\002 "
+  "\001(\0132\026.xviz.UIPrimitiveState:\0028\001\0328\n\nLinks"
+  "Entry\022\013\n\003key\030\001 \001(\t\022\031\n\005value\030\002 \001(\0132\n.xviz"
+  ".Link:\0028\001:\023\302\273\032\017core/stream_set\"t\n\004Pose\022\021"
+  "\n\ttimestamp\030\001 \001(\001\022#\n\nmap_origin\030\002 \001(\0132\017."
+  "xviz.MapOrigin\022\020\n\010position\030\003 \003(\001\022\023\n\013orie"
+  "ntation\030\004 \003(\001:\r\302\273\032\tcore/pose\"B\n\tMapOrigi"
+  "n\022\021\n\tlongitude\030\001 \001(\001\022\020\n\010latitude\030\002 \001(\001\022\020"
+  "\n\010altitude\030\003 \001(\001\"\203\002\n\016PrimitiveState\022\037\n\010p"
+  "olygons\030\001 \003(\0132\r.xviz.Polygon\022!\n\tpolyline"
+  "s\030\002 \003(\0132\016.xviz.Polyline\022\031\n\005texts\030\003 \003(\0132\n"
+  ".xviz.Text\022\035\n\007circles\030\004 \003(\0132\014.xviz.Circl"
+  "e\022\033\n\006points\030\005 \003(\0132\013.xviz.Point\022\037\n\010stadiu"
+  "ms\030\006 \003(\0132\r.xviz.Stadium\022\033\n\006images\030\007 \003(\0132"
+  "\013.xviz.Image:\030\302\273\032\024core/primitive_state\"S"
+  "\n\020UIPrimitiveState\022\"\n\ttreetable\030\001 \001(\0132\017."
+  "xviz.TreeTable:\033\302\273\032\027core/ui_primitive_st"
+  "ate\"\201\001\n\017TimeSeriesState\022\021\n\ttimestamp\030\001 \001"
+  "(\001\022\021\n\tobject_id\030\002 \001(\t\022\017\n\007streams\030\003 \003(\t\022\034"
+  "\n\006values\030\004 \001(\0132\014.xviz.Values:\031\302\273\032\025core/t"
+  "imeseries_state\"j\n\017FutureInstances\022\022\n\nti"
+  "mestamps\030\001 \003(\001\022(\n\nprimitives\030\002 \003(\0132\024.xvi"
+  "z.PrimitiveState:\031\302\273\032\025core/future_instan"
+  "ces\"K\n\rVariableState\022!\n\tvariables\030\001 \003(\0132"
+  "\016.xviz.Variable:\027\302\273\032\023core/variable_state"
+  "\"K\n\017AnnotationState\022\035\n\007visuals\030\001 \003(\0132\014.x"
+  "viz.Visual:\031\302\273\032\025core/annotation_state\"]\n"
+  "\010Variable\022 \n\004base\030\001 \001(\0132\022.xviz.VariableB"
+  "ase\022\034\n\006values\030\002 \001(\0132\014.xviz.Values:\021\302\273\032\rc"
+  "ore/variable\"!\n\014VariableBase\022\021\n\tobject_i"
+  "d\030\001 \001(\t\"Z\n\006Values\022\017\n\007doubles\030\002 \003(\001\022\016\n\006in"
+  "t32s\030\003 \003(\005\022\r\n\005bools\030\004 \003(\010\022\017\n\007strings\030\005 \003"
+  "(\t:\017\302\273\032\013core/values\"0\n\004Link\022\023\n\013target_po"
+  "se\030\001 \001(\t:\023\302\273\032\017core/link_stateB1\n\013com.xvi"
+  "z.v2B\tCoreProtoP\001Z\004v2pb\242\002\004XVIZ\252\002\007xviz.V2"
+  "b\006proto3"
+  ;
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_core_2eproto_deps[4] = {
+  &::descriptor_table_annotation_2eproto,
+  &::descriptor_table_options_2eproto,
+  &::descriptor_table_primitives_2eproto,
+  &::descriptor_table_uiprimitives_2eproto,
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_core_2eproto_sccs[20] = {
+  &scc_info_AnnotationState_core_2eproto.base,
+  &scc_info_FutureInstances_core_2eproto.base,
+  &scc_info_Link_core_2eproto.base,
+  &scc_info_MapOrigin_core_2eproto.base,
+  &scc_info_Pose_core_2eproto.base,
+  &scc_info_PrimitiveState_core_2eproto.base,
+  &scc_info_StreamSet_core_2eproto.base,
+  &scc_info_StreamSet_AnnotationsEntry_DoNotUse_core_2eproto.base,
+  &scc_info_StreamSet_FutureInstancesEntry_DoNotUse_core_2eproto.base,
+  &scc_info_StreamSet_LinksEntry_DoNotUse_core_2eproto.base,
+  &scc_info_StreamSet_PosesEntry_DoNotUse_core_2eproto.base,
+  &scc_info_StreamSet_PrimitivesEntry_DoNotUse_core_2eproto.base,
+  &scc_info_StreamSet_UiPrimitivesEntry_DoNotUse_core_2eproto.base,
+  &scc_info_StreamSet_VariablesEntry_DoNotUse_core_2eproto.base,
+  &scc_info_TimeSeriesState_core_2eproto.base,
+  &scc_info_UIPrimitiveState_core_2eproto.base,
+  &scc_info_Values_core_2eproto.base,
+  &scc_info_Variable_core_2eproto.base,
+  &scc_info_VariableBase_core_2eproto.base,
+  &scc_info_VariableState_core_2eproto.base,
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_core_2eproto_once;
+static bool descriptor_table_core_2eproto_initialized = false;
+const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_core_2eproto = {
+  &descriptor_table_core_2eproto_initialized, descriptor_table_protodef_core_2eproto, "core.proto", 2328,
+  &descriptor_table_core_2eproto_once, descriptor_table_core_2eproto_sccs, descriptor_table_core_2eproto_deps, 20, 4,
+  schemas, file_default_instances, TableStruct_core_2eproto::offsets,
+  file_level_metadata_core_2eproto, 20, file_level_enum_descriptors_core_2eproto, file_level_service_descriptors_core_2eproto,
+};
 
-void protobuf_AssignDescriptorsOnce() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, protobuf_AssignDescriptors);
-}
-
-void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
-void protobuf_RegisterTypes(const ::std::string&) {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 20);
-}
-
-void AddDescriptorsImpl() {
-  InitDefaults();
-  static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\ncore.proto\022\004xviz\032\020annotation.proto\032\rop"
-      "tions.proto\032\020primitives.proto\032\022uiprimiti"
-      "ves.proto\"\322\007\n\tStreamSet\022\021\n\ttimestamp\030\001 \001"
-      "(\001\022)\n\005poses\030\002 \003(\0132\032.xviz.StreamSet.Poses"
-      "Entry\0223\n\nprimitives\030\003 \003(\0132\037.xviz.StreamS"
-      "et.PrimitivesEntry\022*\n\013time_series\030\004 \003(\0132"
-      "\025.xviz.TimeSeriesState\022>\n\020future_instanc"
-      "es\030\006 \003(\0132$.xviz.StreamSet.FutureInstance"
-      "sEntry\0221\n\tvariables\030\007 \003(\0132\036.xviz.StreamS"
-      "et.VariablesEntry\0225\n\013annotations\030\010 \003(\0132 "
-      ".xviz.StreamSet.AnnotationsEntry\0228\n\rui_p"
-      "rimitives\030\t \003(\0132!.xviz.StreamSet.UiPrimi"
-      "tivesEntry\022\027\n\017no_data_streams\030\n \003(\t\022)\n\005l"
-      "inks\030\013 \003(\0132\032.xviz.StreamSet.LinksEntry\0328"
-      "\n\nPosesEntry\022\013\n\003key\030\001 \001(\t\022\031\n\005value\030\002 \001(\013"
-      "2\n.xviz.Pose:\0028\001\032G\n\017PrimitivesEntry\022\013\n\003k"
-      "ey\030\001 \001(\t\022#\n\005value\030\002 \001(\0132\024.xviz.Primitive"
-      "State:\0028\001\032M\n\024FutureInstancesEntry\022\013\n\003key"
-      "\030\001 \001(\t\022$\n\005value\030\002 \001(\0132\025.xviz.FutureInsta"
-      "nces:\0028\001\032E\n\016VariablesEntry\022\013\n\003key\030\001 \001(\t\022"
-      "\"\n\005value\030\002 \001(\0132\023.xviz.VariableState:\0028\001\032"
-      "I\n\020AnnotationsEntry\022\013\n\003key\030\001 \001(\t\022$\n\005valu"
-      "e\030\002 \001(\0132\025.xviz.AnnotationState:\0028\001\032K\n\021Ui"
-      "PrimitivesEntry\022\013\n\003key\030\001 \001(\t\022%\n\005value\030\002 "
-      "\001(\0132\026.xviz.UIPrimitiveState:\0028\001\0328\n\nLinks"
-      "Entry\022\013\n\003key\030\001 \001(\t\022\031\n\005value\030\002 \001(\0132\n.xviz"
-      ".Link:\0028\001:\023\302\273\032\017core/stream_set\"t\n\004Pose\022\021"
-      "\n\ttimestamp\030\001 \001(\001\022#\n\nmap_origin\030\002 \001(\0132\017."
-      "xviz.MapOrigin\022\020\n\010position\030\003 \003(\001\022\023\n\013orie"
-      "ntation\030\004 \003(\001:\r\302\273\032\tcore/pose\"B\n\tMapOrigi"
-      "n\022\021\n\tlongitude\030\001 \001(\001\022\020\n\010latitude\030\002 \001(\001\022\020"
-      "\n\010altitude\030\003 \001(\001\"\203\002\n\016PrimitiveState\022\037\n\010p"
-      "olygons\030\001 \003(\0132\r.xviz.Polygon\022!\n\tpolyline"
-      "s\030\002 \003(\0132\016.xviz.Polyline\022\031\n\005texts\030\003 \003(\0132\n"
-      ".xviz.Text\022\035\n\007circles\030\004 \003(\0132\014.xviz.Circl"
-      "e\022\033\n\006points\030\005 \003(\0132\013.xviz.Point\022\037\n\010stadiu"
-      "ms\030\006 \003(\0132\r.xviz.Stadium\022\033\n\006images\030\007 \003(\0132"
-      "\013.xviz.Image:\030\302\273\032\024core/primitive_state\"S"
-      "\n\020UIPrimitiveState\022\"\n\ttreetable\030\001 \001(\0132\017."
-      "xviz.TreeTable:\033\302\273\032\027core/ui_primitive_st"
-      "ate\"\201\001\n\017TimeSeriesState\022\021\n\ttimestamp\030\001 \001"
-      "(\001\022\021\n\tobject_id\030\002 \001(\t\022\017\n\007streams\030\003 \003(\t\022\034"
-      "\n\006values\030\004 \001(\0132\014.xviz.Values:\031\302\273\032\025core/t"
-      "imeseries_state\"j\n\017FutureInstances\022\022\n\nti"
-      "mestamps\030\001 \003(\001\022(\n\nprimitives\030\002 \003(\0132\024.xvi"
-      "z.PrimitiveState:\031\302\273\032\025core/future_instan"
-      "ces\"K\n\rVariableState\022!\n\tvariables\030\001 \003(\0132"
-      "\016.xviz.Variable:\027\302\273\032\023core/variable_state"
-      "\"K\n\017AnnotationState\022\035\n\007visuals\030\001 \003(\0132\014.x"
-      "viz.Visual:\031\302\273\032\025core/annotation_state\"]\n"
-      "\010Variable\022 \n\004base\030\001 \001(\0132\022.xviz.VariableB"
-      "ase\022\034\n\006values\030\002 \001(\0132\014.xviz.Values:\021\302\273\032\rc"
-      "ore/variable\"!\n\014VariableBase\022\021\n\tobject_i"
-      "d\030\001 \001(\t\"Z\n\006Values\022\017\n\007doubles\030\002 \003(\001\022\016\n\006in"
-      "t32s\030\003 \003(\005\022\r\n\005bools\030\004 \003(\010\022\017\n\007strings\030\005 \003"
-      "(\t:\017\302\273\032\013core/values\"0\n\004Link\022\023\n\013target_po"
-      "se\030\001 \001(\t:\023\302\273\032\017core/link_stateB1\n\013com.xvi"
-      "z.v2B\tCoreProtoP\001Z\004v2pb\242\002\004XVIZ\252\002\007xviz.V2"
-      "b\006proto3"
-  };
-  ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2328);
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
-    "core.proto", &protobuf_RegisterTypes);
-  ::protobuf_annotation_2eproto::AddDescriptors();
-  ::protobuf_options_2eproto::AddDescriptors();
-  ::protobuf_primitives_2eproto::AddDescriptors();
-  ::protobuf_uiprimitives_2eproto::AddDescriptors();
-}
-
-void AddDescriptors() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, AddDescriptorsImpl);
-}
-// Force AddDescriptors() to be called at dynamic initialization time.
-struct StaticDescriptorInitializer {
-  StaticDescriptorInitializer() {
-    AddDescriptors();
-  }
-} static_descriptor_initializer;
-}  // namespace protobuf_core_2eproto
+// Force running AddDescriptors() at dynamic initialization time.
+static bool dynamic_init_dummy_core_2eproto = (  ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_core_2eproto), true);
 namespace xviz {
 
 // ===================================================================
 
 StreamSet_PosesEntry_DoNotUse::StreamSet_PosesEntry_DoNotUse() {}
-StreamSet_PosesEntry_DoNotUse::StreamSet_PosesEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+StreamSet_PosesEntry_DoNotUse::StreamSet_PosesEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
 void StreamSet_PosesEntry_DoNotUse::MergeFrom(const StreamSet_PosesEntry_DoNotUse& other) {
   MergeFromInternal(other);
 }
-::google::protobuf::Metadata StreamSet_PosesEntry_DoNotUse::GetMetadata() const {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[0];
+::PROTOBUF_NAMESPACE_ID::Metadata StreamSet_PosesEntry_DoNotUse::GetMetadata() const {
+  return GetMetadataStatic();
 }
 void StreamSet_PosesEntry_DoNotUse::MergeFrom(
-    const ::google::protobuf::Message& other) {
-  ::google::protobuf::Message::MergeFrom(other);
+    const ::PROTOBUF_NAMESPACE_ID::Message& other) {
+  ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom(other);
 }
 
 
 // ===================================================================
 
 StreamSet_PrimitivesEntry_DoNotUse::StreamSet_PrimitivesEntry_DoNotUse() {}
-StreamSet_PrimitivesEntry_DoNotUse::StreamSet_PrimitivesEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+StreamSet_PrimitivesEntry_DoNotUse::StreamSet_PrimitivesEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
 void StreamSet_PrimitivesEntry_DoNotUse::MergeFrom(const StreamSet_PrimitivesEntry_DoNotUse& other) {
   MergeFromInternal(other);
 }
-::google::protobuf::Metadata StreamSet_PrimitivesEntry_DoNotUse::GetMetadata() const {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[1];
+::PROTOBUF_NAMESPACE_ID::Metadata StreamSet_PrimitivesEntry_DoNotUse::GetMetadata() const {
+  return GetMetadataStatic();
 }
 void StreamSet_PrimitivesEntry_DoNotUse::MergeFrom(
-    const ::google::protobuf::Message& other) {
-  ::google::protobuf::Message::MergeFrom(other);
+    const ::PROTOBUF_NAMESPACE_ID::Message& other) {
+  ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom(other);
 }
 
 
 // ===================================================================
 
 StreamSet_FutureInstancesEntry_DoNotUse::StreamSet_FutureInstancesEntry_DoNotUse() {}
-StreamSet_FutureInstancesEntry_DoNotUse::StreamSet_FutureInstancesEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+StreamSet_FutureInstancesEntry_DoNotUse::StreamSet_FutureInstancesEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
 void StreamSet_FutureInstancesEntry_DoNotUse::MergeFrom(const StreamSet_FutureInstancesEntry_DoNotUse& other) {
   MergeFromInternal(other);
 }
-::google::protobuf::Metadata StreamSet_FutureInstancesEntry_DoNotUse::GetMetadata() const {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[2];
+::PROTOBUF_NAMESPACE_ID::Metadata StreamSet_FutureInstancesEntry_DoNotUse::GetMetadata() const {
+  return GetMetadataStatic();
 }
 void StreamSet_FutureInstancesEntry_DoNotUse::MergeFrom(
-    const ::google::protobuf::Message& other) {
-  ::google::protobuf::Message::MergeFrom(other);
+    const ::PROTOBUF_NAMESPACE_ID::Message& other) {
+  ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom(other);
 }
 
 
 // ===================================================================
 
 StreamSet_VariablesEntry_DoNotUse::StreamSet_VariablesEntry_DoNotUse() {}
-StreamSet_VariablesEntry_DoNotUse::StreamSet_VariablesEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+StreamSet_VariablesEntry_DoNotUse::StreamSet_VariablesEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
 void StreamSet_VariablesEntry_DoNotUse::MergeFrom(const StreamSet_VariablesEntry_DoNotUse& other) {
   MergeFromInternal(other);
 }
-::google::protobuf::Metadata StreamSet_VariablesEntry_DoNotUse::GetMetadata() const {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[3];
+::PROTOBUF_NAMESPACE_ID::Metadata StreamSet_VariablesEntry_DoNotUse::GetMetadata() const {
+  return GetMetadataStatic();
 }
 void StreamSet_VariablesEntry_DoNotUse::MergeFrom(
-    const ::google::protobuf::Message& other) {
-  ::google::protobuf::Message::MergeFrom(other);
+    const ::PROTOBUF_NAMESPACE_ID::Message& other) {
+  ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom(other);
 }
 
 
 // ===================================================================
 
 StreamSet_AnnotationsEntry_DoNotUse::StreamSet_AnnotationsEntry_DoNotUse() {}
-StreamSet_AnnotationsEntry_DoNotUse::StreamSet_AnnotationsEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+StreamSet_AnnotationsEntry_DoNotUse::StreamSet_AnnotationsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
 void StreamSet_AnnotationsEntry_DoNotUse::MergeFrom(const StreamSet_AnnotationsEntry_DoNotUse& other) {
   MergeFromInternal(other);
 }
-::google::protobuf::Metadata StreamSet_AnnotationsEntry_DoNotUse::GetMetadata() const {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[4];
+::PROTOBUF_NAMESPACE_ID::Metadata StreamSet_AnnotationsEntry_DoNotUse::GetMetadata() const {
+  return GetMetadataStatic();
 }
 void StreamSet_AnnotationsEntry_DoNotUse::MergeFrom(
-    const ::google::protobuf::Message& other) {
-  ::google::protobuf::Message::MergeFrom(other);
+    const ::PROTOBUF_NAMESPACE_ID::Message& other) {
+  ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom(other);
 }
 
 
 // ===================================================================
 
 StreamSet_UiPrimitivesEntry_DoNotUse::StreamSet_UiPrimitivesEntry_DoNotUse() {}
-StreamSet_UiPrimitivesEntry_DoNotUse::StreamSet_UiPrimitivesEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+StreamSet_UiPrimitivesEntry_DoNotUse::StreamSet_UiPrimitivesEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
 void StreamSet_UiPrimitivesEntry_DoNotUse::MergeFrom(const StreamSet_UiPrimitivesEntry_DoNotUse& other) {
   MergeFromInternal(other);
 }
-::google::protobuf::Metadata StreamSet_UiPrimitivesEntry_DoNotUse::GetMetadata() const {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[5];
+::PROTOBUF_NAMESPACE_ID::Metadata StreamSet_UiPrimitivesEntry_DoNotUse::GetMetadata() const {
+  return GetMetadataStatic();
 }
 void StreamSet_UiPrimitivesEntry_DoNotUse::MergeFrom(
-    const ::google::protobuf::Message& other) {
-  ::google::protobuf::Message::MergeFrom(other);
+    const ::PROTOBUF_NAMESPACE_ID::Message& other) {
+  ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom(other);
 }
 
 
 // ===================================================================
 
 StreamSet_LinksEntry_DoNotUse::StreamSet_LinksEntry_DoNotUse() {}
-StreamSet_LinksEntry_DoNotUse::StreamSet_LinksEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+StreamSet_LinksEntry_DoNotUse::StreamSet_LinksEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
 void StreamSet_LinksEntry_DoNotUse::MergeFrom(const StreamSet_LinksEntry_DoNotUse& other) {
   MergeFromInternal(other);
 }
-::google::protobuf::Metadata StreamSet_LinksEntry_DoNotUse::GetMetadata() const {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[6];
+::PROTOBUF_NAMESPACE_ID::Metadata StreamSet_LinksEntry_DoNotUse::GetMetadata() const {
+  return GetMetadataStatic();
 }
 void StreamSet_LinksEntry_DoNotUse::MergeFrom(
-    const ::google::protobuf::Message& other) {
-  ::google::protobuf::Message::MergeFrom(other);
+    const ::PROTOBUF_NAMESPACE_ID::Message& other) {
+  ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom(other);
 }
 
 
@@ -930,29 +873,18 @@ void StreamSet_LinksEntry_DoNotUse::MergeFrom(
 
 void StreamSet::InitAsDefaultInstance() {
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int StreamSet::kTimestampFieldNumber;
-const int StreamSet::kPosesFieldNumber;
-const int StreamSet::kPrimitivesFieldNumber;
-const int StreamSet::kTimeSeriesFieldNumber;
-const int StreamSet::kFutureInstancesFieldNumber;
-const int StreamSet::kVariablesFieldNumber;
-const int StreamSet::kAnnotationsFieldNumber;
-const int StreamSet::kUiPrimitivesFieldNumber;
-const int StreamSet::kNoDataStreamsFieldNumber;
-const int StreamSet::kLinksFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class StreamSet::_Internal {
+ public:
+};
 
 StreamSet::StreamSet()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_core_2eproto::scc_info_StreamSet.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.StreamSet)
 }
 StreamSet::StreamSet(const StreamSet& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
       time_series_(from.time_series_),
       no_data_streams_(from.no_data_streams_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
@@ -968,6 +900,7 @@ StreamSet::StreamSet(const StreamSet& from)
 }
 
 void StreamSet::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_StreamSet_core_2eproto.base);
   timestamp_ = 0;
 }
 
@@ -982,20 +915,15 @@ void StreamSet::SharedDtor() {
 void StreamSet::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* StreamSet::descriptor() {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const StreamSet& StreamSet::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_core_2eproto::scc_info_StreamSet.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_StreamSet_core_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void StreamSet::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.StreamSet)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -1012,1024 +940,470 @@ void StreamSet::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool StreamSet::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.StreamSet)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* StreamSet::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // double timestamp = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(9u /* 9 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &timestamp_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 9)) {
+          timestamp_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // map<string, .xviz.Pose> poses = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          StreamSet_PosesEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              StreamSet_PosesEntry_DoNotUse,
-              ::std::string, ::xviz::Pose,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
-              0 >,
-            ::google::protobuf::Map< ::std::string, ::xviz::Pose > > parser(&poses_);
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.StreamSet.PosesEntry.key"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&poses_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
       // map<string, .xviz.PrimitiveState> primitives = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          StreamSet_PrimitivesEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              StreamSet_PrimitivesEntry_DoNotUse,
-              ::std::string, ::xviz::PrimitiveState,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
-              0 >,
-            ::google::protobuf::Map< ::std::string, ::xviz::PrimitiveState > > parser(&primitives_);
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.StreamSet.PrimitivesEntry.key"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&primitives_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else goto handle_unusual;
+        continue;
       // repeated .xviz.TimeSeriesState time_series = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_time_series()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_time_series(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
+        } else goto handle_unusual;
+        continue;
       // map<string, .xviz.FutureInstances> future_instances = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
-          StreamSet_FutureInstancesEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              StreamSet_FutureInstancesEntry_DoNotUse,
-              ::std::string, ::xviz::FutureInstances,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
-              0 >,
-            ::google::protobuf::Map< ::std::string, ::xviz::FutureInstances > > parser(&future_instances_);
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.StreamSet.FutureInstancesEntry.key"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&future_instances_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<50>(ptr));
+        } else goto handle_unusual;
+        continue;
       // map<string, .xviz.VariableState> variables = 7;
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(58u /* 58 & 0xFF */)) {
-          StreamSet_VariablesEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              StreamSet_VariablesEntry_DoNotUse,
-              ::std::string, ::xviz::VariableState,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
-              0 >,
-            ::google::protobuf::Map< ::std::string, ::xviz::VariableState > > parser(&variables_);
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.StreamSet.VariablesEntry.key"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 58)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&variables_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<58>(ptr));
+        } else goto handle_unusual;
+        continue;
       // map<string, .xviz.AnnotationState> annotations = 8;
-      case 8: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(66u /* 66 & 0xFF */)) {
-          StreamSet_AnnotationsEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              StreamSet_AnnotationsEntry_DoNotUse,
-              ::std::string, ::xviz::AnnotationState,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
-              0 >,
-            ::google::protobuf::Map< ::std::string, ::xviz::AnnotationState > > parser(&annotations_);
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.StreamSet.AnnotationsEntry.key"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 66)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&annotations_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<66>(ptr));
+        } else goto handle_unusual;
+        continue;
       // map<string, .xviz.UIPrimitiveState> ui_primitives = 9;
-      case 9: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(74u /* 74 & 0xFF */)) {
-          StreamSet_UiPrimitivesEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              StreamSet_UiPrimitivesEntry_DoNotUse,
-              ::std::string, ::xviz::UIPrimitiveState,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
-              0 >,
-            ::google::protobuf::Map< ::std::string, ::xviz::UIPrimitiveState > > parser(&ui_primitives_);
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.StreamSet.UiPrimitivesEntry.key"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 74)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&ui_primitives_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<74>(ptr));
+        } else goto handle_unusual;
+        continue;
       // repeated string no_data_streams = 10;
-      case 10: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(82u /* 82 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_no_data_streams()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->no_data_streams(this->no_data_streams_size() - 1).data(),
-            static_cast<int>(this->no_data_streams(this->no_data_streams_size() - 1).length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.StreamSet.no_data_streams"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 82)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_no_data_streams();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.StreamSet.no_data_streams"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<82>(ptr));
+        } else goto handle_unusual;
+        continue;
       // map<string, .xviz.Link> links = 11;
-      case 11: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(90u /* 90 & 0xFF */)) {
-          StreamSet_LinksEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              StreamSet_LinksEntry_DoNotUse,
-              ::std::string, ::xviz::Link,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
-              0 >,
-            ::google::protobuf::Map< ::std::string, ::xviz::Link > > parser(&links_);
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.StreamSet.LinksEntry.key"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 90)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&links_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<90>(ptr));
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.StreamSet)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.StreamSet)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void StreamSet::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.StreamSet)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // double timestamp = 1;
-  if (this->timestamp() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->timestamp(), output);
-  }
-
-  // map<string, .xviz.Pose> poses = 2;
-  if (!this->poses().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::Pose >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "xviz.StreamSet.PosesEntry.key");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->poses().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->poses().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::Pose >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::Pose >::const_iterator
-          it = this->poses().begin();
-          it != this->poses().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<StreamSet_PosesEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(poses_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            2, *entry, output);
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
-      }
-    } else {
-      ::std::unique_ptr<StreamSet_PosesEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::Pose >::const_iterator
-          it = this->poses().begin();
-          it != this->poses().end(); ++it) {
-        entry.reset(poses_.NewEntryWrapper(
-            it->first, it->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            2, *entry, output);
-        Utf8Check::Check(&*it);
-      }
-    }
-  }
-
-  // map<string, .xviz.PrimitiveState> primitives = 3;
-  if (!this->primitives().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::PrimitiveState >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "xviz.StreamSet.PrimitivesEntry.key");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->primitives().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->primitives().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::PrimitiveState >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::PrimitiveState >::const_iterator
-          it = this->primitives().begin();
-          it != this->primitives().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<StreamSet_PrimitivesEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(primitives_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            3, *entry, output);
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
-      }
-    } else {
-      ::std::unique_ptr<StreamSet_PrimitivesEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::PrimitiveState >::const_iterator
-          it = this->primitives().begin();
-          it != this->primitives().end(); ++it) {
-        entry.reset(primitives_.NewEntryWrapper(
-            it->first, it->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            3, *entry, output);
-        Utf8Check::Check(&*it);
-      }
-    }
-  }
-
-  // repeated .xviz.TimeSeriesState time_series = 4;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->time_series_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4,
-      this->time_series(static_cast<int>(i)),
-      output);
-  }
-
-  // map<string, .xviz.FutureInstances> future_instances = 6;
-  if (!this->future_instances().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::FutureInstances >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "xviz.StreamSet.FutureInstancesEntry.key");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->future_instances().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->future_instances().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::FutureInstances >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::FutureInstances >::const_iterator
-          it = this->future_instances().begin();
-          it != this->future_instances().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<StreamSet_FutureInstancesEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(future_instances_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            6, *entry, output);
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
-      }
-    } else {
-      ::std::unique_ptr<StreamSet_FutureInstancesEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::FutureInstances >::const_iterator
-          it = this->future_instances().begin();
-          it != this->future_instances().end(); ++it) {
-        entry.reset(future_instances_.NewEntryWrapper(
-            it->first, it->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            6, *entry, output);
-        Utf8Check::Check(&*it);
-      }
-    }
-  }
-
-  // map<string, .xviz.VariableState> variables = 7;
-  if (!this->variables().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::VariableState >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "xviz.StreamSet.VariablesEntry.key");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->variables().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->variables().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::VariableState >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::VariableState >::const_iterator
-          it = this->variables().begin();
-          it != this->variables().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<StreamSet_VariablesEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(variables_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            7, *entry, output);
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
-      }
-    } else {
-      ::std::unique_ptr<StreamSet_VariablesEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::VariableState >::const_iterator
-          it = this->variables().begin();
-          it != this->variables().end(); ++it) {
-        entry.reset(variables_.NewEntryWrapper(
-            it->first, it->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            7, *entry, output);
-        Utf8Check::Check(&*it);
-      }
-    }
-  }
-
-  // map<string, .xviz.AnnotationState> annotations = 8;
-  if (!this->annotations().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::AnnotationState >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "xviz.StreamSet.AnnotationsEntry.key");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->annotations().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->annotations().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::AnnotationState >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::AnnotationState >::const_iterator
-          it = this->annotations().begin();
-          it != this->annotations().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<StreamSet_AnnotationsEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(annotations_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            8, *entry, output);
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
-      }
-    } else {
-      ::std::unique_ptr<StreamSet_AnnotationsEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::AnnotationState >::const_iterator
-          it = this->annotations().begin();
-          it != this->annotations().end(); ++it) {
-        entry.reset(annotations_.NewEntryWrapper(
-            it->first, it->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            8, *entry, output);
-        Utf8Check::Check(&*it);
-      }
-    }
-  }
-
-  // map<string, .xviz.UIPrimitiveState> ui_primitives = 9;
-  if (!this->ui_primitives().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::UIPrimitiveState >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "xviz.StreamSet.UiPrimitivesEntry.key");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->ui_primitives().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->ui_primitives().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::UIPrimitiveState >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::UIPrimitiveState >::const_iterator
-          it = this->ui_primitives().begin();
-          it != this->ui_primitives().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<StreamSet_UiPrimitivesEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(ui_primitives_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            9, *entry, output);
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
-      }
-    } else {
-      ::std::unique_ptr<StreamSet_UiPrimitivesEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::UIPrimitiveState >::const_iterator
-          it = this->ui_primitives().begin();
-          it != this->ui_primitives().end(); ++it) {
-        entry.reset(ui_primitives_.NewEntryWrapper(
-            it->first, it->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            9, *entry, output);
-        Utf8Check::Check(&*it);
-      }
-    }
-  }
-
-  // repeated string no_data_streams = 10;
-  for (int i = 0, n = this->no_data_streams_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->no_data_streams(i).data(), static_cast<int>(this->no_data_streams(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.StreamSet.no_data_streams");
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      10, this->no_data_streams(i), output);
-  }
-
-  // map<string, .xviz.Link> links = 11;
-  if (!this->links().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::Link >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "xviz.StreamSet.LinksEntry.key");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->links().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->links().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::Link >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::Link >::const_iterator
-          it = this->links().begin();
-          it != this->links().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<StreamSet_LinksEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(links_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            11, *entry, output);
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
-      }
-    } else {
-      ::std::unique_ptr<StreamSet_LinksEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::Link >::const_iterator
-          it = this->links().begin();
-          it != this->links().end(); ++it) {
-        entry.reset(links_.NewEntryWrapper(
-            it->first, it->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            11, *entry, output);
-        Utf8Check::Check(&*it);
-      }
-    }
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.StreamSet)
-}
-
-::google::protobuf::uint8* StreamSet::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* StreamSet::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.StreamSet)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // double timestamp = 1;
-  if (this->timestamp() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->timestamp(), target);
+  if (!(this->timestamp() <= 0 && this->timestamp() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(1, this->_internal_timestamp(), target);
   }
 
   // map<string, .xviz.Pose> poses = 2;
-  if (!this->poses().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::Pose >::const_pointer
+  if (!this->_internal_poses().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::Pose >::const_pointer
         ConstPtr;
     typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
     struct Utf8Check {
       static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
           p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
           "xviz.StreamSet.PosesEntry.key");
       }
     };
 
-    if (deterministic &&
-        this->poses().size() > 1) {
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_poses().size() > 1) {
       ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->poses().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::Pose >::size_type size_type;
+          new SortItem[this->_internal_poses().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::Pose >::size_type size_type;
       size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::Pose >::const_iterator
-          it = this->poses().begin();
-          it != this->poses().end(); ++it, ++n) {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::Pose >::const_iterator
+          it = this->_internal_poses().begin();
+          it != this->_internal_poses().end(); ++it, ++n) {
         items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<StreamSet_PosesEntry_DoNotUse> entry;
       for (size_type i = 0; i < n; i++) {
-        entry.reset(poses_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       2, *entry, deterministic, target);
-;
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+        target = StreamSet_PosesEntry_DoNotUse::Funcs::InternalSerialize(2, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
       }
     } else {
-      ::std::unique_ptr<StreamSet_PosesEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::Pose >::const_iterator
-          it = this->poses().begin();
-          it != this->poses().end(); ++it) {
-        entry.reset(poses_.NewEntryWrapper(
-            it->first, it->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       2, *entry, deterministic, target);
-;
-        Utf8Check::Check(&*it);
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::Pose >::const_iterator
+          it = this->_internal_poses().begin();
+          it != this->_internal_poses().end(); ++it) {
+        target = StreamSet_PosesEntry_DoNotUse::Funcs::InternalSerialize(2, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
       }
     }
   }
 
   // map<string, .xviz.PrimitiveState> primitives = 3;
-  if (!this->primitives().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::PrimitiveState >::const_pointer
+  if (!this->_internal_primitives().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::PrimitiveState >::const_pointer
         ConstPtr;
     typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
     struct Utf8Check {
       static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
           p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
           "xviz.StreamSet.PrimitivesEntry.key");
       }
     };
 
-    if (deterministic &&
-        this->primitives().size() > 1) {
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_primitives().size() > 1) {
       ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->primitives().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::PrimitiveState >::size_type size_type;
+          new SortItem[this->_internal_primitives().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::PrimitiveState >::size_type size_type;
       size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::PrimitiveState >::const_iterator
-          it = this->primitives().begin();
-          it != this->primitives().end(); ++it, ++n) {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::PrimitiveState >::const_iterator
+          it = this->_internal_primitives().begin();
+          it != this->_internal_primitives().end(); ++it, ++n) {
         items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<StreamSet_PrimitivesEntry_DoNotUse> entry;
       for (size_type i = 0; i < n; i++) {
-        entry.reset(primitives_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       3, *entry, deterministic, target);
-;
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+        target = StreamSet_PrimitivesEntry_DoNotUse::Funcs::InternalSerialize(3, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
       }
     } else {
-      ::std::unique_ptr<StreamSet_PrimitivesEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::PrimitiveState >::const_iterator
-          it = this->primitives().begin();
-          it != this->primitives().end(); ++it) {
-        entry.reset(primitives_.NewEntryWrapper(
-            it->first, it->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       3, *entry, deterministic, target);
-;
-        Utf8Check::Check(&*it);
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::PrimitiveState >::const_iterator
+          it = this->_internal_primitives().begin();
+          it != this->_internal_primitives().end(); ++it) {
+        target = StreamSet_PrimitivesEntry_DoNotUse::Funcs::InternalSerialize(3, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
       }
     }
   }
 
   // repeated .xviz.TimeSeriesState time_series = 4;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->time_series_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        4, this->time_series(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_time_series_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(4, this->_internal_time_series(i), target, stream);
   }
 
   // map<string, .xviz.FutureInstances> future_instances = 6;
-  if (!this->future_instances().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::FutureInstances >::const_pointer
+  if (!this->_internal_future_instances().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::FutureInstances >::const_pointer
         ConstPtr;
     typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
     struct Utf8Check {
       static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
           p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
           "xviz.StreamSet.FutureInstancesEntry.key");
       }
     };
 
-    if (deterministic &&
-        this->future_instances().size() > 1) {
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_future_instances().size() > 1) {
       ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->future_instances().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::FutureInstances >::size_type size_type;
+          new SortItem[this->_internal_future_instances().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::FutureInstances >::size_type size_type;
       size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::FutureInstances >::const_iterator
-          it = this->future_instances().begin();
-          it != this->future_instances().end(); ++it, ++n) {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::FutureInstances >::const_iterator
+          it = this->_internal_future_instances().begin();
+          it != this->_internal_future_instances().end(); ++it, ++n) {
         items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<StreamSet_FutureInstancesEntry_DoNotUse> entry;
       for (size_type i = 0; i < n; i++) {
-        entry.reset(future_instances_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       6, *entry, deterministic, target);
-;
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+        target = StreamSet_FutureInstancesEntry_DoNotUse::Funcs::InternalSerialize(6, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
       }
     } else {
-      ::std::unique_ptr<StreamSet_FutureInstancesEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::FutureInstances >::const_iterator
-          it = this->future_instances().begin();
-          it != this->future_instances().end(); ++it) {
-        entry.reset(future_instances_.NewEntryWrapper(
-            it->first, it->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       6, *entry, deterministic, target);
-;
-        Utf8Check::Check(&*it);
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::FutureInstances >::const_iterator
+          it = this->_internal_future_instances().begin();
+          it != this->_internal_future_instances().end(); ++it) {
+        target = StreamSet_FutureInstancesEntry_DoNotUse::Funcs::InternalSerialize(6, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
       }
     }
   }
 
   // map<string, .xviz.VariableState> variables = 7;
-  if (!this->variables().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::VariableState >::const_pointer
+  if (!this->_internal_variables().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::VariableState >::const_pointer
         ConstPtr;
     typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
     struct Utf8Check {
       static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
           p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
           "xviz.StreamSet.VariablesEntry.key");
       }
     };
 
-    if (deterministic &&
-        this->variables().size() > 1) {
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_variables().size() > 1) {
       ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->variables().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::VariableState >::size_type size_type;
+          new SortItem[this->_internal_variables().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::VariableState >::size_type size_type;
       size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::VariableState >::const_iterator
-          it = this->variables().begin();
-          it != this->variables().end(); ++it, ++n) {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::VariableState >::const_iterator
+          it = this->_internal_variables().begin();
+          it != this->_internal_variables().end(); ++it, ++n) {
         items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<StreamSet_VariablesEntry_DoNotUse> entry;
       for (size_type i = 0; i < n; i++) {
-        entry.reset(variables_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       7, *entry, deterministic, target);
-;
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+        target = StreamSet_VariablesEntry_DoNotUse::Funcs::InternalSerialize(7, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
       }
     } else {
-      ::std::unique_ptr<StreamSet_VariablesEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::VariableState >::const_iterator
-          it = this->variables().begin();
-          it != this->variables().end(); ++it) {
-        entry.reset(variables_.NewEntryWrapper(
-            it->first, it->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       7, *entry, deterministic, target);
-;
-        Utf8Check::Check(&*it);
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::VariableState >::const_iterator
+          it = this->_internal_variables().begin();
+          it != this->_internal_variables().end(); ++it) {
+        target = StreamSet_VariablesEntry_DoNotUse::Funcs::InternalSerialize(7, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
       }
     }
   }
 
   // map<string, .xviz.AnnotationState> annotations = 8;
-  if (!this->annotations().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::AnnotationState >::const_pointer
+  if (!this->_internal_annotations().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::AnnotationState >::const_pointer
         ConstPtr;
     typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
     struct Utf8Check {
       static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
           p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
           "xviz.StreamSet.AnnotationsEntry.key");
       }
     };
 
-    if (deterministic &&
-        this->annotations().size() > 1) {
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_annotations().size() > 1) {
       ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->annotations().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::AnnotationState >::size_type size_type;
+          new SortItem[this->_internal_annotations().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::AnnotationState >::size_type size_type;
       size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::AnnotationState >::const_iterator
-          it = this->annotations().begin();
-          it != this->annotations().end(); ++it, ++n) {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::AnnotationState >::const_iterator
+          it = this->_internal_annotations().begin();
+          it != this->_internal_annotations().end(); ++it, ++n) {
         items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<StreamSet_AnnotationsEntry_DoNotUse> entry;
       for (size_type i = 0; i < n; i++) {
-        entry.reset(annotations_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       8, *entry, deterministic, target);
-;
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+        target = StreamSet_AnnotationsEntry_DoNotUse::Funcs::InternalSerialize(8, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
       }
     } else {
-      ::std::unique_ptr<StreamSet_AnnotationsEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::AnnotationState >::const_iterator
-          it = this->annotations().begin();
-          it != this->annotations().end(); ++it) {
-        entry.reset(annotations_.NewEntryWrapper(
-            it->first, it->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       8, *entry, deterministic, target);
-;
-        Utf8Check::Check(&*it);
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::AnnotationState >::const_iterator
+          it = this->_internal_annotations().begin();
+          it != this->_internal_annotations().end(); ++it) {
+        target = StreamSet_AnnotationsEntry_DoNotUse::Funcs::InternalSerialize(8, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
       }
     }
   }
 
   // map<string, .xviz.UIPrimitiveState> ui_primitives = 9;
-  if (!this->ui_primitives().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::UIPrimitiveState >::const_pointer
+  if (!this->_internal_ui_primitives().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::UIPrimitiveState >::const_pointer
         ConstPtr;
     typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
     struct Utf8Check {
       static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
           p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
           "xviz.StreamSet.UiPrimitivesEntry.key");
       }
     };
 
-    if (deterministic &&
-        this->ui_primitives().size() > 1) {
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_ui_primitives().size() > 1) {
       ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->ui_primitives().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::UIPrimitiveState >::size_type size_type;
+          new SortItem[this->_internal_ui_primitives().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::UIPrimitiveState >::size_type size_type;
       size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::UIPrimitiveState >::const_iterator
-          it = this->ui_primitives().begin();
-          it != this->ui_primitives().end(); ++it, ++n) {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::UIPrimitiveState >::const_iterator
+          it = this->_internal_ui_primitives().begin();
+          it != this->_internal_ui_primitives().end(); ++it, ++n) {
         items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<StreamSet_UiPrimitivesEntry_DoNotUse> entry;
       for (size_type i = 0; i < n; i++) {
-        entry.reset(ui_primitives_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       9, *entry, deterministic, target);
-;
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+        target = StreamSet_UiPrimitivesEntry_DoNotUse::Funcs::InternalSerialize(9, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
       }
     } else {
-      ::std::unique_ptr<StreamSet_UiPrimitivesEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::UIPrimitiveState >::const_iterator
-          it = this->ui_primitives().begin();
-          it != this->ui_primitives().end(); ++it) {
-        entry.reset(ui_primitives_.NewEntryWrapper(
-            it->first, it->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       9, *entry, deterministic, target);
-;
-        Utf8Check::Check(&*it);
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::UIPrimitiveState >::const_iterator
+          it = this->_internal_ui_primitives().begin();
+          it != this->_internal_ui_primitives().end(); ++it) {
+        target = StreamSet_UiPrimitivesEntry_DoNotUse::Funcs::InternalSerialize(9, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
       }
     }
   }
 
   // repeated string no_data_streams = 10;
-  for (int i = 0, n = this->no_data_streams_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->no_data_streams(i).data(), static_cast<int>(this->no_data_streams(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+  for (int i = 0, n = this->_internal_no_data_streams_size(); i < n; i++) {
+    const auto& s = this->_internal_no_data_streams(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.StreamSet.no_data_streams");
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(10, this->no_data_streams(i), target);
+    target = stream->WriteString(10, s, target);
   }
 
   // map<string, .xviz.Link> links = 11;
-  if (!this->links().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::Link >::const_pointer
+  if (!this->_internal_links().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::Link >::const_pointer
         ConstPtr;
     typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
     struct Utf8Check {
       static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
           p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
           "xviz.StreamSet.LinksEntry.key");
       }
     };
 
-    if (deterministic &&
-        this->links().size() > 1) {
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_links().size() > 1) {
       ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->links().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::Link >::size_type size_type;
+          new SortItem[this->_internal_links().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::Link >::size_type size_type;
       size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::Link >::const_iterator
-          it = this->links().begin();
-          it != this->links().end(); ++it, ++n) {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::Link >::const_iterator
+          it = this->_internal_links().begin();
+          it != this->_internal_links().end(); ++it, ++n) {
         items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<StreamSet_LinksEntry_DoNotUse> entry;
       for (size_type i = 0; i < n; i++) {
-        entry.reset(links_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       11, *entry, deterministic, target);
-;
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+        target = StreamSet_LinksEntry_DoNotUse::Funcs::InternalSerialize(11, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
       }
     } else {
-      ::std::unique_ptr<StreamSet_LinksEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::Link >::const_iterator
-          it = this->links().begin();
-          it != this->links().end(); ++it) {
-        entry.reset(links_.NewEntryWrapper(
-            it->first, it->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       11, *entry, deterministic, target);
-;
-        Utf8Check::Check(&*it);
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::Link >::const_iterator
+          it = this->_internal_links().begin();
+          it != this->_internal_links().end(); ++it) {
+        target = StreamSet_LinksEntry_DoNotUse::Funcs::InternalSerialize(11, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
       }
     }
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.StreamSet)
   return target;
@@ -2039,147 +1413,111 @@ size_t StreamSet::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.StreamSet)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // map<string, .xviz.Pose> poses = 2;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->poses_size());
-  {
-    ::std::unique_ptr<StreamSet_PosesEntry_DoNotUse> entry;
-    for (::google::protobuf::Map< ::std::string, ::xviz::Pose >::const_iterator
-        it = this->poses().begin();
-        it != this->poses().end(); ++it) {
-      entry.reset(poses_.NewEntryWrapper(it->first, it->second));
-      total_size += ::google::protobuf::internal::WireFormatLite::
-          MessageSizeNoVirtual(*entry);
-    }
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_poses_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::Pose >::const_iterator
+      it = this->_internal_poses().begin();
+      it != this->_internal_poses().end(); ++it) {
+    total_size += StreamSet_PosesEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
   // map<string, .xviz.PrimitiveState> primitives = 3;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->primitives_size());
-  {
-    ::std::unique_ptr<StreamSet_PrimitivesEntry_DoNotUse> entry;
-    for (::google::protobuf::Map< ::std::string, ::xviz::PrimitiveState >::const_iterator
-        it = this->primitives().begin();
-        it != this->primitives().end(); ++it) {
-      entry.reset(primitives_.NewEntryWrapper(it->first, it->second));
-      total_size += ::google::protobuf::internal::WireFormatLite::
-          MessageSizeNoVirtual(*entry);
-    }
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_primitives_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::PrimitiveState >::const_iterator
+      it = this->_internal_primitives().begin();
+      it != this->_internal_primitives().end(); ++it) {
+    total_size += StreamSet_PrimitivesEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
   // repeated .xviz.TimeSeriesState time_series = 4;
-  {
-    unsigned int count = static_cast<unsigned int>(this->time_series_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->time_series(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_time_series_size();
+  for (const auto& msg : this->time_series_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // map<string, .xviz.FutureInstances> future_instances = 6;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->future_instances_size());
-  {
-    ::std::unique_ptr<StreamSet_FutureInstancesEntry_DoNotUse> entry;
-    for (::google::protobuf::Map< ::std::string, ::xviz::FutureInstances >::const_iterator
-        it = this->future_instances().begin();
-        it != this->future_instances().end(); ++it) {
-      entry.reset(future_instances_.NewEntryWrapper(it->first, it->second));
-      total_size += ::google::protobuf::internal::WireFormatLite::
-          MessageSizeNoVirtual(*entry);
-    }
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_future_instances_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::FutureInstances >::const_iterator
+      it = this->_internal_future_instances().begin();
+      it != this->_internal_future_instances().end(); ++it) {
+    total_size += StreamSet_FutureInstancesEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
   // map<string, .xviz.VariableState> variables = 7;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->variables_size());
-  {
-    ::std::unique_ptr<StreamSet_VariablesEntry_DoNotUse> entry;
-    for (::google::protobuf::Map< ::std::string, ::xviz::VariableState >::const_iterator
-        it = this->variables().begin();
-        it != this->variables().end(); ++it) {
-      entry.reset(variables_.NewEntryWrapper(it->first, it->second));
-      total_size += ::google::protobuf::internal::WireFormatLite::
-          MessageSizeNoVirtual(*entry);
-    }
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_variables_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::VariableState >::const_iterator
+      it = this->_internal_variables().begin();
+      it != this->_internal_variables().end(); ++it) {
+    total_size += StreamSet_VariablesEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
   // map<string, .xviz.AnnotationState> annotations = 8;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->annotations_size());
-  {
-    ::std::unique_ptr<StreamSet_AnnotationsEntry_DoNotUse> entry;
-    for (::google::protobuf::Map< ::std::string, ::xviz::AnnotationState >::const_iterator
-        it = this->annotations().begin();
-        it != this->annotations().end(); ++it) {
-      entry.reset(annotations_.NewEntryWrapper(it->first, it->second));
-      total_size += ::google::protobuf::internal::WireFormatLite::
-          MessageSizeNoVirtual(*entry);
-    }
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_annotations_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::AnnotationState >::const_iterator
+      it = this->_internal_annotations().begin();
+      it != this->_internal_annotations().end(); ++it) {
+    total_size += StreamSet_AnnotationsEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
   // map<string, .xviz.UIPrimitiveState> ui_primitives = 9;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->ui_primitives_size());
-  {
-    ::std::unique_ptr<StreamSet_UiPrimitivesEntry_DoNotUse> entry;
-    for (::google::protobuf::Map< ::std::string, ::xviz::UIPrimitiveState >::const_iterator
-        it = this->ui_primitives().begin();
-        it != this->ui_primitives().end(); ++it) {
-      entry.reset(ui_primitives_.NewEntryWrapper(it->first, it->second));
-      total_size += ::google::protobuf::internal::WireFormatLite::
-          MessageSizeNoVirtual(*entry);
-    }
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_ui_primitives_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::UIPrimitiveState >::const_iterator
+      it = this->_internal_ui_primitives().begin();
+      it != this->_internal_ui_primitives().end(); ++it) {
+    total_size += StreamSet_UiPrimitivesEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
   // repeated string no_data_streams = 10;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->no_data_streams_size());
-  for (int i = 0, n = this->no_data_streams_size(); i < n; i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->no_data_streams(i));
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(no_data_streams_.size());
+  for (int i = 0, n = no_data_streams_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      no_data_streams_.Get(i));
   }
 
   // map<string, .xviz.Link> links = 11;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->links_size());
-  {
-    ::std::unique_ptr<StreamSet_LinksEntry_DoNotUse> entry;
-    for (::google::protobuf::Map< ::std::string, ::xviz::Link >::const_iterator
-        it = this->links().begin();
-        it != this->links().end(); ++it) {
-      entry.reset(links_.NewEntryWrapper(it->first, it->second));
-      total_size += ::google::protobuf::internal::WireFormatLite::
-          MessageSizeNoVirtual(*entry);
-    }
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_links_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::Link >::const_iterator
+      it = this->_internal_links().begin();
+      it != this->_internal_links().end(); ++it) {
+    total_size += StreamSet_LinksEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
   // double timestamp = 1;
-  if (this->timestamp() != 0) {
+  if (!(this->timestamp() <= 0 && this->timestamp() >= 0)) {
     total_size += 1 + 8;
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void StreamSet::MergeFrom(const ::google::protobuf::Message& from) {
+void StreamSet::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.StreamSet)
   GOOGLE_DCHECK_NE(&from, this);
   const StreamSet* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const StreamSet>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<StreamSet>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.StreamSet)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.StreamSet)
     MergeFrom(*source);
@@ -2190,7 +1528,7 @@ void StreamSet::MergeFrom(const StreamSet& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.StreamSet)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   poses_.MergeFrom(from.poses_);
@@ -2202,12 +1540,12 @@ void StreamSet::MergeFrom(const StreamSet& from) {
   ui_primitives_.MergeFrom(from.ui_primitives_);
   no_data_streams_.MergeFrom(from.no_data_streams_);
   links_.MergeFrom(from.links_);
-  if (from.timestamp() != 0) {
-    set_timestamp(from.timestamp());
+  if (!(from.timestamp() <= 0 && from.timestamp() >= 0)) {
+    _internal_set_timestamp(from._internal_timestamp());
   }
 }
 
-void StreamSet::CopyFrom(const ::google::protobuf::Message& from) {
+void StreamSet::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.StreamSet)
   if (&from == this) return;
   Clear();
@@ -2225,28 +1563,23 @@ bool StreamSet::IsInitialized() const {
   return true;
 }
 
-void StreamSet::Swap(StreamSet* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void StreamSet::InternalSwap(StreamSet* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   poses_.Swap(&other->poses_);
   primitives_.Swap(&other->primitives_);
-  CastToBase(&time_series_)->InternalSwap(CastToBase(&other->time_series_));
+  time_series_.InternalSwap(&other->time_series_);
   future_instances_.Swap(&other->future_instances_);
   variables_.Swap(&other->variables_);
   annotations_.Swap(&other->annotations_);
   ui_primitives_.Swap(&other->ui_primitives_);
-  no_data_streams_.InternalSwap(CastToBase(&other->no_data_streams_));
+  no_data_streams_.InternalSwap(&other->no_data_streams_);
   links_.Swap(&other->links_);
   swap(timestamp_, other->timestamp_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata StreamSet::GetMetadata() const {
-  protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata StreamSet::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -2256,36 +1589,37 @@ void Pose::InitAsDefaultInstance() {
   ::xviz::_Pose_default_instance_._instance.get_mutable()->map_origin_ = const_cast< ::xviz::MapOrigin*>(
       ::xviz::MapOrigin::internal_default_instance());
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Pose::kTimestampFieldNumber;
-const int Pose::kMapOriginFieldNumber;
-const int Pose::kPositionFieldNumber;
-const int Pose::kOrientationFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class Pose::_Internal {
+ public:
+  static const ::xviz::MapOrigin& map_origin(const Pose* msg);
+};
 
+const ::xviz::MapOrigin&
+Pose::_Internal::map_origin(const Pose* msg) {
+  return *msg->map_origin_;
+}
 Pose::Pose()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_core_2eproto::scc_info_Pose.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.Pose)
 }
 Pose::Pose(const Pose& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
       position_(from.position_),
       orientation_(from.orientation_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.has_map_origin()) {
+  if (from._internal_has_map_origin()) {
     map_origin_ = new ::xviz::MapOrigin(*from.map_origin_);
   } else {
-    map_origin_ = NULL;
+    map_origin_ = nullptr;
   }
   timestamp_ = from.timestamp_;
   // @@protoc_insertion_point(copy_constructor:xviz.Pose)
 }
 
 void Pose::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Pose_core_2eproto.base);
   ::memset(&map_origin_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&timestamp_) -
       reinterpret_cast<char*>(&map_origin_)) + sizeof(timestamp_));
@@ -2303,217 +1637,122 @@ void Pose::SharedDtor() {
 void Pose::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* Pose::descriptor() {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const Pose& Pose::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_core_2eproto::scc_info_Pose.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Pose_core_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void Pose::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.Pose)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   position_.Clear();
   orientation_.Clear();
-  if (GetArenaNoVirtual() == NULL && map_origin_ != NULL) {
+  if (GetArenaNoVirtual() == nullptr && map_origin_ != nullptr) {
     delete map_origin_;
   }
-  map_origin_ = NULL;
+  map_origin_ = nullptr;
   timestamp_ = 0;
   _internal_metadata_.Clear();
 }
 
-bool Pose::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.Pose)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* Pose::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // double timestamp = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(9u /* 9 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &timestamp_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 9)) {
+          timestamp_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // .xviz.MapOrigin map_origin = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_map_origin()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_map_origin(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // repeated double position = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, this->mutable_position())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(25u /* 25 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 1, 26u, input, this->mutable_position())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedDoubleParser(_internal_mutable_position(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 25) {
+          _internal_add_position(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr));
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // repeated double orientation = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, this->mutable_orientation())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(33u /* 33 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 1, 34u, input, this->mutable_orientation())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedDoubleParser(_internal_mutable_orientation(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 33) {
+          _internal_add_orientation(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr));
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.Pose)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.Pose)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void Pose::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.Pose)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // double timestamp = 1;
-  if (this->timestamp() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->timestamp(), output);
-  }
-
-  // .xviz.MapOrigin map_origin = 2;
-  if (this->has_map_origin()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->_internal_map_origin(), output);
-  }
-
-  // repeated double position = 3;
-  if (this->position_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(3, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _position_cached_byte_size_));
-    ::google::protobuf::internal::WireFormatLite::WriteDoubleArray(
-      this->position().data(), this->position_size(), output);
-  }
-
-  // repeated double orientation = 4;
-  if (this->orientation_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(4, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _orientation_cached_byte_size_));
-    ::google::protobuf::internal::WireFormatLite::WriteDoubleArray(
-      this->orientation().data(), this->orientation_size(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.Pose)
-}
-
-::google::protobuf::uint8* Pose::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* Pose::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.Pose)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // double timestamp = 1;
-  if (this->timestamp() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->timestamp(), target);
+  if (!(this->timestamp() <= 0 && this->timestamp() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(1, this->_internal_timestamp(), target);
   }
 
   // .xviz.MapOrigin map_origin = 2;
   if (this->has_map_origin()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->_internal_map_origin(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        2, _Internal::map_origin(this), target, stream);
   }
 
   // repeated double position = 3;
-  if (this->position_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      3,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _position_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteDoubleNoTagToArray(this->position_, target);
+  if (this->_internal_position_size() > 0) {
+    target = stream->WriteFixedPacked(3, _internal_position(), target);
   }
 
   // repeated double orientation = 4;
-  if (this->orientation_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      4,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _orientation_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteDoubleNoTagToArray(this->orientation_, target);
+  if (this->_internal_orientation_size() > 0) {
+    target = stream->WriteFixedPacked(4, _internal_orientation(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.Pose)
   return target;
@@ -2523,69 +1762,70 @@ size_t Pose::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.Pose)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated double position = 3;
   {
-    unsigned int count = static_cast<unsigned int>(this->position_size());
+    unsigned int count = static_cast<unsigned int>(this->_internal_position_size());
     size_t data_size = 8UL * count;
     if (data_size > 0) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
     }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _position_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
+    _position_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
     total_size += data_size;
   }
 
   // repeated double orientation = 4;
   {
-    unsigned int count = static_cast<unsigned int>(this->orientation_size());
+    unsigned int count = static_cast<unsigned int>(this->_internal_orientation_size());
     size_t data_size = 8UL * count;
     if (data_size > 0) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
     }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _orientation_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
+    _orientation_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
     total_size += data_size;
   }
 
   // .xviz.MapOrigin map_origin = 2;
   if (this->has_map_origin()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *map_origin_);
   }
 
   // double timestamp = 1;
-  if (this->timestamp() != 0) {
+  if (!(this->timestamp() <= 0 && this->timestamp() >= 0)) {
     total_size += 1 + 8;
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void Pose::MergeFrom(const ::google::protobuf::Message& from) {
+void Pose::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.Pose)
   GOOGLE_DCHECK_NE(&from, this);
   const Pose* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Pose>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Pose>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.Pose)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.Pose)
     MergeFrom(*source);
@@ -2596,20 +1836,20 @@ void Pose::MergeFrom(const Pose& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.Pose)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   position_.MergeFrom(from.position_);
   orientation_.MergeFrom(from.orientation_);
   if (from.has_map_origin()) {
-    mutable_map_origin()->::xviz::MapOrigin::MergeFrom(from.map_origin());
+    _internal_mutable_map_origin()->::xviz::MapOrigin::MergeFrom(from._internal_map_origin());
   }
-  if (from.timestamp() != 0) {
-    set_timestamp(from.timestamp());
+  if (!(from.timestamp() <= 0 && from.timestamp() >= 0)) {
+    _internal_set_timestamp(from._internal_timestamp());
   }
 }
 
-void Pose::CopyFrom(const ::google::protobuf::Message& from) {
+void Pose::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.Pose)
   if (&from == this) return;
   Clear();
@@ -2627,22 +1867,17 @@ bool Pose::IsInitialized() const {
   return true;
 }
 
-void Pose::Swap(Pose* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Pose::InternalSwap(Pose* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   position_.InternalSwap(&other->position_);
   orientation_.InternalSwap(&other->orientation_);
   swap(map_origin_, other->map_origin_);
   swap(timestamp_, other->timestamp_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata Pose::GetMetadata() const {
-  protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata Pose::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -2650,22 +1885,18 @@ void Pose::InternalSwap(Pose* other) {
 
 void MapOrigin::InitAsDefaultInstance() {
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int MapOrigin::kLongitudeFieldNumber;
-const int MapOrigin::kLatitudeFieldNumber;
-const int MapOrigin::kAltitudeFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class MapOrigin::_Internal {
+ public:
+};
 
 MapOrigin::MapOrigin()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_core_2eproto::scc_info_MapOrigin.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.MapOrigin)
 }
 MapOrigin::MapOrigin(const MapOrigin& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&longitude_, &from.longitude_,
     static_cast<size_t>(reinterpret_cast<char*>(&altitude_) -
@@ -2690,20 +1921,15 @@ void MapOrigin::SharedDtor() {
 void MapOrigin::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* MapOrigin::descriptor() {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const MapOrigin& MapOrigin::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_core_2eproto::scc_info_MapOrigin.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_MapOrigin_core_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void MapOrigin::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.MapOrigin)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -2713,131 +1939,81 @@ void MapOrigin::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool MapOrigin::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.MapOrigin)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* MapOrigin::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // double longitude = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(9u /* 9 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &longitude_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 9)) {
+          longitude_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // double latitude = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(17u /* 17 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &latitude_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 17)) {
+          latitude_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // double altitude = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(25u /* 25 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &altitude_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 25)) {
+          altitude_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.MapOrigin)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.MapOrigin)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void MapOrigin::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.MapOrigin)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // double longitude = 1;
-  if (this->longitude() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->longitude(), output);
-  }
-
-  // double latitude = 2;
-  if (this->latitude() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->latitude(), output);
-  }
-
-  // double altitude = 3;
-  if (this->altitude() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(3, this->altitude(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.MapOrigin)
-}
-
-::google::protobuf::uint8* MapOrigin::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* MapOrigin::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.MapOrigin)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // double longitude = 1;
-  if (this->longitude() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->longitude(), target);
+  if (!(this->longitude() <= 0 && this->longitude() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(1, this->_internal_longitude(), target);
   }
 
   // double latitude = 2;
-  if (this->latitude() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->latitude(), target);
+  if (!(this->latitude() <= 0 && this->latitude() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(2, this->_internal_latitude(), target);
   }
 
   // double altitude = 3;
-  if (this->altitude() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(3, this->altitude(), target);
+  if (!(this->altitude() <= 0 && this->altitude() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(3, this->_internal_altitude(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.MapOrigin)
   return target;
@@ -2847,40 +2023,43 @@ size_t MapOrigin::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.MapOrigin)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // double longitude = 1;
-  if (this->longitude() != 0) {
+  if (!(this->longitude() <= 0 && this->longitude() >= 0)) {
     total_size += 1 + 8;
   }
 
   // double latitude = 2;
-  if (this->latitude() != 0) {
+  if (!(this->latitude() <= 0 && this->latitude() >= 0)) {
     total_size += 1 + 8;
   }
 
   // double altitude = 3;
-  if (this->altitude() != 0) {
+  if (!(this->altitude() <= 0 && this->altitude() >= 0)) {
     total_size += 1 + 8;
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void MapOrigin::MergeFrom(const ::google::protobuf::Message& from) {
+void MapOrigin::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.MapOrigin)
   GOOGLE_DCHECK_NE(&from, this);
   const MapOrigin* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const MapOrigin>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<MapOrigin>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.MapOrigin)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.MapOrigin)
     MergeFrom(*source);
@@ -2891,21 +2070,21 @@ void MapOrigin::MergeFrom(const MapOrigin& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.MapOrigin)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.longitude() != 0) {
-    set_longitude(from.longitude());
+  if (!(from.longitude() <= 0 && from.longitude() >= 0)) {
+    _internal_set_longitude(from._internal_longitude());
   }
-  if (from.latitude() != 0) {
-    set_latitude(from.latitude());
+  if (!(from.latitude() <= 0 && from.latitude() >= 0)) {
+    _internal_set_latitude(from._internal_latitude());
   }
-  if (from.altitude() != 0) {
-    set_altitude(from.altitude());
+  if (!(from.altitude() <= 0 && from.altitude() >= 0)) {
+    _internal_set_altitude(from._internal_altitude());
   }
 }
 
-void MapOrigin::CopyFrom(const ::google::protobuf::Message& from) {
+void MapOrigin::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.MapOrigin)
   if (&from == this) return;
   Clear();
@@ -2923,21 +2102,16 @@ bool MapOrigin::IsInitialized() const {
   return true;
 }
 
-void MapOrigin::Swap(MapOrigin* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void MapOrigin::InternalSwap(MapOrigin* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(longitude_, other->longitude_);
   swap(latitude_, other->latitude_);
   swap(altitude_, other->altitude_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata MapOrigin::GetMetadata() const {
-  protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata MapOrigin::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -2945,6 +2119,10 @@ void MapOrigin::InternalSwap(MapOrigin* other) {
 
 void PrimitiveState::InitAsDefaultInstance() {
 }
+class PrimitiveState::_Internal {
+ public:
+};
+
 void PrimitiveState::clear_polygons() {
   polygons_.Clear();
 }
@@ -2966,26 +2144,14 @@ void PrimitiveState::clear_stadiums() {
 void PrimitiveState::clear_images() {
   images_.Clear();
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int PrimitiveState::kPolygonsFieldNumber;
-const int PrimitiveState::kPolylinesFieldNumber;
-const int PrimitiveState::kTextsFieldNumber;
-const int PrimitiveState::kCirclesFieldNumber;
-const int PrimitiveState::kPointsFieldNumber;
-const int PrimitiveState::kStadiumsFieldNumber;
-const int PrimitiveState::kImagesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
 PrimitiveState::PrimitiveState()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_core_2eproto::scc_info_PrimitiveState.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.PrimitiveState)
 }
 PrimitiveState::PrimitiveState(const PrimitiveState& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
       polygons_(from.polygons_),
       polylines_(from.polylines_),
       texts_(from.texts_),
@@ -2998,6 +2164,7 @@ PrimitiveState::PrimitiveState(const PrimitiveState& from)
 }
 
 void PrimitiveState::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_PrimitiveState_core_2eproto.base);
 }
 
 PrimitiveState::~PrimitiveState() {
@@ -3011,20 +2178,15 @@ void PrimitiveState::SharedDtor() {
 void PrimitiveState::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* PrimitiveState::descriptor() {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const PrimitiveState& PrimitiveState::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_core_2eproto::scc_info_PrimitiveState.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_PrimitiveState_core_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void PrimitiveState::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.PrimitiveState)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -3038,262 +2200,182 @@ void PrimitiveState::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool PrimitiveState::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.PrimitiveState)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* PrimitiveState::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // repeated .xviz.Polygon polygons = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_polygons()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_polygons(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
       // repeated .xviz.Polyline polylines = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_polylines()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_polylines(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
       // repeated .xviz.Text texts = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_texts()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_texts(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else goto handle_unusual;
+        continue;
       // repeated .xviz.Circle circles = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_circles()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_circles(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
+        } else goto handle_unusual;
+        continue;
       // repeated .xviz.Point points = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_points()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_points(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
+        } else goto handle_unusual;
+        continue;
       // repeated .xviz.Stadium stadiums = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_stadiums()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_stadiums(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<50>(ptr));
+        } else goto handle_unusual;
+        continue;
       // repeated .xviz.Image images = 7;
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(58u /* 58 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_images()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 58)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_images(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<58>(ptr));
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.PrimitiveState)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.PrimitiveState)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void PrimitiveState::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.PrimitiveState)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // repeated .xviz.Polygon polygons = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->polygons_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1,
-      this->polygons(static_cast<int>(i)),
-      output);
-  }
-
-  // repeated .xviz.Polyline polylines = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->polylines_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2,
-      this->polylines(static_cast<int>(i)),
-      output);
-  }
-
-  // repeated .xviz.Text texts = 3;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->texts_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3,
-      this->texts(static_cast<int>(i)),
-      output);
-  }
-
-  // repeated .xviz.Circle circles = 4;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->circles_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4,
-      this->circles(static_cast<int>(i)),
-      output);
-  }
-
-  // repeated .xviz.Point points = 5;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->points_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5,
-      this->points(static_cast<int>(i)),
-      output);
-  }
-
-  // repeated .xviz.Stadium stadiums = 6;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->stadiums_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6,
-      this->stadiums(static_cast<int>(i)),
-      output);
-  }
-
-  // repeated .xviz.Image images = 7;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->images_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      7,
-      this->images(static_cast<int>(i)),
-      output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.PrimitiveState)
-}
-
-::google::protobuf::uint8* PrimitiveState::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* PrimitiveState::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.PrimitiveState)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .xviz.Polygon polygons = 1;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->polygons_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->polygons(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_polygons_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, this->_internal_polygons(i), target, stream);
   }
 
   // repeated .xviz.Polyline polylines = 2;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->polylines_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->polylines(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_polylines_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, this->_internal_polylines(i), target, stream);
   }
 
   // repeated .xviz.Text texts = 3;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->texts_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        3, this->texts(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_texts_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, this->_internal_texts(i), target, stream);
   }
 
   // repeated .xviz.Circle circles = 4;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->circles_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        4, this->circles(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_circles_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(4, this->_internal_circles(i), target, stream);
   }
 
   // repeated .xviz.Point points = 5;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->points_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        5, this->points(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_points_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(5, this->_internal_points(i), target, stream);
   }
 
   // repeated .xviz.Stadium stadiums = 6;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->stadiums_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        6, this->stadiums(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_stadiums_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(6, this->_internal_stadiums(i), target, stream);
   }
 
   // repeated .xviz.Image images = 7;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->images_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        7, this->images(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_images_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(7, this->_internal_images(i), target, stream);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.PrimitiveState)
   return target;
@@ -3303,102 +2385,77 @@ size_t PrimitiveState::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.PrimitiveState)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .xviz.Polygon polygons = 1;
-  {
-    unsigned int count = static_cast<unsigned int>(this->polygons_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->polygons(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_polygons_size();
+  for (const auto& msg : this->polygons_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // repeated .xviz.Polyline polylines = 2;
-  {
-    unsigned int count = static_cast<unsigned int>(this->polylines_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->polylines(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_polylines_size();
+  for (const auto& msg : this->polylines_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // repeated .xviz.Text texts = 3;
-  {
-    unsigned int count = static_cast<unsigned int>(this->texts_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->texts(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_texts_size();
+  for (const auto& msg : this->texts_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // repeated .xviz.Circle circles = 4;
-  {
-    unsigned int count = static_cast<unsigned int>(this->circles_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->circles(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_circles_size();
+  for (const auto& msg : this->circles_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // repeated .xviz.Point points = 5;
-  {
-    unsigned int count = static_cast<unsigned int>(this->points_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->points(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_points_size();
+  for (const auto& msg : this->points_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // repeated .xviz.Stadium stadiums = 6;
-  {
-    unsigned int count = static_cast<unsigned int>(this->stadiums_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->stadiums(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_stadiums_size();
+  for (const auto& msg : this->stadiums_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // repeated .xviz.Image images = 7;
-  {
-    unsigned int count = static_cast<unsigned int>(this->images_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->images(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_images_size();
+  for (const auto& msg : this->images_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void PrimitiveState::MergeFrom(const ::google::protobuf::Message& from) {
+void PrimitiveState::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.PrimitiveState)
   GOOGLE_DCHECK_NE(&from, this);
   const PrimitiveState* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const PrimitiveState>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<PrimitiveState>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.PrimitiveState)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.PrimitiveState)
     MergeFrom(*source);
@@ -3409,7 +2466,7 @@ void PrimitiveState::MergeFrom(const PrimitiveState& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.PrimitiveState)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   polygons_.MergeFrom(from.polygons_);
@@ -3421,7 +2478,7 @@ void PrimitiveState::MergeFrom(const PrimitiveState& from) {
   images_.MergeFrom(from.images_);
 }
 
-void PrimitiveState::CopyFrom(const ::google::protobuf::Message& from) {
+void PrimitiveState::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.PrimitiveState)
   if (&from == this) return;
   Clear();
@@ -3439,25 +2496,20 @@ bool PrimitiveState::IsInitialized() const {
   return true;
 }
 
-void PrimitiveState::Swap(PrimitiveState* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void PrimitiveState::InternalSwap(PrimitiveState* other) {
   using std::swap;
-  CastToBase(&polygons_)->InternalSwap(CastToBase(&other->polygons_));
-  CastToBase(&polylines_)->InternalSwap(CastToBase(&other->polylines_));
-  CastToBase(&texts_)->InternalSwap(CastToBase(&other->texts_));
-  CastToBase(&circles_)->InternalSwap(CastToBase(&other->circles_));
-  CastToBase(&points_)->InternalSwap(CastToBase(&other->points_));
-  CastToBase(&stadiums_)->InternalSwap(CastToBase(&other->stadiums_));
-  CastToBase(&images_)->InternalSwap(CastToBase(&other->images_));
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  polygons_.InternalSwap(&other->polygons_);
+  polylines_.InternalSwap(&other->polylines_);
+  texts_.InternalSwap(&other->texts_);
+  circles_.InternalSwap(&other->circles_);
+  points_.InternalSwap(&other->points_);
+  stadiums_.InternalSwap(&other->stadiums_);
+  images_.InternalSwap(&other->images_);
 }
 
-::google::protobuf::Metadata PrimitiveState::GetMetadata() const {
-  protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata PrimitiveState::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -3467,37 +2519,41 @@ void UIPrimitiveState::InitAsDefaultInstance() {
   ::xviz::_UIPrimitiveState_default_instance_._instance.get_mutable()->treetable_ = const_cast< ::xviz::TreeTable*>(
       ::xviz::TreeTable::internal_default_instance());
 }
+class UIPrimitiveState::_Internal {
+ public:
+  static const ::xviz::TreeTable& treetable(const UIPrimitiveState* msg);
+};
+
+const ::xviz::TreeTable&
+UIPrimitiveState::_Internal::treetable(const UIPrimitiveState* msg) {
+  return *msg->treetable_;
+}
 void UIPrimitiveState::clear_treetable() {
-  if (GetArenaNoVirtual() == NULL && treetable_ != NULL) {
+  if (GetArenaNoVirtual() == nullptr && treetable_ != nullptr) {
     delete treetable_;
   }
-  treetable_ = NULL;
+  treetable_ = nullptr;
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int UIPrimitiveState::kTreetableFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
 UIPrimitiveState::UIPrimitiveState()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_core_2eproto::scc_info_UIPrimitiveState.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.UIPrimitiveState)
 }
 UIPrimitiveState::UIPrimitiveState(const UIPrimitiveState& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.has_treetable()) {
+  if (from._internal_has_treetable()) {
     treetable_ = new ::xviz::TreeTable(*from.treetable_);
   } else {
-    treetable_ = NULL;
+    treetable_ = nullptr;
   }
   // @@protoc_insertion_point(copy_constructor:xviz.UIPrimitiveState)
 }
 
 void UIPrimitiveState::SharedCtor() {
-  treetable_ = NULL;
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_UIPrimitiveState_core_2eproto.base);
+  treetable_ = nullptr;
 }
 
 UIPrimitiveState::~UIPrimitiveState() {
@@ -3512,108 +2568,76 @@ void UIPrimitiveState::SharedDtor() {
 void UIPrimitiveState::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* UIPrimitiveState::descriptor() {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const UIPrimitiveState& UIPrimitiveState::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_core_2eproto::scc_info_UIPrimitiveState.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_UIPrimitiveState_core_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void UIPrimitiveState::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.UIPrimitiveState)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArenaNoVirtual() == NULL && treetable_ != NULL) {
+  if (GetArenaNoVirtual() == nullptr && treetable_ != nullptr) {
     delete treetable_;
   }
-  treetable_ = NULL;
+  treetable_ = nullptr;
   _internal_metadata_.Clear();
 }
 
-bool UIPrimitiveState::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.UIPrimitiveState)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* UIPrimitiveState::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // .xviz.TreeTable treetable = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_treetable()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_treetable(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.UIPrimitiveState)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.UIPrimitiveState)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void UIPrimitiveState::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.UIPrimitiveState)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // .xviz.TreeTable treetable = 1;
-  if (this->has_treetable()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->_internal_treetable(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.UIPrimitiveState)
-}
-
-::google::protobuf::uint8* UIPrimitiveState::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* UIPrimitiveState::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.UIPrimitiveState)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // .xviz.TreeTable treetable = 1;
   if (this->has_treetable()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->_internal_treetable(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::treetable(this), target, stream);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.UIPrimitiveState)
   return target;
@@ -3623,32 +2647,35 @@ size_t UIPrimitiveState::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.UIPrimitiveState)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // .xviz.TreeTable treetable = 1;
   if (this->has_treetable()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *treetable_);
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void UIPrimitiveState::MergeFrom(const ::google::protobuf::Message& from) {
+void UIPrimitiveState::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.UIPrimitiveState)
   GOOGLE_DCHECK_NE(&from, this);
   const UIPrimitiveState* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const UIPrimitiveState>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<UIPrimitiveState>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.UIPrimitiveState)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.UIPrimitiveState)
     MergeFrom(*source);
@@ -3659,15 +2686,15 @@ void UIPrimitiveState::MergeFrom(const UIPrimitiveState& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.UIPrimitiveState)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from.has_treetable()) {
-    mutable_treetable()->::xviz::TreeTable::MergeFrom(from.treetable());
+    _internal_mutable_treetable()->::xviz::TreeTable::MergeFrom(from._internal_treetable());
   }
 }
 
-void UIPrimitiveState::CopyFrom(const ::google::protobuf::Message& from) {
+void UIPrimitiveState::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.UIPrimitiveState)
   if (&from == this) return;
   Clear();
@@ -3685,19 +2712,14 @@ bool UIPrimitiveState::IsInitialized() const {
   return true;
 }
 
-void UIPrimitiveState::Swap(UIPrimitiveState* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void UIPrimitiveState::InternalSwap(UIPrimitiveState* other) {
   using std::swap;
-  swap(treetable_, other->treetable_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(treetable_, other->treetable_);
 }
 
-::google::protobuf::Metadata UIPrimitiveState::GetMetadata() const {
-  protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata UIPrimitiveState::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -3707,40 +2729,41 @@ void TimeSeriesState::InitAsDefaultInstance() {
   ::xviz::_TimeSeriesState_default_instance_._instance.get_mutable()->values_ = const_cast< ::xviz::Values*>(
       ::xviz::Values::internal_default_instance());
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TimeSeriesState::kTimestampFieldNumber;
-const int TimeSeriesState::kObjectIdFieldNumber;
-const int TimeSeriesState::kStreamsFieldNumber;
-const int TimeSeriesState::kValuesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class TimeSeriesState::_Internal {
+ public:
+  static const ::xviz::Values& values(const TimeSeriesState* msg);
+};
 
+const ::xviz::Values&
+TimeSeriesState::_Internal::values(const TimeSeriesState* msg) {
+  return *msg->values_;
+}
 TimeSeriesState::TimeSeriesState()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_core_2eproto::scc_info_TimeSeriesState.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.TimeSeriesState)
 }
 TimeSeriesState::TimeSeriesState(const TimeSeriesState& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
       streams_(from.streams_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  object_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.object_id().size() > 0) {
-    object_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.object_id_);
+  object_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_object_id().empty()) {
+    object_id_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.object_id_);
   }
-  if (from.has_values()) {
+  if (from._internal_has_values()) {
     values_ = new ::xviz::Values(*from.values_);
   } else {
-    values_ = NULL;
+    values_ = nullptr;
   }
   timestamp_ = from.timestamp_;
   // @@protoc_insertion_point(copy_constructor:xviz.TimeSeriesState)
 }
 
 void TimeSeriesState::SharedCtor() {
-  object_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_TimeSeriesState_core_2eproto.base);
+  object_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&values_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&timestamp_) -
       reinterpret_cast<char*>(&values_)) + sizeof(timestamp_));
@@ -3752,216 +2775,142 @@ TimeSeriesState::~TimeSeriesState() {
 }
 
 void TimeSeriesState::SharedDtor() {
-  object_id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  object_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete values_;
 }
 
 void TimeSeriesState::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* TimeSeriesState::descriptor() {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const TimeSeriesState& TimeSeriesState::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_core_2eproto::scc_info_TimeSeriesState.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_TimeSeriesState_core_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void TimeSeriesState::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.TimeSeriesState)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   streams_.Clear();
-  object_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (GetArenaNoVirtual() == NULL && values_ != NULL) {
+  object_id_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == nullptr && values_ != nullptr) {
     delete values_;
   }
-  values_ = NULL;
+  values_ = nullptr;
   timestamp_ = 0;
   _internal_metadata_.Clear();
 }
 
-bool TimeSeriesState::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.TimeSeriesState)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* TimeSeriesState::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // double timestamp = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(9u /* 9 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &timestamp_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 9)) {
+          timestamp_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // string object_id = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_object_id()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->object_id().data(), static_cast<int>(this->object_id().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.TimeSeriesState.object_id"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_object_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.TimeSeriesState.object_id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // repeated string streams = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_streams()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->streams(this->streams_size() - 1).data(),
-            static_cast<int>(this->streams(this->streams_size() - 1).length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.TimeSeriesState.streams"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_streams();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.TimeSeriesState.streams"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else goto handle_unusual;
+        continue;
       // .xviz.Values values = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_values()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          ptr = ctx->ParseMessage(_internal_mutable_values(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.TimeSeriesState)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.TimeSeriesState)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void TimeSeriesState::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.TimeSeriesState)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // double timestamp = 1;
-  if (this->timestamp() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->timestamp(), output);
-  }
-
-  // string object_id = 2;
-  if (this->object_id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->object_id().data(), static_cast<int>(this->object_id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.TimeSeriesState.object_id");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->object_id(), output);
-  }
-
-  // repeated string streams = 3;
-  for (int i = 0, n = this->streams_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->streams(i).data(), static_cast<int>(this->streams(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.TimeSeriesState.streams");
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->streams(i), output);
-  }
-
-  // .xviz.Values values = 4;
-  if (this->has_values()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, this->_internal_values(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.TimeSeriesState)
-}
-
-::google::protobuf::uint8* TimeSeriesState::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* TimeSeriesState::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.TimeSeriesState)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // double timestamp = 1;
-  if (this->timestamp() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->timestamp(), target);
+  if (!(this->timestamp() <= 0 && this->timestamp() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(1, this->_internal_timestamp(), target);
   }
 
   // string object_id = 2;
   if (this->object_id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->object_id().data(), static_cast<int>(this->object_id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_object_id().data(), static_cast<int>(this->_internal_object_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.TimeSeriesState.object_id");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->object_id(), target);
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_object_id(), target);
   }
 
   // repeated string streams = 3;
-  for (int i = 0, n = this->streams_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->streams(i).data(), static_cast<int>(this->streams(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+  for (int i = 0, n = this->_internal_streams_size(); i < n; i++) {
+    const auto& s = this->_internal_streams(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.TimeSeriesState.streams");
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(3, this->streams(i), target);
+    target = stream->WriteString(3, s, target);
   }
 
   // .xviz.Values values = 4;
   if (this->has_values()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        4, this->_internal_values(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        4, _Internal::values(this), target, stream);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.TimeSeriesState)
   return target;
@@ -3971,52 +2920,55 @@ size_t TimeSeriesState::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.TimeSeriesState)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated string streams = 3;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->streams_size());
-  for (int i = 0, n = this->streams_size(); i < n; i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->streams(i));
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(streams_.size());
+  for (int i = 0, n = streams_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      streams_.Get(i));
   }
 
   // string object_id = 2;
   if (this->object_id().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->object_id());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_object_id());
   }
 
   // .xviz.Values values = 4;
   if (this->has_values()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *values_);
   }
 
   // double timestamp = 1;
-  if (this->timestamp() != 0) {
+  if (!(this->timestamp() <= 0 && this->timestamp() >= 0)) {
     total_size += 1 + 8;
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void TimeSeriesState::MergeFrom(const ::google::protobuf::Message& from) {
+void TimeSeriesState::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.TimeSeriesState)
   GOOGLE_DCHECK_NE(&from, this);
   const TimeSeriesState* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TimeSeriesState>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<TimeSeriesState>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.TimeSeriesState)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.TimeSeriesState)
     MergeFrom(*source);
@@ -4027,23 +2979,23 @@ void TimeSeriesState::MergeFrom(const TimeSeriesState& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.TimeSeriesState)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   streams_.MergeFrom(from.streams_);
   if (from.object_id().size() > 0) {
 
-    object_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.object_id_);
+    object_id_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.object_id_);
   }
   if (from.has_values()) {
-    mutable_values()->::xviz::Values::MergeFrom(from.values());
+    _internal_mutable_values()->::xviz::Values::MergeFrom(from._internal_values());
   }
-  if (from.timestamp() != 0) {
-    set_timestamp(from.timestamp());
+  if (!(from.timestamp() <= 0 && from.timestamp() >= 0)) {
+    _internal_set_timestamp(from._internal_timestamp());
   }
 }
 
-void TimeSeriesState::CopyFrom(const ::google::protobuf::Message& from) {
+void TimeSeriesState::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.TimeSeriesState)
   if (&from == this) return;
   Clear();
@@ -4061,23 +3013,18 @@ bool TimeSeriesState::IsInitialized() const {
   return true;
 }
 
-void TimeSeriesState::Swap(TimeSeriesState* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TimeSeriesState::InternalSwap(TimeSeriesState* other) {
   using std::swap;
-  streams_.InternalSwap(CastToBase(&other->streams_));
-  object_id_.Swap(&other->object_id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  streams_.InternalSwap(&other->streams_);
+  object_id_.Swap(&other->object_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(values_, other->values_);
   swap(timestamp_, other->timestamp_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata TimeSeriesState::GetMetadata() const {
-  protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata TimeSeriesState::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -4085,21 +3032,18 @@ void TimeSeriesState::InternalSwap(TimeSeriesState* other) {
 
 void FutureInstances::InitAsDefaultInstance() {
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int FutureInstances::kTimestampsFieldNumber;
-const int FutureInstances::kPrimitivesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class FutureInstances::_Internal {
+ public:
+};
 
 FutureInstances::FutureInstances()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_core_2eproto::scc_info_FutureInstances.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.FutureInstances)
 }
 FutureInstances::FutureInstances(const FutureInstances& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
       timestamps_(from.timestamps_),
       primitives_(from.primitives_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
@@ -4107,6 +3051,7 @@ FutureInstances::FutureInstances(const FutureInstances& from)
 }
 
 void FutureInstances::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_FutureInstances_core_2eproto.base);
 }
 
 FutureInstances::~FutureInstances() {
@@ -4120,20 +3065,15 @@ void FutureInstances::SharedDtor() {
 void FutureInstances::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* FutureInstances::descriptor() {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const FutureInstances& FutureInstances::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_core_2eproto::scc_info_FutureInstances.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_FutureInstances_core_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void FutureInstances::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.FutureInstances)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -4142,129 +3082,77 @@ void FutureInstances::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool FutureInstances::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.FutureInstances)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* FutureInstances::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // repeated double timestamps = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, this->mutable_timestamps())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(9u /* 9 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 1, 10u, input, this->mutable_timestamps())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedDoubleParser(_internal_mutable_timestamps(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 9) {
+          _internal_add_timestamps(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr));
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // repeated .xviz.PrimitiveState primitives = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_primitives()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_primitives(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.FutureInstances)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.FutureInstances)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void FutureInstances::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.FutureInstances)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // repeated double timestamps = 1;
-  if (this->timestamps_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(1, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _timestamps_cached_byte_size_));
-    ::google::protobuf::internal::WireFormatLite::WriteDoubleArray(
-      this->timestamps().data(), this->timestamps_size(), output);
-  }
-
-  // repeated .xviz.PrimitiveState primitives = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->primitives_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2,
-      this->primitives(static_cast<int>(i)),
-      output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.FutureInstances)
-}
-
-::google::protobuf::uint8* FutureInstances::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* FutureInstances::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.FutureInstances)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated double timestamps = 1;
-  if (this->timestamps_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      1,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _timestamps_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteDoubleNoTagToArray(this->timestamps_, target);
+  if (this->_internal_timestamps_size() > 0) {
+    target = stream->WriteFixedPacked(1, _internal_timestamps(), target);
   }
 
   // repeated .xviz.PrimitiveState primitives = 2;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->primitives_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->primitives(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_primitives_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, this->_internal_primitives(i), target, stream);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.FutureInstances)
   return target;
@@ -4274,52 +3162,50 @@ size_t FutureInstances::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.FutureInstances)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated double timestamps = 1;
   {
-    unsigned int count = static_cast<unsigned int>(this->timestamps_size());
+    unsigned int count = static_cast<unsigned int>(this->_internal_timestamps_size());
     size_t data_size = 8UL * count;
     if (data_size > 0) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
     }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _timestamps_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
+    _timestamps_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
     total_size += data_size;
   }
 
   // repeated .xviz.PrimitiveState primitives = 2;
-  {
-    unsigned int count = static_cast<unsigned int>(this->primitives_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->primitives(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_primitives_size();
+  for (const auto& msg : this->primitives_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void FutureInstances::MergeFrom(const ::google::protobuf::Message& from) {
+void FutureInstances::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.FutureInstances)
   GOOGLE_DCHECK_NE(&from, this);
   const FutureInstances* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const FutureInstances>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<FutureInstances>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.FutureInstances)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.FutureInstances)
     MergeFrom(*source);
@@ -4330,14 +3216,14 @@ void FutureInstances::MergeFrom(const FutureInstances& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.FutureInstances)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   timestamps_.MergeFrom(from.timestamps_);
   primitives_.MergeFrom(from.primitives_);
 }
 
-void FutureInstances::CopyFrom(const ::google::protobuf::Message& from) {
+void FutureInstances::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.FutureInstances)
   if (&from == this) return;
   Clear();
@@ -4355,20 +3241,15 @@ bool FutureInstances::IsInitialized() const {
   return true;
 }
 
-void FutureInstances::Swap(FutureInstances* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void FutureInstances::InternalSwap(FutureInstances* other) {
   using std::swap;
-  timestamps_.InternalSwap(&other->timestamps_);
-  CastToBase(&primitives_)->InternalSwap(CastToBase(&other->primitives_));
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  timestamps_.InternalSwap(&other->timestamps_);
+  primitives_.InternalSwap(&other->primitives_);
 }
 
-::google::protobuf::Metadata FutureInstances::GetMetadata() const {
-  protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata FutureInstances::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -4376,26 +3257,25 @@ void FutureInstances::InternalSwap(FutureInstances* other) {
 
 void VariableState::InitAsDefaultInstance() {
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int VariableState::kVariablesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class VariableState::_Internal {
+ public:
+};
 
 VariableState::VariableState()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_core_2eproto::scc_info_VariableState.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.VariableState)
 }
 VariableState::VariableState(const VariableState& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
       variables_(from.variables_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:xviz.VariableState)
 }
 
 void VariableState::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_VariableState_core_2eproto.base);
 }
 
 VariableState::~VariableState() {
@@ -4409,20 +3289,15 @@ void VariableState::SharedDtor() {
 void VariableState::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* VariableState::descriptor() {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const VariableState& VariableState::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_core_2eproto::scc_info_VariableState.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_VariableState_core_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void VariableState::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.VariableState)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -4430,88 +3305,62 @@ void VariableState::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool VariableState::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.VariableState)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* VariableState::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // repeated .xviz.Variable variables = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_variables()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_variables(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.VariableState)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.VariableState)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void VariableState::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.VariableState)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // repeated .xviz.Variable variables = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->variables_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1,
-      this->variables(static_cast<int>(i)),
-      output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.VariableState)
-}
-
-::google::protobuf::uint8* VariableState::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* VariableState::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.VariableState)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .xviz.Variable variables = 1;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->variables_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->variables(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_variables_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, this->_internal_variables(i), target, stream);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.VariableState)
   return target;
@@ -4521,36 +3370,35 @@ size_t VariableState::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.VariableState)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .xviz.Variable variables = 1;
-  {
-    unsigned int count = static_cast<unsigned int>(this->variables_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->variables(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_variables_size();
+  for (const auto& msg : this->variables_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void VariableState::MergeFrom(const ::google::protobuf::Message& from) {
+void VariableState::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.VariableState)
   GOOGLE_DCHECK_NE(&from, this);
   const VariableState* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const VariableState>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<VariableState>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.VariableState)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.VariableState)
     MergeFrom(*source);
@@ -4561,13 +3409,13 @@ void VariableState::MergeFrom(const VariableState& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.VariableState)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   variables_.MergeFrom(from.variables_);
 }
 
-void VariableState::CopyFrom(const ::google::protobuf::Message& from) {
+void VariableState::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.VariableState)
   if (&from == this) return;
   Clear();
@@ -4585,19 +3433,14 @@ bool VariableState::IsInitialized() const {
   return true;
 }
 
-void VariableState::Swap(VariableState* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void VariableState::InternalSwap(VariableState* other) {
   using std::swap;
-  CastToBase(&variables_)->InternalSwap(CastToBase(&other->variables_));
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  variables_.InternalSwap(&other->variables_);
 }
 
-::google::protobuf::Metadata VariableState::GetMetadata() const {
-  protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata VariableState::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -4605,29 +3448,28 @@ void VariableState::InternalSwap(VariableState* other) {
 
 void AnnotationState::InitAsDefaultInstance() {
 }
+class AnnotationState::_Internal {
+ public:
+};
+
 void AnnotationState::clear_visuals() {
   visuals_.Clear();
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int AnnotationState::kVisualsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
 AnnotationState::AnnotationState()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_core_2eproto::scc_info_AnnotationState.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.AnnotationState)
 }
 AnnotationState::AnnotationState(const AnnotationState& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
       visuals_(from.visuals_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:xviz.AnnotationState)
 }
 
 void AnnotationState::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_AnnotationState_core_2eproto.base);
 }
 
 AnnotationState::~AnnotationState() {
@@ -4641,20 +3483,15 @@ void AnnotationState::SharedDtor() {
 void AnnotationState::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* AnnotationState::descriptor() {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const AnnotationState& AnnotationState::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_core_2eproto::scc_info_AnnotationState.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_AnnotationState_core_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void AnnotationState::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.AnnotationState)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -4662,88 +3499,62 @@ void AnnotationState::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool AnnotationState::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.AnnotationState)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* AnnotationState::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // repeated .xviz.Visual visuals = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_visuals()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_visuals(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.AnnotationState)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.AnnotationState)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void AnnotationState::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.AnnotationState)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // repeated .xviz.Visual visuals = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->visuals_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1,
-      this->visuals(static_cast<int>(i)),
-      output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.AnnotationState)
-}
-
-::google::protobuf::uint8* AnnotationState::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* AnnotationState::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.AnnotationState)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .xviz.Visual visuals = 1;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->visuals_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->visuals(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_visuals_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, this->_internal_visuals(i), target, stream);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.AnnotationState)
   return target;
@@ -4753,36 +3564,35 @@ size_t AnnotationState::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.AnnotationState)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .xviz.Visual visuals = 1;
-  {
-    unsigned int count = static_cast<unsigned int>(this->visuals_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->visuals(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_visuals_size();
+  for (const auto& msg : this->visuals_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void AnnotationState::MergeFrom(const ::google::protobuf::Message& from) {
+void AnnotationState::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.AnnotationState)
   GOOGLE_DCHECK_NE(&from, this);
   const AnnotationState* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const AnnotationState>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<AnnotationState>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.AnnotationState)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.AnnotationState)
     MergeFrom(*source);
@@ -4793,13 +3603,13 @@ void AnnotationState::MergeFrom(const AnnotationState& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.AnnotationState)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   visuals_.MergeFrom(from.visuals_);
 }
 
-void AnnotationState::CopyFrom(const ::google::protobuf::Message& from) {
+void AnnotationState::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.AnnotationState)
   if (&from == this) return;
   Clear();
@@ -4817,19 +3627,14 @@ bool AnnotationState::IsInitialized() const {
   return true;
 }
 
-void AnnotationState::Swap(AnnotationState* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void AnnotationState::InternalSwap(AnnotationState* other) {
   using std::swap;
-  CastToBase(&visuals_)->InternalSwap(CastToBase(&other->visuals_));
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  visuals_.InternalSwap(&other->visuals_);
 }
 
-::google::protobuf::Metadata AnnotationState::GetMetadata() const {
-  protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata AnnotationState::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -4841,36 +3646,44 @@ void Variable::InitAsDefaultInstance() {
   ::xviz::_Variable_default_instance_._instance.get_mutable()->values_ = const_cast< ::xviz::Values*>(
       ::xviz::Values::internal_default_instance());
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Variable::kBaseFieldNumber;
-const int Variable::kValuesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class Variable::_Internal {
+ public:
+  static const ::xviz::VariableBase& base(const Variable* msg);
+  static const ::xviz::Values& values(const Variable* msg);
+};
 
+const ::xviz::VariableBase&
+Variable::_Internal::base(const Variable* msg) {
+  return *msg->base_;
+}
+const ::xviz::Values&
+Variable::_Internal::values(const Variable* msg) {
+  return *msg->values_;
+}
 Variable::Variable()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_core_2eproto::scc_info_Variable.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.Variable)
 }
 Variable::Variable(const Variable& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.has_base()) {
+  if (from._internal_has_base()) {
     base_ = new ::xviz::VariableBase(*from.base_);
   } else {
-    base_ = NULL;
+    base_ = nullptr;
   }
-  if (from.has_values()) {
+  if (from._internal_has_values()) {
     values_ = new ::xviz::Values(*from.values_);
   } else {
-    values_ = NULL;
+    values_ = nullptr;
   }
   // @@protoc_insertion_point(copy_constructor:xviz.Variable)
 }
 
 void Variable::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Variable_core_2eproto.base);
   ::memset(&base_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&values_) -
       reinterpret_cast<char*>(&base_)) + sizeof(values_));
@@ -4889,137 +3702,95 @@ void Variable::SharedDtor() {
 void Variable::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* Variable::descriptor() {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const Variable& Variable::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_core_2eproto::scc_info_Variable.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Variable_core_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void Variable::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.Variable)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArenaNoVirtual() == NULL && base_ != NULL) {
+  if (GetArenaNoVirtual() == nullptr && base_ != nullptr) {
     delete base_;
   }
-  base_ = NULL;
-  if (GetArenaNoVirtual() == NULL && values_ != NULL) {
+  base_ = nullptr;
+  if (GetArenaNoVirtual() == nullptr && values_ != nullptr) {
     delete values_;
   }
-  values_ = NULL;
+  values_ = nullptr;
   _internal_metadata_.Clear();
 }
 
-bool Variable::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.Variable)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* Variable::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // .xviz.VariableBase base = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_base()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_base(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // .xviz.Values values = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_values()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_values(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.Variable)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.Variable)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void Variable::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.Variable)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // .xviz.VariableBase base = 1;
-  if (this->has_base()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->_internal_base(), output);
-  }
-
-  // .xviz.Values values = 2;
-  if (this->has_values()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->_internal_values(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.Variable)
-}
-
-::google::protobuf::uint8* Variable::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* Variable::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.Variable)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // .xviz.VariableBase base = 1;
   if (this->has_base()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->_internal_base(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::base(this), target, stream);
   }
 
   // .xviz.Values values = 2;
   if (this->has_values()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->_internal_values(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        2, _Internal::values(this), target, stream);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.Variable)
   return target;
@@ -5029,39 +3800,42 @@ size_t Variable::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.Variable)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // .xviz.VariableBase base = 1;
   if (this->has_base()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *base_);
   }
 
   // .xviz.Values values = 2;
   if (this->has_values()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *values_);
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void Variable::MergeFrom(const ::google::protobuf::Message& from) {
+void Variable::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.Variable)
   GOOGLE_DCHECK_NE(&from, this);
   const Variable* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Variable>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Variable>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.Variable)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.Variable)
     MergeFrom(*source);
@@ -5072,18 +3846,18 @@ void Variable::MergeFrom(const Variable& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.Variable)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from.has_base()) {
-    mutable_base()->::xviz::VariableBase::MergeFrom(from.base());
+    _internal_mutable_base()->::xviz::VariableBase::MergeFrom(from._internal_base());
   }
   if (from.has_values()) {
-    mutable_values()->::xviz::Values::MergeFrom(from.values());
+    _internal_mutable_values()->::xviz::Values::MergeFrom(from._internal_values());
   }
 }
 
-void Variable::CopyFrom(const ::google::protobuf::Message& from) {
+void Variable::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.Variable)
   if (&from == this) return;
   Clear();
@@ -5101,20 +3875,15 @@ bool Variable::IsInitialized() const {
   return true;
 }
 
-void Variable::Swap(Variable* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Variable::InternalSwap(Variable* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(base_, other->base_);
   swap(values_, other->values_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata Variable::GetMetadata() const {
-  protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata Variable::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -5122,30 +3891,29 @@ void Variable::InternalSwap(Variable* other) {
 
 void VariableBase::InitAsDefaultInstance() {
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int VariableBase::kObjectIdFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class VariableBase::_Internal {
+ public:
+};
 
 VariableBase::VariableBase()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_core_2eproto::scc_info_VariableBase.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.VariableBase)
 }
 VariableBase::VariableBase(const VariableBase& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  object_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.object_id().size() > 0) {
-    object_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.object_id_);
+  object_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_object_id().empty()) {
+    object_id_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.object_id_);
   }
   // @@protoc_insertion_point(copy_constructor:xviz.VariableBase)
 }
 
 void VariableBase::SharedCtor() {
-  object_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_VariableBase_core_2eproto.base);
+  object_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 VariableBase::~VariableBase() {
@@ -5154,123 +3922,83 @@ VariableBase::~VariableBase() {
 }
 
 void VariableBase::SharedDtor() {
-  object_id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  object_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void VariableBase::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* VariableBase::descriptor() {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const VariableBase& VariableBase::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_core_2eproto::scc_info_VariableBase.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_VariableBase_core_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void VariableBase::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.VariableBase)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  object_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  object_id_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
 }
 
-bool VariableBase::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.VariableBase)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* VariableBase::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // string object_id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_object_id()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->object_id().data(), static_cast<int>(this->object_id().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.VariableBase.object_id"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_object_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.VariableBase.object_id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.VariableBase)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.VariableBase)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void VariableBase::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.VariableBase)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string object_id = 1;
-  if (this->object_id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->object_id().data(), static_cast<int>(this->object_id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.VariableBase.object_id");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->object_id(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.VariableBase)
-}
-
-::google::protobuf::uint8* VariableBase::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* VariableBase::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.VariableBase)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string object_id = 1;
   if (this->object_id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->object_id().data(), static_cast<int>(this->object_id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_object_id().data(), static_cast<int>(this->_internal_object_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.VariableBase.object_id");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->object_id(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_object_id(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.VariableBase)
   return target;
@@ -5280,32 +4008,35 @@ size_t VariableBase::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.VariableBase)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // string object_id = 1;
   if (this->object_id().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->object_id());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_object_id());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void VariableBase::MergeFrom(const ::google::protobuf::Message& from) {
+void VariableBase::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.VariableBase)
   GOOGLE_DCHECK_NE(&from, this);
   const VariableBase* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const VariableBase>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<VariableBase>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.VariableBase)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.VariableBase)
     MergeFrom(*source);
@@ -5316,16 +4047,16 @@ void VariableBase::MergeFrom(const VariableBase& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.VariableBase)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from.object_id().size() > 0) {
 
-    object_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.object_id_);
+    object_id_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.object_id_);
   }
 }
 
-void VariableBase::CopyFrom(const ::google::protobuf::Message& from) {
+void VariableBase::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.VariableBase)
   if (&from == this) return;
   Clear();
@@ -5343,20 +4074,15 @@ bool VariableBase::IsInitialized() const {
   return true;
 }
 
-void VariableBase::Swap(VariableBase* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void VariableBase::InternalSwap(VariableBase* other) {
   using std::swap;
-  object_id_.Swap(&other->object_id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  object_id_.Swap(&other->object_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
 }
 
-::google::protobuf::Metadata VariableBase::GetMetadata() const {
-  protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata VariableBase::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -5364,23 +4090,18 @@ void VariableBase::InternalSwap(VariableBase* other) {
 
 void Values::InitAsDefaultInstance() {
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Values::kDoublesFieldNumber;
-const int Values::kInt32SFieldNumber;
-const int Values::kBoolsFieldNumber;
-const int Values::kStringsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class Values::_Internal {
+ public:
+};
 
 Values::Values()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_core_2eproto::scc_info_Values.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.Values)
 }
 Values::Values(const Values& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
       doubles_(from.doubles_),
       int32s_(from.int32s_),
       bools_(from.bools_),
@@ -5390,6 +4111,7 @@ Values::Values(const Values& from)
 }
 
 void Values::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Values_core_2eproto.base);
 }
 
 Values::~Values() {
@@ -5403,20 +4125,15 @@ void Values::SharedDtor() {
 void Values::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* Values::descriptor() {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const Values& Values::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_core_2eproto::scc_info_Values.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Values_core_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void Values::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.Values)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -5427,221 +4144,115 @@ void Values::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool Values::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.Values)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* Values::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // repeated double doubles = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, this->mutable_doubles())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(17u /* 17 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 1, 18u, input, this->mutable_doubles())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedDoubleParser(_internal_mutable_doubles(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 17) {
+          _internal_add_doubles(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr));
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // repeated int32 int32s = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, this->mutable_int32s())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 1, 26u, input, this->mutable_int32s())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt32Parser(_internal_mutable_int32s(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24) {
+          _internal_add_int32s(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // repeated bool bools = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, this->mutable_bools())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 1, 34u, input, this->mutable_bools())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedBoolParser(_internal_mutable_bools(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32) {
+          _internal_add_bools(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // repeated string strings = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_strings()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->strings(this->strings_size() - 1).data(),
-            static_cast<int>(this->strings(this->strings_size() - 1).length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.Values.strings"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_strings();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.Values.strings"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* Values::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:xviz.Values)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated double doubles = 2;
+  if (this->_internal_doubles_size() > 0) {
+    target = stream->WriteFixedPacked(2, _internal_doubles(), target);
+  }
+
+  // repeated int32 int32s = 3;
+  {
+    int byte_size = _int32s_cached_byte_size_.load(std::memory_order_relaxed);
+    if (byte_size > 0) {
+      target = stream->WriteInt32Packed(
+          3, _internal_int32s(), byte_size, target);
     }
   }
-success:
-  // @@protoc_insertion_point(parse_success:xviz.Values)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:xviz.Values)
-  return false;
-#undef DO_
-}
-
-void Values::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.Values)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // repeated double doubles = 2;
-  if (this->doubles_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(2, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _doubles_cached_byte_size_));
-    ::google::protobuf::internal::WireFormatLite::WriteDoubleArray(
-      this->doubles().data(), this->doubles_size(), output);
-  }
-
-  // repeated int32 int32s = 3;
-  if (this->int32s_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(3, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _int32s_cached_byte_size_));
-  }
-  for (int i = 0, n = this->int32s_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32NoTag(
-      this->int32s(i), output);
-  }
 
   // repeated bool bools = 4;
-  if (this->bools_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(4, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _bools_cached_byte_size_));
-    ::google::protobuf::internal::WireFormatLite::WriteBoolArray(
-      this->bools().data(), this->bools_size(), output);
+  if (this->_internal_bools_size() > 0) {
+    target = stream->WriteFixedPacked(4, _internal_bools(), target);
   }
 
   // repeated string strings = 5;
-  for (int i = 0, n = this->strings_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->strings(i).data(), static_cast<int>(this->strings(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+  for (int i = 0, n = this->_internal_strings_size(); i < n; i++) {
+    const auto& s = this->_internal_strings(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.Values.strings");
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      5, this->strings(i), output);
+    target = stream->WriteString(5, s, target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.Values)
-}
-
-::google::protobuf::uint8* Values::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:xviz.Values)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // repeated double doubles = 2;
-  if (this->doubles_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      2,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _doubles_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteDoubleNoTagToArray(this->doubles_, target);
-  }
-
-  // repeated int32 int32s = 3;
-  if (this->int32s_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      3,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _int32s_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteInt32NoTagToArray(this->int32s_, target);
-  }
-
-  // repeated bool bools = 4;
-  if (this->bools_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      4,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _bools_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteBoolNoTagToArray(this->bools_, target);
-  }
-
-  // repeated string strings = 5;
-  for (int i = 0, n = this->strings_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->strings(i).data(), static_cast<int>(this->strings(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.Values.strings");
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(5, this->strings(i), target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.Values)
   return target;
@@ -5651,81 +4262,81 @@ size_t Values::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.Values)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated double doubles = 2;
   {
-    unsigned int count = static_cast<unsigned int>(this->doubles_size());
+    unsigned int count = static_cast<unsigned int>(this->_internal_doubles_size());
     size_t data_size = 8UL * count;
     if (data_size > 0) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
     }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _doubles_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
+    _doubles_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
     total_size += data_size;
   }
 
   // repeated int32 int32s = 3;
   {
-    size_t data_size = ::google::protobuf::internal::WireFormatLite::
+    size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       Int32Size(this->int32s_);
     if (data_size > 0) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
     }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _int32s_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
+    _int32s_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
     total_size += data_size;
   }
 
   // repeated bool bools = 4;
   {
-    unsigned int count = static_cast<unsigned int>(this->bools_size());
+    unsigned int count = static_cast<unsigned int>(this->_internal_bools_size());
     size_t data_size = 1UL * count;
     if (data_size > 0) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
     }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _bools_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
+    _bools_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
     total_size += data_size;
   }
 
   // repeated string strings = 5;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->strings_size());
-  for (int i = 0, n = this->strings_size(); i < n; i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->strings(i));
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(strings_.size());
+  for (int i = 0, n = strings_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      strings_.Get(i));
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void Values::MergeFrom(const ::google::protobuf::Message& from) {
+void Values::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.Values)
   GOOGLE_DCHECK_NE(&from, this);
   const Values* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Values>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Values>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.Values)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.Values)
     MergeFrom(*source);
@@ -5736,7 +4347,7 @@ void Values::MergeFrom(const Values& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.Values)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   doubles_.MergeFrom(from.doubles_);
@@ -5745,7 +4356,7 @@ void Values::MergeFrom(const Values& from) {
   strings_.MergeFrom(from.strings_);
 }
 
-void Values::CopyFrom(const ::google::protobuf::Message& from) {
+void Values::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.Values)
   if (&from == this) return;
   Clear();
@@ -5763,22 +4374,17 @@ bool Values::IsInitialized() const {
   return true;
 }
 
-void Values::Swap(Values* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Values::InternalSwap(Values* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   doubles_.InternalSwap(&other->doubles_);
   int32s_.InternalSwap(&other->int32s_);
   bools_.InternalSwap(&other->bools_);
-  strings_.InternalSwap(CastToBase(&other->strings_));
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  strings_.InternalSwap(&other->strings_);
 }
 
-::google::protobuf::Metadata Values::GetMetadata() const {
-  protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata Values::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -5786,30 +4392,29 @@ void Values::InternalSwap(Values* other) {
 
 void Link::InitAsDefaultInstance() {
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Link::kTargetPoseFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class Link::_Internal {
+ public:
+};
 
 Link::Link()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_core_2eproto::scc_info_Link.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.Link)
 }
 Link::Link(const Link& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  target_pose_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.target_pose().size() > 0) {
-    target_pose_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.target_pose_);
+  target_pose_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_target_pose().empty()) {
+    target_pose_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.target_pose_);
   }
   // @@protoc_insertion_point(copy_constructor:xviz.Link)
 }
 
 void Link::SharedCtor() {
-  target_pose_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Link_core_2eproto.base);
+  target_pose_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 Link::~Link() {
@@ -5818,123 +4423,83 @@ Link::~Link() {
 }
 
 void Link::SharedDtor() {
-  target_pose_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  target_pose_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void Link::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* Link::descriptor() {
-  ::protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const Link& Link::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_core_2eproto::scc_info_Link.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Link_core_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void Link::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.Link)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  target_pose_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  target_pose_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
 }
 
-bool Link::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.Link)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* Link::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // string target_pose = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_target_pose()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->target_pose().data(), static_cast<int>(this->target_pose().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.Link.target_pose"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_target_pose();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.Link.target_pose"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.Link)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.Link)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void Link::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.Link)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string target_pose = 1;
-  if (this->target_pose().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->target_pose().data(), static_cast<int>(this->target_pose().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.Link.target_pose");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->target_pose(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.Link)
-}
-
-::google::protobuf::uint8* Link::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* Link::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.Link)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string target_pose = 1;
   if (this->target_pose().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->target_pose().data(), static_cast<int>(this->target_pose().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_target_pose().data(), static_cast<int>(this->_internal_target_pose().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.Link.target_pose");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->target_pose(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_target_pose(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.Link)
   return target;
@@ -5944,32 +4509,35 @@ size_t Link::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.Link)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // string target_pose = 1;
   if (this->target_pose().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->target_pose());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_target_pose());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void Link::MergeFrom(const ::google::protobuf::Message& from) {
+void Link::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.Link)
   GOOGLE_DCHECK_NE(&from, this);
   const Link* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Link>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Link>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.Link)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.Link)
     MergeFrom(*source);
@@ -5980,16 +4548,16 @@ void Link::MergeFrom(const Link& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.Link)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from.target_pose().size() > 0) {
 
-    target_pose_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.target_pose_);
+    target_pose_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.target_pose_);
   }
 }
 
-void Link::CopyFrom(const ::google::protobuf::Message& from) {
+void Link::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.Link)
   if (&from == this) return;
   Clear();
@@ -6007,88 +4575,82 @@ bool Link::IsInitialized() const {
   return true;
 }
 
-void Link::Swap(Link* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Link::InternalSwap(Link* other) {
   using std::swap;
-  target_pose_.Swap(&other->target_pose_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  target_pose_.Swap(&other->target_pose_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
 }
 
-::google::protobuf::Metadata Link::GetMetadata() const {
-  protobuf_core_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_core_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata Link::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace xviz
-namespace google {
-namespace protobuf {
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::StreamSet_PosesEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::StreamSet_PosesEntry_DoNotUse >(Arena* arena) {
+PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::xviz::StreamSet_PosesEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::StreamSet_PosesEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::StreamSet_PosesEntry_DoNotUse >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::StreamSet_PrimitivesEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::StreamSet_PrimitivesEntry_DoNotUse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::StreamSet_PrimitivesEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::StreamSet_PrimitivesEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::StreamSet_PrimitivesEntry_DoNotUse >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::StreamSet_FutureInstancesEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::StreamSet_FutureInstancesEntry_DoNotUse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::StreamSet_FutureInstancesEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::StreamSet_FutureInstancesEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::StreamSet_FutureInstancesEntry_DoNotUse >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::StreamSet_VariablesEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::StreamSet_VariablesEntry_DoNotUse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::StreamSet_VariablesEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::StreamSet_VariablesEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::StreamSet_VariablesEntry_DoNotUse >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::StreamSet_AnnotationsEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::StreamSet_AnnotationsEntry_DoNotUse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::StreamSet_AnnotationsEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::StreamSet_AnnotationsEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::StreamSet_AnnotationsEntry_DoNotUse >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::StreamSet_UiPrimitivesEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::StreamSet_UiPrimitivesEntry_DoNotUse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::StreamSet_UiPrimitivesEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::StreamSet_UiPrimitivesEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::StreamSet_UiPrimitivesEntry_DoNotUse >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::StreamSet_LinksEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::StreamSet_LinksEntry_DoNotUse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::StreamSet_LinksEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::StreamSet_LinksEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::StreamSet_LinksEntry_DoNotUse >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::StreamSet* Arena::CreateMaybeMessage< ::xviz::StreamSet >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::StreamSet* Arena::CreateMaybeMessage< ::xviz::StreamSet >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::StreamSet >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::Pose* Arena::CreateMaybeMessage< ::xviz::Pose >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::Pose* Arena::CreateMaybeMessage< ::xviz::Pose >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::Pose >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::MapOrigin* Arena::CreateMaybeMessage< ::xviz::MapOrigin >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::MapOrigin* Arena::CreateMaybeMessage< ::xviz::MapOrigin >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::MapOrigin >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::PrimitiveState* Arena::CreateMaybeMessage< ::xviz::PrimitiveState >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::PrimitiveState* Arena::CreateMaybeMessage< ::xviz::PrimitiveState >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::PrimitiveState >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::UIPrimitiveState* Arena::CreateMaybeMessage< ::xviz::UIPrimitiveState >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::UIPrimitiveState* Arena::CreateMaybeMessage< ::xviz::UIPrimitiveState >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::UIPrimitiveState >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::TimeSeriesState* Arena::CreateMaybeMessage< ::xviz::TimeSeriesState >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::TimeSeriesState* Arena::CreateMaybeMessage< ::xviz::TimeSeriesState >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::TimeSeriesState >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::FutureInstances* Arena::CreateMaybeMessage< ::xviz::FutureInstances >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::FutureInstances* Arena::CreateMaybeMessage< ::xviz::FutureInstances >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::FutureInstances >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::VariableState* Arena::CreateMaybeMessage< ::xviz::VariableState >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::VariableState* Arena::CreateMaybeMessage< ::xviz::VariableState >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::VariableState >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::AnnotationState* Arena::CreateMaybeMessage< ::xviz::AnnotationState >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::AnnotationState* Arena::CreateMaybeMessage< ::xviz::AnnotationState >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::AnnotationState >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::Variable* Arena::CreateMaybeMessage< ::xviz::Variable >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::Variable* Arena::CreateMaybeMessage< ::xviz::Variable >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::Variable >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::VariableBase* Arena::CreateMaybeMessage< ::xviz::VariableBase >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::VariableBase* Arena::CreateMaybeMessage< ::xviz::VariableBase >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::VariableBase >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::Values* Arena::CreateMaybeMessage< ::xviz::Values >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::Values* Arena::CreateMaybeMessage< ::xviz::Values >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::Values >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::Link* Arena::CreateMaybeMessage< ::xviz::Link >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::Link* Arena::CreateMaybeMessage< ::xviz::Link >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::Link >(arena);
 }
-}  // namespace protobuf
-}  // namespace google
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
+#include <google/protobuf/port_undef.inc>

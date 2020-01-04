@@ -5,224 +5,155 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
-#include <google/protobuf/stubs/port.h>
 #include <google/protobuf/io/coded_stream.h>
-#include <google/protobuf/wire_format_lite_inl.h>
+#include <google/protobuf/extension_set.h>
+#include <google/protobuf/wire_format_lite.h>
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/generated_message_reflection.h>
 #include <google/protobuf/reflection_ops.h>
 #include <google/protobuf/wire_format.h>
-// This is a temporary google only hack
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-#include "third_party/protobuf/version.h"
-#endif
 // @@protoc_insertion_point(includes)
-
-namespace protobuf_core_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_core_2eproto ::google::protobuf::internal::SCCInfo<8> scc_info_StreamSet;
-}  // namespace protobuf_core_2eproto
-namespace protobuf_google_2fprotobuf_2fstruct_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_google_2fprotobuf_2fstruct_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_ListValue;
-}  // namespace protobuf_google_2fprotobuf_2fstruct_2eproto
-namespace protobuf_session_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_session_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_CameraInfo;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_session_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_LogInfo;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_session_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Metadata_StreamAliasesEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_session_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Metadata_CamerasEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_session_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Metadata_StreamsEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_session_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Metadata_UiConfigEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_session_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_UIPanelInfo;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_session_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_StreamMetadata;
-}  // namespace protobuf_session_2eproto
-namespace protobuf_style_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_style_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_StyleStreamValue;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_style_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_StyleClass;
-}  // namespace protobuf_style_2eproto
+#include <google/protobuf/port_def.inc>
+extern PROTOBUF_INTERNAL_EXPORT_google_2fprotobuf_2fstruct_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ListValue_google_2fprotobuf_2fstruct_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_session_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CameraInfo_session_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_session_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_LogInfo_session_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_session_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Metadata_CamerasEntry_DoNotUse_session_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_session_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Metadata_StreamAliasesEntry_DoNotUse_session_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_session_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Metadata_StreamsEntry_DoNotUse_session_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_session_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Metadata_UiConfigEntry_DoNotUse_session_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_session_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_StreamMetadata_session_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<8> scc_info_StreamSet_core_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_style_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_StyleClass_style_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_style_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_StyleStreamValue_style_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_session_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_UIPanelInfo_session_2eproto;
 namespace xviz {
 class StartDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Start>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Start> _instance;
 } _Start_default_instance_;
 class TransformLogDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TransformLog>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<TransformLog> _instance;
 } _TransformLog_default_instance_;
 class StateUpdateDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<StateUpdate>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<StateUpdate> _instance;
 } _StateUpdate_default_instance_;
 class TransformLogDoneDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TransformLogDone>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<TransformLogDone> _instance;
 } _TransformLogDone_default_instance_;
 class TransformPointInTimeDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TransformPointInTime>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<TransformPointInTime> _instance;
 } _TransformPointInTime_default_instance_;
 class ReconfigureDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Reconfigure>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Reconfigure> _instance;
 } _Reconfigure_default_instance_;
 class Metadata_StreamsEntry_DoNotUseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Metadata_StreamsEntry_DoNotUse>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Metadata_StreamsEntry_DoNotUse> _instance;
 } _Metadata_StreamsEntry_DoNotUse_default_instance_;
 class Metadata_CamerasEntry_DoNotUseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Metadata_CamerasEntry_DoNotUse>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Metadata_CamerasEntry_DoNotUse> _instance;
 } _Metadata_CamerasEntry_DoNotUse_default_instance_;
 class Metadata_StreamAliasesEntry_DoNotUseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Metadata_StreamAliasesEntry_DoNotUse>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Metadata_StreamAliasesEntry_DoNotUse> _instance;
 } _Metadata_StreamAliasesEntry_DoNotUse_default_instance_;
 class Metadata_UiConfigEntry_DoNotUseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Metadata_UiConfigEntry_DoNotUse>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Metadata_UiConfigEntry_DoNotUse> _instance;
 } _Metadata_UiConfigEntry_DoNotUse_default_instance_;
 class MetadataDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Metadata>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Metadata> _instance;
 } _Metadata_default_instance_;
 class ErrorDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Error>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Error> _instance;
 } _Error_default_instance_;
 class StreamMetadataDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<StreamMetadata>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<StreamMetadata> _instance;
 } _StreamMetadata_default_instance_;
 class CameraInfoDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<CameraInfo>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CameraInfo> _instance;
 } _CameraInfo_default_instance_;
 class UIPanelInfoDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<UIPanelInfo>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<UIPanelInfo> _instance;
 } _UIPanelInfo_default_instance_;
 class LogInfoDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<LogInfo>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<LogInfo> _instance;
 } _LogInfo_default_instance_;
 }  // namespace xviz
-namespace protobuf_session_2eproto {
-static void InitDefaultsStart() {
+static void InitDefaultsscc_info_CameraInfo_session_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_Start_default_instance_;
-    new (ptr) ::xviz::Start();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    void* ptr = &::xviz::_CameraInfo_default_instance_;
+    new (ptr) ::xviz::CameraInfo();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::xviz::Start::InitAsDefaultInstance();
+  ::xviz::CameraInfo::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Start =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsStart}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CameraInfo_session_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_CameraInfo_session_2eproto}, {}};
 
-static void InitDefaultsTransformLog() {
+static void InitDefaultsscc_info_Error_session_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_TransformLog_default_instance_;
-    new (ptr) ::xviz::TransformLog();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    void* ptr = &::xviz::_Error_default_instance_;
+    new (ptr) ::xviz::Error();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::xviz::TransformLog::InitAsDefaultInstance();
+  ::xviz::Error::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_TransformLog =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTransformLog}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Error_session_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Error_session_2eproto}, {}};
 
-static void InitDefaultsStateUpdate() {
+static void InitDefaultsscc_info_LogInfo_session_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_StateUpdate_default_instance_;
-    new (ptr) ::xviz::StateUpdate();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    void* ptr = &::xviz::_LogInfo_default_instance_;
+    new (ptr) ::xviz::LogInfo();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::xviz::StateUpdate::InitAsDefaultInstance();
+  ::xviz::LogInfo::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_StateUpdate =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsStateUpdate}, {
-      &protobuf_core_2eproto::scc_info_StreamSet.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_LogInfo_session_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_LogInfo_session_2eproto}, {}};
 
-static void InitDefaultsTransformLogDone() {
+static void InitDefaultsscc_info_Metadata_session_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_TransformLogDone_default_instance_;
-    new (ptr) ::xviz::TransformLogDone();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    void* ptr = &::xviz::_Metadata_default_instance_;
+    new (ptr) ::xviz::Metadata();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::xviz::TransformLogDone::InitAsDefaultInstance();
+  ::xviz::Metadata::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_TransformLogDone =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTransformLogDone}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<5> scc_info_Metadata_session_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 5, 0, InitDefaultsscc_info_Metadata_session_2eproto}, {
+      &scc_info_Metadata_StreamsEntry_DoNotUse_session_2eproto.base,
+      &scc_info_Metadata_CamerasEntry_DoNotUse_session_2eproto.base,
+      &scc_info_Metadata_StreamAliasesEntry_DoNotUse_session_2eproto.base,
+      &scc_info_Metadata_UiConfigEntry_DoNotUse_session_2eproto.base,
+      &scc_info_LogInfo_session_2eproto.base,}};
 
-static void InitDefaultsTransformPointInTime() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::xviz::_TransformPointInTime_default_instance_;
-    new (ptr) ::xviz::TransformPointInTime();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::xviz::TransformPointInTime::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_TransformPointInTime =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTransformPointInTime}, {}};
-
-static void InitDefaultsReconfigure() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::xviz::_Reconfigure_default_instance_;
-    new (ptr) ::xviz::Reconfigure();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::xviz::Reconfigure::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_Reconfigure =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsReconfigure}, {
-      &protobuf_google_2fprotobuf_2fstruct_2eproto::scc_info_ListValue.base,}};
-
-static void InitDefaultsMetadata_StreamsEntry_DoNotUse() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::xviz::_Metadata_StreamsEntry_DoNotUse_default_instance_;
-    new (ptr) ::xviz::Metadata_StreamsEntry_DoNotUse();
-  }
-  ::xviz::Metadata_StreamsEntry_DoNotUse::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_Metadata_StreamsEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsMetadata_StreamsEntry_DoNotUse}, {
-      &protobuf_session_2eproto::scc_info_StreamMetadata.base,}};
-
-static void InitDefaultsMetadata_CamerasEntry_DoNotUse() {
+static void InitDefaultsscc_info_Metadata_CamerasEntry_DoNotUse_session_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -232,11 +163,11 @@ static void InitDefaultsMetadata_CamerasEntry_DoNotUse() {
   ::xviz::Metadata_CamerasEntry_DoNotUse::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_Metadata_CamerasEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsMetadata_CamerasEntry_DoNotUse}, {
-      &protobuf_session_2eproto::scc_info_CameraInfo.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Metadata_CamerasEntry_DoNotUse_session_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_Metadata_CamerasEntry_DoNotUse_session_2eproto}, {
+      &scc_info_CameraInfo_session_2eproto.base,}};
 
-static void InitDefaultsMetadata_StreamAliasesEntry_DoNotUse() {
+static void InitDefaultsscc_info_Metadata_StreamAliasesEntry_DoNotUse_session_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -246,10 +177,24 @@ static void InitDefaultsMetadata_StreamAliasesEntry_DoNotUse() {
   ::xviz::Metadata_StreamAliasesEntry_DoNotUse::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Metadata_StreamAliasesEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMetadata_StreamAliasesEntry_DoNotUse}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Metadata_StreamAliasesEntry_DoNotUse_session_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Metadata_StreamAliasesEntry_DoNotUse_session_2eproto}, {}};
 
-static void InitDefaultsMetadata_UiConfigEntry_DoNotUse() {
+static void InitDefaultsscc_info_Metadata_StreamsEntry_DoNotUse_session_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::xviz::_Metadata_StreamsEntry_DoNotUse_default_instance_;
+    new (ptr) ::xviz::Metadata_StreamsEntry_DoNotUse();
+  }
+  ::xviz::Metadata_StreamsEntry_DoNotUse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Metadata_StreamsEntry_DoNotUse_session_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_Metadata_StreamsEntry_DoNotUse_session_2eproto}, {
+      &scc_info_StreamMetadata_session_2eproto.base,}};
+
+static void InitDefaultsscc_info_Metadata_UiConfigEntry_DoNotUse_session_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -259,272 +204,279 @@ static void InitDefaultsMetadata_UiConfigEntry_DoNotUse() {
   ::xviz::Metadata_UiConfigEntry_DoNotUse::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_Metadata_UiConfigEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsMetadata_UiConfigEntry_DoNotUse}, {
-      &protobuf_session_2eproto::scc_info_UIPanelInfo.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Metadata_UiConfigEntry_DoNotUse_session_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_Metadata_UiConfigEntry_DoNotUse_session_2eproto}, {
+      &scc_info_UIPanelInfo_session_2eproto.base,}};
 
-static void InitDefaultsMetadata() {
+static void InitDefaultsscc_info_Reconfigure_session_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_Metadata_default_instance_;
-    new (ptr) ::xviz::Metadata();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    void* ptr = &::xviz::_Reconfigure_default_instance_;
+    new (ptr) ::xviz::Reconfigure();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::xviz::Metadata::InitAsDefaultInstance();
+  ::xviz::Reconfigure::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<5> scc_info_Metadata =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 5, InitDefaultsMetadata}, {
-      &protobuf_session_2eproto::scc_info_Metadata_StreamsEntry_DoNotUse.base,
-      &protobuf_session_2eproto::scc_info_Metadata_CamerasEntry_DoNotUse.base,
-      &protobuf_session_2eproto::scc_info_Metadata_StreamAliasesEntry_DoNotUse.base,
-      &protobuf_session_2eproto::scc_info_Metadata_UiConfigEntry_DoNotUse.base,
-      &protobuf_session_2eproto::scc_info_LogInfo.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Reconfigure_session_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_Reconfigure_session_2eproto}, {
+      &scc_info_ListValue_google_2fprotobuf_2fstruct_2eproto.base,}};
 
-static void InitDefaultsError() {
+static void InitDefaultsscc_info_Start_session_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_Error_default_instance_;
-    new (ptr) ::xviz::Error();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    void* ptr = &::xviz::_Start_default_instance_;
+    new (ptr) ::xviz::Start();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::xviz::Error::InitAsDefaultInstance();
+  ::xviz::Start::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Error =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsError}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Start_session_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Start_session_2eproto}, {}};
 
-static void InitDefaultsStreamMetadata() {
+static void InitDefaultsscc_info_StateUpdate_session_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::xviz::_StateUpdate_default_instance_;
+    new (ptr) ::xviz::StateUpdate();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::xviz::StateUpdate::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_StateUpdate_session_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_StateUpdate_session_2eproto}, {
+      &scc_info_StreamSet_core_2eproto.base,}};
+
+static void InitDefaultsscc_info_StreamMetadata_session_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
     void* ptr = &::xviz::_StreamMetadata_default_instance_;
     new (ptr) ::xviz::StreamMetadata();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
   ::xviz::StreamMetadata::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<2> scc_info_StreamMetadata =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsStreamMetadata}, {
-      &protobuf_style_2eproto::scc_info_StyleStreamValue.base,
-      &protobuf_style_2eproto::scc_info_StyleClass.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_StreamMetadata_session_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_StreamMetadata_session_2eproto}, {
+      &scc_info_StyleStreamValue_style_2eproto.base,
+      &scc_info_StyleClass_style_2eproto.base,}};
 
-static void InitDefaultsCameraInfo() {
+static void InitDefaultsscc_info_TransformLog_session_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_CameraInfo_default_instance_;
-    new (ptr) ::xviz::CameraInfo();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    void* ptr = &::xviz::_TransformLog_default_instance_;
+    new (ptr) ::xviz::TransformLog();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::xviz::CameraInfo::InitAsDefaultInstance();
+  ::xviz::TransformLog::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_CameraInfo =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsCameraInfo}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TransformLog_session_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_TransformLog_session_2eproto}, {}};
 
-static void InitDefaultsUIPanelInfo() {
+static void InitDefaultsscc_info_TransformLogDone_session_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::xviz::_TransformLogDone_default_instance_;
+    new (ptr) ::xviz::TransformLogDone();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::xviz::TransformLogDone::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TransformLogDone_session_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_TransformLogDone_session_2eproto}, {}};
+
+static void InitDefaultsscc_info_TransformPointInTime_session_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::xviz::_TransformPointInTime_default_instance_;
+    new (ptr) ::xviz::TransformPointInTime();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::xviz::TransformPointInTime::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TransformPointInTime_session_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_TransformPointInTime_session_2eproto}, {}};
+
+static void InitDefaultsscc_info_UIPanelInfo_session_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
     void* ptr = &::xviz::_UIPanelInfo_default_instance_;
     new (ptr) ::xviz::UIPanelInfo();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
   ::xviz::UIPanelInfo::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_UIPanelInfo =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsUIPanelInfo}, {
-      &protobuf_google_2fprotobuf_2fstruct_2eproto::scc_info_ListValue.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_UIPanelInfo_session_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_UIPanelInfo_session_2eproto}, {
+      &scc_info_ListValue_google_2fprotobuf_2fstruct_2eproto.base,}};
 
-static void InitDefaultsLogInfo() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_session_2eproto[16];
+static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_session_2eproto[10];
+static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_session_2eproto = nullptr;
 
-  {
-    void* ptr = &::xviz::_LogInfo_default_instance_;
-    new (ptr) ::xviz::LogInfo();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::xviz::LogInfo::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_LogInfo =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsLogInfo}, {}};
-
-void InitDefaults() {
-  ::google::protobuf::internal::InitSCC(&scc_info_Start.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TransformLog.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_StateUpdate.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TransformLogDone.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TransformPointInTime.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Reconfigure.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Metadata_StreamsEntry_DoNotUse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Metadata_CamerasEntry_DoNotUse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Metadata_StreamAliasesEntry_DoNotUse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Metadata_UiConfigEntry_DoNotUse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Metadata.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Error.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_StreamMetadata.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_CameraInfo.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_UIPanelInfo.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_LogInfo.base);
-}
-
-::google::protobuf::Metadata file_level_metadata[16];
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[10];
-
-const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_session_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Start, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Start, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Start, version_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Start, profile_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Start, session_type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Start, message_format_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Start, log_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Start, version_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Start, profile_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Start, session_type_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Start, message_format_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Start, log_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TransformLog, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TransformLog, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TransformLog, id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TransformLog, start_timestamp_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TransformLog, end_timestamp_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TransformLog, desired_streams_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TransformLog, id_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TransformLog, start_timestamp_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TransformLog, end_timestamp_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TransformLog, desired_streams_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StateUpdate, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StateUpdate, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StateUpdate, update_type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StateUpdate, updates_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StateUpdate, update_type_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StateUpdate, updates_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TransformLogDone, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TransformLogDone, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TransformLogDone, id_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TransformLogDone, id_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TransformPointInTime, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TransformPointInTime, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TransformPointInTime, id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TransformPointInTime, query_timestamp_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TransformPointInTime, desired_streams_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TransformPointInTime, id_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TransformPointInTime, query_timestamp_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TransformPointInTime, desired_streams_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Reconfigure, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Reconfigure, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Reconfigure, update_type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Reconfigure, config_update_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata_StreamsEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata_StreamsEntry_DoNotUse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Reconfigure, update_type_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Reconfigure, config_update_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata_StreamsEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata_StreamsEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata_StreamsEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata_StreamsEntry_DoNotUse, value_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata_StreamsEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata_StreamsEntry_DoNotUse, value_),
   0,
   1,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata_CamerasEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata_CamerasEntry_DoNotUse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata_CamerasEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata_CamerasEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata_CamerasEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata_CamerasEntry_DoNotUse, value_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata_CamerasEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata_CamerasEntry_DoNotUse, value_),
   0,
   1,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata_StreamAliasesEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata_StreamAliasesEntry_DoNotUse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata_StreamAliasesEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata_StreamAliasesEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata_StreamAliasesEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata_StreamAliasesEntry_DoNotUse, value_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata_StreamAliasesEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata_StreamAliasesEntry_DoNotUse, value_),
   0,
   1,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata_UiConfigEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata_UiConfigEntry_DoNotUse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata_UiConfigEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata_UiConfigEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata_UiConfigEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata_UiConfigEntry_DoNotUse, value_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata_UiConfigEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata_UiConfigEntry_DoNotUse, value_),
   0,
   1,
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata, version_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata, streams_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata, cameras_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata, stream_aliases_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata, ui_config_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Metadata, log_info_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata, version_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata, streams_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata, cameras_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata, stream_aliases_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata, ui_config_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Metadata, log_info_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Error, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Error, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::Error, message_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Error, message_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamMetadata, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamMetadata, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamMetadata, source_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamMetadata, units_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamMetadata, category_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamMetadata, scalar_type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamMetadata, primitive_type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamMetadata, ui_primitive_type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamMetadata, annotation_type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamMetadata, stream_style_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamMetadata, style_classes_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamMetadata, coordinate_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamMetadata, transform_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::StreamMetadata, transform_callback_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamMetadata, source_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamMetadata, units_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamMetadata, category_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamMetadata, scalar_type_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamMetadata, primitive_type_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamMetadata, ui_primitive_type_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamMetadata, annotation_type_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamMetadata, stream_style_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamMetadata, style_classes_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamMetadata, coordinate_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamMetadata, transform_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StreamMetadata, transform_callback_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::CameraInfo, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::CameraInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::CameraInfo, human_name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::CameraInfo, source_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::CameraInfo, vehicle_position_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::CameraInfo, vehicle_orientation_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::CameraInfo, pixel_width_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::CameraInfo, pixel_height_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::CameraInfo, rectification_projection_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::CameraInfo, gl_projection_),
+  PROTOBUF_FIELD_OFFSET(::xviz::CameraInfo, human_name_),
+  PROTOBUF_FIELD_OFFSET(::xviz::CameraInfo, source_),
+  PROTOBUF_FIELD_OFFSET(::xviz::CameraInfo, vehicle_position_),
+  PROTOBUF_FIELD_OFFSET(::xviz::CameraInfo, vehicle_orientation_),
+  PROTOBUF_FIELD_OFFSET(::xviz::CameraInfo, pixel_width_),
+  PROTOBUF_FIELD_OFFSET(::xviz::CameraInfo, pixel_height_),
+  PROTOBUF_FIELD_OFFSET(::xviz::CameraInfo, rectification_projection_),
+  PROTOBUF_FIELD_OFFSET(::xviz::CameraInfo, gl_projection_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::UIPanelInfo, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::UIPanelInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::UIPanelInfo, name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::UIPanelInfo, needed_streams_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::UIPanelInfo, config_),
+  PROTOBUF_FIELD_OFFSET(::xviz::UIPanelInfo, name_),
+  PROTOBUF_FIELD_OFFSET(::xviz::UIPanelInfo, needed_streams_),
+  PROTOBUF_FIELD_OFFSET(::xviz::UIPanelInfo, config_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::LogInfo, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::LogInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::LogInfo, start_time_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::LogInfo, end_time_),
+  PROTOBUF_FIELD_OFFSET(::xviz::LogInfo, start_time_),
+  PROTOBUF_FIELD_OFFSET(::xviz::LogInfo, end_time_),
 };
-static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::xviz::Start)},
   { 10, -1, sizeof(::xviz::TransformLog)},
   { 19, -1, sizeof(::xviz::StateUpdate)},
@@ -543,160 +495,154 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 138, -1, sizeof(::xviz::LogInfo)},
 };
 
-static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_Start_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_TransformLog_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_StateUpdate_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_TransformLogDone_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_TransformPointInTime_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_Reconfigure_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_Metadata_StreamsEntry_DoNotUse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_Metadata_CamerasEntry_DoNotUse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_Metadata_StreamAliasesEntry_DoNotUse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_Metadata_UiConfigEntry_DoNotUse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_Metadata_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_Error_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_StreamMetadata_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_CameraInfo_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_UIPanelInfo_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_LogInfo_default_instance_),
+static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_Start_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_TransformLog_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_StateUpdate_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_TransformLogDone_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_TransformPointInTime_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_Reconfigure_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_Metadata_StreamsEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_Metadata_CamerasEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_Metadata_StreamAliasesEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_Metadata_UiConfigEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_Metadata_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_Error_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_StreamMetadata_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_CameraInfo_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_UIPanelInfo_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_LogInfo_default_instance_),
 };
 
-void protobuf_AssignDescriptors() {
-  AddDescriptors();
-  AssignDescriptors(
-      "session.proto", schemas, file_default_instances, TableStruct::offsets,
-      file_level_metadata, file_level_enum_descriptors, NULL);
-}
+const char descriptor_table_protodef_session_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
+  "\n\rsession.proto\022\004xviz\032\034google/protobuf/s"
+  "truct.proto\032\ncore.proto\032\roptions.proto\032\013"
+  "style.proto\"\356\001\n\005Start\022\017\n\007version\030\001 \001(\t\022\017"
+  "\n\007profile\030\002 \001(\t\022\'\n\014session_type\030\003 \001(\0162\021."
+  "xviz.SessionType\0221\n\016message_format\030\004 \001(\016"
+  "2\031.xviz.Start.MessageFormat\022\013\n\003log\030\005 \001(\t"
+  "\"G\n\rMessageFormat\022 \n\034START_MESSAGE_FORMA"
+  "T_INVALID\020\000\022\010\n\004JSON\020\001\022\n\n\006BINARY\020\002:\021\302\273\032\rs"
+  "ession/start\"~\n\014TransformLog\022\n\n\002id\030\001 \001(\t"
+  "\022\027\n\017start_timestamp\030\002 \001(\001\022\025\n\rend_timesta"
+  "mp\030\003 \001(\001\022\027\n\017desired_streams\030\004 \003(\t:\031\302\273\032\025s"
+  "ession/transform_log\"\363\001\n\013StateUpdate\0221\n\013"
+  "update_type\030\001 \001(\0162\034.xviz.StateUpdate.Upd"
+  "ateType\022 \n\007updates\030\002 \003(\0132\017.xviz.StreamSe"
+  "t\"u\n\nUpdateType\022$\n STATE_UPDATE_UPDATE_T"
+  "YPE_INVALID\020\000\022\014\n\010SNAPSHOT\020\001\022\017\n\013INCREMENT"
+  "AL\020\002\022\022\n\016COMPLETE_STATE\020\003\022\016\n\nPERSISTENT\020\004"
+  ":\030\302\273\032\024session/state_update\">\n\020TransformL"
+  "ogDone\022\n\n\002id\030\001 \001(\t:\036\302\273\032\032session/transfor"
+  "m_log_done\"y\n\024TransformPointInTime\022\n\n\002id"
+  "\030\001 \001(\t\022\027\n\017query_timestamp\030\002 \001(\001\022\027\n\017desir"
+  "ed_streams\030\003 \003(\t:#\302\273\032\037session/transform_"
+  "point_in_time\"\321\001\n\013Reconfigure\0221\n\013update_"
+  "type\030\001 \001(\0162\034.xviz.Reconfigure.UpdateType"
+  "\022.\n\rconfig_update\030\002 \001(\0132\027.google.protobu"
+  "f.Struct\"F\n\nUpdateType\022#\n\037RECONFIGURE_UP"
+  "DATE_TYPE_INVALID\020\000\022\t\n\005DELTA\020\001\022\010\n\004FULL\020\002"
+  ":\027\302\273\032\023session/reconfigure\"\234\004\n\010Metadata\022\017"
+  "\n\007version\030\001 \001(\t\022,\n\007streams\030\002 \003(\0132\033.xviz."
+  "Metadata.StreamsEntry\022,\n\007cameras\030\003 \003(\0132\033"
+  ".xviz.Metadata.CamerasEntry\0229\n\016stream_al"
+  "iases\030\004 \003(\0132!.xviz.Metadata.StreamAliase"
+  "sEntry\022/\n\tui_config\030\005 \003(\0132\034.xviz.Metadat"
+  "a.UiConfigEntry\022\037\n\010log_info\030\006 \001(\0132\r.xviz"
+  ".LogInfo\032D\n\014StreamsEntry\022\013\n\003key\030\001 \001(\t\022#\n"
+  "\005value\030\002 \001(\0132\024.xviz.StreamMetadata:\0028\001\032@"
+  "\n\014CamerasEntry\022\013\n\003key\030\001 \001(\t\022\037\n\005value\030\002 \001"
+  "(\0132\020.xviz.CameraInfo:\0028\001\0324\n\022StreamAliase"
+  "sEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\032B"
+  "\n\rUiConfigEntry\022\013\n\003key\030\001 \001(\t\022 \n\005value\030\002 "
+  "\001(\0132\021.xviz.UIPanelInfo:\0028\001:\024\302\273\032\020session/"
+  "metadata\"+\n\005Error\022\017\n\007message\030\001 \001(\t:\021\302\273\032\r"
+  "session/error\"\340\t\n\016StreamMetadata\022\016\n\006sour"
+  "ce\030\001 \001(\t\022\r\n\005units\030\002 \001(\t\022/\n\010category\030\003 \001("
+  "\0162\035.xviz.StreamMetadata.Category\0224\n\013scal"
+  "ar_type\030\004 \001(\0162\037.xviz.StreamMetadata.Scal"
+  "arType\022:\n\016primitive_type\030\005 \001(\0162\".xviz.St"
+  "reamMetadata.PrimitiveType\022\?\n\021ui_primiti"
+  "ve_type\030\006 \001(\0162$.xviz.StreamMetadata.UIPr"
+  "imitiveType\022<\n\017annotation_type\030\007 \001(\0162#.x"
+  "viz.StreamMetadata.AnnotationType\022,\n\014str"
+  "eam_style\030\010 \001(\0132\026.xviz.StyleStreamValue\022"
+  "\'\n\rstyle_classes\030\t \003(\0132\020.xviz.StyleClass"
+  "\0227\n\ncoordinate\030\n \001(\0162#.xviz.StreamMetada"
+  "ta.CoordinateType\022\021\n\ttransform\030\013 \003(\001\022\032\n\022"
+  "transform_callback\030\014 \001(\t\"\237\001\n\010Category\022$\n"
+  " STREAM_METADATA_CATEGORY_INVALID\020\000\022\r\n\tP"
+  "RIMITIVE\020\001\022\017\n\013TIME_SERIES\020\002\022\014\n\010VARIABLE\020"
+  "\003\022\016\n\nANNOTATION\020\004\022\023\n\017FUTURE_INSTANCE\020\005\022\010"
+  "\n\004POSE\020\006\022\020\n\014UI_PRIMITIVE\020\007\"a\n\nScalarType"
+  "\022\'\n#STREAM_METADATA_SCALAR_TYPE_INVALID\020"
+  "\000\022\t\n\005FLOAT\020\001\022\t\n\005INT32\020\002\022\n\n\006STRING\020\003\022\010\n\004B"
+  "OOL\020\004\"\217\001\n\rPrimitiveType\022*\n&STREAM_METADA"
+  "TA_PRIMITIVE_TYPE_INVALID\020\000\022\n\n\006CIRCLE\020\001\022"
+  "\t\n\005IMAGE\020\002\022\t\n\005POINT\020\003\022\013\n\007POLYGON\020\004\022\014\n\010PO"
+  "LYLINE\020\005\022\013\n\007STADIUM\020\006\022\010\n\004TEXT\020\007\"O\n\017UIPri"
+  "mitiveType\022-\n)STREAM_METADATA_UI_PRIMITI"
+  "VE_TYPE_INVALID\020\000\022\r\n\tTREETABLE\020\001\"I\n\016Anno"
+  "tationType\022+\n\'STREAM_METADATA_ANNOTATION"
+  "_TYPE_INVALID\020\000\022\n\n\006VISUAL\020\001\"~\n\016Coordinat"
+  "eType\022+\n\'STREAM_METADATA_COORDINATE_TYPE"
+  "_INVALID\020\000\022\016\n\nGEOGRAPHIC\020\001\022\014\n\010IDENTITY\020\002"
+  "\022\013\n\007DYNAMIC\020\003\022\024\n\020VEHICLE_RELATIVE\020\004:\033\302\273\032"
+  "\027session/stream_metadata\"\344\001\n\nCameraInfo\022"
+  "\022\n\nhuman_name\030\001 \001(\t\022\016\n\006source\030\002 \001(\t\022\030\n\020v"
+  "ehicle_position\030\003 \003(\001\022\033\n\023vehicle_orienta"
+  "tion\030\004 \003(\001\022\023\n\013pixel_width\030\005 \001(\001\022\024\n\014pixel"
+  "_height\030\006 \001(\001\022 \n\030rectification_projectio"
+  "n\030\007 \003(\001\022\025\n\rgl_projection\030\010 \003(\001:\027\302\273\032\023sess"
+  "ion/camera_info\"w\n\013UIPanelInfo\022\014\n\004name\030\001"
+  " \001(\t\022\026\n\016needed_streams\030\002 \003(\t\022\'\n\006config\030\003"
+  " \001(\0132\027.google.protobuf.Struct:\031\302\273\032\025sessi"
+  "on/ui_panel_info\"E\n\007LogInfo\022\022\n\nstart_tim"
+  "e\030\001 \001(\001\022\020\n\010end_time\030\002 \001(\001:\024\302\273\032\020session/l"
+  "og_info*N\n\013SessionType\022\030\n\024SESSION_TYPE_I"
+  "NVALID\020\000\022\010\n\004LIVE\020\001\022\007\n\003LOG\020\002\022\022\n\016UNBUFFERE"
+  "D_LOG\020\003B4\n\013com.xviz.v2B\014SessionProtoP\001Z\004"
+  "v2pb\242\002\004XVIZ\252\002\007xviz.V2b\006proto3"
+  ;
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_session_2eproto_deps[4] = {
+  &::descriptor_table_core_2eproto,
+  &::descriptor_table_google_2fprotobuf_2fstruct_2eproto,
+  &::descriptor_table_options_2eproto,
+  &::descriptor_table_style_2eproto,
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_session_2eproto_sccs[16] = {
+  &scc_info_CameraInfo_session_2eproto.base,
+  &scc_info_Error_session_2eproto.base,
+  &scc_info_LogInfo_session_2eproto.base,
+  &scc_info_Metadata_session_2eproto.base,
+  &scc_info_Metadata_CamerasEntry_DoNotUse_session_2eproto.base,
+  &scc_info_Metadata_StreamAliasesEntry_DoNotUse_session_2eproto.base,
+  &scc_info_Metadata_StreamsEntry_DoNotUse_session_2eproto.base,
+  &scc_info_Metadata_UiConfigEntry_DoNotUse_session_2eproto.base,
+  &scc_info_Reconfigure_session_2eproto.base,
+  &scc_info_Start_session_2eproto.base,
+  &scc_info_StateUpdate_session_2eproto.base,
+  &scc_info_StreamMetadata_session_2eproto.base,
+  &scc_info_TransformLog_session_2eproto.base,
+  &scc_info_TransformLogDone_session_2eproto.base,
+  &scc_info_TransformPointInTime_session_2eproto.base,
+  &scc_info_UIPanelInfo_session_2eproto.base,
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_session_2eproto_once;
+static bool descriptor_table_session_2eproto_initialized = false;
+const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_session_2eproto = {
+  &descriptor_table_session_2eproto_initialized, descriptor_table_protodef_session_2eproto, "session.proto", 3509,
+  &descriptor_table_session_2eproto_once, descriptor_table_session_2eproto_sccs, descriptor_table_session_2eproto_deps, 16, 4,
+  schemas, file_default_instances, TableStruct_session_2eproto::offsets,
+  file_level_metadata_session_2eproto, 16, file_level_enum_descriptors_session_2eproto, file_level_service_descriptors_session_2eproto,
+};
 
-void protobuf_AssignDescriptorsOnce() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, protobuf_AssignDescriptors);
-}
-
-void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
-void protobuf_RegisterTypes(const ::std::string&) {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 16);
-}
-
-void AddDescriptorsImpl() {
-  InitDefaults();
-  static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\rsession.proto\022\004xviz\032\034google/protobuf/s"
-      "truct.proto\032\ncore.proto\032\roptions.proto\032\013"
-      "style.proto\"\356\001\n\005Start\022\017\n\007version\030\001 \001(\t\022\017"
-      "\n\007profile\030\002 \001(\t\022\'\n\014session_type\030\003 \001(\0162\021."
-      "xviz.SessionType\0221\n\016message_format\030\004 \001(\016"
-      "2\031.xviz.Start.MessageFormat\022\013\n\003log\030\005 \001(\t"
-      "\"G\n\rMessageFormat\022 \n\034START_MESSAGE_FORMA"
-      "T_INVALID\020\000\022\010\n\004JSON\020\001\022\n\n\006BINARY\020\002:\021\302\273\032\rs"
-      "ession/start\"~\n\014TransformLog\022\n\n\002id\030\001 \001(\t"
-      "\022\027\n\017start_timestamp\030\002 \001(\001\022\025\n\rend_timesta"
-      "mp\030\003 \001(\001\022\027\n\017desired_streams\030\004 \003(\t:\031\302\273\032\025s"
-      "ession/transform_log\"\363\001\n\013StateUpdate\0221\n\013"
-      "update_type\030\001 \001(\0162\034.xviz.StateUpdate.Upd"
-      "ateType\022 \n\007updates\030\002 \003(\0132\017.xviz.StreamSe"
-      "t\"u\n\nUpdateType\022$\n STATE_UPDATE_UPDATE_T"
-      "YPE_INVALID\020\000\022\014\n\010SNAPSHOT\020\001\022\017\n\013INCREMENT"
-      "AL\020\002\022\022\n\016COMPLETE_STATE\020\003\022\016\n\nPERSISTENT\020\004"
-      ":\030\302\273\032\024session/state_update\">\n\020TransformL"
-      "ogDone\022\n\n\002id\030\001 \001(\t:\036\302\273\032\032session/transfor"
-      "m_log_done\"y\n\024TransformPointInTime\022\n\n\002id"
-      "\030\001 \001(\t\022\027\n\017query_timestamp\030\002 \001(\001\022\027\n\017desir"
-      "ed_streams\030\003 \003(\t:#\302\273\032\037session/transform_"
-      "point_in_time\"\321\001\n\013Reconfigure\0221\n\013update_"
-      "type\030\001 \001(\0162\034.xviz.Reconfigure.UpdateType"
-      "\022.\n\rconfig_update\030\002 \001(\0132\027.google.protobu"
-      "f.Struct\"F\n\nUpdateType\022#\n\037RECONFIGURE_UP"
-      "DATE_TYPE_INVALID\020\000\022\t\n\005DELTA\020\001\022\010\n\004FULL\020\002"
-      ":\027\302\273\032\023session/reconfigure\"\234\004\n\010Metadata\022\017"
-      "\n\007version\030\001 \001(\t\022,\n\007streams\030\002 \003(\0132\033.xviz."
-      "Metadata.StreamsEntry\022,\n\007cameras\030\003 \003(\0132\033"
-      ".xviz.Metadata.CamerasEntry\0229\n\016stream_al"
-      "iases\030\004 \003(\0132!.xviz.Metadata.StreamAliase"
-      "sEntry\022/\n\tui_config\030\005 \003(\0132\034.xviz.Metadat"
-      "a.UiConfigEntry\022\037\n\010log_info\030\006 \001(\0132\r.xviz"
-      ".LogInfo\032D\n\014StreamsEntry\022\013\n\003key\030\001 \001(\t\022#\n"
-      "\005value\030\002 \001(\0132\024.xviz.StreamMetadata:\0028\001\032@"
-      "\n\014CamerasEntry\022\013\n\003key\030\001 \001(\t\022\037\n\005value\030\002 \001"
-      "(\0132\020.xviz.CameraInfo:\0028\001\0324\n\022StreamAliase"
-      "sEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\032B"
-      "\n\rUiConfigEntry\022\013\n\003key\030\001 \001(\t\022 \n\005value\030\002 "
-      "\001(\0132\021.xviz.UIPanelInfo:\0028\001:\024\302\273\032\020session/"
-      "metadata\"+\n\005Error\022\017\n\007message\030\001 \001(\t:\021\302\273\032\r"
-      "session/error\"\340\t\n\016StreamMetadata\022\016\n\006sour"
-      "ce\030\001 \001(\t\022\r\n\005units\030\002 \001(\t\022/\n\010category\030\003 \001("
-      "\0162\035.xviz.StreamMetadata.Category\0224\n\013scal"
-      "ar_type\030\004 \001(\0162\037.xviz.StreamMetadata.Scal"
-      "arType\022:\n\016primitive_type\030\005 \001(\0162\".xviz.St"
-      "reamMetadata.PrimitiveType\022\?\n\021ui_primiti"
-      "ve_type\030\006 \001(\0162$.xviz.StreamMetadata.UIPr"
-      "imitiveType\022<\n\017annotation_type\030\007 \001(\0162#.x"
-      "viz.StreamMetadata.AnnotationType\022,\n\014str"
-      "eam_style\030\010 \001(\0132\026.xviz.StyleStreamValue\022"
-      "\'\n\rstyle_classes\030\t \003(\0132\020.xviz.StyleClass"
-      "\0227\n\ncoordinate\030\n \001(\0162#.xviz.StreamMetada"
-      "ta.CoordinateType\022\021\n\ttransform\030\013 \003(\001\022\032\n\022"
-      "transform_callback\030\014 \001(\t\"\237\001\n\010Category\022$\n"
-      " STREAM_METADATA_CATEGORY_INVALID\020\000\022\r\n\tP"
-      "RIMITIVE\020\001\022\017\n\013TIME_SERIES\020\002\022\014\n\010VARIABLE\020"
-      "\003\022\016\n\nANNOTATION\020\004\022\023\n\017FUTURE_INSTANCE\020\005\022\010"
-      "\n\004POSE\020\006\022\020\n\014UI_PRIMITIVE\020\007\"a\n\nScalarType"
-      "\022\'\n#STREAM_METADATA_SCALAR_TYPE_INVALID\020"
-      "\000\022\t\n\005FLOAT\020\001\022\t\n\005INT32\020\002\022\n\n\006STRING\020\003\022\010\n\004B"
-      "OOL\020\004\"\217\001\n\rPrimitiveType\022*\n&STREAM_METADA"
-      "TA_PRIMITIVE_TYPE_INVALID\020\000\022\n\n\006CIRCLE\020\001\022"
-      "\t\n\005IMAGE\020\002\022\t\n\005POINT\020\003\022\013\n\007POLYGON\020\004\022\014\n\010PO"
-      "LYLINE\020\005\022\013\n\007STADIUM\020\006\022\010\n\004TEXT\020\007\"O\n\017UIPri"
-      "mitiveType\022-\n)STREAM_METADATA_UI_PRIMITI"
-      "VE_TYPE_INVALID\020\000\022\r\n\tTREETABLE\020\001\"I\n\016Anno"
-      "tationType\022+\n\'STREAM_METADATA_ANNOTATION"
-      "_TYPE_INVALID\020\000\022\n\n\006VISUAL\020\001\"~\n\016Coordinat"
-      "eType\022+\n\'STREAM_METADATA_COORDINATE_TYPE"
-      "_INVALID\020\000\022\016\n\nGEOGRAPHIC\020\001\022\014\n\010IDENTITY\020\002"
-      "\022\013\n\007DYNAMIC\020\003\022\024\n\020VEHICLE_RELATIVE\020\004:\033\302\273\032"
-      "\027session/stream_metadata\"\344\001\n\nCameraInfo\022"
-      "\022\n\nhuman_name\030\001 \001(\t\022\016\n\006source\030\002 \001(\t\022\030\n\020v"
-      "ehicle_position\030\003 \003(\001\022\033\n\023vehicle_orienta"
-      "tion\030\004 \003(\001\022\023\n\013pixel_width\030\005 \001(\001\022\024\n\014pixel"
-      "_height\030\006 \001(\001\022 \n\030rectification_projectio"
-      "n\030\007 \003(\001\022\025\n\rgl_projection\030\010 \003(\001:\027\302\273\032\023sess"
-      "ion/camera_info\"w\n\013UIPanelInfo\022\014\n\004name\030\001"
-      " \001(\t\022\026\n\016needed_streams\030\002 \003(\t\022\'\n\006config\030\003"
-      " \001(\0132\027.google.protobuf.Struct:\031\302\273\032\025sessi"
-      "on/ui_panel_info\"E\n\007LogInfo\022\022\n\nstart_tim"
-      "e\030\001 \001(\001\022\020\n\010end_time\030\002 \001(\001:\024\302\273\032\020session/l"
-      "og_info*N\n\013SessionType\022\030\n\024SESSION_TYPE_I"
-      "NVALID\020\000\022\010\n\004LIVE\020\001\022\007\n\003LOG\020\002\022\022\n\016UNBUFFERE"
-      "D_LOG\020\003B4\n\013com.xviz.v2B\014SessionProtoP\001Z\004"
-      "v2pb\242\002\004XVIZ\252\002\007xviz.V2b\006proto3"
-  };
-  ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 3509);
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
-    "session.proto", &protobuf_RegisterTypes);
-  ::protobuf_google_2fprotobuf_2fstruct_2eproto::AddDescriptors();
-  ::protobuf_core_2eproto::AddDescriptors();
-  ::protobuf_options_2eproto::AddDescriptors();
-  ::protobuf_style_2eproto::AddDescriptors();
-}
-
-void AddDescriptors() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, AddDescriptorsImpl);
-}
-// Force AddDescriptors() to be called at dynamic initialization time.
-struct StaticDescriptorInitializer {
-  StaticDescriptorInitializer() {
-    AddDescriptors();
-  }
-} static_descriptor_initializer;
-}  // namespace protobuf_session_2eproto
+// Force running AddDescriptors() at dynamic initialization time.
+static bool dynamic_init_dummy_session_2eproto = (  ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_session_2eproto), true);
 namespace xviz {
-const ::google::protobuf::EnumDescriptor* Start_MessageFormat_descriptor() {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_session_2eproto::file_level_enum_descriptors[0];
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Start_MessageFormat_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_session_2eproto);
+  return file_level_enum_descriptors_session_2eproto[0];
 }
 bool Start_MessageFormat_IsValid(int value) {
   switch (value) {
@@ -709,17 +655,17 @@ bool Start_MessageFormat_IsValid(int value) {
   }
 }
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const Start_MessageFormat Start::START_MESSAGE_FORMAT_INVALID;
-const Start_MessageFormat Start::JSON;
-const Start_MessageFormat Start::BINARY;
-const Start_MessageFormat Start::MessageFormat_MIN;
-const Start_MessageFormat Start::MessageFormat_MAX;
-const int Start::MessageFormat_ARRAYSIZE;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-const ::google::protobuf::EnumDescriptor* StateUpdate_UpdateType_descriptor() {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_session_2eproto::file_level_enum_descriptors[1];
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+constexpr Start_MessageFormat Start::START_MESSAGE_FORMAT_INVALID;
+constexpr Start_MessageFormat Start::JSON;
+constexpr Start_MessageFormat Start::BINARY;
+constexpr Start_MessageFormat Start::MessageFormat_MIN;
+constexpr Start_MessageFormat Start::MessageFormat_MAX;
+constexpr int Start::MessageFormat_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* StateUpdate_UpdateType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_session_2eproto);
+  return file_level_enum_descriptors_session_2eproto[1];
 }
 bool StateUpdate_UpdateType_IsValid(int value) {
   switch (value) {
@@ -734,19 +680,19 @@ bool StateUpdate_UpdateType_IsValid(int value) {
   }
 }
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const StateUpdate_UpdateType StateUpdate::STATE_UPDATE_UPDATE_TYPE_INVALID;
-const StateUpdate_UpdateType StateUpdate::SNAPSHOT;
-const StateUpdate_UpdateType StateUpdate::INCREMENTAL;
-const StateUpdate_UpdateType StateUpdate::COMPLETE_STATE;
-const StateUpdate_UpdateType StateUpdate::PERSISTENT;
-const StateUpdate_UpdateType StateUpdate::UpdateType_MIN;
-const StateUpdate_UpdateType StateUpdate::UpdateType_MAX;
-const int StateUpdate::UpdateType_ARRAYSIZE;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-const ::google::protobuf::EnumDescriptor* Reconfigure_UpdateType_descriptor() {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_session_2eproto::file_level_enum_descriptors[2];
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+constexpr StateUpdate_UpdateType StateUpdate::STATE_UPDATE_UPDATE_TYPE_INVALID;
+constexpr StateUpdate_UpdateType StateUpdate::SNAPSHOT;
+constexpr StateUpdate_UpdateType StateUpdate::INCREMENTAL;
+constexpr StateUpdate_UpdateType StateUpdate::COMPLETE_STATE;
+constexpr StateUpdate_UpdateType StateUpdate::PERSISTENT;
+constexpr StateUpdate_UpdateType StateUpdate::UpdateType_MIN;
+constexpr StateUpdate_UpdateType StateUpdate::UpdateType_MAX;
+constexpr int StateUpdate::UpdateType_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Reconfigure_UpdateType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_session_2eproto);
+  return file_level_enum_descriptors_session_2eproto[2];
 }
 bool Reconfigure_UpdateType_IsValid(int value) {
   switch (value) {
@@ -759,17 +705,17 @@ bool Reconfigure_UpdateType_IsValid(int value) {
   }
 }
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const Reconfigure_UpdateType Reconfigure::RECONFIGURE_UPDATE_TYPE_INVALID;
-const Reconfigure_UpdateType Reconfigure::DELTA;
-const Reconfigure_UpdateType Reconfigure::FULL;
-const Reconfigure_UpdateType Reconfigure::UpdateType_MIN;
-const Reconfigure_UpdateType Reconfigure::UpdateType_MAX;
-const int Reconfigure::UpdateType_ARRAYSIZE;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-const ::google::protobuf::EnumDescriptor* StreamMetadata_Category_descriptor() {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_session_2eproto::file_level_enum_descriptors[3];
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+constexpr Reconfigure_UpdateType Reconfigure::RECONFIGURE_UPDATE_TYPE_INVALID;
+constexpr Reconfigure_UpdateType Reconfigure::DELTA;
+constexpr Reconfigure_UpdateType Reconfigure::FULL;
+constexpr Reconfigure_UpdateType Reconfigure::UpdateType_MIN;
+constexpr Reconfigure_UpdateType Reconfigure::UpdateType_MAX;
+constexpr int Reconfigure::UpdateType_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* StreamMetadata_Category_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_session_2eproto);
+  return file_level_enum_descriptors_session_2eproto[3];
 }
 bool StreamMetadata_Category_IsValid(int value) {
   switch (value) {
@@ -787,22 +733,22 @@ bool StreamMetadata_Category_IsValid(int value) {
   }
 }
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const StreamMetadata_Category StreamMetadata::STREAM_METADATA_CATEGORY_INVALID;
-const StreamMetadata_Category StreamMetadata::PRIMITIVE;
-const StreamMetadata_Category StreamMetadata::TIME_SERIES;
-const StreamMetadata_Category StreamMetadata::VARIABLE;
-const StreamMetadata_Category StreamMetadata::ANNOTATION;
-const StreamMetadata_Category StreamMetadata::FUTURE_INSTANCE;
-const StreamMetadata_Category StreamMetadata::POSE;
-const StreamMetadata_Category StreamMetadata::UI_PRIMITIVE;
-const StreamMetadata_Category StreamMetadata::Category_MIN;
-const StreamMetadata_Category StreamMetadata::Category_MAX;
-const int StreamMetadata::Category_ARRAYSIZE;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-const ::google::protobuf::EnumDescriptor* StreamMetadata_ScalarType_descriptor() {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_session_2eproto::file_level_enum_descriptors[4];
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+constexpr StreamMetadata_Category StreamMetadata::STREAM_METADATA_CATEGORY_INVALID;
+constexpr StreamMetadata_Category StreamMetadata::PRIMITIVE;
+constexpr StreamMetadata_Category StreamMetadata::TIME_SERIES;
+constexpr StreamMetadata_Category StreamMetadata::VARIABLE;
+constexpr StreamMetadata_Category StreamMetadata::ANNOTATION;
+constexpr StreamMetadata_Category StreamMetadata::FUTURE_INSTANCE;
+constexpr StreamMetadata_Category StreamMetadata::POSE;
+constexpr StreamMetadata_Category StreamMetadata::UI_PRIMITIVE;
+constexpr StreamMetadata_Category StreamMetadata::Category_MIN;
+constexpr StreamMetadata_Category StreamMetadata::Category_MAX;
+constexpr int StreamMetadata::Category_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* StreamMetadata_ScalarType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_session_2eproto);
+  return file_level_enum_descriptors_session_2eproto[4];
 }
 bool StreamMetadata_ScalarType_IsValid(int value) {
   switch (value) {
@@ -817,19 +763,19 @@ bool StreamMetadata_ScalarType_IsValid(int value) {
   }
 }
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const StreamMetadata_ScalarType StreamMetadata::STREAM_METADATA_SCALAR_TYPE_INVALID;
-const StreamMetadata_ScalarType StreamMetadata::FLOAT;
-const StreamMetadata_ScalarType StreamMetadata::INT32;
-const StreamMetadata_ScalarType StreamMetadata::STRING;
-const StreamMetadata_ScalarType StreamMetadata::BOOL;
-const StreamMetadata_ScalarType StreamMetadata::ScalarType_MIN;
-const StreamMetadata_ScalarType StreamMetadata::ScalarType_MAX;
-const int StreamMetadata::ScalarType_ARRAYSIZE;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-const ::google::protobuf::EnumDescriptor* StreamMetadata_PrimitiveType_descriptor() {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_session_2eproto::file_level_enum_descriptors[5];
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+constexpr StreamMetadata_ScalarType StreamMetadata::STREAM_METADATA_SCALAR_TYPE_INVALID;
+constexpr StreamMetadata_ScalarType StreamMetadata::FLOAT;
+constexpr StreamMetadata_ScalarType StreamMetadata::INT32;
+constexpr StreamMetadata_ScalarType StreamMetadata::STRING;
+constexpr StreamMetadata_ScalarType StreamMetadata::BOOL;
+constexpr StreamMetadata_ScalarType StreamMetadata::ScalarType_MIN;
+constexpr StreamMetadata_ScalarType StreamMetadata::ScalarType_MAX;
+constexpr int StreamMetadata::ScalarType_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* StreamMetadata_PrimitiveType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_session_2eproto);
+  return file_level_enum_descriptors_session_2eproto[5];
 }
 bool StreamMetadata_PrimitiveType_IsValid(int value) {
   switch (value) {
@@ -847,22 +793,22 @@ bool StreamMetadata_PrimitiveType_IsValid(int value) {
   }
 }
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const StreamMetadata_PrimitiveType StreamMetadata::STREAM_METADATA_PRIMITIVE_TYPE_INVALID;
-const StreamMetadata_PrimitiveType StreamMetadata::CIRCLE;
-const StreamMetadata_PrimitiveType StreamMetadata::IMAGE;
-const StreamMetadata_PrimitiveType StreamMetadata::POINT;
-const StreamMetadata_PrimitiveType StreamMetadata::POLYGON;
-const StreamMetadata_PrimitiveType StreamMetadata::POLYLINE;
-const StreamMetadata_PrimitiveType StreamMetadata::STADIUM;
-const StreamMetadata_PrimitiveType StreamMetadata::TEXT;
-const StreamMetadata_PrimitiveType StreamMetadata::PrimitiveType_MIN;
-const StreamMetadata_PrimitiveType StreamMetadata::PrimitiveType_MAX;
-const int StreamMetadata::PrimitiveType_ARRAYSIZE;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-const ::google::protobuf::EnumDescriptor* StreamMetadata_UIPrimitiveType_descriptor() {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_session_2eproto::file_level_enum_descriptors[6];
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+constexpr StreamMetadata_PrimitiveType StreamMetadata::STREAM_METADATA_PRIMITIVE_TYPE_INVALID;
+constexpr StreamMetadata_PrimitiveType StreamMetadata::CIRCLE;
+constexpr StreamMetadata_PrimitiveType StreamMetadata::IMAGE;
+constexpr StreamMetadata_PrimitiveType StreamMetadata::POINT;
+constexpr StreamMetadata_PrimitiveType StreamMetadata::POLYGON;
+constexpr StreamMetadata_PrimitiveType StreamMetadata::POLYLINE;
+constexpr StreamMetadata_PrimitiveType StreamMetadata::STADIUM;
+constexpr StreamMetadata_PrimitiveType StreamMetadata::TEXT;
+constexpr StreamMetadata_PrimitiveType StreamMetadata::PrimitiveType_MIN;
+constexpr StreamMetadata_PrimitiveType StreamMetadata::PrimitiveType_MAX;
+constexpr int StreamMetadata::PrimitiveType_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* StreamMetadata_UIPrimitiveType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_session_2eproto);
+  return file_level_enum_descriptors_session_2eproto[6];
 }
 bool StreamMetadata_UIPrimitiveType_IsValid(int value) {
   switch (value) {
@@ -874,16 +820,16 @@ bool StreamMetadata_UIPrimitiveType_IsValid(int value) {
   }
 }
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const StreamMetadata_UIPrimitiveType StreamMetadata::STREAM_METADATA_UI_PRIMITIVE_TYPE_INVALID;
-const StreamMetadata_UIPrimitiveType StreamMetadata::TREETABLE;
-const StreamMetadata_UIPrimitiveType StreamMetadata::UIPrimitiveType_MIN;
-const StreamMetadata_UIPrimitiveType StreamMetadata::UIPrimitiveType_MAX;
-const int StreamMetadata::UIPrimitiveType_ARRAYSIZE;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-const ::google::protobuf::EnumDescriptor* StreamMetadata_AnnotationType_descriptor() {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_session_2eproto::file_level_enum_descriptors[7];
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+constexpr StreamMetadata_UIPrimitiveType StreamMetadata::STREAM_METADATA_UI_PRIMITIVE_TYPE_INVALID;
+constexpr StreamMetadata_UIPrimitiveType StreamMetadata::TREETABLE;
+constexpr StreamMetadata_UIPrimitiveType StreamMetadata::UIPrimitiveType_MIN;
+constexpr StreamMetadata_UIPrimitiveType StreamMetadata::UIPrimitiveType_MAX;
+constexpr int StreamMetadata::UIPrimitiveType_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* StreamMetadata_AnnotationType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_session_2eproto);
+  return file_level_enum_descriptors_session_2eproto[7];
 }
 bool StreamMetadata_AnnotationType_IsValid(int value) {
   switch (value) {
@@ -895,16 +841,16 @@ bool StreamMetadata_AnnotationType_IsValid(int value) {
   }
 }
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const StreamMetadata_AnnotationType StreamMetadata::STREAM_METADATA_ANNOTATION_TYPE_INVALID;
-const StreamMetadata_AnnotationType StreamMetadata::VISUAL;
-const StreamMetadata_AnnotationType StreamMetadata::AnnotationType_MIN;
-const StreamMetadata_AnnotationType StreamMetadata::AnnotationType_MAX;
-const int StreamMetadata::AnnotationType_ARRAYSIZE;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-const ::google::protobuf::EnumDescriptor* StreamMetadata_CoordinateType_descriptor() {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_session_2eproto::file_level_enum_descriptors[8];
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+constexpr StreamMetadata_AnnotationType StreamMetadata::STREAM_METADATA_ANNOTATION_TYPE_INVALID;
+constexpr StreamMetadata_AnnotationType StreamMetadata::VISUAL;
+constexpr StreamMetadata_AnnotationType StreamMetadata::AnnotationType_MIN;
+constexpr StreamMetadata_AnnotationType StreamMetadata::AnnotationType_MAX;
+constexpr int StreamMetadata::AnnotationType_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* StreamMetadata_CoordinateType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_session_2eproto);
+  return file_level_enum_descriptors_session_2eproto[8];
 }
 bool StreamMetadata_CoordinateType_IsValid(int value) {
   switch (value) {
@@ -919,19 +865,19 @@ bool StreamMetadata_CoordinateType_IsValid(int value) {
   }
 }
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const StreamMetadata_CoordinateType StreamMetadata::STREAM_METADATA_COORDINATE_TYPE_INVALID;
-const StreamMetadata_CoordinateType StreamMetadata::GEOGRAPHIC;
-const StreamMetadata_CoordinateType StreamMetadata::IDENTITY;
-const StreamMetadata_CoordinateType StreamMetadata::DYNAMIC;
-const StreamMetadata_CoordinateType StreamMetadata::VEHICLE_RELATIVE;
-const StreamMetadata_CoordinateType StreamMetadata::CoordinateType_MIN;
-const StreamMetadata_CoordinateType StreamMetadata::CoordinateType_MAX;
-const int StreamMetadata::CoordinateType_ARRAYSIZE;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-const ::google::protobuf::EnumDescriptor* SessionType_descriptor() {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_session_2eproto::file_level_enum_descriptors[9];
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+constexpr StreamMetadata_CoordinateType StreamMetadata::STREAM_METADATA_COORDINATE_TYPE_INVALID;
+constexpr StreamMetadata_CoordinateType StreamMetadata::GEOGRAPHIC;
+constexpr StreamMetadata_CoordinateType StreamMetadata::IDENTITY;
+constexpr StreamMetadata_CoordinateType StreamMetadata::DYNAMIC;
+constexpr StreamMetadata_CoordinateType StreamMetadata::VEHICLE_RELATIVE;
+constexpr StreamMetadata_CoordinateType StreamMetadata::CoordinateType_MIN;
+constexpr StreamMetadata_CoordinateType StreamMetadata::CoordinateType_MAX;
+constexpr int StreamMetadata::CoordinateType_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SessionType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_session_2eproto);
+  return file_level_enum_descriptors_session_2eproto[9];
 }
 bool SessionType_IsValid(int value) {
   switch (value) {
@@ -950,36 +896,30 @@ bool SessionType_IsValid(int value) {
 
 void Start::InitAsDefaultInstance() {
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Start::kVersionFieldNumber;
-const int Start::kProfileFieldNumber;
-const int Start::kSessionTypeFieldNumber;
-const int Start::kMessageFormatFieldNumber;
-const int Start::kLogFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class Start::_Internal {
+ public:
+};
 
 Start::Start()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_session_2eproto::scc_info_Start.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.Start)
 }
 Start::Start(const Start& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.version().size() > 0) {
-    version_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.version_);
+  version_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_version().empty()) {
+    version_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.version_);
   }
-  profile_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.profile().size() > 0) {
-    profile_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.profile_);
+  profile_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_profile().empty()) {
+    profile_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.profile_);
   }
-  log_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.log().size() > 0) {
-    log_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.log_);
+  log_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_log().empty()) {
+    log_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.log_);
   }
   ::memcpy(&session_type_, &from.session_type_,
     static_cast<size_t>(reinterpret_cast<char*>(&message_format_) -
@@ -988,9 +928,10 @@ Start::Start(const Start& from)
 }
 
 void Start::SharedCtor() {
-  version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  profile_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  log_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Start_session_2eproto.base);
+  version_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  profile_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  log_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&session_type_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&message_format_) -
       reinterpret_cast<char*>(&session_type_)) + sizeof(message_format_));
@@ -1002,258 +943,158 @@ Start::~Start() {
 }
 
 void Start::SharedDtor() {
-  version_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  profile_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  log_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  version_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  profile_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  log_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void Start::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* Start::descriptor() {
-  ::protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const Start& Start::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_session_2eproto::scc_info_Start.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Start_session_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void Start::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.Start)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  profile_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  log_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  version_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  profile_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  log_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&session_type_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&message_format_) -
       reinterpret_cast<char*>(&session_type_)) + sizeof(message_format_));
   _internal_metadata_.Clear();
 }
 
-bool Start::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.Start)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* Start::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // string version = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_version()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->version().data(), static_cast<int>(this->version().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.Start.version"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_version();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.Start.version"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // string profile = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_profile()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->profile().data(), static_cast<int>(this->profile().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.Start.profile"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_profile();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.Start.profile"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // .xviz.SessionType session_type = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_session_type(static_cast< ::xviz::SessionType >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+          _internal_set_session_type(static_cast<::xviz::SessionType>(val));
+        } else goto handle_unusual;
+        continue;
       // .xviz.Start.MessageFormat message_format = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_message_format(static_cast< ::xviz::Start_MessageFormat >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+          _internal_set_message_format(static_cast<::xviz::Start_MessageFormat>(val));
+        } else goto handle_unusual;
+        continue;
       // string log = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_log()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->log().data(), static_cast<int>(this->log().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.Start.log"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+          auto str = _internal_mutable_log();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.Start.log"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.Start)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.Start)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void Start::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.Start)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string version = 1;
-  if (this->version().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->version().data(), static_cast<int>(this->version().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.Start.version");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->version(), output);
-  }
-
-  // string profile = 2;
-  if (this->profile().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->profile().data(), static_cast<int>(this->profile().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.Start.profile");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->profile(), output);
-  }
-
-  // .xviz.SessionType session_type = 3;
-  if (this->session_type() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      3, this->session_type(), output);
-  }
-
-  // .xviz.Start.MessageFormat message_format = 4;
-  if (this->message_format() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      4, this->message_format(), output);
-  }
-
-  // string log = 5;
-  if (this->log().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->log().data(), static_cast<int>(this->log().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.Start.log");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->log(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.Start)
-}
-
-::google::protobuf::uint8* Start::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* Start::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.Start)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string version = 1;
   if (this->version().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->version().data(), static_cast<int>(this->version().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_version().data(), static_cast<int>(this->_internal_version().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.Start.version");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->version(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_version(), target);
   }
 
   // string profile = 2;
   if (this->profile().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->profile().data(), static_cast<int>(this->profile().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_profile().data(), static_cast<int>(this->_internal_profile().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.Start.profile");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->profile(), target);
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_profile(), target);
   }
 
   // .xviz.SessionType session_type = 3;
   if (this->session_type() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      3, this->session_type(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      3, this->_internal_session_type(), target);
   }
 
   // .xviz.Start.MessageFormat message_format = 4;
   if (this->message_format() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      4, this->message_format(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      4, this->_internal_message_format(), target);
   }
 
   // string log = 5;
   if (this->log().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->log().data(), static_cast<int>(this->log().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_log().data(), static_cast<int>(this->_internal_log().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.Start.log");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->log(), target);
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_log(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.Start)
   return target;
@@ -1263,58 +1104,61 @@ size_t Start::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.Start)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // string version = 1;
   if (this->version().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->version());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_version());
   }
 
   // string profile = 2;
   if (this->profile().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->profile());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_profile());
   }
 
   // string log = 5;
   if (this->log().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->log());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_log());
   }
 
   // .xviz.SessionType session_type = 3;
   if (this->session_type() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->session_type());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_session_type());
   }
 
   // .xviz.Start.MessageFormat message_format = 4;
   if (this->message_format() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->message_format());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_message_format());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void Start::MergeFrom(const ::google::protobuf::Message& from) {
+void Start::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.Start)
   GOOGLE_DCHECK_NE(&from, this);
   const Start* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Start>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Start>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.Start)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.Start)
     MergeFrom(*source);
@@ -1325,30 +1169,30 @@ void Start::MergeFrom(const Start& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.Start)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from.version().size() > 0) {
 
-    version_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.version_);
+    version_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.version_);
   }
   if (from.profile().size() > 0) {
 
-    profile_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.profile_);
+    profile_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.profile_);
   }
   if (from.log().size() > 0) {
 
-    log_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.log_);
+    log_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.log_);
   }
   if (from.session_type() != 0) {
-    set_session_type(from.session_type());
+    _internal_set_session_type(from._internal_session_type());
   }
   if (from.message_format() != 0) {
-    set_message_format(from.message_format());
+    _internal_set_message_format(from._internal_message_format());
   }
 }
 
-void Start::CopyFrom(const ::google::protobuf::Message& from) {
+void Start::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.Start)
   if (&from == this) return;
   Clear();
@@ -1366,26 +1210,21 @@ bool Start::IsInitialized() const {
   return true;
 }
 
-void Start::Swap(Start* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Start::InternalSwap(Start* other) {
   using std::swap;
-  version_.Swap(&other->version_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  version_.Swap(&other->version_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  profile_.Swap(&other->profile_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  profile_.Swap(&other->profile_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  log_.Swap(&other->log_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  log_.Swap(&other->log_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(session_type_, other->session_type_);
   swap(message_format_, other->message_format_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata Start::GetMetadata() const {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata Start::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -1393,28 +1232,23 @@ void Start::InternalSwap(Start* other) {
 
 void TransformLog::InitAsDefaultInstance() {
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TransformLog::kIdFieldNumber;
-const int TransformLog::kStartTimestampFieldNumber;
-const int TransformLog::kEndTimestampFieldNumber;
-const int TransformLog::kDesiredStreamsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class TransformLog::_Internal {
+ public:
+};
 
 TransformLog::TransformLog()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_session_2eproto::scc_info_TransformLog.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.TransformLog)
 }
 TransformLog::TransformLog(const TransformLog& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
       desired_streams_(from.desired_streams_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.id().size() > 0) {
-    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_id().empty()) {
+    id_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.id_);
   }
   ::memcpy(&start_timestamp_, &from.start_timestamp_,
     static_cast<size_t>(reinterpret_cast<char*>(&end_timestamp_) -
@@ -1423,7 +1257,8 @@ TransformLog::TransformLog(const TransformLog& from)
 }
 
 void TransformLog::SharedCtor() {
-  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_TransformLog_session_2eproto.base);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&start_timestamp_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&end_timestamp_) -
       reinterpret_cast<char*>(&start_timestamp_)) + sizeof(end_timestamp_));
@@ -1435,212 +1270,137 @@ TransformLog::~TransformLog() {
 }
 
 void TransformLog::SharedDtor() {
-  id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void TransformLog::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* TransformLog::descriptor() {
-  ::protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const TransformLog& TransformLog::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_session_2eproto::scc_info_TransformLog.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_TransformLog_session_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void TransformLog::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.TransformLog)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   desired_streams_.Clear();
-  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  id_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&start_timestamp_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&end_timestamp_) -
       reinterpret_cast<char*>(&start_timestamp_)) + sizeof(end_timestamp_));
   _internal_metadata_.Clear();
 }
 
-bool TransformLog::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.TransformLog)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* TransformLog::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // string id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_id()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->id().data(), static_cast<int>(this->id().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.TransformLog.id"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.TransformLog.id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // double start_timestamp = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(17u /* 17 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &start_timestamp_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 17)) {
+          start_timestamp_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // double end_timestamp = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(25u /* 25 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &end_timestamp_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 25)) {
+          end_timestamp_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // repeated string desired_streams = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_desired_streams()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->desired_streams(this->desired_streams_size() - 1).data(),
-            static_cast<int>(this->desired_streams(this->desired_streams_size() - 1).length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.TransformLog.desired_streams"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_desired_streams();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.TransformLog.desired_streams"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.TransformLog)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.TransformLog)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void TransformLog::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.TransformLog)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string id = 1;
-  if (this->id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->id().data(), static_cast<int>(this->id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.TransformLog.id");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->id(), output);
-  }
-
-  // double start_timestamp = 2;
-  if (this->start_timestamp() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->start_timestamp(), output);
-  }
-
-  // double end_timestamp = 3;
-  if (this->end_timestamp() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(3, this->end_timestamp(), output);
-  }
-
-  // repeated string desired_streams = 4;
-  for (int i = 0, n = this->desired_streams_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->desired_streams(i).data(), static_cast<int>(this->desired_streams(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.TransformLog.desired_streams");
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      4, this->desired_streams(i), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.TransformLog)
-}
-
-::google::protobuf::uint8* TransformLog::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* TransformLog::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.TransformLog)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string id = 1;
   if (this->id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->id().data(), static_cast<int>(this->id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.TransformLog.id");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->id(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
   }
 
   // double start_timestamp = 2;
-  if (this->start_timestamp() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->start_timestamp(), target);
+  if (!(this->start_timestamp() <= 0 && this->start_timestamp() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(2, this->_internal_start_timestamp(), target);
   }
 
   // double end_timestamp = 3;
-  if (this->end_timestamp() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(3, this->end_timestamp(), target);
+  if (!(this->end_timestamp() <= 0 && this->end_timestamp() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(3, this->_internal_end_timestamp(), target);
   }
 
   // repeated string desired_streams = 4;
-  for (int i = 0, n = this->desired_streams_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->desired_streams(i).data(), static_cast<int>(this->desired_streams(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+  for (int i = 0, n = this->_internal_desired_streams_size(); i < n; i++) {
+    const auto& s = this->_internal_desired_streams(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.TransformLog.desired_streams");
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(4, this->desired_streams(i), target);
+    target = stream->WriteString(4, s, target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.TransformLog)
   return target;
@@ -1650,50 +1410,53 @@ size_t TransformLog::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.TransformLog)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated string desired_streams = 4;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->desired_streams_size());
-  for (int i = 0, n = this->desired_streams_size(); i < n; i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->desired_streams(i));
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(desired_streams_.size());
+  for (int i = 0, n = desired_streams_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      desired_streams_.Get(i));
   }
 
   // string id = 1;
   if (this->id().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->id());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_id());
   }
 
   // double start_timestamp = 2;
-  if (this->start_timestamp() != 0) {
+  if (!(this->start_timestamp() <= 0 && this->start_timestamp() >= 0)) {
     total_size += 1 + 8;
   }
 
   // double end_timestamp = 3;
-  if (this->end_timestamp() != 0) {
+  if (!(this->end_timestamp() <= 0 && this->end_timestamp() >= 0)) {
     total_size += 1 + 8;
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void TransformLog::MergeFrom(const ::google::protobuf::Message& from) {
+void TransformLog::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.TransformLog)
   GOOGLE_DCHECK_NE(&from, this);
   const TransformLog* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TransformLog>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<TransformLog>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.TransformLog)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.TransformLog)
     MergeFrom(*source);
@@ -1704,23 +1467,23 @@ void TransformLog::MergeFrom(const TransformLog& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.TransformLog)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   desired_streams_.MergeFrom(from.desired_streams_);
   if (from.id().size() > 0) {
 
-    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+    id_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.id_);
   }
-  if (from.start_timestamp() != 0) {
-    set_start_timestamp(from.start_timestamp());
+  if (!(from.start_timestamp() <= 0 && from.start_timestamp() >= 0)) {
+    _internal_set_start_timestamp(from._internal_start_timestamp());
   }
-  if (from.end_timestamp() != 0) {
-    set_end_timestamp(from.end_timestamp());
+  if (!(from.end_timestamp() <= 0 && from.end_timestamp() >= 0)) {
+    _internal_set_end_timestamp(from._internal_end_timestamp());
   }
 }
 
-void TransformLog::CopyFrom(const ::google::protobuf::Message& from) {
+void TransformLog::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.TransformLog)
   if (&from == this) return;
   Clear();
@@ -1738,23 +1501,18 @@ bool TransformLog::IsInitialized() const {
   return true;
 }
 
-void TransformLog::Swap(TransformLog* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TransformLog::InternalSwap(TransformLog* other) {
   using std::swap;
-  desired_streams_.InternalSwap(CastToBase(&other->desired_streams_));
-  id_.Swap(&other->id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  desired_streams_.InternalSwap(&other->desired_streams_);
+  id_.Swap(&other->id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(start_timestamp_, other->start_timestamp_);
   swap(end_timestamp_, other->end_timestamp_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata TransformLog::GetMetadata() const {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata TransformLog::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -1762,24 +1520,21 @@ void TransformLog::InternalSwap(TransformLog* other) {
 
 void StateUpdate::InitAsDefaultInstance() {
 }
+class StateUpdate::_Internal {
+ public:
+};
+
 void StateUpdate::clear_updates() {
   updates_.Clear();
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int StateUpdate::kUpdateTypeFieldNumber;
-const int StateUpdate::kUpdatesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
 StateUpdate::StateUpdate()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_session_2eproto::scc_info_StateUpdate.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.StateUpdate)
 }
 StateUpdate::StateUpdate(const StateUpdate& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
       updates_(from.updates_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   update_type_ = from.update_type_;
@@ -1787,6 +1542,7 @@ StateUpdate::StateUpdate(const StateUpdate& from)
 }
 
 void StateUpdate::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_StateUpdate_session_2eproto.base);
   update_type_ = 0;
 }
 
@@ -1801,20 +1557,15 @@ void StateUpdate::SharedDtor() {
 void StateUpdate::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* StateUpdate::descriptor() {
-  ::protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const StateUpdate& StateUpdate::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_session_2eproto::scc_info_StateUpdate.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_StateUpdate_session_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void StateUpdate::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.StateUpdate)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -1823,115 +1574,77 @@ void StateUpdate::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool StateUpdate::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.StateUpdate)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* StateUpdate::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // .xviz.StateUpdate.UpdateType update_type = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_update_type(static_cast< ::xviz::StateUpdate_UpdateType >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+          _internal_set_update_type(static_cast<::xviz::StateUpdate_UpdateType>(val));
+        } else goto handle_unusual;
+        continue;
       // repeated .xviz.StreamSet updates = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_updates()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_updates(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.StateUpdate)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.StateUpdate)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void StateUpdate::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.StateUpdate)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // .xviz.StateUpdate.UpdateType update_type = 1;
-  if (this->update_type() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      1, this->update_type(), output);
-  }
-
-  // repeated .xviz.StreamSet updates = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->updates_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2,
-      this->updates(static_cast<int>(i)),
-      output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.StateUpdate)
-}
-
-::google::protobuf::uint8* StateUpdate::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* StateUpdate::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.StateUpdate)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // .xviz.StateUpdate.UpdateType update_type = 1;
   if (this->update_type() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      1, this->update_type(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      1, this->_internal_update_type(), target);
   }
 
   // repeated .xviz.StreamSet updates = 2;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->updates_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->updates(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_updates_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, this->_internal_updates(i), target, stream);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.StateUpdate)
   return target;
@@ -1941,42 +1654,41 @@ size_t StateUpdate::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.StateUpdate)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .xviz.StreamSet updates = 2;
-  {
-    unsigned int count = static_cast<unsigned int>(this->updates_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->updates(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_updates_size();
+  for (const auto& msg : this->updates_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // .xviz.StateUpdate.UpdateType update_type = 1;
   if (this->update_type() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->update_type());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_update_type());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void StateUpdate::MergeFrom(const ::google::protobuf::Message& from) {
+void StateUpdate::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.StateUpdate)
   GOOGLE_DCHECK_NE(&from, this);
   const StateUpdate* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const StateUpdate>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<StateUpdate>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.StateUpdate)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.StateUpdate)
     MergeFrom(*source);
@@ -1987,16 +1699,16 @@ void StateUpdate::MergeFrom(const StateUpdate& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.StateUpdate)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   updates_.MergeFrom(from.updates_);
   if (from.update_type() != 0) {
-    set_update_type(from.update_type());
+    _internal_set_update_type(from._internal_update_type());
   }
 }
 
-void StateUpdate::CopyFrom(const ::google::protobuf::Message& from) {
+void StateUpdate::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.StateUpdate)
   if (&from == this) return;
   Clear();
@@ -2014,20 +1726,15 @@ bool StateUpdate::IsInitialized() const {
   return true;
 }
 
-void StateUpdate::Swap(StateUpdate* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void StateUpdate::InternalSwap(StateUpdate* other) {
   using std::swap;
-  CastToBase(&updates_)->InternalSwap(CastToBase(&other->updates_));
-  swap(update_type_, other->update_type_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  updates_.InternalSwap(&other->updates_);
+  swap(update_type_, other->update_type_);
 }
 
-::google::protobuf::Metadata StateUpdate::GetMetadata() const {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata StateUpdate::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -2035,30 +1742,29 @@ void StateUpdate::InternalSwap(StateUpdate* other) {
 
 void TransformLogDone::InitAsDefaultInstance() {
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TransformLogDone::kIdFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class TransformLogDone::_Internal {
+ public:
+};
 
 TransformLogDone::TransformLogDone()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_session_2eproto::scc_info_TransformLogDone.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.TransformLogDone)
 }
 TransformLogDone::TransformLogDone(const TransformLogDone& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.id().size() > 0) {
-    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_id().empty()) {
+    id_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.id_);
   }
   // @@protoc_insertion_point(copy_constructor:xviz.TransformLogDone)
 }
 
 void TransformLogDone::SharedCtor() {
-  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_TransformLogDone_session_2eproto.base);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 TransformLogDone::~TransformLogDone() {
@@ -2067,123 +1773,83 @@ TransformLogDone::~TransformLogDone() {
 }
 
 void TransformLogDone::SharedDtor() {
-  id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void TransformLogDone::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* TransformLogDone::descriptor() {
-  ::protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const TransformLogDone& TransformLogDone::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_session_2eproto::scc_info_TransformLogDone.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_TransformLogDone_session_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void TransformLogDone::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.TransformLogDone)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  id_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
 }
 
-bool TransformLogDone::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.TransformLogDone)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* TransformLogDone::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // string id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_id()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->id().data(), static_cast<int>(this->id().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.TransformLogDone.id"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.TransformLogDone.id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.TransformLogDone)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.TransformLogDone)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void TransformLogDone::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.TransformLogDone)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string id = 1;
-  if (this->id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->id().data(), static_cast<int>(this->id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.TransformLogDone.id");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->id(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.TransformLogDone)
-}
-
-::google::protobuf::uint8* TransformLogDone::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* TransformLogDone::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.TransformLogDone)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string id = 1;
   if (this->id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->id().data(), static_cast<int>(this->id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.TransformLogDone.id");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->id(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.TransformLogDone)
   return target;
@@ -2193,32 +1859,35 @@ size_t TransformLogDone::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.TransformLogDone)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // string id = 1;
   if (this->id().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->id());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_id());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void TransformLogDone::MergeFrom(const ::google::protobuf::Message& from) {
+void TransformLogDone::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.TransformLogDone)
   GOOGLE_DCHECK_NE(&from, this);
   const TransformLogDone* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TransformLogDone>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<TransformLogDone>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.TransformLogDone)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.TransformLogDone)
     MergeFrom(*source);
@@ -2229,16 +1898,16 @@ void TransformLogDone::MergeFrom(const TransformLogDone& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.TransformLogDone)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from.id().size() > 0) {
 
-    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+    id_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.id_);
   }
 }
 
-void TransformLogDone::CopyFrom(const ::google::protobuf::Message& from) {
+void TransformLogDone::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.TransformLogDone)
   if (&from == this) return;
   Clear();
@@ -2256,20 +1925,15 @@ bool TransformLogDone::IsInitialized() const {
   return true;
 }
 
-void TransformLogDone::Swap(TransformLogDone* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TransformLogDone::InternalSwap(TransformLogDone* other) {
   using std::swap;
-  id_.Swap(&other->id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  id_.Swap(&other->id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
 }
 
-::google::protobuf::Metadata TransformLogDone::GetMetadata() const {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata TransformLogDone::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -2277,34 +1941,31 @@ void TransformLogDone::InternalSwap(TransformLogDone* other) {
 
 void TransformPointInTime::InitAsDefaultInstance() {
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TransformPointInTime::kIdFieldNumber;
-const int TransformPointInTime::kQueryTimestampFieldNumber;
-const int TransformPointInTime::kDesiredStreamsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class TransformPointInTime::_Internal {
+ public:
+};
 
 TransformPointInTime::TransformPointInTime()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_session_2eproto::scc_info_TransformPointInTime.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.TransformPointInTime)
 }
 TransformPointInTime::TransformPointInTime(const TransformPointInTime& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
       desired_streams_(from.desired_streams_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.id().size() > 0) {
-    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_id().empty()) {
+    id_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.id_);
   }
   query_timestamp_ = from.query_timestamp_;
   // @@protoc_insertion_point(copy_constructor:xviz.TransformPointInTime)
 }
 
 void TransformPointInTime::SharedCtor() {
-  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_TransformPointInTime_session_2eproto.base);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   query_timestamp_ = 0;
 }
 
@@ -2314,186 +1975,122 @@ TransformPointInTime::~TransformPointInTime() {
 }
 
 void TransformPointInTime::SharedDtor() {
-  id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void TransformPointInTime::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* TransformPointInTime::descriptor() {
-  ::protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const TransformPointInTime& TransformPointInTime::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_session_2eproto::scc_info_TransformPointInTime.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_TransformPointInTime_session_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void TransformPointInTime::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.TransformPointInTime)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   desired_streams_.Clear();
-  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  id_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   query_timestamp_ = 0;
   _internal_metadata_.Clear();
 }
 
-bool TransformPointInTime::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.TransformPointInTime)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* TransformPointInTime::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // string id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_id()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->id().data(), static_cast<int>(this->id().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.TransformPointInTime.id"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.TransformPointInTime.id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // double query_timestamp = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(17u /* 17 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &query_timestamp_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 17)) {
+          query_timestamp_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // repeated string desired_streams = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_desired_streams()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->desired_streams(this->desired_streams_size() - 1).data(),
-            static_cast<int>(this->desired_streams(this->desired_streams_size() - 1).length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.TransformPointInTime.desired_streams"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_desired_streams();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.TransformPointInTime.desired_streams"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.TransformPointInTime)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.TransformPointInTime)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void TransformPointInTime::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.TransformPointInTime)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string id = 1;
-  if (this->id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->id().data(), static_cast<int>(this->id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.TransformPointInTime.id");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->id(), output);
-  }
-
-  // double query_timestamp = 2;
-  if (this->query_timestamp() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->query_timestamp(), output);
-  }
-
-  // repeated string desired_streams = 3;
-  for (int i = 0, n = this->desired_streams_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->desired_streams(i).data(), static_cast<int>(this->desired_streams(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.TransformPointInTime.desired_streams");
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->desired_streams(i), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.TransformPointInTime)
-}
-
-::google::protobuf::uint8* TransformPointInTime::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* TransformPointInTime::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.TransformPointInTime)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string id = 1;
   if (this->id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->id().data(), static_cast<int>(this->id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.TransformPointInTime.id");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->id(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
   }
 
   // double query_timestamp = 2;
-  if (this->query_timestamp() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->query_timestamp(), target);
+  if (!(this->query_timestamp() <= 0 && this->query_timestamp() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(2, this->_internal_query_timestamp(), target);
   }
 
   // repeated string desired_streams = 3;
-  for (int i = 0, n = this->desired_streams_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->desired_streams(i).data(), static_cast<int>(this->desired_streams(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+  for (int i = 0, n = this->_internal_desired_streams_size(); i < n; i++) {
+    const auto& s = this->_internal_desired_streams(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.TransformPointInTime.desired_streams");
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(3, this->desired_streams(i), target);
+    target = stream->WriteString(3, s, target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.TransformPointInTime)
   return target;
@@ -2503,45 +2100,48 @@ size_t TransformPointInTime::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.TransformPointInTime)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated string desired_streams = 3;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->desired_streams_size());
-  for (int i = 0, n = this->desired_streams_size(); i < n; i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->desired_streams(i));
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(desired_streams_.size());
+  for (int i = 0, n = desired_streams_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      desired_streams_.Get(i));
   }
 
   // string id = 1;
   if (this->id().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->id());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_id());
   }
 
   // double query_timestamp = 2;
-  if (this->query_timestamp() != 0) {
+  if (!(this->query_timestamp() <= 0 && this->query_timestamp() >= 0)) {
     total_size += 1 + 8;
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void TransformPointInTime::MergeFrom(const ::google::protobuf::Message& from) {
+void TransformPointInTime::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.TransformPointInTime)
   GOOGLE_DCHECK_NE(&from, this);
   const TransformPointInTime* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TransformPointInTime>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<TransformPointInTime>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.TransformPointInTime)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.TransformPointInTime)
     MergeFrom(*source);
@@ -2552,20 +2152,20 @@ void TransformPointInTime::MergeFrom(const TransformPointInTime& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.TransformPointInTime)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   desired_streams_.MergeFrom(from.desired_streams_);
   if (from.id().size() > 0) {
 
-    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+    id_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.id_);
   }
-  if (from.query_timestamp() != 0) {
-    set_query_timestamp(from.query_timestamp());
+  if (!(from.query_timestamp() <= 0 && from.query_timestamp() >= 0)) {
+    _internal_set_query_timestamp(from._internal_query_timestamp());
   }
 }
 
-void TransformPointInTime::CopyFrom(const ::google::protobuf::Message& from) {
+void TransformPointInTime::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.TransformPointInTime)
   if (&from == this) return;
   Clear();
@@ -2583,63 +2183,61 @@ bool TransformPointInTime::IsInitialized() const {
   return true;
 }
 
-void TransformPointInTime::Swap(TransformPointInTime* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TransformPointInTime::InternalSwap(TransformPointInTime* other) {
   using std::swap;
-  desired_streams_.InternalSwap(CastToBase(&other->desired_streams_));
-  id_.Swap(&other->id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  desired_streams_.InternalSwap(&other->desired_streams_);
+  id_.Swap(&other->id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(query_timestamp_, other->query_timestamp_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata TransformPointInTime::GetMetadata() const {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata TransformPointInTime::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
 void Reconfigure::InitAsDefaultInstance() {
-  ::xviz::_Reconfigure_default_instance_._instance.get_mutable()->config_update_ = const_cast< ::google::protobuf::Struct*>(
-      ::google::protobuf::Struct::internal_default_instance());
+  ::xviz::_Reconfigure_default_instance_._instance.get_mutable()->config_update_ = const_cast< PROTOBUF_NAMESPACE_ID::Struct*>(
+      PROTOBUF_NAMESPACE_ID::Struct::internal_default_instance());
+}
+class Reconfigure::_Internal {
+ public:
+  static const PROTOBUF_NAMESPACE_ID::Struct& config_update(const Reconfigure* msg);
+};
+
+const PROTOBUF_NAMESPACE_ID::Struct&
+Reconfigure::_Internal::config_update(const Reconfigure* msg) {
+  return *msg->config_update_;
 }
 void Reconfigure::clear_config_update() {
-  if (GetArenaNoVirtual() == NULL && config_update_ != NULL) {
+  if (GetArenaNoVirtual() == nullptr && config_update_ != nullptr) {
     delete config_update_;
   }
-  config_update_ = NULL;
+  config_update_ = nullptr;
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Reconfigure::kUpdateTypeFieldNumber;
-const int Reconfigure::kConfigUpdateFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
 Reconfigure::Reconfigure()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_session_2eproto::scc_info_Reconfigure.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.Reconfigure)
 }
 Reconfigure::Reconfigure(const Reconfigure& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.has_config_update()) {
-    config_update_ = new ::google::protobuf::Struct(*from.config_update_);
+  if (from._internal_has_config_update()) {
+    config_update_ = new PROTOBUF_NAMESPACE_ID::Struct(*from.config_update_);
   } else {
-    config_update_ = NULL;
+    config_update_ = nullptr;
   }
   update_type_ = from.update_type_;
   // @@protoc_insertion_point(copy_constructor:xviz.Reconfigure)
 }
 
 void Reconfigure::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Reconfigure_session_2eproto.base);
   ::memset(&config_update_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&update_type_) -
       reinterpret_cast<char*>(&config_update_)) + sizeof(update_type_));
@@ -2657,136 +2255,92 @@ void Reconfigure::SharedDtor() {
 void Reconfigure::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* Reconfigure::descriptor() {
-  ::protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const Reconfigure& Reconfigure::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_session_2eproto::scc_info_Reconfigure.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Reconfigure_session_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void Reconfigure::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.Reconfigure)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArenaNoVirtual() == NULL && config_update_ != NULL) {
+  if (GetArenaNoVirtual() == nullptr && config_update_ != nullptr) {
     delete config_update_;
   }
-  config_update_ = NULL;
+  config_update_ = nullptr;
   update_type_ = 0;
   _internal_metadata_.Clear();
 }
 
-bool Reconfigure::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.Reconfigure)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* Reconfigure::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // .xviz.Reconfigure.UpdateType update_type = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_update_type(static_cast< ::xviz::Reconfigure_UpdateType >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+          _internal_set_update_type(static_cast<::xviz::Reconfigure_UpdateType>(val));
+        } else goto handle_unusual;
+        continue;
       // .google.protobuf.Struct config_update = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_config_update()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_config_update(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.Reconfigure)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.Reconfigure)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void Reconfigure::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.Reconfigure)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // .xviz.Reconfigure.UpdateType update_type = 1;
-  if (this->update_type() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      1, this->update_type(), output);
-  }
-
-  // .google.protobuf.Struct config_update = 2;
-  if (this->has_config_update()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->_internal_config_update(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.Reconfigure)
-}
-
-::google::protobuf::uint8* Reconfigure::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* Reconfigure::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.Reconfigure)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // .xviz.Reconfigure.UpdateType update_type = 1;
   if (this->update_type() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      1, this->update_type(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      1, this->_internal_update_type(), target);
   }
 
   // .google.protobuf.Struct config_update = 2;
   if (this->has_config_update()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->_internal_config_update(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        2, _Internal::config_update(this), target, stream);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.Reconfigure)
   return target;
@@ -2796,38 +2350,41 @@ size_t Reconfigure::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.Reconfigure)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // .google.protobuf.Struct config_update = 2;
   if (this->has_config_update()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *config_update_);
   }
 
   // .xviz.Reconfigure.UpdateType update_type = 1;
   if (this->update_type() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->update_type());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_update_type());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void Reconfigure::MergeFrom(const ::google::protobuf::Message& from) {
+void Reconfigure::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.Reconfigure)
   GOOGLE_DCHECK_NE(&from, this);
   const Reconfigure* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Reconfigure>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Reconfigure>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.Reconfigure)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.Reconfigure)
     MergeFrom(*source);
@@ -2838,18 +2395,18 @@ void Reconfigure::MergeFrom(const Reconfigure& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.Reconfigure)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from.has_config_update()) {
-    mutable_config_update()->::google::protobuf::Struct::MergeFrom(from.config_update());
+    _internal_mutable_config_update()->PROTOBUF_NAMESPACE_ID::Struct::MergeFrom(from._internal_config_update());
   }
   if (from.update_type() != 0) {
-    set_update_type(from.update_type());
+    _internal_set_update_type(from._internal_update_type());
   }
 }
 
-void Reconfigure::CopyFrom(const ::google::protobuf::Message& from) {
+void Reconfigure::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.Reconfigure)
   if (&from == this) return;
   Clear();
@@ -2867,88 +2424,83 @@ bool Reconfigure::IsInitialized() const {
   return true;
 }
 
-void Reconfigure::Swap(Reconfigure* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Reconfigure::InternalSwap(Reconfigure* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(config_update_, other->config_update_);
   swap(update_type_, other->update_type_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata Reconfigure::GetMetadata() const {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata Reconfigure::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
 Metadata_StreamsEntry_DoNotUse::Metadata_StreamsEntry_DoNotUse() {}
-Metadata_StreamsEntry_DoNotUse::Metadata_StreamsEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+Metadata_StreamsEntry_DoNotUse::Metadata_StreamsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
 void Metadata_StreamsEntry_DoNotUse::MergeFrom(const Metadata_StreamsEntry_DoNotUse& other) {
   MergeFromInternal(other);
 }
-::google::protobuf::Metadata Metadata_StreamsEntry_DoNotUse::GetMetadata() const {
-  ::protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[6];
+::PROTOBUF_NAMESPACE_ID::Metadata Metadata_StreamsEntry_DoNotUse::GetMetadata() const {
+  return GetMetadataStatic();
 }
 void Metadata_StreamsEntry_DoNotUse::MergeFrom(
-    const ::google::protobuf::Message& other) {
-  ::google::protobuf::Message::MergeFrom(other);
+    const ::PROTOBUF_NAMESPACE_ID::Message& other) {
+  ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom(other);
 }
 
 
 // ===================================================================
 
 Metadata_CamerasEntry_DoNotUse::Metadata_CamerasEntry_DoNotUse() {}
-Metadata_CamerasEntry_DoNotUse::Metadata_CamerasEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+Metadata_CamerasEntry_DoNotUse::Metadata_CamerasEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
 void Metadata_CamerasEntry_DoNotUse::MergeFrom(const Metadata_CamerasEntry_DoNotUse& other) {
   MergeFromInternal(other);
 }
-::google::protobuf::Metadata Metadata_CamerasEntry_DoNotUse::GetMetadata() const {
-  ::protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[7];
+::PROTOBUF_NAMESPACE_ID::Metadata Metadata_CamerasEntry_DoNotUse::GetMetadata() const {
+  return GetMetadataStatic();
 }
 void Metadata_CamerasEntry_DoNotUse::MergeFrom(
-    const ::google::protobuf::Message& other) {
-  ::google::protobuf::Message::MergeFrom(other);
+    const ::PROTOBUF_NAMESPACE_ID::Message& other) {
+  ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom(other);
 }
 
 
 // ===================================================================
 
 Metadata_StreamAliasesEntry_DoNotUse::Metadata_StreamAliasesEntry_DoNotUse() {}
-Metadata_StreamAliasesEntry_DoNotUse::Metadata_StreamAliasesEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+Metadata_StreamAliasesEntry_DoNotUse::Metadata_StreamAliasesEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
 void Metadata_StreamAliasesEntry_DoNotUse::MergeFrom(const Metadata_StreamAliasesEntry_DoNotUse& other) {
   MergeFromInternal(other);
 }
-::google::protobuf::Metadata Metadata_StreamAliasesEntry_DoNotUse::GetMetadata() const {
-  ::protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[8];
+::PROTOBUF_NAMESPACE_ID::Metadata Metadata_StreamAliasesEntry_DoNotUse::GetMetadata() const {
+  return GetMetadataStatic();
 }
 void Metadata_StreamAliasesEntry_DoNotUse::MergeFrom(
-    const ::google::protobuf::Message& other) {
-  ::google::protobuf::Message::MergeFrom(other);
+    const ::PROTOBUF_NAMESPACE_ID::Message& other) {
+  ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom(other);
 }
 
 
 // ===================================================================
 
 Metadata_UiConfigEntry_DoNotUse::Metadata_UiConfigEntry_DoNotUse() {}
-Metadata_UiConfigEntry_DoNotUse::Metadata_UiConfigEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+Metadata_UiConfigEntry_DoNotUse::Metadata_UiConfigEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
 void Metadata_UiConfigEntry_DoNotUse::MergeFrom(const Metadata_UiConfigEntry_DoNotUse& other) {
   MergeFromInternal(other);
 }
-::google::protobuf::Metadata Metadata_UiConfigEntry_DoNotUse::GetMetadata() const {
-  ::protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[9];
+::PROTOBUF_NAMESPACE_ID::Metadata Metadata_UiConfigEntry_DoNotUse::GetMetadata() const {
+  return GetMetadataStatic();
 }
 void Metadata_UiConfigEntry_DoNotUse::MergeFrom(
-    const ::google::protobuf::Message& other) {
-  ::google::protobuf::Message::MergeFrom(other);
+    const ::PROTOBUF_NAMESPACE_ID::Message& other) {
+  ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom(other);
 }
 
 
@@ -2958,45 +2510,44 @@ void Metadata::InitAsDefaultInstance() {
   ::xviz::_Metadata_default_instance_._instance.get_mutable()->log_info_ = const_cast< ::xviz::LogInfo*>(
       ::xviz::LogInfo::internal_default_instance());
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Metadata::kVersionFieldNumber;
-const int Metadata::kStreamsFieldNumber;
-const int Metadata::kCamerasFieldNumber;
-const int Metadata::kStreamAliasesFieldNumber;
-const int Metadata::kUiConfigFieldNumber;
-const int Metadata::kLogInfoFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class Metadata::_Internal {
+ public:
+  static const ::xviz::LogInfo& log_info(const Metadata* msg);
+};
 
+const ::xviz::LogInfo&
+Metadata::_Internal::log_info(const Metadata* msg) {
+  return *msg->log_info_;
+}
 Metadata::Metadata()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_session_2eproto::scc_info_Metadata.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.Metadata)
 }
 Metadata::Metadata(const Metadata& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   streams_.MergeFrom(from.streams_);
   cameras_.MergeFrom(from.cameras_);
   stream_aliases_.MergeFrom(from.stream_aliases_);
   ui_config_.MergeFrom(from.ui_config_);
-  version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.version().size() > 0) {
-    version_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.version_);
+  version_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_version().empty()) {
+    version_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.version_);
   }
-  if (from.has_log_info()) {
+  if (from._internal_has_log_info()) {
     log_info_ = new ::xviz::LogInfo(*from.log_info_);
   } else {
-    log_info_ = NULL;
+    log_info_ = nullptr;
   }
   // @@protoc_insertion_point(copy_constructor:xviz.Metadata)
 }
 
 void Metadata::SharedCtor() {
-  version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  log_info_ = NULL;
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Metadata_session_2eproto.base);
+  version_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  log_info_ = nullptr;
 }
 
 Metadata::~Metadata() {
@@ -3005,27 +2556,22 @@ Metadata::~Metadata() {
 }
 
 void Metadata::SharedDtor() {
-  version_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  version_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete log_info_;
 }
 
 void Metadata::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* Metadata::descriptor() {
-  ::protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const Metadata& Metadata::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_session_2eproto::scc_info_Metadata.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Metadata_session_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void Metadata::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.Metadata)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -3033,641 +2579,300 @@ void Metadata::Clear() {
   cameras_.Clear();
   stream_aliases_.Clear();
   ui_config_.Clear();
-  version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (GetArenaNoVirtual() == NULL && log_info_ != NULL) {
+  version_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == nullptr && log_info_ != nullptr) {
     delete log_info_;
   }
-  log_info_ = NULL;
+  log_info_ = nullptr;
   _internal_metadata_.Clear();
 }
 
-bool Metadata::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.Metadata)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* Metadata::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // string version = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_version()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->version().data(), static_cast<int>(this->version().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.Metadata.version"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_version();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.Metadata.version"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // map<string, .xviz.StreamMetadata> streams = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          Metadata_StreamsEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              Metadata_StreamsEntry_DoNotUse,
-              ::std::string, ::xviz::StreamMetadata,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
-              0 >,
-            ::google::protobuf::Map< ::std::string, ::xviz::StreamMetadata > > parser(&streams_);
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.Metadata.StreamsEntry.key"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&streams_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
       // map<string, .xviz.CameraInfo> cameras = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          Metadata_CamerasEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              Metadata_CamerasEntry_DoNotUse,
-              ::std::string, ::xviz::CameraInfo,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
-              0 >,
-            ::google::protobuf::Map< ::std::string, ::xviz::CameraInfo > > parser(&cameras_);
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.Metadata.CamerasEntry.key"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&cameras_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else goto handle_unusual;
+        continue;
       // map<string, string> stream_aliases = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          Metadata_StreamAliasesEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              Metadata_StreamAliasesEntry_DoNotUse,
-              ::std::string, ::std::string,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              0 >,
-            ::google::protobuf::Map< ::std::string, ::std::string > > parser(&stream_aliases_);
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.Metadata.StreamAliasesEntry.key"));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.value().data(), static_cast<int>(parser.value().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.Metadata.StreamAliasesEntry.value"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&stream_aliases_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
+        } else goto handle_unusual;
+        continue;
       // map<string, .xviz.UIPanelInfo> ui_config = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
-          Metadata_UiConfigEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              Metadata_UiConfigEntry_DoNotUse,
-              ::std::string, ::xviz::UIPanelInfo,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
-              0 >,
-            ::google::protobuf::Map< ::std::string, ::xviz::UIPanelInfo > > parser(&ui_config_);
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.Metadata.UiConfigEntry.key"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&ui_config_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
+        } else goto handle_unusual;
+        continue;
       // .xviz.LogInfo log_info = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_log_info()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
+          ptr = ctx->ParseMessage(_internal_mutable_log_info(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.Metadata)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.Metadata)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void Metadata::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.Metadata)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string version = 1;
-  if (this->version().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->version().data(), static_cast<int>(this->version().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.Metadata.version");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->version(), output);
-  }
-
-  // map<string, .xviz.StreamMetadata> streams = 2;
-  if (!this->streams().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::StreamMetadata >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "xviz.Metadata.StreamsEntry.key");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->streams().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->streams().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::StreamMetadata >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::StreamMetadata >::const_iterator
-          it = this->streams().begin();
-          it != this->streams().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<Metadata_StreamsEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(streams_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            2, *entry, output);
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
-      }
-    } else {
-      ::std::unique_ptr<Metadata_StreamsEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::StreamMetadata >::const_iterator
-          it = this->streams().begin();
-          it != this->streams().end(); ++it) {
-        entry.reset(streams_.NewEntryWrapper(
-            it->first, it->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            2, *entry, output);
-        Utf8Check::Check(&*it);
-      }
-    }
-  }
-
-  // map<string, .xviz.CameraInfo> cameras = 3;
-  if (!this->cameras().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::CameraInfo >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "xviz.Metadata.CamerasEntry.key");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->cameras().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->cameras().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::CameraInfo >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::CameraInfo >::const_iterator
-          it = this->cameras().begin();
-          it != this->cameras().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<Metadata_CamerasEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(cameras_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            3, *entry, output);
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
-      }
-    } else {
-      ::std::unique_ptr<Metadata_CamerasEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::CameraInfo >::const_iterator
-          it = this->cameras().begin();
-          it != this->cameras().end(); ++it) {
-        entry.reset(cameras_.NewEntryWrapper(
-            it->first, it->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            3, *entry, output);
-        Utf8Check::Check(&*it);
-      }
-    }
-  }
-
-  // map<string, string> stream_aliases = 4;
-  if (!this->stream_aliases().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "xviz.Metadata.StreamAliasesEntry.key");
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->second.data(), static_cast<int>(p->second.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "xviz.Metadata.StreamAliasesEntry.value");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->stream_aliases().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->stream_aliases().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->stream_aliases().begin();
-          it != this->stream_aliases().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<Metadata_StreamAliasesEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(stream_aliases_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            4, *entry, output);
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
-      }
-    } else {
-      ::std::unique_ptr<Metadata_StreamAliasesEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->stream_aliases().begin();
-          it != this->stream_aliases().end(); ++it) {
-        entry.reset(stream_aliases_.NewEntryWrapper(
-            it->first, it->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            4, *entry, output);
-        Utf8Check::Check(&*it);
-      }
-    }
-  }
-
-  // map<string, .xviz.UIPanelInfo> ui_config = 5;
-  if (!this->ui_config().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::UIPanelInfo >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "xviz.Metadata.UiConfigEntry.key");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->ui_config().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->ui_config().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::UIPanelInfo >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::UIPanelInfo >::const_iterator
-          it = this->ui_config().begin();
-          it != this->ui_config().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<Metadata_UiConfigEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(ui_config_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            5, *entry, output);
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
-      }
-    } else {
-      ::std::unique_ptr<Metadata_UiConfigEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::UIPanelInfo >::const_iterator
-          it = this->ui_config().begin();
-          it != this->ui_config().end(); ++it) {
-        entry.reset(ui_config_.NewEntryWrapper(
-            it->first, it->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            5, *entry, output);
-        Utf8Check::Check(&*it);
-      }
-    }
-  }
-
-  // .xviz.LogInfo log_info = 6;
-  if (this->has_log_info()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, this->_internal_log_info(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.Metadata)
-}
-
-::google::protobuf::uint8* Metadata::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* Metadata::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.Metadata)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string version = 1;
   if (this->version().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->version().data(), static_cast<int>(this->version().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_version().data(), static_cast<int>(this->_internal_version().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.Metadata.version");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->version(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_version(), target);
   }
 
   // map<string, .xviz.StreamMetadata> streams = 2;
-  if (!this->streams().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::StreamMetadata >::const_pointer
+  if (!this->_internal_streams().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::StreamMetadata >::const_pointer
         ConstPtr;
     typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
     struct Utf8Check {
       static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
           p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
           "xviz.Metadata.StreamsEntry.key");
       }
     };
 
-    if (deterministic &&
-        this->streams().size() > 1) {
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_streams().size() > 1) {
       ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->streams().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::StreamMetadata >::size_type size_type;
+          new SortItem[this->_internal_streams().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::StreamMetadata >::size_type size_type;
       size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::StreamMetadata >::const_iterator
-          it = this->streams().begin();
-          it != this->streams().end(); ++it, ++n) {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::StreamMetadata >::const_iterator
+          it = this->_internal_streams().begin();
+          it != this->_internal_streams().end(); ++it, ++n) {
         items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<Metadata_StreamsEntry_DoNotUse> entry;
       for (size_type i = 0; i < n; i++) {
-        entry.reset(streams_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       2, *entry, deterministic, target);
-;
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+        target = Metadata_StreamsEntry_DoNotUse::Funcs::InternalSerialize(2, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
       }
     } else {
-      ::std::unique_ptr<Metadata_StreamsEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::StreamMetadata >::const_iterator
-          it = this->streams().begin();
-          it != this->streams().end(); ++it) {
-        entry.reset(streams_.NewEntryWrapper(
-            it->first, it->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       2, *entry, deterministic, target);
-;
-        Utf8Check::Check(&*it);
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::StreamMetadata >::const_iterator
+          it = this->_internal_streams().begin();
+          it != this->_internal_streams().end(); ++it) {
+        target = Metadata_StreamsEntry_DoNotUse::Funcs::InternalSerialize(2, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
       }
     }
   }
 
   // map<string, .xviz.CameraInfo> cameras = 3;
-  if (!this->cameras().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::CameraInfo >::const_pointer
+  if (!this->_internal_cameras().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::CameraInfo >::const_pointer
         ConstPtr;
     typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
     struct Utf8Check {
       static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
           p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
           "xviz.Metadata.CamerasEntry.key");
       }
     };
 
-    if (deterministic &&
-        this->cameras().size() > 1) {
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_cameras().size() > 1) {
       ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->cameras().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::CameraInfo >::size_type size_type;
+          new SortItem[this->_internal_cameras().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::CameraInfo >::size_type size_type;
       size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::CameraInfo >::const_iterator
-          it = this->cameras().begin();
-          it != this->cameras().end(); ++it, ++n) {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::CameraInfo >::const_iterator
+          it = this->_internal_cameras().begin();
+          it != this->_internal_cameras().end(); ++it, ++n) {
         items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<Metadata_CamerasEntry_DoNotUse> entry;
       for (size_type i = 0; i < n; i++) {
-        entry.reset(cameras_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       3, *entry, deterministic, target);
-;
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+        target = Metadata_CamerasEntry_DoNotUse::Funcs::InternalSerialize(3, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
       }
     } else {
-      ::std::unique_ptr<Metadata_CamerasEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::CameraInfo >::const_iterator
-          it = this->cameras().begin();
-          it != this->cameras().end(); ++it) {
-        entry.reset(cameras_.NewEntryWrapper(
-            it->first, it->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       3, *entry, deterministic, target);
-;
-        Utf8Check::Check(&*it);
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::CameraInfo >::const_iterator
+          it = this->_internal_cameras().begin();
+          it != this->_internal_cameras().end(); ++it) {
+        target = Metadata_CamerasEntry_DoNotUse::Funcs::InternalSerialize(3, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
       }
     }
   }
 
   // map<string, string> stream_aliases = 4;
-  if (!this->stream_aliases().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
+  if (!this->_internal_stream_aliases().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_pointer
         ConstPtr;
     typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
     struct Utf8Check {
       static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
           p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
           "xviz.Metadata.StreamAliasesEntry.key");
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
           p->second.data(), static_cast<int>(p->second.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
           "xviz.Metadata.StreamAliasesEntry.value");
       }
     };
 
-    if (deterministic &&
-        this->stream_aliases().size() > 1) {
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_stream_aliases().size() > 1) {
       ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->stream_aliases().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
+          new SortItem[this->_internal_stream_aliases().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::size_type size_type;
       size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->stream_aliases().begin();
-          it != this->stream_aliases().end(); ++it, ++n) {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+          it = this->_internal_stream_aliases().begin();
+          it != this->_internal_stream_aliases().end(); ++it, ++n) {
         items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<Metadata_StreamAliasesEntry_DoNotUse> entry;
       for (size_type i = 0; i < n; i++) {
-        entry.reset(stream_aliases_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       4, *entry, deterministic, target);
-;
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+        target = Metadata_StreamAliasesEntry_DoNotUse::Funcs::InternalSerialize(4, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
       }
     } else {
-      ::std::unique_ptr<Metadata_StreamAliasesEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->stream_aliases().begin();
-          it != this->stream_aliases().end(); ++it) {
-        entry.reset(stream_aliases_.NewEntryWrapper(
-            it->first, it->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       4, *entry, deterministic, target);
-;
-        Utf8Check::Check(&*it);
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+          it = this->_internal_stream_aliases().begin();
+          it != this->_internal_stream_aliases().end(); ++it) {
+        target = Metadata_StreamAliasesEntry_DoNotUse::Funcs::InternalSerialize(4, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
       }
     }
   }
 
   // map<string, .xviz.UIPanelInfo> ui_config = 5;
-  if (!this->ui_config().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::xviz::UIPanelInfo >::const_pointer
+  if (!this->_internal_ui_config().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::UIPanelInfo >::const_pointer
         ConstPtr;
     typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
     struct Utf8Check {
       static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
           p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
           "xviz.Metadata.UiConfigEntry.key");
       }
     };
 
-    if (deterministic &&
-        this->ui_config().size() > 1) {
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_ui_config().size() > 1) {
       ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->ui_config().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::xviz::UIPanelInfo >::size_type size_type;
+          new SortItem[this->_internal_ui_config().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::UIPanelInfo >::size_type size_type;
       size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::xviz::UIPanelInfo >::const_iterator
-          it = this->ui_config().begin();
-          it != this->ui_config().end(); ++it, ++n) {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::UIPanelInfo >::const_iterator
+          it = this->_internal_ui_config().begin();
+          it != this->_internal_ui_config().end(); ++it, ++n) {
         items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<Metadata_UiConfigEntry_DoNotUse> entry;
       for (size_type i = 0; i < n; i++) {
-        entry.reset(ui_config_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       5, *entry, deterministic, target);
-;
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+        target = Metadata_UiConfigEntry_DoNotUse::Funcs::InternalSerialize(5, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
       }
     } else {
-      ::std::unique_ptr<Metadata_UiConfigEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::xviz::UIPanelInfo >::const_iterator
-          it = this->ui_config().begin();
-          it != this->ui_config().end(); ++it) {
-        entry.reset(ui_config_.NewEntryWrapper(
-            it->first, it->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       5, *entry, deterministic, target);
-;
-        Utf8Check::Check(&*it);
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::UIPanelInfo >::const_iterator
+          it = this->_internal_ui_config().begin();
+          it != this->_internal_ui_config().end(); ++it) {
+        target = Metadata_UiConfigEntry_DoNotUse::Funcs::InternalSerialize(5, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
       }
     }
   }
 
   // .xviz.LogInfo log_info = 6;
   if (this->has_log_info()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        6, this->_internal_log_info(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        6, _Internal::log_info(this), target, stream);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.Metadata)
   return target;
@@ -3677,95 +2882,78 @@ size_t Metadata::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.Metadata)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // map<string, .xviz.StreamMetadata> streams = 2;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->streams_size());
-  {
-    ::std::unique_ptr<Metadata_StreamsEntry_DoNotUse> entry;
-    for (::google::protobuf::Map< ::std::string, ::xviz::StreamMetadata >::const_iterator
-        it = this->streams().begin();
-        it != this->streams().end(); ++it) {
-      entry.reset(streams_.NewEntryWrapper(it->first, it->second));
-      total_size += ::google::protobuf::internal::WireFormatLite::
-          MessageSizeNoVirtual(*entry);
-    }
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_streams_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::StreamMetadata >::const_iterator
+      it = this->_internal_streams().begin();
+      it != this->_internal_streams().end(); ++it) {
+    total_size += Metadata_StreamsEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
   // map<string, .xviz.CameraInfo> cameras = 3;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->cameras_size());
-  {
-    ::std::unique_ptr<Metadata_CamerasEntry_DoNotUse> entry;
-    for (::google::protobuf::Map< ::std::string, ::xviz::CameraInfo >::const_iterator
-        it = this->cameras().begin();
-        it != this->cameras().end(); ++it) {
-      entry.reset(cameras_.NewEntryWrapper(it->first, it->second));
-      total_size += ::google::protobuf::internal::WireFormatLite::
-          MessageSizeNoVirtual(*entry);
-    }
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_cameras_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::CameraInfo >::const_iterator
+      it = this->_internal_cameras().begin();
+      it != this->_internal_cameras().end(); ++it) {
+    total_size += Metadata_CamerasEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
   // map<string, string> stream_aliases = 4;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->stream_aliases_size());
-  {
-    ::std::unique_ptr<Metadata_StreamAliasesEntry_DoNotUse> entry;
-    for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-        it = this->stream_aliases().begin();
-        it != this->stream_aliases().end(); ++it) {
-      entry.reset(stream_aliases_.NewEntryWrapper(it->first, it->second));
-      total_size += ::google::protobuf::internal::WireFormatLite::
-          MessageSizeNoVirtual(*entry);
-    }
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_stream_aliases_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+      it = this->_internal_stream_aliases().begin();
+      it != this->_internal_stream_aliases().end(); ++it) {
+    total_size += Metadata_StreamAliasesEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
   // map<string, .xviz.UIPanelInfo> ui_config = 5;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->ui_config_size());
-  {
-    ::std::unique_ptr<Metadata_UiConfigEntry_DoNotUse> entry;
-    for (::google::protobuf::Map< ::std::string, ::xviz::UIPanelInfo >::const_iterator
-        it = this->ui_config().begin();
-        it != this->ui_config().end(); ++it) {
-      entry.reset(ui_config_.NewEntryWrapper(it->first, it->second));
-      total_size += ::google::protobuf::internal::WireFormatLite::
-          MessageSizeNoVirtual(*entry);
-    }
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_ui_config_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::xviz::UIPanelInfo >::const_iterator
+      it = this->_internal_ui_config().begin();
+      it != this->_internal_ui_config().end(); ++it) {
+    total_size += Metadata_UiConfigEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
   // string version = 1;
   if (this->version().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->version());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_version());
   }
 
   // .xviz.LogInfo log_info = 6;
   if (this->has_log_info()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *log_info_);
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void Metadata::MergeFrom(const ::google::protobuf::Message& from) {
+void Metadata::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.Metadata)
   GOOGLE_DCHECK_NE(&from, this);
   const Metadata* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Metadata>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Metadata>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.Metadata)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.Metadata)
     MergeFrom(*source);
@@ -3776,7 +2964,7 @@ void Metadata::MergeFrom(const Metadata& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.Metadata)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   streams_.MergeFrom(from.streams_);
@@ -3785,14 +2973,14 @@ void Metadata::MergeFrom(const Metadata& from) {
   ui_config_.MergeFrom(from.ui_config_);
   if (from.version().size() > 0) {
 
-    version_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.version_);
+    version_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.version_);
   }
   if (from.has_log_info()) {
-    mutable_log_info()->::xviz::LogInfo::MergeFrom(from.log_info());
+    _internal_mutable_log_info()->::xviz::LogInfo::MergeFrom(from._internal_log_info());
   }
 }
 
-void Metadata::CopyFrom(const ::google::protobuf::Message& from) {
+void Metadata::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.Metadata)
   if (&from == this) return;
   Clear();
@@ -3810,25 +2998,20 @@ bool Metadata::IsInitialized() const {
   return true;
 }
 
-void Metadata::Swap(Metadata* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Metadata::InternalSwap(Metadata* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   streams_.Swap(&other->streams_);
   cameras_.Swap(&other->cameras_);
   stream_aliases_.Swap(&other->stream_aliases_);
   ui_config_.Swap(&other->ui_config_);
-  version_.Swap(&other->version_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  version_.Swap(&other->version_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(log_info_, other->log_info_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata Metadata::GetMetadata() const {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata Metadata::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -3836,30 +3019,29 @@ void Metadata::InternalSwap(Metadata* other) {
 
 void Error::InitAsDefaultInstance() {
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Error::kMessageFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class Error::_Internal {
+ public:
+};
 
 Error::Error()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_session_2eproto::scc_info_Error.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.Error)
 }
 Error::Error(const Error& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  message_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.message().size() > 0) {
-    message_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.message_);
+  message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_message().empty()) {
+    message_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.message_);
   }
   // @@protoc_insertion_point(copy_constructor:xviz.Error)
 }
 
 void Error::SharedCtor() {
-  message_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Error_session_2eproto.base);
+  message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 Error::~Error() {
@@ -3868,123 +3050,83 @@ Error::~Error() {
 }
 
 void Error::SharedDtor() {
-  message_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void Error::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* Error::descriptor() {
-  ::protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const Error& Error::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_session_2eproto::scc_info_Error.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Error_session_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void Error::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.Error)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  message_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  message_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
 }
 
-bool Error::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.Error)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* Error::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // string message = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_message()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->message().data(), static_cast<int>(this->message().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.Error.message"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_message();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.Error.message"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.Error)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.Error)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void Error::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.Error)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string message = 1;
-  if (this->message().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->message().data(), static_cast<int>(this->message().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.Error.message");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->message(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.Error)
-}
-
-::google::protobuf::uint8* Error::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* Error::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.Error)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string message = 1;
   if (this->message().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->message().data(), static_cast<int>(this->message().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.Error.message");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->message(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_message(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.Error)
   return target;
@@ -3994,32 +3136,35 @@ size_t Error::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.Error)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // string message = 1;
   if (this->message().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->message());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_message());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void Error::MergeFrom(const ::google::protobuf::Message& from) {
+void Error::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.Error)
   GOOGLE_DCHECK_NE(&from, this);
   const Error* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Error>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Error>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.Error)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.Error)
     MergeFrom(*source);
@@ -4030,16 +3175,16 @@ void Error::MergeFrom(const Error& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.Error)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from.message().size() > 0) {
 
-    message_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.message_);
+    message_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.message_);
   }
 }
 
-void Error::CopyFrom(const ::google::protobuf::Message& from) {
+void Error::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.Error)
   if (&from == this) return;
   Clear();
@@ -4057,20 +3202,15 @@ bool Error::IsInitialized() const {
   return true;
 }
 
-void Error::Swap(Error* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Error::InternalSwap(Error* other) {
   using std::swap;
-  message_.Swap(&other->message_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  message_.Swap(&other->message_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
 }
 
-::google::protobuf::Metadata Error::GetMetadata() const {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata Error::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -4080,59 +3220,51 @@ void StreamMetadata::InitAsDefaultInstance() {
   ::xviz::_StreamMetadata_default_instance_._instance.get_mutable()->stream_style_ = const_cast< ::xviz::StyleStreamValue*>(
       ::xviz::StyleStreamValue::internal_default_instance());
 }
+class StreamMetadata::_Internal {
+ public:
+  static const ::xviz::StyleStreamValue& stream_style(const StreamMetadata* msg);
+};
+
+const ::xviz::StyleStreamValue&
+StreamMetadata::_Internal::stream_style(const StreamMetadata* msg) {
+  return *msg->stream_style_;
+}
 void StreamMetadata::clear_stream_style() {
-  if (GetArenaNoVirtual() == NULL && stream_style_ != NULL) {
+  if (GetArenaNoVirtual() == nullptr && stream_style_ != nullptr) {
     delete stream_style_;
   }
-  stream_style_ = NULL;
+  stream_style_ = nullptr;
 }
 void StreamMetadata::clear_style_classes() {
   style_classes_.Clear();
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int StreamMetadata::kSourceFieldNumber;
-const int StreamMetadata::kUnitsFieldNumber;
-const int StreamMetadata::kCategoryFieldNumber;
-const int StreamMetadata::kScalarTypeFieldNumber;
-const int StreamMetadata::kPrimitiveTypeFieldNumber;
-const int StreamMetadata::kUiPrimitiveTypeFieldNumber;
-const int StreamMetadata::kAnnotationTypeFieldNumber;
-const int StreamMetadata::kStreamStyleFieldNumber;
-const int StreamMetadata::kStyleClassesFieldNumber;
-const int StreamMetadata::kCoordinateFieldNumber;
-const int StreamMetadata::kTransformFieldNumber;
-const int StreamMetadata::kTransformCallbackFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
 StreamMetadata::StreamMetadata()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_session_2eproto::scc_info_StreamMetadata.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.StreamMetadata)
 }
 StreamMetadata::StreamMetadata(const StreamMetadata& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
       style_classes_(from.style_classes_),
       transform_(from.transform_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  source_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.source().size() > 0) {
-    source_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.source_);
+  source_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_source().empty()) {
+    source_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.source_);
   }
-  units_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.units().size() > 0) {
-    units_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.units_);
+  units_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_units().empty()) {
+    units_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.units_);
   }
-  transform_callback_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.transform_callback().size() > 0) {
-    transform_callback_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.transform_callback_);
+  transform_callback_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_transform_callback().empty()) {
+    transform_callback_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.transform_callback_);
   }
-  if (from.has_stream_style()) {
+  if (from._internal_has_stream_style()) {
     stream_style_ = new ::xviz::StyleStreamValue(*from.stream_style_);
   } else {
-    stream_style_ = NULL;
+    stream_style_ = nullptr;
   }
   ::memcpy(&category_, &from.category_,
     static_cast<size_t>(reinterpret_cast<char*>(&coordinate_) -
@@ -4141,9 +3273,10 @@ StreamMetadata::StreamMetadata(const StreamMetadata& from)
 }
 
 void StreamMetadata::SharedCtor() {
-  source_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  units_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  transform_callback_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_StreamMetadata_session_2eproto.base);
+  source_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  units_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  transform_callback_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&stream_style_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&coordinate_) -
       reinterpret_cast<char*>(&stream_style_)) + sizeof(coordinate_));
@@ -4155,468 +3288,275 @@ StreamMetadata::~StreamMetadata() {
 }
 
 void StreamMetadata::SharedDtor() {
-  source_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  units_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  transform_callback_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  source_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  units_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  transform_callback_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete stream_style_;
 }
 
 void StreamMetadata::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* StreamMetadata::descriptor() {
-  ::protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const StreamMetadata& StreamMetadata::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_session_2eproto::scc_info_StreamMetadata.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_StreamMetadata_session_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void StreamMetadata::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.StreamMetadata)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   style_classes_.Clear();
   transform_.Clear();
-  source_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  units_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  transform_callback_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (GetArenaNoVirtual() == NULL && stream_style_ != NULL) {
+  source_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  units_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  transform_callback_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == nullptr && stream_style_ != nullptr) {
     delete stream_style_;
   }
-  stream_style_ = NULL;
+  stream_style_ = nullptr;
   ::memset(&category_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&coordinate_) -
       reinterpret_cast<char*>(&category_)) + sizeof(coordinate_));
   _internal_metadata_.Clear();
 }
 
-bool StreamMetadata::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.StreamMetadata)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* StreamMetadata::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // string source = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_source()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->source().data(), static_cast<int>(this->source().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.StreamMetadata.source"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_source();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.StreamMetadata.source"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // string units = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_units()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->units().data(), static_cast<int>(this->units().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.StreamMetadata.units"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_units();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.StreamMetadata.units"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // .xviz.StreamMetadata.Category category = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_category(static_cast< ::xviz::StreamMetadata_Category >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+          _internal_set_category(static_cast<::xviz::StreamMetadata_Category>(val));
+        } else goto handle_unusual;
+        continue;
       // .xviz.StreamMetadata.ScalarType scalar_type = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_scalar_type(static_cast< ::xviz::StreamMetadata_ScalarType >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+          _internal_set_scalar_type(static_cast<::xviz::StreamMetadata_ScalarType>(val));
+        } else goto handle_unusual;
+        continue;
       // .xviz.StreamMetadata.PrimitiveType primitive_type = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_primitive_type(static_cast< ::xviz::StreamMetadata_PrimitiveType >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+          _internal_set_primitive_type(static_cast<::xviz::StreamMetadata_PrimitiveType>(val));
+        } else goto handle_unusual;
+        continue;
       // .xviz.StreamMetadata.UIPrimitiveType ui_primitive_type = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(48u /* 48 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_ui_primitive_type(static_cast< ::xviz::StreamMetadata_UIPrimitiveType >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+          _internal_set_ui_primitive_type(static_cast<::xviz::StreamMetadata_UIPrimitiveType>(val));
+        } else goto handle_unusual;
+        continue;
       // .xviz.StreamMetadata.AnnotationType annotation_type = 7;
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(56u /* 56 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_annotation_type(static_cast< ::xviz::StreamMetadata_AnnotationType >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+          _internal_set_annotation_type(static_cast<::xviz::StreamMetadata_AnnotationType>(val));
+        } else goto handle_unusual;
+        continue;
       // .xviz.StyleStreamValue stream_style = 8;
-      case 8: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(66u /* 66 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_stream_style()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 66)) {
+          ptr = ctx->ParseMessage(_internal_mutable_stream_style(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // repeated .xviz.StyleClass style_classes = 9;
-      case 9: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(74u /* 74 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_style_classes()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 74)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_style_classes(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<74>(ptr));
+        } else goto handle_unusual;
+        continue;
       // .xviz.StreamMetadata.CoordinateType coordinate = 10;
-      case 10: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(80u /* 80 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_coordinate(static_cast< ::xviz::StreamMetadata_CoordinateType >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 80)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+          _internal_set_coordinate(static_cast<::xviz::StreamMetadata_CoordinateType>(val));
+        } else goto handle_unusual;
+        continue;
       // repeated double transform = 11;
-      case 11: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(90u /* 90 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, this->mutable_transform())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(89u /* 89 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 1, 90u, input, this->mutable_transform())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 90)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedDoubleParser(_internal_mutable_transform(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 89) {
+          _internal_add_transform(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr));
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // string transform_callback = 12;
-      case 12: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(98u /* 98 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_transform_callback()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->transform_callback().data(), static_cast<int>(this->transform_callback().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.StreamMetadata.transform_callback"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 98)) {
+          auto str = _internal_mutable_transform_callback();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.StreamMetadata.transform_callback"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.StreamMetadata)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.StreamMetadata)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void StreamMetadata::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.StreamMetadata)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string source = 1;
-  if (this->source().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->source().data(), static_cast<int>(this->source().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.StreamMetadata.source");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->source(), output);
-  }
-
-  // string units = 2;
-  if (this->units().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->units().data(), static_cast<int>(this->units().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.StreamMetadata.units");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->units(), output);
-  }
-
-  // .xviz.StreamMetadata.Category category = 3;
-  if (this->category() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      3, this->category(), output);
-  }
-
-  // .xviz.StreamMetadata.ScalarType scalar_type = 4;
-  if (this->scalar_type() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      4, this->scalar_type(), output);
-  }
-
-  // .xviz.StreamMetadata.PrimitiveType primitive_type = 5;
-  if (this->primitive_type() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      5, this->primitive_type(), output);
-  }
-
-  // .xviz.StreamMetadata.UIPrimitiveType ui_primitive_type = 6;
-  if (this->ui_primitive_type() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      6, this->ui_primitive_type(), output);
-  }
-
-  // .xviz.StreamMetadata.AnnotationType annotation_type = 7;
-  if (this->annotation_type() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      7, this->annotation_type(), output);
-  }
-
-  // .xviz.StyleStreamValue stream_style = 8;
-  if (this->has_stream_style()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      8, this->_internal_stream_style(), output);
-  }
-
-  // repeated .xviz.StyleClass style_classes = 9;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->style_classes_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      9,
-      this->style_classes(static_cast<int>(i)),
-      output);
-  }
-
-  // .xviz.StreamMetadata.CoordinateType coordinate = 10;
-  if (this->coordinate() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      10, this->coordinate(), output);
-  }
-
-  // repeated double transform = 11;
-  if (this->transform_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(11, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _transform_cached_byte_size_));
-    ::google::protobuf::internal::WireFormatLite::WriteDoubleArray(
-      this->transform().data(), this->transform_size(), output);
-  }
-
-  // string transform_callback = 12;
-  if (this->transform_callback().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->transform_callback().data(), static_cast<int>(this->transform_callback().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.StreamMetadata.transform_callback");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      12, this->transform_callback(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.StreamMetadata)
-}
-
-::google::protobuf::uint8* StreamMetadata::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* StreamMetadata::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.StreamMetadata)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string source = 1;
   if (this->source().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->source().data(), static_cast<int>(this->source().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_source().data(), static_cast<int>(this->_internal_source().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.StreamMetadata.source");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->source(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_source(), target);
   }
 
   // string units = 2;
   if (this->units().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->units().data(), static_cast<int>(this->units().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_units().data(), static_cast<int>(this->_internal_units().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.StreamMetadata.units");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->units(), target);
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_units(), target);
   }
 
   // .xviz.StreamMetadata.Category category = 3;
   if (this->category() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      3, this->category(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      3, this->_internal_category(), target);
   }
 
   // .xviz.StreamMetadata.ScalarType scalar_type = 4;
   if (this->scalar_type() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      4, this->scalar_type(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      4, this->_internal_scalar_type(), target);
   }
 
   // .xviz.StreamMetadata.PrimitiveType primitive_type = 5;
   if (this->primitive_type() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      5, this->primitive_type(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      5, this->_internal_primitive_type(), target);
   }
 
   // .xviz.StreamMetadata.UIPrimitiveType ui_primitive_type = 6;
   if (this->ui_primitive_type() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      6, this->ui_primitive_type(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      6, this->_internal_ui_primitive_type(), target);
   }
 
   // .xviz.StreamMetadata.AnnotationType annotation_type = 7;
   if (this->annotation_type() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      7, this->annotation_type(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      7, this->_internal_annotation_type(), target);
   }
 
   // .xviz.StyleStreamValue stream_style = 8;
   if (this->has_stream_style()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        8, this->_internal_stream_style(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        8, _Internal::stream_style(this), target, stream);
   }
 
   // repeated .xviz.StyleClass style_classes = 9;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->style_classes_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        9, this->style_classes(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_style_classes_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(9, this->_internal_style_classes(i), target, stream);
   }
 
   // .xviz.StreamMetadata.CoordinateType coordinate = 10;
   if (this->coordinate() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      10, this->coordinate(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      10, this->_internal_coordinate(), target);
   }
 
   // repeated double transform = 11;
-  if (this->transform_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      11,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _transform_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteDoubleNoTagToArray(this->transform_, target);
+  if (this->_internal_transform_size() > 0) {
+    target = stream->WriteFixedPacked(11, _internal_transform(), target);
   }
 
   // string transform_callback = 12;
   if (this->transform_callback().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->transform_callback().data(), static_cast<int>(this->transform_callback().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_transform_callback().data(), static_cast<int>(this->_internal_transform_callback().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.StreamMetadata.transform_callback");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        12, this->transform_callback(), target);
+    target = stream->WriteStringMaybeAliased(
+        12, this->_internal_transform_callback(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.StreamMetadata)
   return target;
@@ -4626,116 +3566,114 @@ size_t StreamMetadata::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.StreamMetadata)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .xviz.StyleClass style_classes = 9;
-  {
-    unsigned int count = static_cast<unsigned int>(this->style_classes_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->style_classes(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_style_classes_size();
+  for (const auto& msg : this->style_classes_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // repeated double transform = 11;
   {
-    unsigned int count = static_cast<unsigned int>(this->transform_size());
+    unsigned int count = static_cast<unsigned int>(this->_internal_transform_size());
     size_t data_size = 8UL * count;
     if (data_size > 0) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
     }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _transform_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
+    _transform_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
     total_size += data_size;
   }
 
   // string source = 1;
   if (this->source().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->source());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_source());
   }
 
   // string units = 2;
   if (this->units().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->units());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_units());
   }
 
   // string transform_callback = 12;
   if (this->transform_callback().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->transform_callback());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_transform_callback());
   }
 
   // .xviz.StyleStreamValue stream_style = 8;
   if (this->has_stream_style()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *stream_style_);
   }
 
   // .xviz.StreamMetadata.Category category = 3;
   if (this->category() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->category());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_category());
   }
 
   // .xviz.StreamMetadata.ScalarType scalar_type = 4;
   if (this->scalar_type() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->scalar_type());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_scalar_type());
   }
 
   // .xviz.StreamMetadata.PrimitiveType primitive_type = 5;
   if (this->primitive_type() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->primitive_type());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_primitive_type());
   }
 
   // .xviz.StreamMetadata.UIPrimitiveType ui_primitive_type = 6;
   if (this->ui_primitive_type() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->ui_primitive_type());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_ui_primitive_type());
   }
 
   // .xviz.StreamMetadata.AnnotationType annotation_type = 7;
   if (this->annotation_type() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->annotation_type());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_annotation_type());
   }
 
   // .xviz.StreamMetadata.CoordinateType coordinate = 10;
   if (this->coordinate() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->coordinate());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_coordinate());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void StreamMetadata::MergeFrom(const ::google::protobuf::Message& from) {
+void StreamMetadata::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.StreamMetadata)
   GOOGLE_DCHECK_NE(&from, this);
   const StreamMetadata* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const StreamMetadata>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<StreamMetadata>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.StreamMetadata)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.StreamMetadata)
     MergeFrom(*source);
@@ -4746,47 +3684,47 @@ void StreamMetadata::MergeFrom(const StreamMetadata& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.StreamMetadata)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   style_classes_.MergeFrom(from.style_classes_);
   transform_.MergeFrom(from.transform_);
   if (from.source().size() > 0) {
 
-    source_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.source_);
+    source_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.source_);
   }
   if (from.units().size() > 0) {
 
-    units_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.units_);
+    units_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.units_);
   }
   if (from.transform_callback().size() > 0) {
 
-    transform_callback_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.transform_callback_);
+    transform_callback_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.transform_callback_);
   }
   if (from.has_stream_style()) {
-    mutable_stream_style()->::xviz::StyleStreamValue::MergeFrom(from.stream_style());
+    _internal_mutable_stream_style()->::xviz::StyleStreamValue::MergeFrom(from._internal_stream_style());
   }
   if (from.category() != 0) {
-    set_category(from.category());
+    _internal_set_category(from._internal_category());
   }
   if (from.scalar_type() != 0) {
-    set_scalar_type(from.scalar_type());
+    _internal_set_scalar_type(from._internal_scalar_type());
   }
   if (from.primitive_type() != 0) {
-    set_primitive_type(from.primitive_type());
+    _internal_set_primitive_type(from._internal_primitive_type());
   }
   if (from.ui_primitive_type() != 0) {
-    set_ui_primitive_type(from.ui_primitive_type());
+    _internal_set_ui_primitive_type(from._internal_ui_primitive_type());
   }
   if (from.annotation_type() != 0) {
-    set_annotation_type(from.annotation_type());
+    _internal_set_annotation_type(from._internal_annotation_type());
   }
   if (from.coordinate() != 0) {
-    set_coordinate(from.coordinate());
+    _internal_set_coordinate(from._internal_coordinate());
   }
 }
 
-void StreamMetadata::CopyFrom(const ::google::protobuf::Message& from) {
+void StreamMetadata::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.StreamMetadata)
   if (&from == this) return;
   Clear();
@@ -4804,19 +3742,16 @@ bool StreamMetadata::IsInitialized() const {
   return true;
 }
 
-void StreamMetadata::Swap(StreamMetadata* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void StreamMetadata::InternalSwap(StreamMetadata* other) {
   using std::swap;
-  CastToBase(&style_classes_)->InternalSwap(CastToBase(&other->style_classes_));
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  style_classes_.InternalSwap(&other->style_classes_);
   transform_.InternalSwap(&other->transform_);
-  source_.Swap(&other->source_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  source_.Swap(&other->source_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  units_.Swap(&other->units_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  units_.Swap(&other->units_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  transform_callback_.Swap(&other->transform_callback_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  transform_callback_.Swap(&other->transform_callback_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(stream_style_, other->stream_style_);
   swap(category_, other->category_);
@@ -4825,12 +3760,10 @@ void StreamMetadata::InternalSwap(StreamMetadata* other) {
   swap(ui_primitive_type_, other->ui_primitive_type_);
   swap(annotation_type_, other->annotation_type_);
   swap(coordinate_, other->coordinate_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata StreamMetadata::GetMetadata() const {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata StreamMetadata::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -4838,39 +3771,30 @@ void StreamMetadata::InternalSwap(StreamMetadata* other) {
 
 void CameraInfo::InitAsDefaultInstance() {
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int CameraInfo::kHumanNameFieldNumber;
-const int CameraInfo::kSourceFieldNumber;
-const int CameraInfo::kVehiclePositionFieldNumber;
-const int CameraInfo::kVehicleOrientationFieldNumber;
-const int CameraInfo::kPixelWidthFieldNumber;
-const int CameraInfo::kPixelHeightFieldNumber;
-const int CameraInfo::kRectificationProjectionFieldNumber;
-const int CameraInfo::kGlProjectionFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class CameraInfo::_Internal {
+ public:
+};
 
 CameraInfo::CameraInfo()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_session_2eproto::scc_info_CameraInfo.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.CameraInfo)
 }
 CameraInfo::CameraInfo(const CameraInfo& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
       vehicle_position_(from.vehicle_position_),
       vehicle_orientation_(from.vehicle_orientation_),
       rectification_projection_(from.rectification_projection_),
       gl_projection_(from.gl_projection_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  human_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.human_name().size() > 0) {
-    human_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.human_name_);
+  human_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_human_name().empty()) {
+    human_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.human_name_);
   }
-  source_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.source().size() > 0) {
-    source_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.source_);
+  source_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_source().empty()) {
+    source_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.source_);
   }
   ::memcpy(&pixel_width_, &from.pixel_width_,
     static_cast<size_t>(reinterpret_cast<char*>(&pixel_height_) -
@@ -4879,8 +3803,9 @@ CameraInfo::CameraInfo(const CameraInfo& from)
 }
 
 void CameraInfo::SharedCtor() {
-  human_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  source_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_CameraInfo_session_2eproto.base);
+  human_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  source_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&pixel_width_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&pixel_height_) -
       reinterpret_cast<char*>(&pixel_width_)) + sizeof(pixel_height_));
@@ -4892,27 +3817,22 @@ CameraInfo::~CameraInfo() {
 }
 
 void CameraInfo::SharedDtor() {
-  human_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  source_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  human_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  source_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void CameraInfo::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* CameraInfo::descriptor() {
-  ::protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const CameraInfo& CameraInfo::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_session_2eproto::scc_info_CameraInfo.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CameraInfo_session_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void CameraInfo::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.CameraInfo)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -4920,353 +3840,174 @@ void CameraInfo::Clear() {
   vehicle_orientation_.Clear();
   rectification_projection_.Clear();
   gl_projection_.Clear();
-  human_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  source_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  human_name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  source_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&pixel_width_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&pixel_height_) -
       reinterpret_cast<char*>(&pixel_width_)) + sizeof(pixel_height_));
   _internal_metadata_.Clear();
 }
 
-bool CameraInfo::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.CameraInfo)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* CameraInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // string human_name = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_human_name()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->human_name().data(), static_cast<int>(this->human_name().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.CameraInfo.human_name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_human_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.CameraInfo.human_name"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // string source = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_source()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->source().data(), static_cast<int>(this->source().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.CameraInfo.source"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_source();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.CameraInfo.source"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // repeated double vehicle_position = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, this->mutable_vehicle_position())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(25u /* 25 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 1, 26u, input, this->mutable_vehicle_position())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedDoubleParser(_internal_mutable_vehicle_position(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 25) {
+          _internal_add_vehicle_position(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr));
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // repeated double vehicle_orientation = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, this->mutable_vehicle_orientation())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(33u /* 33 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 1, 34u, input, this->mutable_vehicle_orientation())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedDoubleParser(_internal_mutable_vehicle_orientation(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 33) {
+          _internal_add_vehicle_orientation(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr));
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // double pixel_width = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(41u /* 41 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &pixel_width_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 41)) {
+          pixel_width_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // double pixel_height = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(49u /* 49 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &pixel_height_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 49)) {
+          pixel_height_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // repeated double rectification_projection = 7;
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(58u /* 58 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, this->mutable_rectification_projection())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(57u /* 57 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 1, 58u, input, this->mutable_rectification_projection())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 58)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedDoubleParser(_internal_mutable_rectification_projection(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 57) {
+          _internal_add_rectification_projection(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr));
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // repeated double gl_projection = 8;
-      case 8: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(66u /* 66 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, this->mutable_gl_projection())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(65u /* 65 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 1, 66u, input, this->mutable_gl_projection())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 66)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedDoubleParser(_internal_mutable_gl_projection(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 65) {
+          _internal_add_gl_projection(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr));
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.CameraInfo)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.CameraInfo)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void CameraInfo::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.CameraInfo)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string human_name = 1;
-  if (this->human_name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->human_name().data(), static_cast<int>(this->human_name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.CameraInfo.human_name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->human_name(), output);
-  }
-
-  // string source = 2;
-  if (this->source().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->source().data(), static_cast<int>(this->source().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.CameraInfo.source");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->source(), output);
-  }
-
-  // repeated double vehicle_position = 3;
-  if (this->vehicle_position_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(3, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _vehicle_position_cached_byte_size_));
-    ::google::protobuf::internal::WireFormatLite::WriteDoubleArray(
-      this->vehicle_position().data(), this->vehicle_position_size(), output);
-  }
-
-  // repeated double vehicle_orientation = 4;
-  if (this->vehicle_orientation_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(4, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _vehicle_orientation_cached_byte_size_));
-    ::google::protobuf::internal::WireFormatLite::WriteDoubleArray(
-      this->vehicle_orientation().data(), this->vehicle_orientation_size(), output);
-  }
-
-  // double pixel_width = 5;
-  if (this->pixel_width() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(5, this->pixel_width(), output);
-  }
-
-  // double pixel_height = 6;
-  if (this->pixel_height() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(6, this->pixel_height(), output);
-  }
-
-  // repeated double rectification_projection = 7;
-  if (this->rectification_projection_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(7, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _rectification_projection_cached_byte_size_));
-    ::google::protobuf::internal::WireFormatLite::WriteDoubleArray(
-      this->rectification_projection().data(), this->rectification_projection_size(), output);
-  }
-
-  // repeated double gl_projection = 8;
-  if (this->gl_projection_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(8, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _gl_projection_cached_byte_size_));
-    ::google::protobuf::internal::WireFormatLite::WriteDoubleArray(
-      this->gl_projection().data(), this->gl_projection_size(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.CameraInfo)
-}
-
-::google::protobuf::uint8* CameraInfo::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* CameraInfo::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.CameraInfo)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string human_name = 1;
   if (this->human_name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->human_name().data(), static_cast<int>(this->human_name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_human_name().data(), static_cast<int>(this->_internal_human_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.CameraInfo.human_name");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->human_name(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_human_name(), target);
   }
 
   // string source = 2;
   if (this->source().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->source().data(), static_cast<int>(this->source().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_source().data(), static_cast<int>(this->_internal_source().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.CameraInfo.source");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->source(), target);
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_source(), target);
   }
 
   // repeated double vehicle_position = 3;
-  if (this->vehicle_position_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      3,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _vehicle_position_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteDoubleNoTagToArray(this->vehicle_position_, target);
+  if (this->_internal_vehicle_position_size() > 0) {
+    target = stream->WriteFixedPacked(3, _internal_vehicle_position(), target);
   }
 
   // repeated double vehicle_orientation = 4;
-  if (this->vehicle_orientation_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      4,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _vehicle_orientation_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteDoubleNoTagToArray(this->vehicle_orientation_, target);
+  if (this->_internal_vehicle_orientation_size() > 0) {
+    target = stream->WriteFixedPacked(4, _internal_vehicle_orientation(), target);
   }
 
   // double pixel_width = 5;
-  if (this->pixel_width() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(5, this->pixel_width(), target);
+  if (!(this->pixel_width() <= 0 && this->pixel_width() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(5, this->_internal_pixel_width(), target);
   }
 
   // double pixel_height = 6;
-  if (this->pixel_height() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(6, this->pixel_height(), target);
+  if (!(this->pixel_height() <= 0 && this->pixel_height() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(6, this->_internal_pixel_height(), target);
   }
 
   // repeated double rectification_projection = 7;
-  if (this->rectification_projection_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      7,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _rectification_projection_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteDoubleNoTagToArray(this->rectification_projection_, target);
+  if (this->_internal_rectification_projection_size() > 0) {
+    target = stream->WriteFixedPacked(7, _internal_rectification_projection(), target);
   }
 
   // repeated double gl_projection = 8;
-  if (this->gl_projection_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      8,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _gl_projection_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteDoubleNoTagToArray(this->gl_projection_, target);
+  if (this->_internal_gl_projection_size() > 0) {
+    target = stream->WriteFixedPacked(8, _internal_gl_projection(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.CameraInfo)
   return target;
@@ -5276,113 +4017,112 @@ size_t CameraInfo::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.CameraInfo)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated double vehicle_position = 3;
   {
-    unsigned int count = static_cast<unsigned int>(this->vehicle_position_size());
+    unsigned int count = static_cast<unsigned int>(this->_internal_vehicle_position_size());
     size_t data_size = 8UL * count;
     if (data_size > 0) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
     }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _vehicle_position_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
+    _vehicle_position_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
     total_size += data_size;
   }
 
   // repeated double vehicle_orientation = 4;
   {
-    unsigned int count = static_cast<unsigned int>(this->vehicle_orientation_size());
+    unsigned int count = static_cast<unsigned int>(this->_internal_vehicle_orientation_size());
     size_t data_size = 8UL * count;
     if (data_size > 0) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
     }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _vehicle_orientation_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
+    _vehicle_orientation_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
     total_size += data_size;
   }
 
   // repeated double rectification_projection = 7;
   {
-    unsigned int count = static_cast<unsigned int>(this->rectification_projection_size());
+    unsigned int count = static_cast<unsigned int>(this->_internal_rectification_projection_size());
     size_t data_size = 8UL * count;
     if (data_size > 0) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
     }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _rectification_projection_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
+    _rectification_projection_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
     total_size += data_size;
   }
 
   // repeated double gl_projection = 8;
   {
-    unsigned int count = static_cast<unsigned int>(this->gl_projection_size());
+    unsigned int count = static_cast<unsigned int>(this->_internal_gl_projection_size());
     size_t data_size = 8UL * count;
     if (data_size > 0) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
     }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _gl_projection_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
+    _gl_projection_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
     total_size += data_size;
   }
 
   // string human_name = 1;
   if (this->human_name().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->human_name());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_human_name());
   }
 
   // string source = 2;
   if (this->source().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->source());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_source());
   }
 
   // double pixel_width = 5;
-  if (this->pixel_width() != 0) {
+  if (!(this->pixel_width() <= 0 && this->pixel_width() >= 0)) {
     total_size += 1 + 8;
   }
 
   // double pixel_height = 6;
-  if (this->pixel_height() != 0) {
+  if (!(this->pixel_height() <= 0 && this->pixel_height() >= 0)) {
     total_size += 1 + 8;
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void CameraInfo::MergeFrom(const ::google::protobuf::Message& from) {
+void CameraInfo::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.CameraInfo)
   GOOGLE_DCHECK_NE(&from, this);
   const CameraInfo* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const CameraInfo>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<CameraInfo>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.CameraInfo)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.CameraInfo)
     MergeFrom(*source);
@@ -5393,7 +4133,7 @@ void CameraInfo::MergeFrom(const CameraInfo& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.CameraInfo)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   vehicle_position_.MergeFrom(from.vehicle_position_);
@@ -5402,21 +4142,21 @@ void CameraInfo::MergeFrom(const CameraInfo& from) {
   gl_projection_.MergeFrom(from.gl_projection_);
   if (from.human_name().size() > 0) {
 
-    human_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.human_name_);
+    human_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.human_name_);
   }
   if (from.source().size() > 0) {
 
-    source_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.source_);
+    source_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.source_);
   }
-  if (from.pixel_width() != 0) {
-    set_pixel_width(from.pixel_width());
+  if (!(from.pixel_width() <= 0 && from.pixel_width() >= 0)) {
+    _internal_set_pixel_width(from._internal_pixel_width());
   }
-  if (from.pixel_height() != 0) {
-    set_pixel_height(from.pixel_height());
+  if (!(from.pixel_height() <= 0 && from.pixel_height() >= 0)) {
+    _internal_set_pixel_height(from._internal_pixel_height());
   }
 }
 
-void CameraInfo::CopyFrom(const ::google::protobuf::Message& from) {
+void CameraInfo::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.CameraInfo)
   if (&from == this) return;
   Clear();
@@ -5434,76 +4174,73 @@ bool CameraInfo::IsInitialized() const {
   return true;
 }
 
-void CameraInfo::Swap(CameraInfo* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void CameraInfo::InternalSwap(CameraInfo* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   vehicle_position_.InternalSwap(&other->vehicle_position_);
   vehicle_orientation_.InternalSwap(&other->vehicle_orientation_);
   rectification_projection_.InternalSwap(&other->rectification_projection_);
   gl_projection_.InternalSwap(&other->gl_projection_);
-  human_name_.Swap(&other->human_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  human_name_.Swap(&other->human_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  source_.Swap(&other->source_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  source_.Swap(&other->source_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(pixel_width_, other->pixel_width_);
   swap(pixel_height_, other->pixel_height_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata CameraInfo::GetMetadata() const {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata CameraInfo::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
 void UIPanelInfo::InitAsDefaultInstance() {
-  ::xviz::_UIPanelInfo_default_instance_._instance.get_mutable()->config_ = const_cast< ::google::protobuf::Struct*>(
-      ::google::protobuf::Struct::internal_default_instance());
+  ::xviz::_UIPanelInfo_default_instance_._instance.get_mutable()->config_ = const_cast< PROTOBUF_NAMESPACE_ID::Struct*>(
+      PROTOBUF_NAMESPACE_ID::Struct::internal_default_instance());
+}
+class UIPanelInfo::_Internal {
+ public:
+  static const PROTOBUF_NAMESPACE_ID::Struct& config(const UIPanelInfo* msg);
+};
+
+const PROTOBUF_NAMESPACE_ID::Struct&
+UIPanelInfo::_Internal::config(const UIPanelInfo* msg) {
+  return *msg->config_;
 }
 void UIPanelInfo::clear_config() {
-  if (GetArenaNoVirtual() == NULL && config_ != NULL) {
+  if (GetArenaNoVirtual() == nullptr && config_ != nullptr) {
     delete config_;
   }
-  config_ = NULL;
+  config_ = nullptr;
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int UIPanelInfo::kNameFieldNumber;
-const int UIPanelInfo::kNeededStreamsFieldNumber;
-const int UIPanelInfo::kConfigFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
 UIPanelInfo::UIPanelInfo()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_session_2eproto::scc_info_UIPanelInfo.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.UIPanelInfo)
 }
 UIPanelInfo::UIPanelInfo(const UIPanelInfo& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
       needed_streams_(from.needed_streams_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.name().size() > 0) {
-    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_name().empty()) {
+    name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
-  if (from.has_config()) {
-    config_ = new ::google::protobuf::Struct(*from.config_);
+  if (from._internal_has_config()) {
+    config_ = new PROTOBUF_NAMESPACE_ID::Struct(*from.config_);
   } else {
-    config_ = NULL;
+    config_ = nullptr;
   }
   // @@protoc_insertion_point(copy_constructor:xviz.UIPanelInfo)
 }
 
 void UIPanelInfo::SharedCtor() {
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  config_ = NULL;
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_UIPanelInfo_session_2eproto.base);
+  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  config_ = nullptr;
 }
 
 UIPanelInfo::~UIPanelInfo() {
@@ -5512,191 +4249,128 @@ UIPanelInfo::~UIPanelInfo() {
 }
 
 void UIPanelInfo::SharedDtor() {
-  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete config_;
 }
 
 void UIPanelInfo::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* UIPanelInfo::descriptor() {
-  ::protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const UIPanelInfo& UIPanelInfo::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_session_2eproto::scc_info_UIPanelInfo.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_UIPanelInfo_session_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void UIPanelInfo::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.UIPanelInfo)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   needed_streams_.Clear();
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (GetArenaNoVirtual() == NULL && config_ != NULL) {
+  name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == nullptr && config_ != nullptr) {
     delete config_;
   }
-  config_ = NULL;
+  config_ = nullptr;
   _internal_metadata_.Clear();
 }
 
-bool UIPanelInfo::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.UIPanelInfo)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* UIPanelInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // string name = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->name().data(), static_cast<int>(this->name().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.UIPanelInfo.name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.UIPanelInfo.name"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // repeated string needed_streams = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_needed_streams()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->needed_streams(this->needed_streams_size() - 1).data(),
-            static_cast<int>(this->needed_streams(this->needed_streams_size() - 1).length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.UIPanelInfo.needed_streams"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_needed_streams();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.UIPanelInfo.needed_streams"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
       // .google.protobuf.Struct config = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_config()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_config(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.UIPanelInfo)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.UIPanelInfo)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void UIPanelInfo::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.UIPanelInfo)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string name = 1;
-  if (this->name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.UIPanelInfo.name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->name(), output);
-  }
-
-  // repeated string needed_streams = 2;
-  for (int i = 0, n = this->needed_streams_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->needed_streams(i).data(), static_cast<int>(this->needed_streams(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.UIPanelInfo.needed_streams");
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->needed_streams(i), output);
-  }
-
-  // .google.protobuf.Struct config = 3;
-  if (this->has_config()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->_internal_config(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.UIPanelInfo)
-}
-
-::google::protobuf::uint8* UIPanelInfo::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* UIPanelInfo::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.UIPanelInfo)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string name = 1;
   if (this->name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.UIPanelInfo.name");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->name(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
   }
 
   // repeated string needed_streams = 2;
-  for (int i = 0, n = this->needed_streams_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->needed_streams(i).data(), static_cast<int>(this->needed_streams(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+  for (int i = 0, n = this->_internal_needed_streams_size(); i < n; i++) {
+    const auto& s = this->_internal_needed_streams(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.UIPanelInfo.needed_streams");
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(2, this->needed_streams(i), target);
+    target = stream->WriteString(2, s, target);
   }
 
   // .google.protobuf.Struct config = 3;
   if (this->has_config()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        3, this->_internal_config(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        3, _Internal::config(this), target, stream);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.UIPanelInfo)
   return target;
@@ -5706,47 +4380,50 @@ size_t UIPanelInfo::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.UIPanelInfo)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated string needed_streams = 2;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->needed_streams_size());
-  for (int i = 0, n = this->needed_streams_size(); i < n; i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->needed_streams(i));
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(needed_streams_.size());
+  for (int i = 0, n = needed_streams_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      needed_streams_.Get(i));
   }
 
   // string name = 1;
   if (this->name().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->name());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
   }
 
   // .google.protobuf.Struct config = 3;
   if (this->has_config()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *config_);
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void UIPanelInfo::MergeFrom(const ::google::protobuf::Message& from) {
+void UIPanelInfo::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.UIPanelInfo)
   GOOGLE_DCHECK_NE(&from, this);
   const UIPanelInfo* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const UIPanelInfo>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<UIPanelInfo>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.UIPanelInfo)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.UIPanelInfo)
     MergeFrom(*source);
@@ -5757,20 +4434,20 @@ void UIPanelInfo::MergeFrom(const UIPanelInfo& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.UIPanelInfo)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   needed_streams_.MergeFrom(from.needed_streams_);
   if (from.name().size() > 0) {
 
-    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+    name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   if (from.has_config()) {
-    mutable_config()->::google::protobuf::Struct::MergeFrom(from.config());
+    _internal_mutable_config()->PROTOBUF_NAMESPACE_ID::Struct::MergeFrom(from._internal_config());
   }
 }
 
-void UIPanelInfo::CopyFrom(const ::google::protobuf::Message& from) {
+void UIPanelInfo::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.UIPanelInfo)
   if (&from == this) return;
   Clear();
@@ -5788,22 +4465,17 @@ bool UIPanelInfo::IsInitialized() const {
   return true;
 }
 
-void UIPanelInfo::Swap(UIPanelInfo* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void UIPanelInfo::InternalSwap(UIPanelInfo* other) {
   using std::swap;
-  needed_streams_.InternalSwap(CastToBase(&other->needed_streams_));
-  name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  needed_streams_.InternalSwap(&other->needed_streams_);
+  name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(config_, other->config_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata UIPanelInfo::GetMetadata() const {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata UIPanelInfo::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -5811,21 +4483,18 @@ void UIPanelInfo::InternalSwap(UIPanelInfo* other) {
 
 void LogInfo::InitAsDefaultInstance() {
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int LogInfo::kStartTimeFieldNumber;
-const int LogInfo::kEndTimeFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class LogInfo::_Internal {
+ public:
+};
 
 LogInfo::LogInfo()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_session_2eproto::scc_info_LogInfo.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.LogInfo)
 }
 LogInfo::LogInfo(const LogInfo& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&start_time_, &from.start_time_,
     static_cast<size_t>(reinterpret_cast<char*>(&end_time_) -
@@ -5850,20 +4519,15 @@ void LogInfo::SharedDtor() {
 void LogInfo::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* LogInfo::descriptor() {
-  ::protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const LogInfo& LogInfo::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_session_2eproto::scc_info_LogInfo.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_LogInfo_session_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void LogInfo::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.LogInfo)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -5873,107 +4537,68 @@ void LogInfo::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool LogInfo::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.LogInfo)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* LogInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // double start_time = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(9u /* 9 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &start_time_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 9)) {
+          start_time_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // double end_time = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(17u /* 17 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &end_time_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 17)) {
+          end_time_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.LogInfo)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.LogInfo)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void LogInfo::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.LogInfo)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // double start_time = 1;
-  if (this->start_time() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->start_time(), output);
-  }
-
-  // double end_time = 2;
-  if (this->end_time() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->end_time(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.LogInfo)
-}
-
-::google::protobuf::uint8* LogInfo::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* LogInfo::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.LogInfo)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // double start_time = 1;
-  if (this->start_time() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->start_time(), target);
+  if (!(this->start_time() <= 0 && this->start_time() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(1, this->_internal_start_time(), target);
   }
 
   // double end_time = 2;
-  if (this->end_time() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->end_time(), target);
+  if (!(this->end_time() <= 0 && this->end_time() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(2, this->_internal_end_time(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.LogInfo)
   return target;
@@ -5983,35 +4608,38 @@ size_t LogInfo::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.LogInfo)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // double start_time = 1;
-  if (this->start_time() != 0) {
+  if (!(this->start_time() <= 0 && this->start_time() >= 0)) {
     total_size += 1 + 8;
   }
 
   // double end_time = 2;
-  if (this->end_time() != 0) {
+  if (!(this->end_time() <= 0 && this->end_time() >= 0)) {
     total_size += 1 + 8;
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void LogInfo::MergeFrom(const ::google::protobuf::Message& from) {
+void LogInfo::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.LogInfo)
   GOOGLE_DCHECK_NE(&from, this);
   const LogInfo* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const LogInfo>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<LogInfo>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.LogInfo)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.LogInfo)
     MergeFrom(*source);
@@ -6022,18 +4650,18 @@ void LogInfo::MergeFrom(const LogInfo& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.LogInfo)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.start_time() != 0) {
-    set_start_time(from.start_time());
+  if (!(from.start_time() <= 0 && from.start_time() >= 0)) {
+    _internal_set_start_time(from._internal_start_time());
   }
-  if (from.end_time() != 0) {
-    set_end_time(from.end_time());
+  if (!(from.end_time() <= 0 && from.end_time() >= 0)) {
+    _internal_set_end_time(from._internal_end_time());
   }
 }
 
-void LogInfo::CopyFrom(const ::google::protobuf::Message& from) {
+void LogInfo::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.LogInfo)
   if (&from == this) return;
   Clear();
@@ -6051,76 +4679,70 @@ bool LogInfo::IsInitialized() const {
   return true;
 }
 
-void LogInfo::Swap(LogInfo* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void LogInfo::InternalSwap(LogInfo* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(start_time_, other->start_time_);
   swap(end_time_, other->end_time_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata LogInfo::GetMetadata() const {
-  protobuf_session_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_session_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata LogInfo::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace xviz
-namespace google {
-namespace protobuf {
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::Start* Arena::CreateMaybeMessage< ::xviz::Start >(Arena* arena) {
+PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::xviz::Start* Arena::CreateMaybeMessage< ::xviz::Start >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::Start >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::TransformLog* Arena::CreateMaybeMessage< ::xviz::TransformLog >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::TransformLog* Arena::CreateMaybeMessage< ::xviz::TransformLog >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::TransformLog >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::StateUpdate* Arena::CreateMaybeMessage< ::xviz::StateUpdate >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::StateUpdate* Arena::CreateMaybeMessage< ::xviz::StateUpdate >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::StateUpdate >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::TransformLogDone* Arena::CreateMaybeMessage< ::xviz::TransformLogDone >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::TransformLogDone* Arena::CreateMaybeMessage< ::xviz::TransformLogDone >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::TransformLogDone >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::TransformPointInTime* Arena::CreateMaybeMessage< ::xviz::TransformPointInTime >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::TransformPointInTime* Arena::CreateMaybeMessage< ::xviz::TransformPointInTime >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::TransformPointInTime >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::Reconfigure* Arena::CreateMaybeMessage< ::xviz::Reconfigure >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::Reconfigure* Arena::CreateMaybeMessage< ::xviz::Reconfigure >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::Reconfigure >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::Metadata_StreamsEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::Metadata_StreamsEntry_DoNotUse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::Metadata_StreamsEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::Metadata_StreamsEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::Metadata_StreamsEntry_DoNotUse >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::Metadata_CamerasEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::Metadata_CamerasEntry_DoNotUse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::Metadata_CamerasEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::Metadata_CamerasEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::Metadata_CamerasEntry_DoNotUse >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::Metadata_StreamAliasesEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::Metadata_StreamAliasesEntry_DoNotUse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::Metadata_StreamAliasesEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::Metadata_StreamAliasesEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::Metadata_StreamAliasesEntry_DoNotUse >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::Metadata_UiConfigEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::Metadata_UiConfigEntry_DoNotUse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::Metadata_UiConfigEntry_DoNotUse* Arena::CreateMaybeMessage< ::xviz::Metadata_UiConfigEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::Metadata_UiConfigEntry_DoNotUse >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::Metadata* Arena::CreateMaybeMessage< ::xviz::Metadata >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::Metadata* Arena::CreateMaybeMessage< ::xviz::Metadata >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::Metadata >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::Error* Arena::CreateMaybeMessage< ::xviz::Error >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::Error* Arena::CreateMaybeMessage< ::xviz::Error >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::Error >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::StreamMetadata* Arena::CreateMaybeMessage< ::xviz::StreamMetadata >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::StreamMetadata* Arena::CreateMaybeMessage< ::xviz::StreamMetadata >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::StreamMetadata >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::CameraInfo* Arena::CreateMaybeMessage< ::xviz::CameraInfo >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::CameraInfo* Arena::CreateMaybeMessage< ::xviz::CameraInfo >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::CameraInfo >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::UIPanelInfo* Arena::CreateMaybeMessage< ::xviz::UIPanelInfo >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::UIPanelInfo* Arena::CreateMaybeMessage< ::xviz::UIPanelInfo >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::UIPanelInfo >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::LogInfo* Arena::CreateMaybeMessage< ::xviz::LogInfo >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::LogInfo* Arena::CreateMaybeMessage< ::xviz::LogInfo >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::LogInfo >(arena);
 }
-}  // namespace protobuf
-}  // namespace google
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
+#include <google/protobuf/port_undef.inc>

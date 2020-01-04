@@ -5,189 +5,154 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
-#include <google/protobuf/stubs/port.h>
 #include <google/protobuf/io/coded_stream.h>
-#include <google/protobuf/wire_format_lite_inl.h>
+#include <google/protobuf/extension_set.h>
+#include <google/protobuf/wire_format_lite.h>
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/generated_message_reflection.h>
 #include <google/protobuf/reflection_ops.h>
 #include <google/protobuf/wire_format.h>
-// This is a temporary google only hack
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-#include "third_party/protobuf/version.h"
-#endif
 // @@protoc_insertion_point(includes)
-
-namespace protobuf_uiprimitives_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_uiprimitives_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_TreeTableColumn;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_uiprimitives_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_TreeTableNode;
-}  // namespace protobuf_uiprimitives_2eproto
+#include <google/protobuf/port_def.inc>
+extern PROTOBUF_INTERNAL_EXPORT_uiprimitives_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TreeTableColumn_uiprimitives_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_uiprimitives_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TreeTableNode_uiprimitives_2eproto;
 namespace xviz {
 class TreeTableDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TreeTable>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<TreeTable> _instance;
 } _TreeTable_default_instance_;
 class TreeTableColumnDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TreeTableColumn>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<TreeTableColumn> _instance;
 } _TreeTableColumn_default_instance_;
 class TreeTableNodeDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TreeTableNode>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<TreeTableNode> _instance;
 } _TreeTableNode_default_instance_;
 }  // namespace xviz
-namespace protobuf_uiprimitives_2eproto {
-static void InitDefaultsTreeTable() {
+static void InitDefaultsscc_info_TreeTable_uiprimitives_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
     void* ptr = &::xviz::_TreeTable_default_instance_;
     new (ptr) ::xviz::TreeTable();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
   ::xviz::TreeTable::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<2> scc_info_TreeTable =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsTreeTable}, {
-      &protobuf_uiprimitives_2eproto::scc_info_TreeTableColumn.base,
-      &protobuf_uiprimitives_2eproto::scc_info_TreeTableNode.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_TreeTable_uiprimitives_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_TreeTable_uiprimitives_2eproto}, {
+      &scc_info_TreeTableColumn_uiprimitives_2eproto.base,
+      &scc_info_TreeTableNode_uiprimitives_2eproto.base,}};
 
-static void InitDefaultsTreeTableColumn() {
+static void InitDefaultsscc_info_TreeTableColumn_uiprimitives_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
     void* ptr = &::xviz::_TreeTableColumn_default_instance_;
     new (ptr) ::xviz::TreeTableColumn();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
   ::xviz::TreeTableColumn::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_TreeTableColumn =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTreeTableColumn}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TreeTableColumn_uiprimitives_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_TreeTableColumn_uiprimitives_2eproto}, {}};
 
-static void InitDefaultsTreeTableNode() {
+static void InitDefaultsscc_info_TreeTableNode_uiprimitives_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
     void* ptr = &::xviz::_TreeTableNode_default_instance_;
     new (ptr) ::xviz::TreeTableNode();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
   ::xviz::TreeTableNode::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_TreeTableNode =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTreeTableNode}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TreeTableNode_uiprimitives_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_TreeTableNode_uiprimitives_2eproto}, {}};
 
-void InitDefaults() {
-  ::google::protobuf::internal::InitSCC(&scc_info_TreeTable.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TreeTableColumn.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TreeTableNode.base);
-}
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_uiprimitives_2eproto[3];
+static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_uiprimitives_2eproto[1];
+static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_uiprimitives_2eproto = nullptr;
 
-::google::protobuf::Metadata file_level_metadata[3];
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[1];
-
-const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_uiprimitives_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TreeTable, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TreeTable, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TreeTable, columns_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TreeTable, nodes_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TreeTable, columns_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TreeTable, nodes_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TreeTableColumn, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TreeTableColumn, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TreeTableColumn, display_text_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TreeTableColumn, type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TreeTableColumn, unit_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TreeTableColumn, display_text_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TreeTableColumn, type_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TreeTableColumn, unit_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TreeTableNode, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TreeTableNode, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TreeTableNode, id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TreeTableNode, parent_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::xviz::TreeTableNode, column_values_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TreeTableNode, id_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TreeTableNode, parent_),
+  PROTOBUF_FIELD_OFFSET(::xviz::TreeTableNode, column_values_),
 };
-static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::xviz::TreeTable)},
   { 7, -1, sizeof(::xviz::TreeTableColumn)},
   { 15, -1, sizeof(::xviz::TreeTableNode)},
 };
 
-static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_TreeTable_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_TreeTableColumn_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::xviz::_TreeTableNode_default_instance_),
+static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_TreeTable_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_TreeTableColumn_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_TreeTableNode_default_instance_),
 };
 
-void protobuf_AssignDescriptors() {
-  AddDescriptors();
-  AssignDescriptors(
-      "uiprimitives.proto", schemas, file_default_instances, TableStruct::offsets,
-      file_level_metadata, file_level_enum_descriptors, NULL);
-}
+const char descriptor_table_protodef_uiprimitives_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
+  "\n\022uiprimitives.proto\022\004xviz\032\roptions.prot"
+  "o\"t\n\tTreeTable\022&\n\007columns\030\001 \003(\0132\025.xviz.T"
+  "reeTableColumn\022\"\n\005nodes\030\002 \003(\0132\023.xviz.Tre"
+  "eTableNode:\033\302\273\032\027ui-primitives/treetable\""
+  "\316\001\n\017TreeTableColumn\022\024\n\014display_text\030\001 \001("
+  "\t\022.\n\004type\030\002 \001(\0162 .xviz.TreeTableColumn.C"
+  "olumnType\022\014\n\004unit\030\003 \001(\t\"g\n\nColumnType\022)\n"
+  "%TREE_TABLE_COLUMN_COLUMN_TYPE_INVALID\020\000"
+  "\022\t\n\005INT32\020\001\022\n\n\006DOUBLE\020\002\022\n\n\006STRING\020\003\022\013\n\007B"
+  "OOLEAN\020\004\"B\n\rTreeTableNode\022\n\n\002id\030\001 \001(\005\022\016\n"
+  "\006parent\030\002 \001(\005\022\025\n\rcolumn_values\030\003 \003(\tB9\n\013"
+  "com.xviz.v2B\021UiprimitivesProtoP\001Z\004v2pb\242\002"
+  "\004XVIZ\252\002\007xviz.V2b\006proto3"
+  ;
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_uiprimitives_2eproto_deps[1] = {
+  &::descriptor_table_options_2eproto,
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_uiprimitives_2eproto_sccs[3] = {
+  &scc_info_TreeTable_uiprimitives_2eproto.base,
+  &scc_info_TreeTableColumn_uiprimitives_2eproto.base,
+  &scc_info_TreeTableNode_uiprimitives_2eproto.base,
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_uiprimitives_2eproto_once;
+static bool descriptor_table_uiprimitives_2eproto_initialized = false;
+const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_uiprimitives_2eproto = {
+  &descriptor_table_uiprimitives_2eproto_initialized, descriptor_table_protodef_uiprimitives_2eproto, "uiprimitives.proto", 503,
+  &descriptor_table_uiprimitives_2eproto_once, descriptor_table_uiprimitives_2eproto_sccs, descriptor_table_uiprimitives_2eproto_deps, 3, 1,
+  schemas, file_default_instances, TableStruct_uiprimitives_2eproto::offsets,
+  file_level_metadata_uiprimitives_2eproto, 3, file_level_enum_descriptors_uiprimitives_2eproto, file_level_service_descriptors_uiprimitives_2eproto,
+};
 
-void protobuf_AssignDescriptorsOnce() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, protobuf_AssignDescriptors);
-}
-
-void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
-void protobuf_RegisterTypes(const ::std::string&) {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 3);
-}
-
-void AddDescriptorsImpl() {
-  InitDefaults();
-  static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\022uiprimitives.proto\022\004xviz\032\roptions.prot"
-      "o\"t\n\tTreeTable\022&\n\007columns\030\001 \003(\0132\025.xviz.T"
-      "reeTableColumn\022\"\n\005nodes\030\002 \003(\0132\023.xviz.Tre"
-      "eTableNode:\033\302\273\032\027ui-primitives/treetable\""
-      "\316\001\n\017TreeTableColumn\022\024\n\014display_text\030\001 \001("
-      "\t\022.\n\004type\030\002 \001(\0162 .xviz.TreeTableColumn.C"
-      "olumnType\022\014\n\004unit\030\003 \001(\t\"g\n\nColumnType\022)\n"
-      "%TREE_TABLE_COLUMN_COLUMN_TYPE_INVALID\020\000"
-      "\022\t\n\005INT32\020\001\022\n\n\006DOUBLE\020\002\022\n\n\006STRING\020\003\022\013\n\007B"
-      "OOLEAN\020\004\"B\n\rTreeTableNode\022\n\n\002id\030\001 \001(\005\022\016\n"
-      "\006parent\030\002 \001(\005\022\025\n\rcolumn_values\030\003 \003(\tB9\n\013"
-      "com.xviz.v2B\021UiprimitivesProtoP\001Z\004v2pb\242\002"
-      "\004XVIZ\252\002\007xviz.V2b\006proto3"
-  };
-  ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 503);
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
-    "uiprimitives.proto", &protobuf_RegisterTypes);
-  ::protobuf_options_2eproto::AddDescriptors();
-}
-
-void AddDescriptors() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, AddDescriptorsImpl);
-}
-// Force AddDescriptors() to be called at dynamic initialization time.
-struct StaticDescriptorInitializer {
-  StaticDescriptorInitializer() {
-    AddDescriptors();
-  }
-} static_descriptor_initializer;
-}  // namespace protobuf_uiprimitives_2eproto
+// Force running AddDescriptors() at dynamic initialization time.
+static bool dynamic_init_dummy_uiprimitives_2eproto = (  ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_uiprimitives_2eproto), true);
 namespace xviz {
-const ::google::protobuf::EnumDescriptor* TreeTableColumn_ColumnType_descriptor() {
-  protobuf_uiprimitives_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_uiprimitives_2eproto::file_level_enum_descriptors[0];
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* TreeTableColumn_ColumnType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_uiprimitives_2eproto);
+  return file_level_enum_descriptors_uiprimitives_2eproto[0];
 }
 bool TreeTableColumn_ColumnType_IsValid(int value) {
   switch (value) {
@@ -202,36 +167,33 @@ bool TreeTableColumn_ColumnType_IsValid(int value) {
   }
 }
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const TreeTableColumn_ColumnType TreeTableColumn::TREE_TABLE_COLUMN_COLUMN_TYPE_INVALID;
-const TreeTableColumn_ColumnType TreeTableColumn::INT32;
-const TreeTableColumn_ColumnType TreeTableColumn::DOUBLE;
-const TreeTableColumn_ColumnType TreeTableColumn::STRING;
-const TreeTableColumn_ColumnType TreeTableColumn::BOOLEAN;
-const TreeTableColumn_ColumnType TreeTableColumn::ColumnType_MIN;
-const TreeTableColumn_ColumnType TreeTableColumn::ColumnType_MAX;
-const int TreeTableColumn::ColumnType_ARRAYSIZE;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+constexpr TreeTableColumn_ColumnType TreeTableColumn::TREE_TABLE_COLUMN_COLUMN_TYPE_INVALID;
+constexpr TreeTableColumn_ColumnType TreeTableColumn::INT32;
+constexpr TreeTableColumn_ColumnType TreeTableColumn::DOUBLE;
+constexpr TreeTableColumn_ColumnType TreeTableColumn::STRING;
+constexpr TreeTableColumn_ColumnType TreeTableColumn::BOOLEAN;
+constexpr TreeTableColumn_ColumnType TreeTableColumn::ColumnType_MIN;
+constexpr TreeTableColumn_ColumnType TreeTableColumn::ColumnType_MAX;
+constexpr int TreeTableColumn::ColumnType_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 
 // ===================================================================
 
 void TreeTable::InitAsDefaultInstance() {
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TreeTable::kColumnsFieldNumber;
-const int TreeTable::kNodesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class TreeTable::_Internal {
+ public:
+};
 
 TreeTable::TreeTable()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_uiprimitives_2eproto::scc_info_TreeTable.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.TreeTable)
 }
 TreeTable::TreeTable(const TreeTable& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
       columns_(from.columns_),
       nodes_(from.nodes_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
@@ -239,6 +201,7 @@ TreeTable::TreeTable(const TreeTable& from)
 }
 
 void TreeTable::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_TreeTable_uiprimitives_2eproto.base);
 }
 
 TreeTable::~TreeTable() {
@@ -252,20 +215,15 @@ void TreeTable::SharedDtor() {
 void TreeTable::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* TreeTable::descriptor() {
-  ::protobuf_uiprimitives_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_uiprimitives_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const TreeTable& TreeTable::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_uiprimitives_2eproto::scc_info_TreeTable.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_TreeTable_uiprimitives_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void TreeTable::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.TreeTable)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -274,117 +232,82 @@ void TreeTable::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool TreeTable::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.TreeTable)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* TreeTable::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // repeated .xviz.TreeTableColumn columns = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_columns()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_columns(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
       // repeated .xviz.TreeTableNode nodes = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_nodes()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_nodes(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.TreeTable)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.TreeTable)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void TreeTable::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.TreeTable)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // repeated .xviz.TreeTableColumn columns = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->columns_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1,
-      this->columns(static_cast<int>(i)),
-      output);
-  }
-
-  // repeated .xviz.TreeTableNode nodes = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->nodes_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2,
-      this->nodes(static_cast<int>(i)),
-      output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.TreeTable)
-}
-
-::google::protobuf::uint8* TreeTable::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* TreeTable::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.TreeTable)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .xviz.TreeTableColumn columns = 1;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->columns_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->columns(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_columns_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, this->_internal_columns(i), target, stream);
   }
 
   // repeated .xviz.TreeTableNode nodes = 2;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->nodes_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->nodes(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_nodes_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, this->_internal_nodes(i), target, stream);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.TreeTable)
   return target;
@@ -394,47 +317,42 @@ size_t TreeTable::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.TreeTable)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .xviz.TreeTableColumn columns = 1;
-  {
-    unsigned int count = static_cast<unsigned int>(this->columns_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->columns(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_columns_size();
+  for (const auto& msg : this->columns_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // repeated .xviz.TreeTableNode nodes = 2;
-  {
-    unsigned int count = static_cast<unsigned int>(this->nodes_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->nodes(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_nodes_size();
+  for (const auto& msg : this->nodes_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void TreeTable::MergeFrom(const ::google::protobuf::Message& from) {
+void TreeTable::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.TreeTable)
   GOOGLE_DCHECK_NE(&from, this);
   const TreeTable* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TreeTable>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<TreeTable>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.TreeTable)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.TreeTable)
     MergeFrom(*source);
@@ -445,14 +363,14 @@ void TreeTable::MergeFrom(const TreeTable& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.TreeTable)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   columns_.MergeFrom(from.columns_);
   nodes_.MergeFrom(from.nodes_);
 }
 
-void TreeTable::CopyFrom(const ::google::protobuf::Message& from) {
+void TreeTable::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.TreeTable)
   if (&from == this) return;
   Clear();
@@ -470,20 +388,15 @@ bool TreeTable::IsInitialized() const {
   return true;
 }
 
-void TreeTable::Swap(TreeTable* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TreeTable::InternalSwap(TreeTable* other) {
   using std::swap;
-  CastToBase(&columns_)->InternalSwap(CastToBase(&other->columns_));
-  CastToBase(&nodes_)->InternalSwap(CastToBase(&other->nodes_));
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  columns_.InternalSwap(&other->columns_);
+  nodes_.InternalSwap(&other->nodes_);
 }
 
-::google::protobuf::Metadata TreeTable::GetMetadata() const {
-  protobuf_uiprimitives_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_uiprimitives_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata TreeTable::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -491,38 +404,35 @@ void TreeTable::InternalSwap(TreeTable* other) {
 
 void TreeTableColumn::InitAsDefaultInstance() {
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TreeTableColumn::kDisplayTextFieldNumber;
-const int TreeTableColumn::kTypeFieldNumber;
-const int TreeTableColumn::kUnitFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class TreeTableColumn::_Internal {
+ public:
+};
 
 TreeTableColumn::TreeTableColumn()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_uiprimitives_2eproto::scc_info_TreeTableColumn.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.TreeTableColumn)
 }
 TreeTableColumn::TreeTableColumn(const TreeTableColumn& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  display_text_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.display_text().size() > 0) {
-    display_text_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.display_text_);
+  display_text_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_display_text().empty()) {
+    display_text_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.display_text_);
   }
-  unit_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.unit().size() > 0) {
-    unit_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.unit_);
+  unit_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_unit().empty()) {
+    unit_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.unit_);
   }
   type_ = from.type_;
   // @@protoc_insertion_point(copy_constructor:xviz.TreeTableColumn)
 }
 
 void TreeTableColumn::SharedCtor() {
-  display_text_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  unit_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_TreeTableColumn_uiprimitives_2eproto.base);
+  display_text_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  unit_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   type_ = 0;
 }
 
@@ -532,190 +442,120 @@ TreeTableColumn::~TreeTableColumn() {
 }
 
 void TreeTableColumn::SharedDtor() {
-  display_text_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  unit_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  display_text_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  unit_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void TreeTableColumn::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* TreeTableColumn::descriptor() {
-  ::protobuf_uiprimitives_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_uiprimitives_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const TreeTableColumn& TreeTableColumn::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_uiprimitives_2eproto::scc_info_TreeTableColumn.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_TreeTableColumn_uiprimitives_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void TreeTableColumn::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.TreeTableColumn)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  display_text_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  unit_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  display_text_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  unit_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   type_ = 0;
   _internal_metadata_.Clear();
 }
 
-bool TreeTableColumn::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.TreeTableColumn)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* TreeTableColumn::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // string display_text = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_display_text()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->display_text().data(), static_cast<int>(this->display_text().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.TreeTableColumn.display_text"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_display_text();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.TreeTableColumn.display_text"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // .xviz.TreeTableColumn.ColumnType type = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_type(static_cast< ::xviz::TreeTableColumn_ColumnType >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+          _internal_set_type(static_cast<::xviz::TreeTableColumn_ColumnType>(val));
+        } else goto handle_unusual;
+        continue;
       // string unit = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_unit()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->unit().data(), static_cast<int>(this->unit().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.TreeTableColumn.unit"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          auto str = _internal_mutable_unit();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.TreeTableColumn.unit"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.TreeTableColumn)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.TreeTableColumn)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void TreeTableColumn::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.TreeTableColumn)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string display_text = 1;
-  if (this->display_text().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->display_text().data(), static_cast<int>(this->display_text().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.TreeTableColumn.display_text");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->display_text(), output);
-  }
-
-  // .xviz.TreeTableColumn.ColumnType type = 2;
-  if (this->type() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      2, this->type(), output);
-  }
-
-  // string unit = 3;
-  if (this->unit().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->unit().data(), static_cast<int>(this->unit().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.TreeTableColumn.unit");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->unit(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.TreeTableColumn)
-}
-
-::google::protobuf::uint8* TreeTableColumn::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* TreeTableColumn::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.TreeTableColumn)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string display_text = 1;
   if (this->display_text().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->display_text().data(), static_cast<int>(this->display_text().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_display_text().data(), static_cast<int>(this->_internal_display_text().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.TreeTableColumn.display_text");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->display_text(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_display_text(), target);
   }
 
   // .xviz.TreeTableColumn.ColumnType type = 2;
   if (this->type() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      2, this->type(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      2, this->_internal_type(), target);
   }
 
   // string unit = 3;
   if (this->unit().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->unit().data(), static_cast<int>(this->unit().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_unit().data(), static_cast<int>(this->_internal_unit().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.TreeTableColumn.unit");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->unit(), target);
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_unit(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.TreeTableColumn)
   return target;
@@ -725,45 +565,48 @@ size_t TreeTableColumn::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.TreeTableColumn)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // string display_text = 1;
   if (this->display_text().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->display_text());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_display_text());
   }
 
   // string unit = 3;
   if (this->unit().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->unit());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_unit());
   }
 
   // .xviz.TreeTableColumn.ColumnType type = 2;
   if (this->type() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_type());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void TreeTableColumn::MergeFrom(const ::google::protobuf::Message& from) {
+void TreeTableColumn::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.TreeTableColumn)
   GOOGLE_DCHECK_NE(&from, this);
   const TreeTableColumn* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TreeTableColumn>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<TreeTableColumn>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.TreeTableColumn)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.TreeTableColumn)
     MergeFrom(*source);
@@ -774,23 +617,23 @@ void TreeTableColumn::MergeFrom(const TreeTableColumn& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.TreeTableColumn)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from.display_text().size() > 0) {
 
-    display_text_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.display_text_);
+    display_text_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.display_text_);
   }
   if (from.unit().size() > 0) {
 
-    unit_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.unit_);
+    unit_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.unit_);
   }
   if (from.type() != 0) {
-    set_type(from.type());
+    _internal_set_type(from._internal_type());
   }
 }
 
-void TreeTableColumn::CopyFrom(const ::google::protobuf::Message& from) {
+void TreeTableColumn::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.TreeTableColumn)
   if (&from == this) return;
   Clear();
@@ -808,23 +651,18 @@ bool TreeTableColumn::IsInitialized() const {
   return true;
 }
 
-void TreeTableColumn::Swap(TreeTableColumn* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TreeTableColumn::InternalSwap(TreeTableColumn* other) {
   using std::swap;
-  display_text_.Swap(&other->display_text_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  display_text_.Swap(&other->display_text_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  unit_.Swap(&other->unit_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  unit_.Swap(&other->unit_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(type_, other->type_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata TreeTableColumn::GetMetadata() const {
-  protobuf_uiprimitives_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_uiprimitives_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata TreeTableColumn::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -832,22 +670,18 @@ void TreeTableColumn::InternalSwap(TreeTableColumn* other) {
 
 void TreeTableNode::InitAsDefaultInstance() {
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TreeTableNode::kIdFieldNumber;
-const int TreeTableNode::kParentFieldNumber;
-const int TreeTableNode::kColumnValuesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class TreeTableNode::_Internal {
+ public:
+};
 
 TreeTableNode::TreeTableNode()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_uiprimitives_2eproto::scc_info_TreeTableNode.base);
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:xviz.TreeTableNode)
 }
 TreeTableNode::TreeTableNode(const TreeTableNode& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
       column_values_(from.column_values_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&id_, &from.id_,
@@ -857,6 +691,7 @@ TreeTableNode::TreeTableNode(const TreeTableNode& from)
 }
 
 void TreeTableNode::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_TreeTableNode_uiprimitives_2eproto.base);
   ::memset(&id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&parent_) -
       reinterpret_cast<char*>(&id_)) + sizeof(parent_));
@@ -873,20 +708,15 @@ void TreeTableNode::SharedDtor() {
 void TreeTableNode::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* TreeTableNode::descriptor() {
-  ::protobuf_uiprimitives_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_uiprimitives_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const TreeTableNode& TreeTableNode::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_uiprimitives_2eproto::scc_info_TreeTableNode.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_TreeTableNode_uiprimitives_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void TreeTableNode::Clear() {
 // @@protoc_insertion_point(message_clear_start:xviz.TreeTableNode)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -897,144 +727,92 @@ void TreeTableNode::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool TreeTableNode::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:xviz.TreeTableNode)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* TreeTableNode::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // int32 id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &id_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // int32 parent = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &parent_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          parent_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // repeated string column_values = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_column_values()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->column_values(this->column_values_size() - 1).data(),
-            static_cast<int>(this->column_values(this->column_values_size() - 1).length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "xviz.TreeTableNode.column_values"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_column_values();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.TreeTableNode.column_values"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:xviz.TreeTableNode)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:xviz.TreeTableNode)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void TreeTableNode::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:xviz.TreeTableNode)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // int32 id = 1;
-  if (this->id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->id(), output);
-  }
-
-  // int32 parent = 2;
-  if (this->parent() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->parent(), output);
-  }
-
-  // repeated string column_values = 3;
-  for (int i = 0, n = this->column_values_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->column_values(i).data(), static_cast<int>(this->column_values(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "xviz.TreeTableNode.column_values");
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->column_values(i), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:xviz.TreeTableNode)
-}
-
-::google::protobuf::uint8* TreeTableNode::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* TreeTableNode::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:xviz.TreeTableNode)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // int32 id = 1;
   if (this->id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->id(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
   }
 
   // int32 parent = 2;
   if (this->parent() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->parent(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_parent(), target);
   }
 
   // repeated string column_values = 3;
-  for (int i = 0, n = this->column_values_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->column_values(i).data(), static_cast<int>(this->column_values(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+  for (int i = 0, n = this->_internal_column_values_size(); i < n; i++) {
+    const auto& s = this->_internal_column_values(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "xviz.TreeTableNode.column_values");
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(3, this->column_values(i), target);
+    target = stream->WriteString(3, s, target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:xviz.TreeTableNode)
   return target;
@@ -1044,47 +822,50 @@ size_t TreeTableNode::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:xviz.TreeTableNode)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated string column_values = 3;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->column_values_size());
-  for (int i = 0, n = this->column_values_size(); i < n; i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->column_values(i));
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(column_values_.size());
+  for (int i = 0, n = column_values_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      column_values_.Get(i));
   }
 
   // int32 id = 1;
   if (this->id() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->id());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_id());
   }
 
   // int32 parent = 2;
   if (this->parent() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->parent());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_parent());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void TreeTableNode::MergeFrom(const ::google::protobuf::Message& from) {
+void TreeTableNode::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:xviz.TreeTableNode)
   GOOGLE_DCHECK_NE(&from, this);
   const TreeTableNode* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TreeTableNode>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<TreeTableNode>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.TreeTableNode)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.TreeTableNode)
     MergeFrom(*source);
@@ -1095,19 +876,19 @@ void TreeTableNode::MergeFrom(const TreeTableNode& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xviz.TreeTableNode)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   column_values_.MergeFrom(from.column_values_);
   if (from.id() != 0) {
-    set_id(from.id());
+    _internal_set_id(from._internal_id());
   }
   if (from.parent() != 0) {
-    set_parent(from.parent());
+    _internal_set_parent(from._internal_parent());
   }
 }
 
-void TreeTableNode::CopyFrom(const ::google::protobuf::Message& from) {
+void TreeTableNode::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:xviz.TreeTableNode)
   if (&from == this) return;
   Clear();
@@ -1125,38 +906,32 @@ bool TreeTableNode::IsInitialized() const {
   return true;
 }
 
-void TreeTableNode::Swap(TreeTableNode* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TreeTableNode::InternalSwap(TreeTableNode* other) {
   using std::swap;
-  column_values_.InternalSwap(CastToBase(&other->column_values_));
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  column_values_.InternalSwap(&other->column_values_);
   swap(id_, other->id_);
   swap(parent_, other->parent_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata TreeTableNode::GetMetadata() const {
-  protobuf_uiprimitives_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_uiprimitives_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata TreeTableNode::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace xviz
-namespace google {
-namespace protobuf {
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::TreeTable* Arena::CreateMaybeMessage< ::xviz::TreeTable >(Arena* arena) {
+PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::xviz::TreeTable* Arena::CreateMaybeMessage< ::xviz::TreeTable >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::TreeTable >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::TreeTableColumn* Arena::CreateMaybeMessage< ::xviz::TreeTableColumn >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::TreeTableColumn* Arena::CreateMaybeMessage< ::xviz::TreeTableColumn >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::TreeTableColumn >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::xviz::TreeTableNode* Arena::CreateMaybeMessage< ::xviz::TreeTableNode >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::xviz::TreeTableNode* Arena::CreateMaybeMessage< ::xviz::TreeTableNode >(Arena* arena) {
   return Arena::CreateInternal< ::xviz::TreeTableNode >(arena);
 }
-}  // namespace protobuf
-}  // namespace google
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
+#include <google/protobuf/port_undef.inc>
