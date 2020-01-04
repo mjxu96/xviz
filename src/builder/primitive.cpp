@@ -22,6 +22,13 @@ void AddVertices(T& vertice_to_add, const std::shared_ptr<std::vector<double>>& 
   }
 }
 
+template<typename T>
+void AddBase(T* ptr_to_add, const std::pair<bool, xviz::PrimitiveBase>& base_to_add) {
+  if (base_to_add.first) {
+    ptr_to_add->mutable_base()->MergeFrom(base_to_add.second);
+  }
+}
+
 XVIZPrimitiveBuilder::XVIZPrimitiveBuilder(std::shared_ptr<Metadata> metadata) :
   XVIZBaseBuilder(xviz::StreamMetadata::PRIMITIVE, metadata) {
   primitives_ = std::make_shared<std::unordered_map<std::string, PrimitiveState>>();
@@ -98,6 +105,44 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Points(const std::shared_ptr<std::ve
   return *this;
 }
 
+// Position
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Position(const std::vector<double>& vertices) {
+  return Position(std::make_shared<std::vector<double>>(vertices));
+}
+
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Position(std::vector<double>&& vertices) {
+  return Position(std::make_shared<std::vector<double>>(std::move(vertices)));
+}
+
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Position(const std::shared_ptr<std::vector<double>>& vertices_ptr) {
+  if (vertices_ptr->size() != 3u) {
+    LOG_ERROR("A position must be of the form [x, y, z]");
+  }
+  vertices_ = vertices_ptr;
+  return *this;
+}
+
+// Circle
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Circle(const std::vector<double>& vertices, double radius) {
+  return Circle(std::make_shared<std::vector<double>>(vertices), std::make_shared<double>(radius));
+}
+
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Circle(std::vector<double>&& vertices, double radius) {
+  return Circle(std::make_shared<std::vector<double>>(std::move(vertices)), std::make_shared<double>(radius));
+}
+
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Circle(const std::shared_ptr<std::vector<double>>& vertices_ptr, const std::shared_ptr<double>& radius) {
+  if (type_ != nullptr) {
+    Flush();
+  }
+
+  Position(vertices_ptr);
+  radius_ = radius;
+  type_ = std::make_shared<Primitive>();
+  *type_ = Primitive::StreamMetadata_PrimitiveType_CIRCLE;
+  return *this;
+}
+
 // Image
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Dimensions(uint32_t width_pixel, uint32_t height_pixel) {
   if (image_ == nullptr) {
@@ -111,11 +156,23 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Dimensions(uint32_t width_pixel, uin
 }
 
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Image(const std::string& encoded_data_str) {
+  if (type_ != nullptr) {
+    Flush();
+  }
+  type_ = std::make_shared<Primitive>();
+  *type_ = Primitive::StreamMetadata_PrimitiveType_IMAGE;
+  image_ = std::make_shared<xviz::Image>();
   image_->set_data(encoded_data_str);
   return *this;
 }
 
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Image(std::string&& encoded_data_str) {
+  if (type_ != nullptr) {
+    Flush();
+  }
+  type_ = std::make_shared<Primitive>();
+  *type_ = Primitive::StreamMetadata_PrimitiveType_IMAGE;
+  image_ = std::make_shared<xviz::Image>();
   image_->set_data(std::move(encoded_data_str));
   return *this;
 }
@@ -176,18 +233,19 @@ void XVIZPrimitiveBuilder::FlushPrimitives() {
   }
   auto stream_ptr = &(*primitives_)[stream_id_];
   auto base_pair = FlushPrimitiveBase();
-  auto has_base = base_pair.first;
-  auto base = base_pair.second;
+  // auto has_base = base_pair.first;
+  // auto base = base_pair.second;
 
   switch (*type_) {
     case Primitive::StreamMetadata_PrimitiveType_POLYGON:
       {
         auto polygon_ptr = stream_ptr->add_polygons();
         AddVertices<xviz::Polygon>(*polygon_ptr, vertices_);
-        if (has_base) {
-          auto cur_base_ptr = polygon_ptr->mutable_base();
-          cur_base_ptr->MergeFrom(base);
-        }
+        AddBase<xviz::Polygon>(polygon_ptr, base_pair);
+        // if (has_base) {
+        //   auto cur_base_ptr = polygon_ptr->mutable_base();
+        //   cur_base_ptr->MergeFrom(base);
+        // }
         break;
       }
 
@@ -195,10 +253,11 @@ void XVIZPrimitiveBuilder::FlushPrimitives() {
       {
         auto polyline_ptr = stream_ptr->add_polylines();
         AddVertices<xviz::Polyline>(*polyline_ptr, vertices_);
-        if (has_base) {
-          auto cur_base_ptr = polyline_ptr->mutable_base();
-          cur_base_ptr->MergeFrom(base);
-        }
+        AddBase<xviz::Polyline>(polyline_ptr, base_pair);
+        // if (has_base) {
+        //   auto cur_base_ptr = polyline_ptr->mutable_base();
+        //   cur_base_ptr->MergeFrom(base);
+        // }
         break;
       }
     
@@ -216,10 +275,11 @@ void XVIZPrimitiveBuilder::FlushPrimitives() {
           auto colors_ptr = point_ptr->mutable_colors();
           *colors_ptr = *colors_;
         }
-        if (has_base) {
-          auto cur_base_ptr = point_ptr->mutable_base();
-          cur_base_ptr->MergeFrom(base);
-        }
+        AddBase<xviz::Point>(point_ptr, base_pair);
+        // if (has_base) {
+        //   auto cur_base_ptr = point_ptr->mutable_base();
+        //   cur_base_ptr->MergeFrom(base);
+        // }
         break;
       }
 
@@ -232,14 +292,34 @@ void XVIZPrimitiveBuilder::FlushPrimitives() {
         }
         auto image_ptr = stream_ptr->add_images();
         *image_ptr = std::move(*image_);
-        if (has_base) {
-          auto cur_base_ptr = image_ptr->mutable_base();
-          cur_base_ptr->MergeFrom(base);
+        AddBase<xviz::Image>(image_ptr, base_pair);
+        // if (has_base) {
+        //   auto cur_base_ptr = image_ptr->mutable_base();
+        //   cur_base_ptr->MergeFrom(base);
+        // }
+        break;
+      }
+
+    case Primitive::StreamMetadata_PrimitiveType_CIRCLE:
+      {
+        auto circle_ptr = stream_ptr->add_circles();
+        if (vertices_ == nullptr || vertices_->size() != 3) {
+          LOG_ERROR("Circle's center must be the form of [x, y, z]");
+          break;
         }
+        for (auto v : *vertices_) {
+          circle_ptr->add_center(v);
+        }
+        circle_ptr->set_radius(*radius_);
+        AddBase<xviz::Circle>(circle_ptr, base_pair);
+        // if (has_base) {
+        //   auto cur_base_ptr = circle_ptr->mutable_base();
+        //   cur_base_ptr->MergeFrom(base);
+        // }
         break;
       }
     
-    // TEXT, CIRCLE, STADIUM,
+    // TEXT, STADIUM,
     default:
       LOG_ERROR("No this type exists %d", *type_);
       return;

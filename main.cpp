@@ -25,7 +25,9 @@ int main() {
   metadata_builder->Stream("/vehicle_pose").Category(Category::StreamMetadata_Category_POSE)
     .Stream("/object/shape").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_POLYGON)
     .Coordinate(CoordinateType::StreamMetadata_CoordinateType_VEHICLE_RELATIVE)//.Unit("123").Source("123")
-    .StreamStyle(s1);
+    .StreamStyle(s1)
+    .Stream("/object/circles").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_CIRCLE)
+    .Stream("/object/images").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_IMAGE);
   metadata_builder->StartTime(1000).EndTime(1010);
 
   XVIZBuilder builder(metadata_builder->GetData());
@@ -57,6 +59,13 @@ int main() {
   // builder.Primitive("/peds")
   //     .Polygon({2, 2, 2})
   //     .Style(nlohmann::json::parse(s1));
+
+  builder.Primitive("/object/circles")
+    .Circle({1, 2, 3}, 1.0)
+    .Style(s);
+
+  builder.Primitive("/object/images")
+    .Image("123231");
   auto res = builder.GetMessage();
 
 

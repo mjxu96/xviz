@@ -35,6 +35,14 @@ public:
   XVIZPrimitiveBuilder& Points(std::vector<double>&& vertices);
   XVIZPrimitiveBuilder& Points(const std::shared_ptr<std::vector<double>>& vertices_ptr);
 
+  XVIZPrimitiveBuilder& Position(const std::vector<double>& vertices);
+  XVIZPrimitiveBuilder& Position(std::vector<double>&& vertices);
+  XVIZPrimitiveBuilder& Position(const std::shared_ptr<std::vector<double>>& vertices_ptr);
+
+  XVIZPrimitiveBuilder& Circle(const std::vector<double>& vertices, double radius);
+  XVIZPrimitiveBuilder& Circle(std::vector<double>&& vertices, double radius);
+  XVIZPrimitiveBuilder& Circle(const std::shared_ptr<std::vector<double>>& vertices_ptr, const std::shared_ptr<double>& radius);
+
   XVIZPrimitiveBuilder& Dimensions(uint32_t width_pixel, uint32_t height_pixel);
   XVIZPrimitiveBuilder& Image(const std::string& encoded_data_str);
   XVIZPrimitiveBuilder& Image(std::string&& encoded_data_str);
