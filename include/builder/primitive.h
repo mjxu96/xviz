@@ -18,7 +18,7 @@ namespace xviz {
 
 class XVIZPrimitiveBuilder : public XVIZBaseBuilder {
 public:
-  XVIZPrimitiveBuilder(std::shared_ptr<Metadata> metadata);
+  XVIZPrimitiveBuilder(const std::shared_ptr<Metadata>& metadata);
 
   XVIZPrimitiveBuilder& Stream(const std::string& stream_id);
   std::shared_ptr<std::unordered_map<std::string, PrimitiveState>> GetData();

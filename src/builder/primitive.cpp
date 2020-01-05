@@ -29,7 +29,7 @@ void AddBase(T* ptr_to_add, const std::pair<bool, xviz::PrimitiveBase>& base_to_
   }
 }
 
-XVIZPrimitiveBuilder::XVIZPrimitiveBuilder(std::shared_ptr<Metadata> metadata) :
+XVIZPrimitiveBuilder::XVIZPrimitiveBuilder(const std::shared_ptr<Metadata>& metadata) :
   XVIZBaseBuilder(xviz::StreamMetadata::PRIMITIVE, metadata) {
   primitives_ = std::make_shared<std::unordered_map<std::string, PrimitiveState>>();
 }

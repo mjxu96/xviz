@@ -19,7 +19,7 @@ namespace xviz {
 class XVIZPoseBuilder : public XVIZBaseBuilder {
 public:
 
-  XVIZPoseBuilder(std::shared_ptr<xviz::Metadata> metadata);
+  XVIZPoseBuilder(const std::shared_ptr<xviz::Metadata>& metadata);
   XVIZPoseBuilder& MapOrigin(double longitude, double latitude, double altitude);
   XVIZPoseBuilder& Position(double x, double y, double z);
   XVIZPoseBuilder& Orientation(double roll, double pitch, double yaw);

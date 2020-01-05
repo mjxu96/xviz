@@ -27,7 +27,8 @@ int main() {
     .Coordinate(CoordinateType::StreamMetadata_CoordinateType_VEHICLE_RELATIVE)//.Unit("123").Source("123")
     .StreamStyle(s1)
     .Stream("/object/circles").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_CIRCLE)
-    .Stream("/object/images").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_IMAGE);
+    .Stream("/object/images").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_IMAGE)
+    .Stream("/object/ts").Category(Category::StreamMetadata_Category_TIME_SERIES);
   metadata_builder->StartTime(1000).EndTime(1010);
 
   XVIZBuilder builder(metadata_builder->GetData());
@@ -66,10 +67,15 @@ int main() {
 
   builder.Primitive("/object/images")
     .Image("123231");
-  auto res = builder.GetMessage();
+
+  builder.TimeSeries("/object/ts")
+    .Id("123")
+    .Timestamp(123)
+    .Value("123");
 
 
   auto metadata_res = metadata_builder->GetMessage();
+  auto res = builder.GetMessage();
   // for (const auto& pa : *res) {
   //   std::cout << pa.first << std::endl;
   //   std::cout << pa.second.SerializeAsString() << std::endl;
