@@ -26,6 +26,7 @@ int main() {
     .Stream("/object/shape").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_POLYGON)
     .Coordinate(CoordinateType::StreamMetadata_CoordinateType_VEHICLE_RELATIVE)//.Unit("123").Source("123")
     .StreamStyle(s1)
+    .Stream("/object/shape2").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_POLYGON)
     .Stream("/object/circles").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_CIRCLE)
     .Stream("/object/images").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_IMAGE)
     .Stream("/object/ts").Category(Category::StreamMetadata_Category_TIME_SERIES);
@@ -60,6 +61,9 @@ int main() {
   // builder.Primitive("/peds")
   //     .Polygon({2, 2, 2})
   //     .Style(nlohmann::json::parse(s1));
+
+  builder.Primitive("/object/shape2")
+    .Polygon({1, 2, 3});
 
   builder.Primitive("/object/circles")
     .Circle({1, 2, 3}, 1.0)

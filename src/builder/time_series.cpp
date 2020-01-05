@@ -183,7 +183,6 @@ void XVIZTimeSeriesBuilder::Flush() {
 
 void XVIZTimeSeriesBuilder::FlushNotReset() {
   if (!IsDataPending()) {
-    LOG_ERROR("THERE IS NOT DATA TO BE ADDED");
     return;
   }
   Validate();
