@@ -18,6 +18,7 @@ using Category = xviz::StreamMetadata::Category;
 using CoordinateType = xviz::StreamMetadata::CoordinateType;
 using Primitive = xviz::StreamMetadata::PrimitiveType;
 using ScalarType = xviz::StreamMetadata::ScalarType;
+using UIPrimitiveType = xviz::StreamMetadata::UIPrimitiveType;
 
 // struct PurePoint {
 //   double x, y, z;

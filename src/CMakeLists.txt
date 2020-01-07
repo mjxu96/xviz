@@ -36,6 +36,7 @@ add_library(xviz-builder
   builder/pose.cpp
   builder/primitive.cpp
   builder/time_series.cpp
+  builder/ui_primitive.cpp
   builder/xviz_builder.cpp
 )
 
