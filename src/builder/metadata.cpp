@@ -26,7 +26,7 @@ std::shared_ptr<Metadata> XVIZMetadataBuilder::GetData() {
     for (auto& [panel_key, cfg] : *ui_) {
       auto ui_panel_info = UIPanelInfo();
       ui_panel_info.set_name(panel_key);
-      ui_panel_info.mutable_config()->CopyFrom(cfg);
+      *(ui_panel_info.mutable_config()) = std::move(cfg);
       (*ui_config_ptr)[panel_key] = std::move(ui_panel_info);
     }
   }

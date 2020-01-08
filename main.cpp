@@ -30,7 +30,10 @@ int main() {
     .Stream("/object/circles").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_CIRCLE)
     .Stream("/object/images").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_IMAGE)
     .Stream("/object/ts").Category(Category::StreamMetadata_Category_TIME_SERIES)
-    .Stream("/object/uptest").Category(Category::StreamMetadata_Category_UI_PRIMITIVE);
+    .Stream("/object/uptest").Category(Category::StreamMetadata_Category_UI_PRIMITIVE)
+    .UI({
+      {"123", ::google::protobuf::Struct()}
+    });
   metadata_builder->StartTime(1000).EndTime(1010);
 
   XVIZBuilder builder(metadata_builder->GetData());
