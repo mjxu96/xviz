@@ -14,26 +14,26 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
-extern PROTOBUF_INTERNAL_EXPORT_declarativeui_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Panel_declarativeui_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_declarativeui_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_UIPanel_declarativeui_2eproto;
 namespace xviz {
-class PanelDefaultTypeInternal {
+class UIPanelDefaultTypeInternal {
  public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Panel> _instance;
-} _Panel_default_instance_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<UIPanel> _instance;
+} _UIPanel_default_instance_;
 }  // namespace xviz
-static void InitDefaultsscc_info_Panel_declarativeui_2eproto() {
+static void InitDefaultsscc_info_UIPanel_declarativeui_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::xviz::_Panel_default_instance_;
-    new (ptr) ::xviz::Panel();
+    void* ptr = &::xviz::_UIPanel_default_instance_;
+    new (ptr) ::xviz::UIPanel();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::xviz::Panel::InitAsDefaultInstance();
+  ::xviz::UIPanel::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Panel_declarativeui_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Panel_declarativeui_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_UIPanel_declarativeui_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_UIPanel_declarativeui_2eproto}, {}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_declarativeui_2eproto[1];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_declarativeui_2eproto[2];
@@ -41,51 +41,52 @@ static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_s
 
 const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_declarativeui_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::xviz::Panel, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::xviz::UIPanel, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::xviz::Panel, name_),
-  PROTOBUF_FIELD_OFFSET(::xviz::Panel, type_),
-  PROTOBUF_FIELD_OFFSET(::xviz::Panel, layout_),
-  PROTOBUF_FIELD_OFFSET(::xviz::Panel, children_),
-  PROTOBUF_FIELD_OFFSET(::xviz::Panel, cameras_),
-  PROTOBUF_FIELD_OFFSET(::xviz::Panel, title_),
-  PROTOBUF_FIELD_OFFSET(::xviz::Panel, description_),
-  PROTOBUF_FIELD_OFFSET(::xviz::Panel, streams_),
+  PROTOBUF_FIELD_OFFSET(::xviz::UIPanel, name_),
+  PROTOBUF_FIELD_OFFSET(::xviz::UIPanel, type_),
+  PROTOBUF_FIELD_OFFSET(::xviz::UIPanel, layout_),
+  PROTOBUF_FIELD_OFFSET(::xviz::UIPanel, children_),
+  PROTOBUF_FIELD_OFFSET(::xviz::UIPanel, cameras_),
+  PROTOBUF_FIELD_OFFSET(::xviz::UIPanel, title_),
+  PROTOBUF_FIELD_OFFSET(::xviz::UIPanel, description_),
+  PROTOBUF_FIELD_OFFSET(::xviz::UIPanel, streams_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::xviz::Panel)},
+  { 0, -1, sizeof(::xviz::UIPanel)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_Panel_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::xviz::_UIPanel_default_instance_),
 };
 
 const char descriptor_table_protodef_declarativeui_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\023declarativeui.proto\022\004xviz\032\roptions.pro"
-  "to\"\330\001\n\005Panel\022\014\n\004name\030\001 \001(\t\022!\n\004type\030\002 \001(\016"
-  "2\023.xviz.ComponentType\022 \n\006layout\030\003 \001(\0162\020."
-  "xviz.LayoutType\022\035\n\010children\030\004 \003(\0132\013.xviz"
-  ".Panel\022\017\n\007cameras\030\005 \003(\t\022\r\n\005title\030\006 \001(\t\022\023"
-  "\n\013description\030\007 \001(\t\022\017\n\007streams\030\010 \003(\t:\027\302\273"
-  "\032\023declarativeui/panel**\n\nLayoutType\022\014\n\010V"
-  "ERTICAL\020\000\022\016\n\nHORIZONTAL\020\001*e\n\rComponentTy"
-  "pe\022\t\n\005TABLE\020\000\022\n\n\006METRIC\020\001\022\010\n\004PLOT\020\002\022\r\n\tT"
-  "REETABLE\020\003\022\t\n\005VIDEO\020\004\022\n\n\006SELECT\020\005\022\r\n\tCON"
-  "TAINER\020\006B:\n\013com.xviz.v2B\022DeclarativeUIPr"
-  "otoP\001Z\004v2pb\242\002\004XVIZ\252\002\007xviz.V2b\006proto3"
+  "to\"\337\001\n\007UIPanel\022\014\n\004name\030\001 \001(\t\022!\n\004type\030\002 \001"
+  "(\0162\023.xviz.ComponentType\022 \n\006layout\030\003 \001(\0162"
+  "\020.xviz.LayoutType\022\037\n\010children\030\004 \003(\0132\r.xv"
+  "iz.UIPanel\022\017\n\007cameras\030\005 \003(\t\022\r\n\005title\030\006 \001"
+  "(\t\022\023\n\013description\030\007 \001(\t\022\017\n\007streams\030\010 \003(\t"
+  ":\032\302\273\032\026declarativeui/ui_panel**\n\nLayoutTy"
+  "pe\022\014\n\010VERTICAL\020\000\022\016\n\nHORIZONTAL\020\001*e\n\rComp"
+  "onentType\022\t\n\005TABLE\020\000\022\n\n\006METRIC\020\001\022\010\n\004PLOT"
+  "\020\002\022\r\n\tTREETABLE\020\003\022\t\n\005VIDEO\020\004\022\n\n\006SELECT\020\005"
+  "\022\r\n\tCONTAINER\020\006B:\n\013com.xviz.v2B\022Declarat"
+  "iveUIProtoP\001Z\004v2pb\242\002\004XVIZ\252\002\007xviz.V2b\006pro"
+  "to3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_declarativeui_2eproto_deps[1] = {
   &::descriptor_table_options_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_declarativeui_2eproto_sccs[1] = {
-  &scc_info_Panel_declarativeui_2eproto.base,
+  &scc_info_UIPanel_declarativeui_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_declarativeui_2eproto_once;
 static bool descriptor_table_declarativeui_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_declarativeui_2eproto = {
-  &descriptor_table_declarativeui_2eproto_initialized, descriptor_table_protodef_declarativeui_2eproto, "declarativeui.proto", 476,
+  &descriptor_table_declarativeui_2eproto_initialized, descriptor_table_protodef_declarativeui_2eproto, "declarativeui.proto", 483,
   &descriptor_table_declarativeui_2eproto_once, descriptor_table_declarativeui_2eproto_sccs, descriptor_table_declarativeui_2eproto_deps, 1, 1,
   schemas, file_default_instances, TableStruct_declarativeui_2eproto::offsets,
   file_level_metadata_declarativeui_2eproto, 1, file_level_enum_descriptors_declarativeui_2eproto, file_level_service_descriptors_declarativeui_2eproto,
@@ -130,18 +131,18 @@ bool ComponentType_IsValid(int value) {
 
 // ===================================================================
 
-void Panel::InitAsDefaultInstance() {
+void UIPanel::InitAsDefaultInstance() {
 }
-class Panel::_Internal {
+class UIPanel::_Internal {
  public:
 };
 
-Panel::Panel()
+UIPanel::UIPanel()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:xviz.Panel)
+  // @@protoc_insertion_point(constructor:xviz.UIPanel)
 }
-Panel::Panel(const Panel& from)
+UIPanel::UIPanel(const UIPanel& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr),
       children_(from.children_),
@@ -163,11 +164,11 @@ Panel::Panel(const Panel& from)
   ::memcpy(&type_, &from.type_,
     static_cast<size_t>(reinterpret_cast<char*>(&layout_) -
     reinterpret_cast<char*>(&type_)) + sizeof(layout_));
-  // @@protoc_insertion_point(copy_constructor:xviz.Panel)
+  // @@protoc_insertion_point(copy_constructor:xviz.UIPanel)
 }
 
-void Panel::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Panel_declarativeui_2eproto.base);
+void UIPanel::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_UIPanel_declarativeui_2eproto.base);
   name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   title_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   description_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -176,28 +177,28 @@ void Panel::SharedCtor() {
       reinterpret_cast<char*>(&type_)) + sizeof(layout_));
 }
 
-Panel::~Panel() {
-  // @@protoc_insertion_point(destructor:xviz.Panel)
+UIPanel::~UIPanel() {
+  // @@protoc_insertion_point(destructor:xviz.UIPanel)
   SharedDtor();
 }
 
-void Panel::SharedDtor() {
+void UIPanel::SharedDtor() {
   name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   title_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   description_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
-void Panel::SetCachedSize(int size) const {
+void UIPanel::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const Panel& Panel::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Panel_declarativeui_2eproto.base);
+const UIPanel& UIPanel::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_UIPanel_declarativeui_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void Panel::Clear() {
-// @@protoc_insertion_point(message_clear_start:xviz.Panel)
+void UIPanel::Clear() {
+// @@protoc_insertion_point(message_clear_start:xviz.UIPanel)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -214,7 +215,7 @@ void Panel::Clear() {
   _internal_metadata_.Clear();
 }
 
-const char* Panel::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* UIPanel::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
@@ -226,7 +227,7 @@ const char* Panel::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           auto str = _internal_mutable_name();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.Panel.name"));
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.UIPanel.name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -246,7 +247,7 @@ const char* Panel::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
           _internal_set_layout(static_cast<::xviz::LayoutType>(val));
         } else goto handle_unusual;
         continue;
-      // repeated .xviz.Panel children = 4;
+      // repeated .xviz.UIPanel children = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
           ptr -= 1;
@@ -266,7 +267,7 @@ const char* Panel::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
             ptr += 1;
             auto str = _internal_add_cameras();
             ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.Panel.cameras"));
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.UIPanel.cameras"));
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
@@ -277,7 +278,7 @@ const char* Panel::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
           auto str = _internal_mutable_title();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.Panel.title"));
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.UIPanel.title"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -286,7 +287,7 @@ const char* Panel::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 58)) {
           auto str = _internal_mutable_description();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.Panel.description"));
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.UIPanel.description"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -298,7 +299,7 @@ const char* Panel::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
             ptr += 1;
             auto str = _internal_add_streams();
             ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.Panel.streams"));
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.UIPanel.streams"));
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<66>(ptr));
@@ -324,9 +325,9 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* Panel::_InternalSerialize(
+::PROTOBUF_NAMESPACE_ID::uint8* UIPanel::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:xviz.Panel)
+  // @@protoc_insertion_point(serialize_to_array_start:xviz.UIPanel)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -335,7 +336,7 @@ failure:
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "xviz.Panel.name");
+      "xviz.UIPanel.name");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_name(), target);
   }
@@ -354,7 +355,7 @@ failure:
       3, this->_internal_layout(), target);
   }
 
-  // repeated .xviz.Panel children = 4;
+  // repeated .xviz.UIPanel children = 4;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->_internal_children_size()); i < n; i++) {
     target = stream->EnsureSpace(target);
@@ -368,7 +369,7 @@ failure:
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "xviz.Panel.cameras");
+      "xviz.UIPanel.cameras");
     target = stream->WriteString(5, s, target);
   }
 
@@ -377,7 +378,7 @@ failure:
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_title().data(), static_cast<int>(this->_internal_title().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "xviz.Panel.title");
+      "xviz.UIPanel.title");
     target = stream->WriteStringMaybeAliased(
         6, this->_internal_title(), target);
   }
@@ -387,7 +388,7 @@ failure:
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_description().data(), static_cast<int>(this->_internal_description().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "xviz.Panel.description");
+      "xviz.UIPanel.description");
     target = stream->WriteStringMaybeAliased(
         7, this->_internal_description(), target);
   }
@@ -398,7 +399,7 @@ failure:
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "xviz.Panel.streams");
+      "xviz.UIPanel.streams");
     target = stream->WriteString(8, s, target);
   }
 
@@ -406,19 +407,19 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:xviz.Panel)
+  // @@protoc_insertion_point(serialize_to_array_end:xviz.UIPanel)
   return target;
 }
 
-size_t Panel::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:xviz.Panel)
+size_t UIPanel::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:xviz.UIPanel)
   size_t total_size = 0;
 
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .xviz.Panel children = 4;
+  // repeated .xviz.UIPanel children = 4;
   total_size += 1UL * this->_internal_children_size();
   for (const auto& msg : this->children_) {
     total_size +=
@@ -483,23 +484,23 @@ size_t Panel::ByteSizeLong() const {
   return total_size;
 }
 
-void Panel::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:xviz.Panel)
+void UIPanel::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:xviz.UIPanel)
   GOOGLE_DCHECK_NE(&from, this);
-  const Panel* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Panel>(
+  const UIPanel* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<UIPanel>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.Panel)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:xviz.UIPanel)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.Panel)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:xviz.UIPanel)
     MergeFrom(*source);
   }
 }
 
-void Panel::MergeFrom(const Panel& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:xviz.Panel)
+void UIPanel::MergeFrom(const UIPanel& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:xviz.UIPanel)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -528,25 +529,25 @@ void Panel::MergeFrom(const Panel& from) {
   }
 }
 
-void Panel::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:xviz.Panel)
+void UIPanel::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:xviz.UIPanel)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Panel::CopyFrom(const Panel& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:xviz.Panel)
+void UIPanel::CopyFrom(const UIPanel& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:xviz.UIPanel)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Panel::IsInitialized() const {
+bool UIPanel::IsInitialized() const {
   return true;
 }
 
-void Panel::InternalSwap(Panel* other) {
+void UIPanel::InternalSwap(UIPanel* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   children_.InternalSwap(&other->children_);
@@ -562,7 +563,7 @@ void Panel::InternalSwap(Panel* other) {
   swap(layout_, other->layout_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata Panel::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata UIPanel::GetMetadata() const {
   return GetMetadataStatic();
 }
 
@@ -570,8 +571,8 @@ void Panel::InternalSwap(Panel* other) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace xviz
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::xviz::Panel* Arena::CreateMaybeMessage< ::xviz::Panel >(Arena* arena) {
-  return Arena::CreateInternal< ::xviz::Panel >(arena);
+template<> PROTOBUF_NOINLINE ::xviz::UIPanel* Arena::CreateMaybeMessage< ::xviz::UIPanel >(Arena* arena) {
+  return Arena::CreateInternal< ::xviz::UIPanel >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 
