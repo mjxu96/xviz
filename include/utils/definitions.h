@@ -20,6 +20,8 @@ using Primitive = xviz::StreamMetadata::PrimitiveType;
 using ScalarType = xviz::StreamMetadata::ScalarType;
 using UIPrimitiveType = xviz::StreamMetadata::UIPrimitiveType;
 
+// ui
+
 // struct PurePoint {
 //   double x, y, z;
 //   PurePoint(double xx, double yy, double zz) :

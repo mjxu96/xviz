@@ -21,11 +21,11 @@ extern PROTOBUF_INTERNAL_EXPORT_session_2eproto ::PROTOBUF_NAMESPACE_ID::interna
 extern PROTOBUF_INTERNAL_EXPORT_session_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Metadata_StreamAliasesEntry_DoNotUse_session_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_session_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Metadata_StreamsEntry_DoNotUse_session_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_session_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Metadata_UiConfigEntry_DoNotUse_session_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_declarativeui_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Panel_declarativeui_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_session_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_StreamMetadata_session_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_core_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<8> scc_info_StreamSet_core_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_style_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_StyleClass_style_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_style_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_StyleStreamValue_style_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_declarativeui_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_UIPanel_declarativeui_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_session_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_UIPanelInfo_session_2eproto;
 namespace xviz {
 class StartDefaultTypeInternal {
@@ -324,7 +324,7 @@ static void InitDefaultsscc_info_UIPanelInfo_session_2eproto() {
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_UIPanelInfo_session_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_UIPanelInfo_session_2eproto}, {
-      &scc_info_Panel_declarativeui_2eproto.base,}};
+      &scc_info_UIPanel_declarativeui_2eproto.base,}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_session_2eproto[16];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_session_2eproto[10];
@@ -595,15 +595,15 @@ const char descriptor_table_protodef_session_2eproto[] PROTOBUF_SECTION_VARIABLE
   "(\001\022\033\n\023vehicle_orientation\030\004 \003(\001\022\023\n\013pixel"
   "_width\030\005 \001(\001\022\024\n\014pixel_height\030\006 \001(\001\022 \n\030re"
   "ctification_projection\030\007 \003(\001\022\025\n\rgl_proje"
-  "ction\030\010 \003(\001:\027\302\273\032\023session/camera_info\"c\n\013"
-  "UIPanelInfo\022\014\n\004name\030\001 \001(\t\022\035\n\010children\030\002 "
-  "\003(\0132\013.xviz.Panel\022\014\n\004type\030\003 \001(\t:\031\302\273\032\025sess"
-  "ion/ui_panel_info\"E\n\007LogInfo\022\022\n\nstart_ti"
-  "me\030\001 \001(\001\022\020\n\010end_time\030\002 \001(\001:\024\302\273\032\020session/"
-  "log_info*N\n\013SessionType\022\030\n\024SESSION_TYPE_"
-  "INVALID\020\000\022\010\n\004LIVE\020\001\022\007\n\003LOG\020\002\022\022\n\016UNBUFFER"
-  "ED_LOG\020\003B4\n\013com.xviz.v2B\014SessionProtoP\001Z"
-  "\004v2pb\242\002\004XVIZ\252\002\007xviz.V2b\006proto3"
+  "ction\030\010 \003(\001:\027\302\273\032\023session/camera_info\"e\n\013"
+  "UIPanelInfo\022\014\n\004name\030\001 \001(\t\022\037\n\010children\030\002 "
+  "\003(\0132\r.xviz.UIPanel\022\014\n\004type\030\003 \001(\t:\031\302\273\032\025se"
+  "ssion/ui_panel_info\"E\n\007LogInfo\022\022\n\nstart_"
+  "time\030\001 \001(\001\022\020\n\010end_time\030\002 \001(\001:\024\302\273\032\020sessio"
+  "n/log_info*N\n\013SessionType\022\030\n\024SESSION_TYP"
+  "E_INVALID\020\000\022\010\n\004LIVE\020\001\022\007\n\003LOG\020\002\022\022\n\016UNBUFF"
+  "ERED_LOG\020\003B4\n\013com.xviz.v2B\014SessionProtoP"
+  "\001Z\004v2pb\242\002\004XVIZ\252\002\007xviz.V2b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_session_2eproto_deps[5] = {
   &::descriptor_table_core_2eproto,
@@ -633,7 +633,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ses
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_session_2eproto_once;
 static bool descriptor_table_session_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_session_2eproto = {
-  &descriptor_table_session_2eproto_initialized, descriptor_table_protodef_session_2eproto, "session.proto", 3510,
+  &descriptor_table_session_2eproto_initialized, descriptor_table_protodef_session_2eproto, "session.proto", 3512,
   &descriptor_table_session_2eproto_once, descriptor_table_session_2eproto_sccs, descriptor_table_session_2eproto_deps, 16, 5,
   schemas, file_default_instances, TableStruct_session_2eproto::offsets,
   file_level_metadata_session_2eproto, 16, file_level_enum_descriptors_session_2eproto, file_level_service_descriptors_session_2eproto,
@@ -4281,7 +4281,7 @@ const char* UIPanelInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated .xviz.Panel children = 2;
+      // repeated .xviz.UIPanel children = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           ptr -= 1;
@@ -4338,7 +4338,7 @@ failure:
         1, this->_internal_name(), target);
   }
 
-  // repeated .xviz.Panel children = 2;
+  // repeated .xviz.UIPanel children = 2;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->_internal_children_size()); i < n; i++) {
     target = stream->EnsureSpace(target);
@@ -4372,7 +4372,7 @@ size_t UIPanelInfo::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .xviz.Panel children = 2;
+  // repeated .xviz.UIPanel children = 2;
   total_size += 1UL * this->_internal_children_size();
   for (const auto& msg : this->children_) {
     total_size +=

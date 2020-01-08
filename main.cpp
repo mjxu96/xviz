@@ -11,8 +11,36 @@
 #include "builder/xviz_builder.h"
 #include "builder/metadata.h"
 
+#include "builder/declarative_ui/video_builder.h"
+#include "builder/declarative_ui/metric_builder.h"
+#include "builder/declarative_ui/container_builder.h"
+
+#include <memory>
+
 using namespace xviz;
 
+std::unordered_map<std::string, XVIZUIBuilder> GetUIBuilders() {
+
+  std::unordered_map<std::string, XVIZUIBuilder> ui_builders;
+
+  ui_builders["Camera"] = XVIZUIBuilder();
+  ui_builders["Metrics"] = XVIZUIBuilder();
+
+  std::vector<std::string> cameras = {"/camera/images0"};
+  std::vector<std::string> streams = {"/object/ts"};
+  auto camera_builder = std::make_shared<XVIZVideoBuilder>(cameras);
+  std::shared_ptr<XVIZBaseUIBuilder> metric_builder1 = std::make_shared<XVIZMetricBuilder>(streams, "123", "123");
+  std::shared_ptr<XVIZBaseUIBuilder> metric_builder2 = std::make_shared<XVIZMetricBuilder>(streams, "123", "123");
+  std::shared_ptr<XVIZBaseUIBuilder> metric_builder3 = std::make_shared<XVIZMetricBuilder>(streams, "123", "123");
+
+  std::shared_ptr<XVIZBaseUIBuilder> container_builder = std::make_shared<XVIZContainerBuilder>("metrics", LayoutType::VERTICAL);
+  container_builder->Child(metric_builder1);
+  container_builder->Child(metric_builder2);
+  container_builder->Child(streams, "123", "123");
+  ui_builders["Camera"].Child(camera_builder);
+  ui_builders["Metrics"].Child(container_builder);
+  return ui_builders;
+}
 
 int main() {
   Circle circle;
@@ -21,6 +49,7 @@ int main() {
   std::string s = "{\"fill_color\": \"#fff\"}"; 
   std::string s1 = "{\"fill_color\": \"#fff\", \"point_cloud_mode\": \"distance_to_vehicle\"}"; 
 
+
   auto metadata_builder = std::make_shared<XVIZMetadataBuilder>();
   metadata_builder->Stream("/vehicle_pose").Category(Category::StreamMetadata_Category_POSE)
     .Stream("/object/shape").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_POLYGON)
@@ -28,12 +57,10 @@ int main() {
     .StreamStyle(s1)
     .Stream("/object/shape2").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_POLYGON)
     .Stream("/object/circles").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_CIRCLE)
-    .Stream("/object/images").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_IMAGE)
+    .Stream("/camera/images0").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_IMAGE)
     .Stream("/object/ts").Category(Category::StreamMetadata_Category_TIME_SERIES)
     .Stream("/object/uptest").Category(Category::StreamMetadata_Category_UI_PRIMITIVE)
-    .UI({
-      {"123", ::google::protobuf::Struct()}
-    });
+    .UI(std::move(GetUIBuilders()));
   metadata_builder->StartTime(1000).EndTime(1010);
 
   XVIZBuilder builder(metadata_builder->GetData());
@@ -73,7 +100,7 @@ int main() {
     .Circle({1, 2, 3}, 1.0)
     .Style(s);
 
-  builder.Primitive("/object/images")
+  builder.Primitive("/camera/images0")
     .Image("123231");
 
   builder.TimeSeries("/object/ts")

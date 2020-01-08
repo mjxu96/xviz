@@ -2900,22 +2900,22 @@ class UIPanelInfo :
     kNameFieldNumber = 1,
     kTypeFieldNumber = 3,
   };
-  // repeated .xviz.Panel children = 2;
+  // repeated .xviz.UIPanel children = 2;
   int children_size() const;
   private:
   int _internal_children_size() const;
   public:
   void clear_children();
-  ::xviz::Panel* mutable_children(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::xviz::Panel >*
+  ::xviz::UIPanel* mutable_children(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::xviz::UIPanel >*
       mutable_children();
   private:
-  const ::xviz::Panel& _internal_children(int index) const;
-  ::xviz::Panel* _internal_add_children();
+  const ::xviz::UIPanel& _internal_children(int index) const;
+  ::xviz::UIPanel* _internal_add_children();
   public:
-  const ::xviz::Panel& children(int index) const;
-  ::xviz::Panel* add_children();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::xviz::Panel >&
+  const ::xviz::UIPanel& children(int index) const;
+  ::xviz::UIPanel* add_children();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::xviz::UIPanel >&
       children() const;
 
   // string name = 1;
@@ -2955,7 +2955,7 @@ class UIPanelInfo :
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::xviz::Panel > children_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::xviz::UIPanel > children_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr type_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -5039,37 +5039,37 @@ inline void UIPanelInfo::set_allocated_name(std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:xviz.UIPanelInfo.name)
 }
 
-// repeated .xviz.Panel children = 2;
+// repeated .xviz.UIPanel children = 2;
 inline int UIPanelInfo::_internal_children_size() const {
   return children_.size();
 }
 inline int UIPanelInfo::children_size() const {
   return _internal_children_size();
 }
-inline ::xviz::Panel* UIPanelInfo::mutable_children(int index) {
+inline ::xviz::UIPanel* UIPanelInfo::mutable_children(int index) {
   // @@protoc_insertion_point(field_mutable:xviz.UIPanelInfo.children)
   return children_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::xviz::Panel >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::xviz::UIPanel >*
 UIPanelInfo::mutable_children() {
   // @@protoc_insertion_point(field_mutable_list:xviz.UIPanelInfo.children)
   return &children_;
 }
-inline const ::xviz::Panel& UIPanelInfo::_internal_children(int index) const {
+inline const ::xviz::UIPanel& UIPanelInfo::_internal_children(int index) const {
   return children_.Get(index);
 }
-inline const ::xviz::Panel& UIPanelInfo::children(int index) const {
+inline const ::xviz::UIPanel& UIPanelInfo::children(int index) const {
   // @@protoc_insertion_point(field_get:xviz.UIPanelInfo.children)
   return _internal_children(index);
 }
-inline ::xviz::Panel* UIPanelInfo::_internal_add_children() {
+inline ::xviz::UIPanel* UIPanelInfo::_internal_add_children() {
   return children_.Add();
 }
-inline ::xviz::Panel* UIPanelInfo::add_children() {
+inline ::xviz::UIPanel* UIPanelInfo::add_children() {
   // @@protoc_insertion_point(field_add:xviz.UIPanelInfo.children)
   return _internal_add_children();
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::xviz::Panel >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::xviz::UIPanel >&
 UIPanelInfo::children() const {
   // @@protoc_insertion_point(field_list:xviz.UIPanelInfo.children)
   return children_;
