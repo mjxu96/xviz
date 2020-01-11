@@ -44,8 +44,8 @@ public:
   XVIZPrimitiveBuilder& Circle(const std::shared_ptr<std::vector<double>>& vertices_ptr, const std::shared_ptr<double>& radius);
 
   XVIZPrimitiveBuilder& Dimensions(uint32_t width_pixel, uint32_t height_pixel);
-  XVIZPrimitiveBuilder& Image(const std::string& encoded_data_str);
-  XVIZPrimitiveBuilder& Image(std::string&& encoded_data_str);
+  XVIZPrimitiveBuilder& Image(const std::string& raw_data_str);
+  XVIZPrimitiveBuilder& Image(std::string&& raw_data_str);
 
   XVIZPrimitiveBuilder& Style(const nlohmann::json& style_json);
   XVIZPrimitiveBuilder& Style(nlohmann::json&& style_json);

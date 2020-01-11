@@ -155,25 +155,25 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Dimensions(uint32_t width_pixel, uin
   return *this;
 }
 
-XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Image(const std::string& encoded_data_str) {
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Image(const std::string& raw_data_str) {
   if (type_ != nullptr) {
     Flush();
   }
   type_ = std::make_shared<Primitive>();
   *type_ = Primitive::StreamMetadata_PrimitiveType_IMAGE;
   image_ = std::make_shared<xviz::Image>();
-  image_->set_data(encoded_data_str);
+  image_->set_data(raw_data_str);
   return *this;
 }
 
-XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Image(std::string&& encoded_data_str) {
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Image(std::string&& raw_data_str) {
   if (type_ != nullptr) {
     Flush();
   }
   type_ = std::make_shared<Primitive>();
   *type_ = Primitive::StreamMetadata_PrimitiveType_IMAGE;
   image_ = std::make_shared<xviz::Image>();
-  image_->set_data(std::move(encoded_data_str));
+  image_->set_data(std::move(raw_data_str));
   return *this;
 }
 
