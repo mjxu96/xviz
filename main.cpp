@@ -25,11 +25,17 @@ std::unordered_map<std::string, XVIZUIBuilder> GetUIBuilders() {
 
   ui_builders["Camera"] = XVIZUIBuilder();
   ui_builders["Metrics"] = XVIZUIBuilder();
+  ui_builders["Plot"] = XVIZUIBuilder();
+  ui_builders["Table"] = XVIZUIBuilder();
 
   std::vector<std::string> cameras = {"/camera/images0"};
   std::vector<std::string> streams = {"/object/ts"};
+  std::vector<std::string> dep_vars = {"ddd", "aaa"};
   // auto camera_builder = std::make_shared<XVIZVideoBuilder>(cameras);
   XVIZVideoBuilder camera_builder(cameras);
+  XVIZPlotBuilder plot_builder("title", "des", "indep_var", std::move(dep_vars));
+  XVIZTableBuilder table_builder("title", "des", "/some_stream/table", true);
+  
   std::shared_ptr<XVIZBaseUIBuilder> metric_builder1 = std::make_shared<XVIZMetricBuilder>(streams, "123", "123");
   std::shared_ptr<XVIZBaseUIBuilder> metric_builder2 = std::make_shared<XVIZMetricBuilder>(streams, "123", "123");
   std::shared_ptr<XVIZBaseUIBuilder> metric_builder3 = std::make_shared<XVIZMetricBuilder>(streams, "123", "123");
@@ -40,6 +46,8 @@ std::unordered_map<std::string, XVIZUIBuilder> GetUIBuilders() {
   container_builder->Child(streams, "123", "123");
   ui_builders["Camera"].Child(std::move(camera_builder));
   ui_builders["Metrics"].Child(container_builder);
+  ui_builders["Plot"].Child(plot_builder);
+  ui_builders["Table"].Child(table_builder);
   return ui_builders;
 }
 
