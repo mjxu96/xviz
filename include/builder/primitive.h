@@ -47,6 +47,10 @@ public:
   XVIZPrimitiveBuilder& Image(const std::string& raw_data_str);
   XVIZPrimitiveBuilder& Image(std::string&& raw_data_str);
 
+  XVIZPrimitiveBuilder& Text(const std::string& message);
+  XVIZPrimitiveBuilder& Text(std::string&& message);
+  XVIZPrimitiveBuilder& Text(const std::shared_ptr<std::string>& message_ptr);
+
   XVIZPrimitiveBuilder& Style(const nlohmann::json& style_json);
   XVIZPrimitiveBuilder& Style(nlohmann::json&& style_json);
   XVIZPrimitiveBuilder& Style(const std::string& style_json_str);
