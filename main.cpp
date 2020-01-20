@@ -68,6 +68,7 @@ int main() {
     .Stream("/object/circles").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_CIRCLE)
     .Stream("/camera/images0").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_IMAGE)
     .Stream("/object/text").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_TEXT)
+    .Stream("/object/stadium").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_STADIUM)
     .Stream("/object/ts").Category(Category::StreamMetadata_Category_TIME_SERIES)
     .Stream("/object/uptest").Category(Category::StreamMetadata_Category_UI_PRIMITIVE)
     .UI(std::move(GetUIBuilders()));
@@ -113,6 +114,9 @@ int main() {
   builder.Primitive("/object/text")
     .Text("hello world")
     .Position({1, 2, 3});
+  
+  builder.Primitive("/object/stadium")
+    .Stadium({0, 0, 0}, {1, 1, 1}, 10);
 
   builder.Primitive("/camera/images0")
     .Image("123231");
