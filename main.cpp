@@ -14,6 +14,7 @@
 #include "builder/declarative_ui/video_builder.h"
 #include "builder/declarative_ui/metric_builder.h"
 #include "builder/declarative_ui/container_builder.h"
+#include "io/glb_writer.h"
 
 #include <memory>
 
@@ -144,5 +145,11 @@ int main() {
   // for (auto itr = obj.begin(); itr != obj.end(); itr++) {
   //   std::cout << itr.key() << "   " << itr.value() << std::endl;
   // }
+
+  XVIZGLBWriter writer;
+  std::string mes;
+  writer.WriteMessage(mes, res);
+  std::cout << mes << std::endl;
+
   return 0;
 }
