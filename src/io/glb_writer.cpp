@@ -21,10 +21,9 @@ void AddOneImage(Document& document, std::vector<uint8_t>& buffer, uint32_t imag
   document.images.back().width = image_ptr->width_px();
   document.images.back().height = image_ptr->height_px();
 
-  std::string encoded_str = base64_encode((const unsigned char*)image_ptr->data().c_str(), image_ptr->data().size());
-  std::vector<uint8_t> tmp_data = std::vector<uint8_t>(encoded_str.begin(), encoded_str.end());
+  std::vector<uint8_t> tmp_data = std::vector<uint8_t>(image_ptr->data().begin(), image_ptr->data().end());
   buffer.insert(buffer.end(), tmp_data.begin(), tmp_data.end());
-  image_ptr->set_data(base64_decode("#/images/" + std::to_string(image_idx))); 
+  image_ptr->set_data("#/images/" + std::to_string(image_idx)); 
 }
 
 void GetStateUpdateData(std::string& sink, xviz::XVIZMessage& message) {

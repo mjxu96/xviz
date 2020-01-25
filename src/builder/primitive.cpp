@@ -162,7 +162,7 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Image(const std::string& raw_data_st
   type_ = std::make_shared<Primitive>();
   *type_ = Primitive::StreamMetadata_PrimitiveType_IMAGE;
   image_ = std::make_shared<xviz::Image>();
-  image_->set_data(raw_data_str);
+  image_->set_data(base64_encode((const unsigned char*)raw_data_str.c_str(), raw_data_str.size()));
   return *this;
 }
 
@@ -173,7 +173,12 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Image(std::string&& raw_data_str) {
   type_ = std::make_shared<Primitive>();
   *type_ = Primitive::StreamMetadata_PrimitiveType_IMAGE;
   image_ = std::make_shared<xviz::Image>();
-  image_->set_data(std::move(raw_data_str));
+  // image_->set_data(std::move(raw_data_str));
+  // google::protobuf::Value data_value;
+  // data_value.set_string_value(std::move(raw_data_str));
+  // auto data_ptr = image_->mutable_data();
+  // (*data_ptr) = std::move(data_value);
+  image_->set_data(base64_encode((const unsigned char*)raw_data_str.c_str(), raw_data_str.size()));
   return *this;
 }
 
@@ -315,9 +320,20 @@ void XVIZPrimitiveBuilder::FlushPrimitives() {
           break;
         }
         auto point_ptr = stream_ptr->add_points();
+        google::protobuf::Value points_value;
+        google::protobuf::ListValue points_list_value;
         for (auto v : *vertices_) {
-          point_ptr->add_points(v);
+          google::protobuf::Value tmp_point_value;
+          tmp_point_value.set_number_value(v);
+          auto new_value_ptr = points_list_value.add_values();
+          (*new_value_ptr) = std::move(tmp_point_value);
+          // point_ptr->add_points(v);
         }
+        auto new_list_ptr = points_value.mutable_list_value();
+        (*new_list_ptr) = std::move(points_list_value);
+        auto new_points_value_ptr = point_ptr->mutable_points();
+        (*new_points_value_ptr) = std::move(points_value);
+
         if (colors_ != nullptr) {
           auto colors_ptr = point_ptr->mutable_colors();
           *colors_ptr = std::move(*colors_);
