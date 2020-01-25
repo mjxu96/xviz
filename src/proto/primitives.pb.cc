@@ -77,10 +77,9 @@ static void InitDefaultsscc_info_Image_primitives_2eproto() {
   ::xviz::Image::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_Image_primitives_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_Image_primitives_2eproto}, {
-      &scc_info_PrimitiveBase_primitives_2eproto.base,
-      &scc_info_ListValue_google_2fprotobuf_2fstruct_2eproto.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Image_primitives_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_Image_primitives_2eproto}, {
+      &scc_info_PrimitiveBase_primitives_2eproto.base,}};
 
 static void InitDefaultsscc_info_Point_primitives_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -274,26 +273,26 @@ const char descriptor_table_protodef_primitives_2eproto[] PROTOBUF_SECTION_VARIA
   "\n\007classes\030\002 \003(\t\022%\n\005style\030\003 \001(\0132\026.xviz.St"
   "yleObjectValue\"b\n\006Circle\022!\n\004base\030\001 \001(\0132\023"
   ".xviz.PrimitiveBase\022\016\n\006center\030\002 \003(\002\022\016\n\006r"
-  "adius\030\003 \001(\002:\025\302\273\032\021primitives/circle\"\235\001\n\005I"
+  "adius\030\003 \001(\002:\025\302\273\032\021primitives/circle\"\205\001\n\005I"
   "mage\022!\n\004base\030\001 \001(\0132\023.xviz.PrimitiveBase\022"
-  "\020\n\010position\030\002 \003(\002\022$\n\004data\030\003 \001(\0132\026.google"
-  ".protobuf.Value\022\020\n\010width_px\030\004 \001(\r\022\021\n\thei"
-  "ght_px\030\005 \001(\r:\024\302\273\032\020primitives/image\"x\n\005Po"
-  "int\022!\n\004base\030\001 \001(\0132\023.xviz.PrimitiveBase\022&"
-  "\n\006points\030\002 \001(\0132\026.google.protobuf.Value\022\016"
-  "\n\006colors\030\003 \001(\014:\024\302\273\032\020primitives/point\"V\n\007"
-  "Polygon\022!\n\004base\030\001 \001(\0132\023.xviz.PrimitiveBa"
-  "se\022\020\n\010vertices\030\002 \003(\002:\026\302\273\032\022primitives/pol"
-  "ygon\"h\n\010Polyline\022!\n\004base\030\001 \001(\0132\023.xviz.Pr"
-  "imitiveBase\022\020\n\010vertices\030\002 \003(\002\022\016\n\006colors\030"
-  "\003 \001(\014:\027\302\273\032\023primitives/polyline\"p\n\007Stadiu"
-  "m\022!\n\004base\030\001 \001(\0132\023.xviz.PrimitiveBase\022\r\n\005"
-  "start\030\002 \003(\002\022\013\n\003end\030\003 \003(\002\022\016\n\006radius\030\004 \001(\002"
-  ":\026\302\273\032\022primitives/stadium\"^\n\004Text\022!\n\004base"
-  "\030\001 \001(\0132\023.xviz.PrimitiveBase\022\020\n\010position\030"
-  "\002 \003(\002\022\014\n\004text\030\003 \001(\t:\023\302\273\032\017primitives/text"
-  "B7\n\013com.xviz.v2B\017PrimitivesProtoP\001Z\004v2pb"
-  "\242\002\004XVIZ\252\002\007xviz.V2b\006proto3"
+  "\020\n\010position\030\002 \003(\002\022\014\n\004data\030\003 \001(\t\022\020\n\010width"
+  "_px\030\004 \001(\r\022\021\n\theight_px\030\005 \001(\r:\024\302\273\032\020primit"
+  "ives/image\"x\n\005Point\022!\n\004base\030\001 \001(\0132\023.xviz"
+  ".PrimitiveBase\022&\n\006points\030\002 \001(\0132\026.google."
+  "protobuf.Value\022\016\n\006colors\030\003 \001(\014:\024\302\273\032\020prim"
+  "itives/point\"V\n\007Polygon\022!\n\004base\030\001 \001(\0132\023."
+  "xviz.PrimitiveBase\022\020\n\010vertices\030\002 \003(\002:\026\302\273"
+  "\032\022primitives/polygon\"h\n\010Polyline\022!\n\004base"
+  "\030\001 \001(\0132\023.xviz.PrimitiveBase\022\020\n\010vertices\030"
+  "\002 \003(\002\022\016\n\006colors\030\003 \001(\014:\027\302\273\032\023primitives/po"
+  "lyline\"p\n\007Stadium\022!\n\004base\030\001 \001(\0132\023.xviz.P"
+  "rimitiveBase\022\r\n\005start\030\002 \003(\002\022\013\n\003end\030\003 \003(\002"
+  "\022\016\n\006radius\030\004 \001(\002:\026\302\273\032\022primitives/stadium"
+  "\"^\n\004Text\022!\n\004base\030\001 \001(\0132\023.xviz.PrimitiveB"
+  "ase\022\020\n\010position\030\002 \003(\002\022\014\n\004text\030\003 \001(\t:\023\302\273\032"
+  "\017primitives/textB7\n\013com.xviz.v2B\017Primiti"
+  "vesProtoP\001Z\004v2pb\242\002\004XVIZ\252\002\007xviz.V2b\006proto"
+  "3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_primitives_2eproto_deps[3] = {
   &::descriptor_table_google_2fprotobuf_2fstruct_2eproto,
@@ -313,7 +312,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_pri
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_primitives_2eproto_once;
 static bool descriptor_table_primitives_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_primitives_2eproto = {
-  &descriptor_table_primitives_2eproto_initialized, descriptor_table_protodef_primitives_2eproto, "primitives.proto", 1025,
+  &descriptor_table_primitives_2eproto_initialized, descriptor_table_protodef_primitives_2eproto, "primitives.proto", 1001,
   &descriptor_table_primitives_2eproto_once, descriptor_table_primitives_2eproto_sccs, descriptor_table_primitives_2eproto_deps, 8, 3,
   schemas, file_default_instances, TableStruct_primitives_2eproto::offsets,
   file_level_metadata_primitives_2eproto, 8, file_level_enum_descriptors_primitives_2eproto, file_level_service_descriptors_primitives_2eproto,
@@ -877,28 +876,15 @@ void Circle::InternalSwap(Circle* other) {
 void Image::InitAsDefaultInstance() {
   ::xviz::_Image_default_instance_._instance.get_mutable()->base_ = const_cast< ::xviz::PrimitiveBase*>(
       ::xviz::PrimitiveBase::internal_default_instance());
-  ::xviz::_Image_default_instance_._instance.get_mutable()->data_ = const_cast< PROTOBUF_NAMESPACE_ID::Value*>(
-      PROTOBUF_NAMESPACE_ID::Value::internal_default_instance());
 }
 class Image::_Internal {
  public:
   static const ::xviz::PrimitiveBase& base(const Image* msg);
-  static const PROTOBUF_NAMESPACE_ID::Value& data(const Image* msg);
 };
 
 const ::xviz::PrimitiveBase&
 Image::_Internal::base(const Image* msg) {
   return *msg->base_;
-}
-const PROTOBUF_NAMESPACE_ID::Value&
-Image::_Internal::data(const Image* msg) {
-  return *msg->data_;
-}
-void Image::clear_data() {
-  if (GetArenaNoVirtual() == nullptr && data_ != nullptr) {
-    delete data_;
-  }
-  data_ = nullptr;
 }
 Image::Image()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -910,15 +896,14 @@ Image::Image(const Image& from)
       _internal_metadata_(nullptr),
       position_(from.position_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_data().empty()) {
+    data_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.data_);
+  }
   if (from._internal_has_base()) {
     base_ = new ::xviz::PrimitiveBase(*from.base_);
   } else {
     base_ = nullptr;
-  }
-  if (from._internal_has_data()) {
-    data_ = new PROTOBUF_NAMESPACE_ID::Value(*from.data_);
-  } else {
-    data_ = nullptr;
   }
   ::memcpy(&width_px_, &from.width_px_,
     static_cast<size_t>(reinterpret_cast<char*>(&height_px_) -
@@ -928,6 +913,7 @@ Image::Image(const Image& from)
 
 void Image::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Image_primitives_2eproto.base);
+  data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&base_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&height_px_) -
       reinterpret_cast<char*>(&base_)) + sizeof(height_px_));
@@ -939,8 +925,8 @@ Image::~Image() {
 }
 
 void Image::SharedDtor() {
+  data_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete base_;
-  if (this != internal_default_instance()) delete data_;
 }
 
 void Image::SetCachedSize(int size) const {
@@ -959,14 +945,11 @@ void Image::Clear() {
   (void) cached_has_bits;
 
   position_.Clear();
+  data_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == nullptr && base_ != nullptr) {
     delete base_;
   }
   base_ = nullptr;
-  if (GetArenaNoVirtual() == nullptr && data_ != nullptr) {
-    delete data_;
-  }
-  data_ = nullptr;
   ::memset(&width_px_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&height_px_) -
       reinterpret_cast<char*>(&width_px_)) + sizeof(height_px_));
@@ -997,10 +980,12 @@ const char* Image::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
           ptr += sizeof(float);
         } else goto handle_unusual;
         continue;
-      // .google.protobuf.Value data = 3;
+      // string data = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          ptr = ctx->ParseMessage(_internal_mutable_data(), ptr);
+          auto str = _internal_mutable_data();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.Image.data"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1057,12 +1042,14 @@ failure:
     target = stream->WriteFixedPacked(2, _internal_position(), target);
   }
 
-  // .google.protobuf.Value data = 3;
-  if (this->has_data()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        3, _Internal::data(this), target, stream);
+  // string data = 3;
+  if (this->data().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_data().data(), static_cast<int>(this->_internal_data().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "xviz.Image.data");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_data(), target);
   }
 
   // uint32 width_px = 4;
@@ -1108,18 +1095,18 @@ size_t Image::ByteSizeLong() const {
     total_size += data_size;
   }
 
+  // string data = 3;
+  if (this->data().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_data());
+  }
+
   // .xviz.PrimitiveBase base = 1;
   if (this->has_base()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *base_);
-  }
-
-  // .google.protobuf.Value data = 3;
-  if (this->has_data()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *data_);
   }
 
   // uint32 width_px = 4;
@@ -1168,11 +1155,12 @@ void Image::MergeFrom(const Image& from) {
   (void) cached_has_bits;
 
   position_.MergeFrom(from.position_);
+  if (from.data().size() > 0) {
+
+    data_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.data_);
+  }
   if (from.has_base()) {
     _internal_mutable_base()->::xviz::PrimitiveBase::MergeFrom(from._internal_base());
-  }
-  if (from.has_data()) {
-    _internal_mutable_data()->PROTOBUF_NAMESPACE_ID::Value::MergeFrom(from._internal_data());
   }
   if (from.width_px() != 0) {
     _internal_set_width_px(from._internal_width_px());
@@ -1204,8 +1192,9 @@ void Image::InternalSwap(Image* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   position_.InternalSwap(&other->position_);
+  data_.Swap(&other->data_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   swap(base_, other->base_);
-  swap(data_, other->data_);
   swap(width_px_, other->width_px_);
   swap(height_px_, other->height_px_);
 }
