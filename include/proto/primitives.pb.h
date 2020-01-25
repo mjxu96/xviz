@@ -34,6 +34,7 @@
 #include <google/protobuf/unknown_field_set.h>
 #include "options.pb.h"
 #include "style.pb.h"
+#include <google/protobuf/struct.pb.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_primitives_2eproto
@@ -551,8 +552,8 @@ class Image :
 
   enum : int {
     kPositionFieldNumber = 2,
-    kDataFieldNumber = 3,
     kBaseFieldNumber = 1,
+    kDataFieldNumber = 3,
     kWidthPxFieldNumber = 4,
     kHeightPxFieldNumber = 5,
   };
@@ -578,22 +579,6 @@ class Image :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
       mutable_position();
 
-  // bytes data = 3;
-  void clear_data();
-  const std::string& data() const;
-  void set_data(const std::string& value);
-  void set_data(std::string&& value);
-  void set_data(const char* value);
-  void set_data(const void* value, size_t size);
-  std::string* mutable_data();
-  std::string* release_data();
-  void set_allocated_data(std::string* data);
-  private:
-  const std::string& _internal_data() const;
-  void _internal_set_data(const std::string& value);
-  std::string* _internal_mutable_data();
-  public:
-
   // .xviz.PrimitiveBase base = 1;
   bool has_base() const;
   private:
@@ -607,6 +592,21 @@ class Image :
   private:
   const ::xviz::PrimitiveBase& _internal_base() const;
   ::xviz::PrimitiveBase* _internal_mutable_base();
+  public:
+
+  // .google.protobuf.Value data = 3;
+  bool has_data() const;
+  private:
+  bool _internal_has_data() const;
+  public:
+  void clear_data();
+  const PROTOBUF_NAMESPACE_ID::Value& data() const;
+  PROTOBUF_NAMESPACE_ID::Value* release_data();
+  PROTOBUF_NAMESPACE_ID::Value* mutable_data();
+  void set_allocated_data(PROTOBUF_NAMESPACE_ID::Value* data);
+  private:
+  const PROTOBUF_NAMESPACE_ID::Value& _internal_data() const;
+  PROTOBUF_NAMESPACE_ID::Value* _internal_mutable_data();
   public:
 
   // uint32 width_px = 4;
@@ -634,8 +634,8 @@ class Image :
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > position_;
   mutable std::atomic<int> _position_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr data_;
   ::xviz::PrimitiveBase* base_;
+  PROTOBUF_NAMESPACE_ID::Value* data_;
   ::PROTOBUF_NAMESPACE_ID::uint32 width_px_;
   ::PROTOBUF_NAMESPACE_ID::uint32 height_px_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -749,32 +749,10 @@ class Point :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kPointsFieldNumber = 2,
     kColorsFieldNumber = 3,
     kBaseFieldNumber = 1,
+    kPointsFieldNumber = 2,
   };
-  // repeated float points = 2;
-  int points_size() const;
-  private:
-  int _internal_points_size() const;
-  public:
-  void clear_points();
-  private:
-  float _internal_points(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
-      _internal_points() const;
-  void _internal_add_points(float value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
-      _internal_mutable_points();
-  public:
-  float points(int index) const;
-  void set_points(int index, float value);
-  void add_points(float value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
-      points() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
-      mutable_points();
-
   // bytes colors = 3;
   void clear_colors();
   const std::string& colors() const;
@@ -806,15 +784,29 @@ class Point :
   ::xviz::PrimitiveBase* _internal_mutable_base();
   public:
 
+  // .google.protobuf.Value points = 2;
+  bool has_points() const;
+  private:
+  bool _internal_has_points() const;
+  public:
+  void clear_points();
+  const PROTOBUF_NAMESPACE_ID::Value& points() const;
+  PROTOBUF_NAMESPACE_ID::Value* release_points();
+  PROTOBUF_NAMESPACE_ID::Value* mutable_points();
+  void set_allocated_points(PROTOBUF_NAMESPACE_ID::Value* points);
+  private:
+  const PROTOBUF_NAMESPACE_ID::Value& _internal_points() const;
+  PROTOBUF_NAMESPACE_ID::Value* _internal_mutable_points();
+  public:
+
   // @@protoc_insertion_point(class_scope:xviz.Point)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > points_;
-  mutable std::atomic<int> _points_cached_byte_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr colors_;
   ::xviz::PrimitiveBase* base_;
+  PROTOBUF_NAMESPACE_ID::Value* points_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_primitives_2eproto;
 };
@@ -1967,63 +1959,58 @@ Image::mutable_position() {
   return _internal_mutable_position();
 }
 
-// bytes data = 3;
-inline void Image::clear_data() {
-  data_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+// .google.protobuf.Value data = 3;
+inline bool Image::_internal_has_data() const {
+  return this != internal_default_instance() && data_ != nullptr;
 }
-inline const std::string& Image::data() const {
+inline bool Image::has_data() const {
+  return _internal_has_data();
+}
+inline const PROTOBUF_NAMESPACE_ID::Value& Image::_internal_data() const {
+  const PROTOBUF_NAMESPACE_ID::Value* p = data_;
+  return p != nullptr ? *p : *reinterpret_cast<const PROTOBUF_NAMESPACE_ID::Value*>(
+      &PROTOBUF_NAMESPACE_ID::_Value_default_instance_);
+}
+inline const PROTOBUF_NAMESPACE_ID::Value& Image::data() const {
   // @@protoc_insertion_point(field_get:xviz.Image.data)
   return _internal_data();
 }
-inline void Image::set_data(const std::string& value) {
-  _internal_set_data(value);
-  // @@protoc_insertion_point(field_set:xviz.Image.data)
+inline PROTOBUF_NAMESPACE_ID::Value* Image::release_data() {
+  // @@protoc_insertion_point(field_release:xviz.Image.data)
+  
+  PROTOBUF_NAMESPACE_ID::Value* temp = data_;
+  data_ = nullptr;
+  return temp;
 }
-inline std::string* Image::mutable_data() {
+inline PROTOBUF_NAMESPACE_ID::Value* Image::_internal_mutable_data() {
+  
+  if (data_ == nullptr) {
+    auto* p = CreateMaybeMessage<PROTOBUF_NAMESPACE_ID::Value>(GetArenaNoVirtual());
+    data_ = p;
+  }
+  return data_;
+}
+inline PROTOBUF_NAMESPACE_ID::Value* Image::mutable_data() {
   // @@protoc_insertion_point(field_mutable:xviz.Image.data)
   return _internal_mutable_data();
 }
-inline const std::string& Image::_internal_data() const {
-  return data_.GetNoArena();
-}
-inline void Image::_internal_set_data(const std::string& value) {
-  
-  data_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
-}
-inline void Image::set_data(std::string&& value) {
-  
-  data_.SetNoArena(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:xviz.Image.data)
-}
-inline void Image::set_data(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  data_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:xviz.Image.data)
-}
-inline void Image::set_data(const void* value, size_t size) {
-  
-  data_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:xviz.Image.data)
-}
-inline std::string* Image::_internal_mutable_data() {
-  
-  return data_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline std::string* Image::release_data() {
-  // @@protoc_insertion_point(field_release:xviz.Image.data)
-  
-  return data_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline void Image::set_allocated_data(std::string* data) {
-  if (data != nullptr) {
+inline void Image::set_allocated_data(PROTOBUF_NAMESPACE_ID::Value* data) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(data_);
+  }
+  if (data) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(data)->GetArena();
+    if (message_arena != submessage_arena) {
+      data = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, data, submessage_arena);
+    }
     
   } else {
     
   }
-  data_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), data);
+  data_ = data;
   // @@protoc_insertion_point(field_set_allocated:xviz.Image.data)
 }
 
@@ -2131,51 +2118,59 @@ inline void Point::set_allocated_base(::xviz::PrimitiveBase* base) {
   // @@protoc_insertion_point(field_set_allocated:xviz.Point.base)
 }
 
-// repeated float points = 2;
-inline int Point::_internal_points_size() const {
-  return points_.size();
+// .google.protobuf.Value points = 2;
+inline bool Point::_internal_has_points() const {
+  return this != internal_default_instance() && points_ != nullptr;
 }
-inline int Point::points_size() const {
-  return _internal_points_size();
+inline bool Point::has_points() const {
+  return _internal_has_points();
 }
-inline void Point::clear_points() {
-  points_.Clear();
+inline const PROTOBUF_NAMESPACE_ID::Value& Point::_internal_points() const {
+  const PROTOBUF_NAMESPACE_ID::Value* p = points_;
+  return p != nullptr ? *p : *reinterpret_cast<const PROTOBUF_NAMESPACE_ID::Value*>(
+      &PROTOBUF_NAMESPACE_ID::_Value_default_instance_);
 }
-inline float Point::_internal_points(int index) const {
-  return points_.Get(index);
-}
-inline float Point::points(int index) const {
+inline const PROTOBUF_NAMESPACE_ID::Value& Point::points() const {
   // @@protoc_insertion_point(field_get:xviz.Point.points)
-  return _internal_points(index);
-}
-inline void Point::set_points(int index, float value) {
-  points_.Set(index, value);
-  // @@protoc_insertion_point(field_set:xviz.Point.points)
-}
-inline void Point::_internal_add_points(float value) {
-  points_.Add(value);
-}
-inline void Point::add_points(float value) {
-  _internal_add_points(value);
-  // @@protoc_insertion_point(field_add:xviz.Point.points)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
-Point::_internal_points() const {
-  return points_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
-Point::points() const {
-  // @@protoc_insertion_point(field_list:xviz.Point.points)
   return _internal_points();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
-Point::_internal_mutable_points() {
-  return &points_;
+inline PROTOBUF_NAMESPACE_ID::Value* Point::release_points() {
+  // @@protoc_insertion_point(field_release:xviz.Point.points)
+  
+  PROTOBUF_NAMESPACE_ID::Value* temp = points_;
+  points_ = nullptr;
+  return temp;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
-Point::mutable_points() {
-  // @@protoc_insertion_point(field_mutable_list:xviz.Point.points)
+inline PROTOBUF_NAMESPACE_ID::Value* Point::_internal_mutable_points() {
+  
+  if (points_ == nullptr) {
+    auto* p = CreateMaybeMessage<PROTOBUF_NAMESPACE_ID::Value>(GetArenaNoVirtual());
+    points_ = p;
+  }
+  return points_;
+}
+inline PROTOBUF_NAMESPACE_ID::Value* Point::mutable_points() {
+  // @@protoc_insertion_point(field_mutable:xviz.Point.points)
   return _internal_mutable_points();
+}
+inline void Point::set_allocated_points(PROTOBUF_NAMESPACE_ID::Value* points) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(points_);
+  }
+  if (points) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(points)->GetArena();
+    if (message_arena != submessage_arena) {
+      points = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, points, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  points_ = points;
+  // @@protoc_insertion_point(field_set_allocated:xviz.Point.points)
 }
 
 // bytes colors = 3;
