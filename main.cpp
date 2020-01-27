@@ -106,7 +106,7 @@ int main() {
   //     .Style(nlohmann::json::parse(s1));
 
   builder.Primitive("/object/shape2")
-    .Polygon({1, 2, 3});
+    .Points({1, 2, 3});
 
   builder.Primitive("/object/circles")
     .Circle({1, 2, 3}, 1.0)
