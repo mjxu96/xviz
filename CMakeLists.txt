@@ -13,8 +13,17 @@ unset(USE_CLANG CACHE)
 SET(XVIZ_ROOT_FOLDER ${CMAKE_CURRENT_SOURCE_DIR})
 
 add_subdirectory("src")
-
 include_directories(${XVIZ_ROOT_FOLDER}/include)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${XVIZ_ROOT_FOLDER}/bin)
+
 add_executable(mmm main.cpp)
 target_link_libraries(mmm xviz)
+
+# if (NOT BUILD_TEST)
+#     set(BUILD_TEST ON)
+# endif()
+
+if (BUILD_TEST)
+    message("Enable building tests")
+    add_subdirectory("test")
+endif (BUILD_TEST)

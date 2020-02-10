@@ -64,5 +64,5 @@ add_library(xviz-message
   message.cpp
 )
 
-add_library(xviz)
+add_library(xviz xviz.cpp)
 target_link_libraries(xviz xviz-ui-builder xviz-message xviz-builder xviz-io xviz-pb xviz-utils)
