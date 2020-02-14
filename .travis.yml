@@ -1,0 +1,20 @@
+language: cpp
+compiler: gcc
+dist: bionic
+
+before_install:
+  - sudo apt-get update 
+
+install: 
+  # cmake make tool
+  - sudo apt-get install -y cmake make
+
+  # protobuf 3.10.0
+  - wget https://github.com/protocolbuffers/protobuf/releases/download/v3.10.0/protobuf-cpp-3.10.0.tar.gz
+  - tar -xzvf protobuf-cpp-3.10.0.tar.gz
+  - pushd protobuf-3.10.0 && ./configure && make && sudo make install && popd
+
+script: 
+  - mkdir build
+  - cd build && cmake ../ -DBUILD_TEST=ON && make example xviz-test
+  - ./bin/xviz-test
