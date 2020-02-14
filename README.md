@@ -1,4 +1,4 @@
-# XVIZ In C++
+# XVIZ In C++ [![Build Status](https://travis-ci.com/wx9698/xviz.svg?branch=master)](https://travis-ci.com/wx9698/xviz)
 
 ## Minimum Requirements
 1. CMake 3.5.0+
