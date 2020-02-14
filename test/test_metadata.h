@@ -9,6 +9,8 @@
 
 #include "builder/metadata.h"
 
+#include "test_utils.h"
+
 #include <gtest/gtest.h>
 #include <chrono>
 #include <thread>
@@ -19,23 +21,6 @@ class XVIZMetadataTest : public ::testing::Test {
   xviz::XVIZMetadataBuilder metadata_builder_{};
   std::string expected_str_{};
   nlohmann::json expected_json_{};
-
-  ::testing::AssertionResult IsSameJson(const nlohmann::json& expected_json, const nlohmann::json& given_json) {
-    if (expected_json == given_json) {
-      return ::testing::AssertionSuccess();
-    }
-    return ::testing::AssertionFailure() << "\nexpected: \n" <<
-      expected_json << "\nbut get:\n" << given_json << "\ndifference: \n" <<
-      nlohmann::json::diff(given_json, expected_json) << std::endl;
-  }
-
-  ::testing::AssertionResult IsDifferentJson(const nlohmann::json& expected_json, const nlohmann::json& given_json) {
-    if (expected_json != given_json) {
-      return ::testing::AssertionSuccess();
-    }
-    return ::testing::AssertionFailure() << "\nexpected different json " <<
-      "but get same json: \n" << expected_json << std::endl;
-  }
 
   std::unordered_map<std::string, xviz::XVIZUIBuilder> GetUIBuilders() {
     using namespace xviz;
@@ -143,14 +128,14 @@ class XVIZMetadataTest : public ::testing::Test {
 
 TEST_F(XVIZMetadataTest, SameJsonTest) {
   auto output = metadata_builder_.GetMessage().ToObject();
-  ASSERT_TRUE(IsSameJson(expected_json_, output));
+  ASSERT_TRUE(xviz::test::IsSameJson(expected_json_, output));
 }
 
 TEST_F(XVIZMetadataTest, NotSameJsonTest) {
   auto output = metadata_builder_.GetMessage().ToObject();
   auto tmp_json = expected_json_;
   tmp_json["dummy"] = "dummy";
-  ASSERT_TRUE(IsDifferentJson(tmp_json, output));
+  ASSERT_TRUE(xviz::test::IsDifferentJson(tmp_json, output));
 }
 
 #endif

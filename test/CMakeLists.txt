@@ -10,8 +10,14 @@ endif()
 include_directories(${XVIZ_ROOT_FOLDER}/include)
 include_directories(${GTEST_INCLUDE_DIRS})
 
+add_library(xviz-test-lib
+  test_utils.cpp
+)
+
 add_executable(xviz-test test_all.cpp)
-target_link_libraries(xviz-test xviz ${GTEST_BOTH_LIBRARIES})
+
+target_link_libraries(xviz-test xviz-test-lib xviz ${GTEST_BOTH_LIBRARIES})
+
 gtest_add_tests(TARGET xviz-test)
                 # TEST_LIST xvizTests)
 # set_tests_properties(${xvizTests} PROPERTIES TIMEOUT 3)
