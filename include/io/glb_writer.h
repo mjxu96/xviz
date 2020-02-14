@@ -9,7 +9,6 @@
 #define XVIZ_IO_GLB_WRITER_H_
 
 #include "utils/gltf.h"
-#include "utils/base64.h"
 #include "message.h"
 
 #include <memory>

@@ -14,7 +14,6 @@
 #include "proto/core.pb.h"
 #include "proto/primitives.pb.h"
 
-#include "utils/base64.h"
 
 namespace xviz {
 
