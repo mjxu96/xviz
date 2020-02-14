@@ -16,8 +16,8 @@ add_subdirectory("src")
 include_directories(${XVIZ_ROOT_FOLDER}/include)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${XVIZ_ROOT_FOLDER}/bin)
 
-add_executable(mmm main.cpp)
-target_link_libraries(mmm xviz)
+add_executable(example example.cpp)
+target_link_libraries(example xviz)
 
 # if (NOT BUILD_TEST)
 #     set(BUILD_TEST ON)
