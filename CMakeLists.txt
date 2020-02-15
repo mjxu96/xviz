@@ -1,29 +1,22 @@
 
 cmake_minimum_required(VERSION 3.5.1)
-
 SET(CMAKE_C_COMPILER /usr/bin/gcc)
 SET(CMAKE_CXX_COMPILER /usr/bin/g++)
-SET(CMAKE_CXX_FLAGS "-std=c++17 -pthread -fPIC -O3 -DNDEBUG")
-if (USE_CLANG)
-    SET(CMAKE_C_COMPILER /usr/bin/clang)
-    SET(CMAKE_CXX_COMPILER /usr/bin/clang++)
-endif(USE_CLANG)
-unset(USE_CLANG CACHE)
 
-SET(XVIZ_ROOT_FOLDER ${CMAKE_CURRENT_SOURCE_DIR})
+SET(XVIZ_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
-add_subdirectory("src")
-include_directories(${XVIZ_ROOT_FOLDER}/include)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${XVIZ_ROOT_FOLDER}/bin)
-
-add_executable(example example.cpp)
-target_link_libraries(example xviz)
-
-# if (NOT BUILD_TEST)
-#     set(BUILD_TEST ON)
-# endif()
+add_subdirectory("cmake/src")
 
 if (BUILD_TEST)
     message("Enable building tests")
-    add_subdirectory("test")
+    add_subdirectory("cmake/test")
 endif (BUILD_TEST)
+
+
+
+# example
+project(libxviz-example)
+SET(CMAKE_CXX_FLAGS "-std=c++17 -pthread -fPIC -O3 -DNDEBUG")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${XVIZ_ROOT_DIR}/bin)
+add_executable(example example.cpp)
+target_link_libraries(example xviz)
