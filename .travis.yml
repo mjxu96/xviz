@@ -19,5 +19,5 @@ install:
 
 script: 
   - mkdir build
-  - pushd build && cmake ../ -DBUILD_TEST=ON && make example xviz-test -j2 && popd
+  - pushd build && cmake ../ -DBUILD_TEST=ON && make example example-server xviz-test -j2 && popd
   - pwd && ./bin/xviz-test

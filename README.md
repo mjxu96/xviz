@@ -21,7 +21,7 @@ make example -j12
 2. Build tests
 ```bash
 mkdir build && cd build
-cmake ../
+cmake ../ -DBUILD_TEST=ON
 make xviz-test -j12
 ../bin/xviz-test
 ```
