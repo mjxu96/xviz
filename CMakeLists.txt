@@ -15,5 +15,5 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${XVIZ_ROOT_DIR}/bin)
 add_executable(example example.cpp)
 target_link_libraries(example xviz)
 
-add_executable(example-server example_server.cpp)
-target_link_libraries(example-server third-party)
+add_executable(example-server example_xviz_server.cpp)
+target_link_libraries(example-server xviz third-party)

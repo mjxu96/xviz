@@ -69,9 +69,17 @@ add_library(xviz-message
   ${XVIZ_ROOT_DIR}/src/message.cpp
 )
 
+add_library(xviz-server
+  ${XVIZ_ROOT_DIR}/src/server/xviz_server.cpp
+  ${XVIZ_ROOT_DIR}/src/server/xviz_handler.cpp
+  ${XVIZ_ROOT_DIR}/src/server/xviz_session.cpp
+)
+
+target_link_libraries(xviz-server third-party)
+
 add_library(xviz 
   ${XVIZ_ROOT_DIR}/src/xviz.cpp
 )
 
-target_link_libraries(xviz xviz-ui-builder xviz-message xviz-builder xviz-io xviz-pb xviz-utils)
+target_link_libraries(xviz xviz-ui-builder xviz-message xviz-builder xviz-io xviz-pb xviz-utils xviz-server third-party)
 target_include_directories(xviz PUBLIC ${XVIZ_ROOT_DIR}/include)
