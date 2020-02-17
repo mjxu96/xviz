@@ -6,7 +6,7 @@
 
 ## Example
 
-Please see [example.cpp](https://github.com/wx9698/xviz/blob/master/examples/example.cpp), [example_server.cpp](https://github.com/wx9698/xviz/blob/master/examples/example_server.cpp) and [CMakeLists.txt](https://github.com/wx9698/xviz/blob/master/CMakeLists.txt) for more information.
+Please see [example.cpp](https://github.com/wx9698/xviz/blob/master/examples/example.cpp), [example_xviz_server.cpp](https://github.com/wx9698/xviz/blob/master/examples/example_xviz_server.cpp) and [CMakeLists.txt](https://github.com/wx9698/xviz/blob/master/CMakeLists.txt) for more information.
 
 ## Build
 
