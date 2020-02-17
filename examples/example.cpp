@@ -32,7 +32,6 @@ std::unordered_map<std::string, XVIZUIBuilder> GetUIBuilders() {
   std::vector<std::string> cameras = {"/camera/images0"};
   std::vector<std::string> streams = {"/object/ts"};
   std::vector<std::string> dep_vars = {"ddd", "aaa"};
-  // auto camera_builder = std::make_shared<XVIZVideoBuilder>(cameras);
   XVIZVideoBuilder camera_builder(cameras);
   XVIZPlotBuilder plot_builder("title", "des", "indep_var", std::move(dep_vars));
   XVIZTableBuilder table_builder("title", "des", "/some_stream/table", true);

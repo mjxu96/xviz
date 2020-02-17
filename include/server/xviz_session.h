@@ -6,8 +6,7 @@
 
 #ifndef XVIZ_SESSION_H_
 #define XVIZ_SESSION_H_
-
-#include "config.h"
+#define ASIO_STANDALONE
 
 #include <functional>
 #include <websocketpp/config/asio_no_tls.hpp>
