@@ -6,3 +6,5 @@ if (BUILD_TEST)
     message("Enable building tests")
     add_subdirectory("test")
 endif (BUILD_TEST)
+
+add_subdirectory("examples")

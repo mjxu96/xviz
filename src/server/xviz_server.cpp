@@ -20,20 +20,11 @@ XVIZServer::XVIZServer(std::vector<std::shared_ptr<XVIZBaseHandler>>&& handlers,
   InitInternalServer();
 }
 
-// void XVIZServer::SetMainFunction(const std::function<void(websocketpp::connection_hdl, std::shared_ptr<asio::steady_timer>, 
-//   std::shared_ptr<void>)>& main_function) {
-//   main_function_ = main_function;
-// }
-
-// void XVIZServer::SetMainFunction(std::function<void(websocketpp::connection_hdl, std::shared_ptr<asio::steady_timer>, 
-//   std::shared_ptr<void>)>&& main_function) {
-//   main_function_ = std::move(main_function);
-// }
 
 void XVIZServer::InitInternalServer() {
   internal_server_ptr_ = std::make_shared<websocketpp::server<websocketpp::config::asio>>();
 
-  internal_server_ptr_->set_error_channels(websocketpp::log::elevel::fatal);
+  internal_server_ptr_->set_error_channels(websocketpp::log::elevel::none);
   internal_server_ptr_->set_access_channels(websocketpp::log::alevel::none);
   internal_server_ptr_->init_asio();
 

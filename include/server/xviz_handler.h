@@ -6,6 +6,7 @@
 
 #ifndef XVIZ_HANDLER_H_
 #define XVIZ_HANDLER_H_
+#define ASIO_STANDALONE
 
 #include <memory>
 
