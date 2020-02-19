@@ -36,6 +36,10 @@ public:
   XVIZPrimitiveBuilder& Points(std::vector<double>&& vertices);
   XVIZPrimitiveBuilder& Points(const std::shared_ptr<std::vector<double>>& vertices_ptr);
 
+  XVIZPrimitiveBuilder& Colors(const std::vector<uint8_t>& colors);
+  XVIZPrimitiveBuilder& Colors(std::vector<uint8_t>&& colors);
+  XVIZPrimitiveBuilder& Colors(const std::shared_ptr<std::vector<uint8_t>>& colors_ptr);
+
   XVIZPrimitiveBuilder& Position(const std::vector<double>& vertices);
   XVIZPrimitiveBuilder& Position(std::vector<double>&& vertices);
   XVIZPrimitiveBuilder& Position(const std::shared_ptr<std::vector<double>>& vertices_ptr);
@@ -78,7 +82,7 @@ private:
   std::shared_ptr<std::vector<double>> vertices_{nullptr};
   std::shared_ptr<double> radius_{nullptr};
   std::shared_ptr<std::string> text_{nullptr};
-  std::shared_ptr<std::string> colors_{nullptr};
+  std::shared_ptr<std::vector<uint8_t>> colors_{nullptr};
 
   std::shared_ptr<std::string> id_{nullptr};
   std::shared_ptr<StyleObjectValue> style_{nullptr};

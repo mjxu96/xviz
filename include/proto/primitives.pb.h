@@ -750,26 +750,10 @@ class Point :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kColorsFieldNumber = 3,
     kBaseFieldNumber = 1,
     kPointsFieldNumber = 2,
+    kColorsFieldNumber = 3,
   };
-  // bytes colors = 3;
-  void clear_colors();
-  const std::string& colors() const;
-  void set_colors(const std::string& value);
-  void set_colors(std::string&& value);
-  void set_colors(const char* value);
-  void set_colors(const void* value, size_t size);
-  std::string* mutable_colors();
-  std::string* release_colors();
-  void set_allocated_colors(std::string* colors);
-  private:
-  const std::string& _internal_colors() const;
-  void _internal_set_colors(const std::string& value);
-  std::string* _internal_mutable_colors();
-  public:
-
   // .xviz.PrimitiveBase base = 1;
   bool has_base() const;
   private:
@@ -800,14 +784,29 @@ class Point :
   PROTOBUF_NAMESPACE_ID::Value* _internal_mutable_points();
   public:
 
+  // .google.protobuf.Value colors = 3;
+  bool has_colors() const;
+  private:
+  bool _internal_has_colors() const;
+  public:
+  void clear_colors();
+  const PROTOBUF_NAMESPACE_ID::Value& colors() const;
+  PROTOBUF_NAMESPACE_ID::Value* release_colors();
+  PROTOBUF_NAMESPACE_ID::Value* mutable_colors();
+  void set_allocated_colors(PROTOBUF_NAMESPACE_ID::Value* colors);
+  private:
+  const PROTOBUF_NAMESPACE_ID::Value& _internal_colors() const;
+  PROTOBUF_NAMESPACE_ID::Value* _internal_mutable_colors();
+  public:
+
   // @@protoc_insertion_point(class_scope:xviz.Point)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr colors_;
   ::xviz::PrimitiveBase* base_;
   PROTOBUF_NAMESPACE_ID::Value* points_;
+  PROTOBUF_NAMESPACE_ID::Value* colors_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_primitives_2eproto;
 };
@@ -2179,63 +2178,58 @@ inline void Point::set_allocated_points(PROTOBUF_NAMESPACE_ID::Value* points) {
   // @@protoc_insertion_point(field_set_allocated:xviz.Point.points)
 }
 
-// bytes colors = 3;
-inline void Point::clear_colors() {
-  colors_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+// .google.protobuf.Value colors = 3;
+inline bool Point::_internal_has_colors() const {
+  return this != internal_default_instance() && colors_ != nullptr;
 }
-inline const std::string& Point::colors() const {
+inline bool Point::has_colors() const {
+  return _internal_has_colors();
+}
+inline const PROTOBUF_NAMESPACE_ID::Value& Point::_internal_colors() const {
+  const PROTOBUF_NAMESPACE_ID::Value* p = colors_;
+  return p != nullptr ? *p : *reinterpret_cast<const PROTOBUF_NAMESPACE_ID::Value*>(
+      &PROTOBUF_NAMESPACE_ID::_Value_default_instance_);
+}
+inline const PROTOBUF_NAMESPACE_ID::Value& Point::colors() const {
   // @@protoc_insertion_point(field_get:xviz.Point.colors)
   return _internal_colors();
 }
-inline void Point::set_colors(const std::string& value) {
-  _internal_set_colors(value);
-  // @@protoc_insertion_point(field_set:xviz.Point.colors)
+inline PROTOBUF_NAMESPACE_ID::Value* Point::release_colors() {
+  // @@protoc_insertion_point(field_release:xviz.Point.colors)
+  
+  PROTOBUF_NAMESPACE_ID::Value* temp = colors_;
+  colors_ = nullptr;
+  return temp;
 }
-inline std::string* Point::mutable_colors() {
+inline PROTOBUF_NAMESPACE_ID::Value* Point::_internal_mutable_colors() {
+  
+  if (colors_ == nullptr) {
+    auto* p = CreateMaybeMessage<PROTOBUF_NAMESPACE_ID::Value>(GetArenaNoVirtual());
+    colors_ = p;
+  }
+  return colors_;
+}
+inline PROTOBUF_NAMESPACE_ID::Value* Point::mutable_colors() {
   // @@protoc_insertion_point(field_mutable:xviz.Point.colors)
   return _internal_mutable_colors();
 }
-inline const std::string& Point::_internal_colors() const {
-  return colors_.GetNoArena();
-}
-inline void Point::_internal_set_colors(const std::string& value) {
-  
-  colors_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
-}
-inline void Point::set_colors(std::string&& value) {
-  
-  colors_.SetNoArena(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:xviz.Point.colors)
-}
-inline void Point::set_colors(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  colors_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:xviz.Point.colors)
-}
-inline void Point::set_colors(const void* value, size_t size) {
-  
-  colors_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:xviz.Point.colors)
-}
-inline std::string* Point::_internal_mutable_colors() {
-  
-  return colors_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline std::string* Point::release_colors() {
-  // @@protoc_insertion_point(field_release:xviz.Point.colors)
-  
-  return colors_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline void Point::set_allocated_colors(std::string* colors) {
-  if (colors != nullptr) {
+inline void Point::set_allocated_colors(PROTOBUF_NAMESPACE_ID::Value* colors) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(colors_);
+  }
+  if (colors) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(colors)->GetArena();
+    if (message_arena != submessage_arena) {
+      colors = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, colors, submessage_arena);
+    }
     
   } else {
     
   }
-  colors_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), colors);
+  colors_ = colors;
   // @@protoc_insertion_point(field_set_allocated:xviz.Point.colors)
 }
 

@@ -277,22 +277,22 @@ const char descriptor_table_protodef_primitives_2eproto[] PROTOBUF_SECTION_VARIA
   "mage\022!\n\004base\030\001 \001(\0132\023.xviz.PrimitiveBase\022"
   "\020\n\010position\030\002 \003(\002\022\014\n\004data\030\003 \001(\t\022\020\n\010width"
   "_px\030\004 \001(\r\022\021\n\theight_px\030\005 \001(\r:\024\302\273\032\020primit"
-  "ives/image\"x\n\005Point\022!\n\004base\030\001 \001(\0132\023.xviz"
-  ".PrimitiveBase\022&\n\006points\030\002 \001(\0132\026.google."
-  "protobuf.Value\022\016\n\006colors\030\003 \001(\014:\024\302\273\032\020prim"
-  "itives/point\"V\n\007Polygon\022!\n\004base\030\001 \001(\0132\023."
-  "xviz.PrimitiveBase\022\020\n\010vertices\030\002 \003(\002:\026\302\273"
-  "\032\022primitives/polygon\"h\n\010Polyline\022!\n\004base"
-  "\030\001 \001(\0132\023.xviz.PrimitiveBase\022\020\n\010vertices\030"
-  "\002 \003(\002\022\016\n\006colors\030\003 \001(\014:\027\302\273\032\023primitives/po"
-  "lyline\"p\n\007Stadium\022!\n\004base\030\001 \001(\0132\023.xviz.P"
-  "rimitiveBase\022\r\n\005start\030\002 \003(\002\022\013\n\003end\030\003 \003(\002"
-  "\022\016\n\006radius\030\004 \001(\002:\026\302\273\032\022primitives/stadium"
-  "\"^\n\004Text\022!\n\004base\030\001 \001(\0132\023.xviz.PrimitiveB"
-  "ase\022\020\n\010position\030\002 \003(\002\022\014\n\004text\030\003 \001(\t:\023\302\273\032"
-  "\017primitives/textB7\n\013com.xviz.v2B\017Primiti"
-  "vesProtoP\001Z\004v2pb\242\002\004XVIZ\252\002\007xviz.V2b\006proto"
-  "3"
+  "ives/image\"\220\001\n\005Point\022!\n\004base\030\001 \001(\0132\023.xvi"
+  "z.PrimitiveBase\022&\n\006points\030\002 \001(\0132\026.google"
+  ".protobuf.Value\022&\n\006colors\030\003 \001(\0132\026.google"
+  ".protobuf.Value:\024\302\273\032\020primitives/point\"V\n"
+  "\007Polygon\022!\n\004base\030\001 \001(\0132\023.xviz.PrimitiveB"
+  "ase\022\020\n\010vertices\030\002 \003(\002:\026\302\273\032\022primitives/po"
+  "lygon\"h\n\010Polyline\022!\n\004base\030\001 \001(\0132\023.xviz.P"
+  "rimitiveBase\022\020\n\010vertices\030\002 \003(\002\022\016\n\006colors"
+  "\030\003 \001(\014:\027\302\273\032\023primitives/polyline\"p\n\007Stadi"
+  "um\022!\n\004base\030\001 \001(\0132\023.xviz.PrimitiveBase\022\r\n"
+  "\005start\030\002 \003(\002\022\013\n\003end\030\003 \003(\002\022\016\n\006radius\030\004 \001("
+  "\002:\026\302\273\032\022primitives/stadium\"^\n\004Text\022!\n\004bas"
+  "e\030\001 \001(\0132\023.xviz.PrimitiveBase\022\020\n\010position"
+  "\030\002 \003(\002\022\014\n\004text\030\003 \001(\t:\023\302\273\032\017primitives/tex"
+  "tB7\n\013com.xviz.v2B\017PrimitivesProtoP\001Z\004v2p"
+  "b\242\002\004XVIZ\252\002\007xviz.V2b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_primitives_2eproto_deps[3] = {
   &::descriptor_table_google_2fprotobuf_2fstruct_2eproto,
@@ -312,7 +312,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_pri
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_primitives_2eproto_once;
 static bool descriptor_table_primitives_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_primitives_2eproto = {
-  &descriptor_table_primitives_2eproto_initialized, descriptor_table_protodef_primitives_2eproto, "primitives.proto", 1001,
+  &descriptor_table_primitives_2eproto_initialized, descriptor_table_protodef_primitives_2eproto, "primitives.proto", 1026,
   &descriptor_table_primitives_2eproto_once, descriptor_table_primitives_2eproto_sccs, descriptor_table_primitives_2eproto_deps, 8, 3,
   schemas, file_default_instances, TableStruct_primitives_2eproto::offsets,
   file_level_metadata_primitives_2eproto, 8, file_level_enum_descriptors_primitives_2eproto, file_level_service_descriptors_primitives_2eproto,
@@ -1211,11 +1211,14 @@ void Point::InitAsDefaultInstance() {
       ::xviz::PrimitiveBase::internal_default_instance());
   ::xviz::_Point_default_instance_._instance.get_mutable()->points_ = const_cast< PROTOBUF_NAMESPACE_ID::Value*>(
       PROTOBUF_NAMESPACE_ID::Value::internal_default_instance());
+  ::xviz::_Point_default_instance_._instance.get_mutable()->colors_ = const_cast< PROTOBUF_NAMESPACE_ID::Value*>(
+      PROTOBUF_NAMESPACE_ID::Value::internal_default_instance());
 }
 class Point::_Internal {
  public:
   static const ::xviz::PrimitiveBase& base(const Point* msg);
   static const PROTOBUF_NAMESPACE_ID::Value& points(const Point* msg);
+  static const PROTOBUF_NAMESPACE_ID::Value& colors(const Point* msg);
 };
 
 const ::xviz::PrimitiveBase&
@@ -1226,11 +1229,21 @@ const PROTOBUF_NAMESPACE_ID::Value&
 Point::_Internal::points(const Point* msg) {
   return *msg->points_;
 }
+const PROTOBUF_NAMESPACE_ID::Value&
+Point::_Internal::colors(const Point* msg) {
+  return *msg->colors_;
+}
 void Point::clear_points() {
   if (GetArenaNoVirtual() == nullptr && points_ != nullptr) {
     delete points_;
   }
   points_ = nullptr;
+}
+void Point::clear_colors() {
+  if (GetArenaNoVirtual() == nullptr && colors_ != nullptr) {
+    delete colors_;
+  }
+  colors_ = nullptr;
 }
 Point::Point()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -1241,10 +1254,6 @@ Point::Point(const Point& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  colors_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_colors().empty()) {
-    colors_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.colors_);
-  }
   if (from._internal_has_base()) {
     base_ = new ::xviz::PrimitiveBase(*from.base_);
   } else {
@@ -1255,15 +1264,19 @@ Point::Point(const Point& from)
   } else {
     points_ = nullptr;
   }
+  if (from._internal_has_colors()) {
+    colors_ = new PROTOBUF_NAMESPACE_ID::Value(*from.colors_);
+  } else {
+    colors_ = nullptr;
+  }
   // @@protoc_insertion_point(copy_constructor:xviz.Point)
 }
 
 void Point::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Point_primitives_2eproto.base);
-  colors_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&base_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&points_) -
-      reinterpret_cast<char*>(&base_)) + sizeof(points_));
+      reinterpret_cast<char*>(&colors_) -
+      reinterpret_cast<char*>(&base_)) + sizeof(colors_));
 }
 
 Point::~Point() {
@@ -1272,9 +1285,9 @@ Point::~Point() {
 }
 
 void Point::SharedDtor() {
-  colors_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete base_;
   if (this != internal_default_instance()) delete points_;
+  if (this != internal_default_instance()) delete colors_;
 }
 
 void Point::SetCachedSize(int size) const {
@@ -1292,7 +1305,6 @@ void Point::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  colors_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == nullptr && base_ != nullptr) {
     delete base_;
   }
@@ -1301,6 +1313,10 @@ void Point::Clear() {
     delete points_;
   }
   points_ = nullptr;
+  if (GetArenaNoVirtual() == nullptr && colors_ != nullptr) {
+    delete colors_;
+  }
+  colors_ = nullptr;
   _internal_metadata_.Clear();
 }
 
@@ -1325,11 +1341,10 @@ const char* Point::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // bytes colors = 3;
+      // .google.protobuf.Value colors = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          auto str = _internal_mutable_colors();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ctx->ParseMessage(_internal_mutable_colors(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1375,10 +1390,12 @@ failure:
         2, _Internal::points(this), target, stream);
   }
 
-  // bytes colors = 3;
-  if (this->colors().size() > 0) {
-    target = stream->WriteBytesMaybeAliased(
-        3, this->_internal_colors(), target);
+  // .google.protobuf.Value colors = 3;
+  if (this->has_colors()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        3, _Internal::colors(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1397,13 +1414,6 @@ size_t Point::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // bytes colors = 3;
-  if (this->colors().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-        this->_internal_colors());
-  }
-
   // .xviz.PrimitiveBase base = 1;
   if (this->has_base()) {
     total_size += 1 +
@@ -1416,6 +1426,13 @@ size_t Point::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *points_);
+  }
+
+  // .google.protobuf.Value colors = 3;
+  if (this->has_colors()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *colors_);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1449,15 +1466,14 @@ void Point::MergeFrom(const Point& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.colors().size() > 0) {
-
-    colors_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.colors_);
-  }
   if (from.has_base()) {
     _internal_mutable_base()->::xviz::PrimitiveBase::MergeFrom(from._internal_base());
   }
   if (from.has_points()) {
     _internal_mutable_points()->PROTOBUF_NAMESPACE_ID::Value::MergeFrom(from._internal_points());
+  }
+  if (from.has_colors()) {
+    _internal_mutable_colors()->PROTOBUF_NAMESPACE_ID::Value::MergeFrom(from._internal_colors());
   }
 }
 
@@ -1482,10 +1498,9 @@ bool Point::IsInitialized() const {
 void Point::InternalSwap(Point* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  colors_.Swap(&other->colors_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
   swap(base_, other->base_);
   swap(points_, other->points_);
+  swap(colors_, other->colors_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Point::GetMetadata() const {

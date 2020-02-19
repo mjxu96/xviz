@@ -105,6 +105,20 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Points(const std::shared_ptr<std::ve
   return *this;
 }
 
+// Color
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Colors(const std::vector<uint8_t>& colors) {
+  return Colors(std::make_shared<std::vector<uint8_t>>(colors));
+}
+
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Colors(std::vector<uint8_t>&& colors) {
+  return Colors(std::make_shared<std::vector<uint8_t>>(std::move(colors)));
+}
+
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Colors(const std::shared_ptr<std::vector<uint8_t>>& colors_ptr) {
+  colors_ = colors_ptr;
+  return *this;
+}
+
 // Position
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Position(const std::vector<double>& vertices) {
   return Position(std::make_shared<std::vector<double>>(vertices));
@@ -321,6 +335,7 @@ void XVIZPrimitiveBuilder::FlushPrimitives() {
           LOG_ERROR("Vertice pointer is NULL");
           break;
         }
+        auto point_size = vertices_->size();
         auto point_ptr = stream_ptr->add_points();
         google::protobuf::Value* points_value_ptr = new google::protobuf::Value();
         google::protobuf::ListValue* points_list_value_ptr = new google::protobuf::ListValue();
@@ -333,11 +348,26 @@ void XVIZPrimitiveBuilder::FlushPrimitives() {
         points_value_ptr->set_allocated_list_value(points_list_value_ptr);
         point_ptr->set_allocated_points(points_value_ptr);
 
-        if (colors_ != nullptr) {
-          auto colors_ptr = point_ptr->mutable_colors();
-          *colors_ptr = std::move(*colors_);
-        }
         AddBase<xviz::Point>(point_ptr, base_pair);
+
+        if (colors_ != nullptr) {
+          if (colors_->size() / 4u != point_size / 3u) {
+            LOG_WARNING("Point size and color size not match, not showing colors");
+            break;
+          }
+          google::protobuf::Value* colors_value_ptr = new google::protobuf::Value();
+          google::protobuf::ListValue* colors_list_value_ptr = new google::protobuf::ListValue();
+
+          for (auto v : *colors_) {
+            google::protobuf::Value tmp_color_value;
+            tmp_color_value.set_number_value(v);
+            auto new_value_ptr = colors_list_value_ptr->add_values();
+            (*new_value_ptr) = std::move(tmp_color_value);
+          }
+
+          colors_value_ptr->set_allocated_list_value(colors_list_value_ptr);
+          point_ptr->set_allocated_colors(colors_value_ptr);
+        }
         // if (has_base) {
         //   auto cur_base_ptr = point_ptr->mutable_base();
         //   cur_base_ptr->MergeFrom(base);

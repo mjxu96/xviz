@@ -56,6 +56,10 @@ public:
       points_.push_back(0);
       points_.push_back(0);
       points_.push_back(i);
+      colors_.push_back(255u);
+      colors_.push_back(0u);
+      colors_.push_back(0u);
+      colors_.push_back(255u);
     }
     if (png_file_name.empty()) {
       LOG_INFO("No png is shown");
@@ -99,6 +103,11 @@ public:
     points_.push_back(0);
     points_.push_back(0);
     points_.push_back(cnt);
+    colors_.push_back(255u);
+    colors_.push_back(255u);
+    colors_.push_back(255u);
+    colors_.push_back(255u);
+
     XVIZBuilder builder(metadata_ptr_->GetData());
     builder.Pose("/vehicle_pose")
       .Timestamp(cnt)
@@ -107,7 +116,8 @@ public:
     builder.Primitive("/object/circles")
       .Circle({1, 2, 3}, 20.0);
     builder.Primitive("/object/shape")
-      .Points(points_);
+      .Points(points_)
+      .Colors(colors_);
     if (!image.empty()) {
       builder.Primitive("/camera/images0")
         .Image(image);
@@ -127,6 +137,7 @@ private:
   std::shared_ptr<xviz::XVIZMetadataBuilder> metadata_ptr_{};
   int cnt = 11;
   std::vector<double> points_{};
+  std::vector<uint8_t> colors_{};
   std::string image;
 };
 
