@@ -56,6 +56,14 @@ public:
   XVIZPrimitiveBuilder& Text(std::string&& message);
   XVIZPrimitiveBuilder& Text(const std::shared_ptr<std::string>& message_ptr);
 
+  XVIZPrimitiveBuilder& Classes(const std::vector<std::string>& classes);
+  XVIZPrimitiveBuilder& Classes(std::vector<std::string>&& classes);
+  XVIZPrimitiveBuilder& Classes(const std::shared_ptr<std::vector<std::string>>& classes_ptr);
+
+  XVIZPrimitiveBuilder& ObjectId(const std::string& object_id);
+  XVIZPrimitiveBuilder& ObjectId(std::string&& object_id);
+  XVIZPrimitiveBuilder& ObjectId(const std::shared_ptr<std::string>& object_id);
+
   XVIZPrimitiveBuilder& Stadium(const std::vector<double>& start, const std::vector<double>& end, double radius);
 
   XVIZPrimitiveBuilder& Style(const nlohmann::json& style_json);

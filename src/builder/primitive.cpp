@@ -225,6 +225,40 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Text(const std::shared_ptr<std::stri
   return *this;
 }
 
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Classes(const std::vector<std::string>& classes) {
+  return Classes(std::make_shared<std::vector<std::string>>(classes));
+}
+
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Classes(std::vector<std::string>&& classes) {
+  return Classes(std::make_shared<std::vector<std::string>>(std::move(classes)));
+}
+
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Classes(const std::shared_ptr<std::vector<std::string>>& classes_ptr) {
+  if (type_ == nullptr) {
+    LOG_WARNING("Must call some pritimive functions like Points() before calling Classes()");
+    return *this;
+  }
+  classes_ = classes_ptr;
+  return *this;
+}
+
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::ObjectId(const std::string& object_id) {
+  return ObjectId(std::make_shared<std::string>(object_id));
+}
+
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::ObjectId(std::string&& object_id) {
+  return ObjectId(std::make_shared<std::string>(std::move(object_id)));
+}
+
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::ObjectId(const std::shared_ptr<std::string>& object_id) {
+  if (type_ == nullptr) {
+    LOG_WARNING("Must call some pritimive functions like Points() before calling ObjectId()");
+    return *this;
+  }
+  id_ = object_id;
+  return *this;
+}
+
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Stadium(const std::vector<double>& start, const std::vector<double>& end, double radius) {
   if (type_ != nullptr) {
     Flush();
@@ -480,14 +514,14 @@ std::pair<bool, PrimitiveBase> XVIZPrimitiveBuilder::FlushPrimitiveBase() {
 
   if (classes_ != nullptr) {
     has_base = true;
-    for (const auto& c : *classes_) {
+    for (auto& c : *classes_) {
       auto new_class_ptr = base.add_classes();
-      *new_class_ptr = c;
+      *new_class_ptr = std::move(c);
     }
   }
 
 
-  return {has_base, base};
+  return {has_base, std::move(base)};
 }
 
 void XVIZPrimitiveBuilder::Reset() {
