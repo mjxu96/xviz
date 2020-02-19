@@ -37,9 +37,9 @@ bool AddOneImage(Document& document, std::vector<uint8_t>& buffer, uint32_t imag
   return true;
 }
 
-bool AddOnePoint(Document& document, std::vector<uint8_t>& buffer, uint32_t point_idx, uint32_t buffer_idx, ::xviz::Point* point_ptr) {
+int AddOnePoint(Document& document, std::vector<uint8_t>& buffer, uint32_t point_idx, uint32_t buffer_idx, ::xviz::Point* point_ptr) {
   if (point_ptr->points().list_value().values_size() <= 0u) {
-    return false;
+    return 0;
   }
   auto value_size = point_ptr->points().list_value().values_size();
   document.bufferViews.push_back(fx::gltf::BufferView());
@@ -67,7 +67,41 @@ bool AddOnePoint(Document& document, std::vector<uint8_t>& buffer, uint32_t poin
   point_ptr->mutable_points()->clear_list_value();
   point_ptr->mutable_points()->set_string_value("#/accessors/" + std::to_string(point_idx));
 
-  return true;
+  if (point_ptr->colors().has_list_value()) {
+    auto color_size = point_ptr->colors().list_value().values_size();
+    if (color_size / 4u != value_size / 3u) {
+      LOG_WARNING("Point size and color size not match, no gltf writer for colors");
+      return 1;
+    }
+    document.bufferViews.push_back(fx::gltf::BufferView());
+    document.bufferViews.back().byteOffset = buffer.size();
+    document.bufferViews.back().byteLength = color_size;
+    document.bufferViews.back().buffer = 0;
+
+    document.accessors.push_back(fx::gltf::Accessor());
+    document.accessors.back().bufferView = buffer_idx + 1;
+    document.accessors.back().type = fx::gltf::Accessor::Type::Vec4;
+    document.accessors.back().componentType = fx::gltf::Accessor::ComponentType::UnsignedByte;
+    document.accessors.back().count = color_size / 4u;
+
+    std::vector<uint8_t> colors;
+    for (auto i = 0; i < color_size; i++) {
+      colors.push_back((uint8_t)(point_ptr->colors().list_value().values(i).number_value()));
+    }
+    uint32_t color_byte_size = colors.size();
+    auto color_pointer = reinterpret_cast<const char*>(&colors[0]);
+    std::stringstream ss_color;
+    ss_color.write(color_pointer, color_byte_size);
+    std::string sstr_color = ss_color.str();
+    buffer.insert(buffer.end(), sstr_color.begin(), sstr_color.end());
+
+    point_ptr->mutable_colors()->clear_list_value();
+    point_ptr->mutable_colors()->set_string_value("#/accessors/" + std::to_string(point_idx + 1));
+
+    return 2;
+  }
+
+  return 1;
 }
 
 void GetStateUpdateData(std::string& sink, xviz::XVIZMessage& message) {
@@ -89,9 +123,9 @@ void GetStateUpdateData(std::string& sink, xviz::XVIZMessage& message) {
         }
       }
       for (uint32_t i = 0; i < v.points_size(); i++) {
-        if (AddOnePoint(document, buffer, accessor_idx, (image_idx + accessor_idx), v.mutable_points(i))) {
-          accessor_idx++;
-        }
+        accessor_idx += AddOnePoint(document, buffer, accessor_idx, (image_idx + accessor_idx), v.mutable_points(i));
+        //   accessor_idx++;
+        // }
       }
     }
   }

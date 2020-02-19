@@ -115,6 +115,10 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Colors(std::vector<uint8_t>&& colors
 }
 
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Colors(const std::shared_ptr<std::vector<uint8_t>>& colors_ptr) {
+  if (type_ == nullptr || *type_ != xviz::StreamMetadata::POINT) {
+    LOG_ERROR("Points() needs to be called before calling Colors()");
+    return *this;
+  }
   colors_ = colors_ptr;
   return *this;
 }
@@ -131,6 +135,7 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Position(std::vector<double>&& verti
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Position(const std::shared_ptr<std::vector<double>>& vertices_ptr) {
   if (vertices_ptr->size() != 3u) {
     LOG_ERROR("A position must be of the form [x, y, z]");
+    return *this;
   }
   vertices_ = vertices_ptr;
   return *this;
