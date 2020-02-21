@@ -6,6 +6,7 @@
 
 #include <gtest/gtest.h>
 #include "test_metadata.h"
+#include "test_update.h"
 
 int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
