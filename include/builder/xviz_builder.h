@@ -22,6 +22,8 @@ class XVIZBuilder {
 public:
   // TODO add "disabled stream var"
   XVIZBuilder(std::shared_ptr<xviz::Metadata> metadata);
+  void DeepCopyFrom(const XVIZBuilder& other);
+
   XVIZPoseBuilder& Pose(const std::string& stream_id);
   XVIZPrimitiveBuilder& Primitive(const std::string& stream_id);
   XVIZTimeSeriesBuilder& TimeSeries(const std::string& stream_id);

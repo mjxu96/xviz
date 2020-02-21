@@ -10,6 +10,7 @@
 #include "base_builder.h"
 #include "proto/core.pb.h"
 #include "proto/uiprimitives.pb.h"
+#include "utils/utils.h"
 
 #include <memory>
 #include <optional>
@@ -35,6 +36,7 @@ private:
 class XVIZUIPrimitiveBuilder : public XVIZBaseBuilder {
 public:
   XVIZUIPrimitiveBuilder(const std::shared_ptr<Metadata>& metadata);
+  void DeepCopyFrom(const XVIZUIPrimitiveBuilder& other);
 
   XVIZUIPrimitiveBuilder& Stream(const std::string& stream_id);
 

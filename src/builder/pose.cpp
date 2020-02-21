@@ -13,6 +13,12 @@ XVIZPoseBuilder::XVIZPoseBuilder(const std::shared_ptr<xviz::Metadata>& metadata
   temp_poses_ = xviz::Pose();
 }
 
+void XVIZPoseBuilder::DeepCopyFrom(const XVIZPoseBuilder& other) {
+  XVIZBaseBuilder::DeepCopyFrom(other);
+  DeepCopyPtr(poses_, other.poses_);
+  temp_poses_.CopyFrom(other.temp_poses_);
+}
+
 XVIZPoseBuilder& XVIZPoseBuilder::Stream(const std::string& stream_id) {
   if (stream_id_.size() > 0) {
     this->Flush();

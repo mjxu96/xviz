@@ -10,6 +10,7 @@
 #include "base_builder.h"
 #include "proto/core.pb.h"
 #include "utils/macrologger.h"
+#include "utils/utils.h"
 
 #include <memory>
 #include <unordered_map>
@@ -21,6 +22,8 @@ namespace xviz {
 class XVIZTimeSeriesBuilder : public XVIZBaseBuilder {
 public:
   XVIZTimeSeriesBuilder(const std::shared_ptr<Metadata>& metadata);
+  void DeepCopyFrom(const XVIZTimeSeriesBuilder& other);
+
   XVIZTimeSeriesBuilder& Stream(const std::string& stream_id);
 
   XVIZTimeSeriesBuilder& Id(const std::string& id);

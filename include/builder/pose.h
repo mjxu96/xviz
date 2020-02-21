@@ -9,6 +9,7 @@
 
 #include "builder/base_builder.h"
 #include "proto/core.pb.h"
+#include "utils/utils.h"
 
 #include <memory>
 #include <unordered_map>
@@ -20,6 +21,8 @@ class XVIZPoseBuilder : public XVIZBaseBuilder {
 public:
 
   XVIZPoseBuilder(const std::shared_ptr<xviz::Metadata>& metadata);
+  void DeepCopyFrom(const XVIZPoseBuilder& other);
+
   XVIZPoseBuilder& MapOrigin(double longitude, double latitude, double altitude);
   XVIZPoseBuilder& Position(double x, double y, double z);
   XVIZPoseBuilder& Orientation(double roll, double pitch, double yaw);

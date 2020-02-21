@@ -63,6 +63,14 @@ XVIZUIPrimitiveBuilder::XVIZUIPrimitiveBuilder(const std::shared_ptr<Metadata>& 
   primitives_ = std::make_shared<std::unordered_map<std::string, UIPrimitiveState>>();
 }
 
+void XVIZUIPrimitiveBuilder::DeepCopyFrom(const XVIZUIPrimitiveBuilder& other) {
+  XVIZBaseBuilder::DeepCopyFrom(other);
+  DeepCopyPtr(primitives_, other.primitives_);
+  DeepCopyPtr(type_, other.type_);
+  DeepCopyPtr(columns_, other.columns_);
+  DeepCopyPtr(row_, other.row_);
+}
+
 XVIZUIPrimitiveBuilder& XVIZUIPrimitiveBuilder::Stream(const std::string& stream_id) {
   if (stream_id_.size() != 0) {
     Flush();

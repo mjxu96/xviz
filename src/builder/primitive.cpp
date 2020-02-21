@@ -34,6 +34,20 @@ XVIZPrimitiveBuilder::XVIZPrimitiveBuilder(const std::shared_ptr<Metadata>& meta
   primitives_ = std::make_shared<std::unordered_map<std::string, PrimitiveState>>();
 }
 
+void XVIZPrimitiveBuilder::DeepCopyFrom(const XVIZPrimitiveBuilder& other) {
+  XVIZBaseBuilder::DeepCopyFrom(other);
+  DeepCopyPtr(primitives_, other.primitives_);
+  DeepCopyPtr(type_, other.type_);
+  DeepCopyPtr(image_, other.image_);
+  DeepCopyPtr(vertices_, other.vertices_);
+  DeepCopyPtr(radius_, other.radius_);
+  DeepCopyPtr(text_, other.text_);
+  DeepCopyPtr(colors_, other.colors_);
+  DeepCopyPtr(id_, other.id_);
+  DeepCopyPtr(style_, other.style_);
+  DeepCopyPtr(classes_, other.classes_);
+}
+
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Stream(const std::string& stream_id) {
   if (stream_id_.size() > 0) {
     this->Flush();

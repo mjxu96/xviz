@@ -86,6 +86,15 @@ XVIZBaseBuilder::XVIZBaseBuilder(Category category, const std::shared_ptr<xviz::
   metadata_ = metadata;
 }
 
+void XVIZBaseBuilder::DeepCopyFrom(const XVIZBaseBuilder& other) {
+  stream_id_ = other.stream_id_;
+  category_ = other.category_;
+  if (other.metadata_ != nullptr) {
+    metadata_ = std::make_shared<xviz::Metadata>();
+    metadata_->CopyFrom(*other.metadata_);
+  }
+}
+
 void XVIZBaseBuilder::Validate() {
   ValidateMatchMetadata();
 }

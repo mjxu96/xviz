@@ -21,7 +21,7 @@ namespace xviz {
 class XVIZBaseBuilder {
 public:
   XVIZBaseBuilder(Category category, const std::shared_ptr<xviz::Metadata>& metadata);
-  // std::shared_ptr<XVIZBaseBuilder> Stream(std::string stream_id);
+  void DeepCopyFrom(const XVIZBaseBuilder& other);
 
 protected:
   std::string stream_id_{};

@@ -19,6 +19,19 @@ void ConvertFromStdMapToProtoBufMap(google::protobuf::Map<K, V>* map, std::unord
   }
 }
 
+template<typename T>
+void DeepCopy(std::shared_ptr<T>& dest_ptr, const std::shared_ptr<T>& source_ptr,
+  const std::shared_ptr<Metadata>& metadata) {
+  if (source_ptr == nullptr) {
+    dest_ptr = nullptr;
+    return;
+  }
+  if (dest_ptr == nullptr) {
+    dest_ptr = std::make_shared<T>(metadata);
+  }
+  dest_ptr->DeepCopyFrom(*source_ptr);
+}
+
 XVIZBuilder::XVIZBuilder(std::shared_ptr<Metadata> metadata) :
   metadata_(metadata) {
 
@@ -26,6 +39,14 @@ XVIZBuilder::XVIZBuilder(std::shared_ptr<Metadata> metadata) :
   primitive_builder_ = std::make_shared<XVIZPrimitiveBuilder>(metadata_);
   time_series_builder_ = std::make_shared<XVIZTimeSeriesBuilder>(metadata_);
   ui_primitive_builder_ = std::make_shared<XVIZUIPrimitiveBuilder>(metadata_);
+}
+
+void XVIZBuilder::DeepCopyFrom(const XVIZBuilder& other) {
+  DeepCopyPtr(metadata_, other.metadata_);
+  DeepCopy(pose_builder_, other.pose_builder_, metadata_);
+  DeepCopy(primitive_builder_, other.primitive_builder_, metadata_);
+  DeepCopy(time_series_builder_, other.time_series_builder_, metadata_);
+  DeepCopy(ui_primitive_builder_, other.ui_primitive_builder_, metadata_);
 }
 
 XVIZPoseBuilder& XVIZBuilder::Pose(const std::string& stream_id) {

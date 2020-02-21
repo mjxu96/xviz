@@ -19,6 +19,15 @@ XVIZTimeSeriesBuilder::XVIZTimeSeriesBuilder(const std::shared_ptr<Metadata>& me
   Reset();
 }
 
+void XVIZTimeSeriesBuilder::DeepCopyFrom(const XVIZTimeSeriesBuilder& other) {
+  XVIZBaseBuilder::DeepCopyFrom(other);
+  DeepCopyPtr(data_, other.data_);
+  DeepCopyPtr(id_, other.id_);
+  DeepCopyPtr(value_, other.value_);
+  DeepCopyPtr(timestamp_, other.timestamp_);
+  vpos_ = other.vpos_;
+}
+
 XVIZTimeSeriesBuilder& XVIZTimeSeriesBuilder::Stream(const std::string& stream_id) {
   if (stream_id_.size() > 0) {
     Flush();
@@ -84,10 +93,10 @@ std::shared_ptr<std::vector<TimeSeriesState>> XVIZTimeSeriesBuilder::GetData() {
         TimeSeriesState ts;
         ts.set_object_id(*id_);
         ts.set_timestamp(*timestamp_);
-        for (auto& stream : std::get<0>(entry)) {
+        for (const auto& stream : std::get<0>(entry)) {
           auto new_stream_ptr = ts.add_streams();
           // TODO is it correct?
-          *new_stream_ptr = std::move(stream);
+          *new_stream_ptr = stream;
         }
 
         auto value_ptr = ts.mutable_values();
@@ -96,7 +105,7 @@ std::shared_ptr<std::vector<TimeSeriesState>> XVIZTimeSeriesBuilder::GetData() {
             // auto vpos = value_->index();
             switch (vpos_) {
               case 0u:
-                value_ptr->add_strings(std::move(std::get<0u>(value)));
+                value_ptr->add_strings(std::get<0u>(value));
                 break;
               case 1u:
                 value_ptr->add_bools(std::get<1u>(value));
