@@ -82,7 +82,7 @@ public:
 
   std::shared_ptr<XVIZMetadataBuilder> GetMetaBuilder() {
     std::string s = "{\"fill_color\": \"#fff\"}"; 
-    std::string s1 = "{\"fill_color\": \"#fff\", \"point_cloud_mode\": \"distance_to_vehicle\"}"; 
+    std::string s1 = "{\"fill_color\": \"#fff\", \"point_color_mode\": \"distance_to_vehicle\"}"; 
     auto metadata_builder = std::make_shared<XVIZMetadataBuilder>();
     metadata_builder->Stream("/vehicle_pose").Category(Category::StreamMetadata_Category_POSE)
       .Stream("/object/shape").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_POINT)
@@ -146,9 +146,18 @@ class LiveSession : public XVIZBaseSession {
 public:
   LiveSession(std::shared_ptr<websocketpp::connection<websocketpp::config::asio>> conn_ptr,
     const Scenario& sce) : XVIZBaseSession(conn_ptr), sce_(sce) {}
+
+  void MessageHandler(websocketpp::connection_hdl hdl, std::shared_ptr<websocketpp::config::core::message_type> msg) {
+    LOG_INFO("%s", msg->get_payload().c_str());
+  }
+
   void OnConnect() override {
     conn_ptr_->send(sce_.GetMetaBuilder()->GetMessage().ToObjectString());
+    conn_ptr_->set_message_handler(std::bind(
+      &LiveSession::MessageHandler, this, std::placeholders::_1, std::placeholders::_2)
+    );
   }
+  
   void Main() override {
     while (true) {
       std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -158,6 +167,7 @@ public:
       }
     }
   }
+
   void OnDisconnect() override {
     // conn_ptr_->send("byebye");
   }

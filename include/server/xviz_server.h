@@ -52,9 +52,13 @@ private:
 
 
   // helper functions
-  std::unordered_map<std::string, std::string> ParseParameters(const std::string& uri);
+  // std::unordered_map<std::string, std::string> ParseParameters(const std::string& uri);
 
 };
+
+std::pair<std::string, std::string> ParseOnePair(const std::string& key_value);
+std::unordered_map<std::string, std::string> ParseURIParameters(const std::string& uri);
+std::string PercentDecode(const std::string& uri);
   
 } // namespace xviz
 

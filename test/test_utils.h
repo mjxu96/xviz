@@ -20,13 +20,19 @@ namespace test {
 
 ::testing::AssertionResult IsDifferentJson(const nlohmann::json& expected_json, const nlohmann::json& given_json);
 
+// Metadata
 std::unordered_map<std::string, xviz::XVIZUIBuilder> GetTestUIBuilders();
 
 XVIZMetadataBuilder GetTestMetadataBuilder();
 
 nlohmann::json GetTestMetadataExpectedJson();
 
+// Update
 xviz::XVIZBuilder GetTestUpdateBuilder(const std::shared_ptr<xviz::Metadata>& metadata);
+
+
+// Server
+// std::unordered_map<std::string, std::string> GetExpectedParameterMap();
 
 } // namespace test
 } // namespace xviz

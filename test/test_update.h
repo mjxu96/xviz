@@ -3,6 +3,8 @@
  * Author: Minjun Xu (mjxu96@gmail.com)
  * File Created: Thursday, 20th February 2020 8:58:39 pm
  */
+#ifndef XVIZ_TEST_UPDATE_H_
+#define XVIZ_TEST_UPDATE_H_
 
 #include "builder/xviz_builder.h"
 #include "test_utils.h"
@@ -31,3 +33,5 @@ TEST_F(XVIZUpdateTest, DeepCopyDifferentTest) {
   ASSERT_TRUE(xviz::test::IsDifferentJson(builder_json, new_builder_json));
   ASSERT_FALSE(xviz::test::IsSameJson(builder_json, new_builder_json));
 }
+
+#endif
