@@ -26,6 +26,7 @@ void XVIZServer::InitInternalServer() {
 
   internal_server_ptr_->set_error_channels(websocketpp::log::elevel::none);
   internal_server_ptr_->set_access_channels(websocketpp::log::alevel::none);
+  internal_server_ptr_->set_reuse_addr(true);
   internal_server_ptr_->init_asio();
 
   internal_server_ptr_->set_open_handler(std::bind(
