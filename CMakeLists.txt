@@ -1,7 +1,5 @@
 
 cmake_minimum_required(VERSION 3.5.1)
-SET(CMAKE_C_COMPILER /usr/bin/gcc)
-SET(CMAKE_CXX_COMPILER /usr/bin/g++)
 
 project(xviz-all)
 
