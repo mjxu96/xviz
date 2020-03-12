@@ -32,7 +32,6 @@ private:
   std::vector<XVIZTreeTableRowBuilder> children_{};
 };
 
-
 class XVIZUIPrimitiveBuilder : public XVIZBaseBuilder {
 public:
   XVIZUIPrimitiveBuilder(const std::shared_ptr<Metadata>& metadata);
@@ -42,8 +41,10 @@ public:
 
   XVIZUIPrimitiveBuilder& TreeTable(const std::vector<TreeTableColumn>& tree_table_columns);
   XVIZUIPrimitiveBuilder& TreeTable(std::vector<TreeTableColumn>&& tree_table_columns);
-  XVIZUIPrimitiveBuilder& Row(int id, const std::vector<std::string>& values);
-  XVIZUIPrimitiveBuilder& Row(int id, std::vector<std::string>&& values);
+  XVIZUIPrimitiveBuilder& Column(const std::vector<TreeTableColumn>& tree_table_columns);
+  XVIZUIPrimitiveBuilder& Column(std::vector<TreeTableColumn>&& tree_table_columns);
+  XVIZTreeTableRowBuilder& Row(int id, const std::vector<std::string>& values);
+  XVIZTreeTableRowBuilder& Row(int id, std::vector<std::string>&& values);
 
   std::shared_ptr<std::unordered_map<std::string, UIPrimitiveState>> GetData();
 

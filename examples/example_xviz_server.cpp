@@ -17,6 +17,7 @@
 
 #include "builder/declarative_ui/video_builder.h"
 #include "builder/declarative_ui/metric_builder.h"
+#include "builder/declarative_ui/table_builder.h"
 #include "builder/declarative_ui/container_builder.h"
 #include "io/glb_writer.h"
 
@@ -28,6 +29,7 @@ std::unordered_map<std::string, XVIZUIBuilder> GetUIBuilders() {
 
   ui_builders["Camera"] = XVIZUIBuilder();
   ui_builders["Metrics"] = XVIZUIBuilder();
+  ui_builders["Tables"] = XVIZUIBuilder();
   // ui_builders["Plot"] = XVIZUIBuilder();
   // ui_builders["Table"] = XVIZUIBuilder();
 
@@ -36,6 +38,8 @@ std::unordered_map<std::string, XVIZUIBuilder> GetUIBuilders() {
   std::vector<std::string> dep_vars = {"ddd", "aaa"};
   // auto camera_builder = std::make_shared<XVIZVideoBuilder>(cameras);
   XVIZVideoBuilder camera_builder(cameras);
+
+  auto table_builder1 = std::make_shared<XVIZTableBuilder>("table1", "table1", "/table/1", false);
   
   std::shared_ptr<XVIZBaseUIBuilder> metric_builder1 = std::make_shared<XVIZMetricBuilder>(streams, "acceleration", "acceleration");
   // std::shared_ptr<XVIZBaseUIBuilder> metric_builder2 = std::make_shared<XVIZMetricBuilder>(streams, "acceleration", "acceleration");
@@ -44,8 +48,10 @@ std::unordered_map<std::string, XVIZUIBuilder> GetUIBuilders() {
   container_builder->Child(metric_builder1);
   // container_builder->Child(metric_builder2);
   // container_builder->Child(streams, "acceleration", "acceleration");
+
   ui_builders["Camera"].Child(std::move(camera_builder));
   ui_builders["Metrics"].Child(container_builder);
+  ui_builders["Tables"].Child(table_builder1);
   return ui_builders;
 }
 
@@ -90,6 +96,7 @@ public:
       .Stream("/object/circles").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_CIRCLE)
       .StreamStyle(s)
       .Stream("/camera/images0").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_IMAGE)
+      .Stream("/table/1").Category(Category::StreamMetadata_Category_UI_PRIMITIVE)//.Type(UIPrimitiveType::StreamMetadata_UIPrimitiveType_TREETABLE)
       .Stream("/vehicle/acceleration")
         .Category(Category::StreamMetadata_Category_TIME_SERIES)
         .Unit("m/s^2")
@@ -126,6 +133,23 @@ public:
       .Timestamp(cnt)
       .Value(cnt % 10)
       .Id("acceleration");
+
+    std::vector<TreeTableColumn> columns;
+    TreeTableColumn column1;
+    column1.set_display_text("Number");
+    column1.set_type(TreeTableColumn_ColumnType::TreeTableColumn_ColumnType_INT32);
+    columns.push_back(column1);
+
+    TreeTableColumn column2;
+    column2.set_display_text("Test");
+    column2.set_type(TreeTableColumn_ColumnType::TreeTableColumn_ColumnType_STRING);
+    columns.push_back(column2);
+
+    builder.UIPrimitive("/table/1")
+      .TreeTable(columns)
+      .Row(0, {})
+        .Children(1, {"1", "test"})
+        .Children(2, {"2", "ggg"});
     cnt++;
     XVIZGLBWriter writer;
     std::string str;

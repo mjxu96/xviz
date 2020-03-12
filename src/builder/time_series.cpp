@@ -88,7 +88,6 @@ std::shared_ptr<std::vector<TimeSeriesState>> XVIZTimeSeriesBuilder::GetData() {
   auto ts_state = std::make_shared<std::vector<TimeSeriesState>>();
 
   if (!IsDataPending()) {
-    LOG_WARNING("This timeseries is not complete");
     Reset();
     return ts_state;
   }

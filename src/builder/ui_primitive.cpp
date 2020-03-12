@@ -33,12 +33,12 @@ XVIZTreeTableRowBuilder::XVIZTreeTableRowBuilder(int id, std::vector<std::string
 }
 
 XVIZTreeTableRowBuilder& XVIZTreeTableRowBuilder::Children(int id, const std::vector<std::string>& values) {
-  children_.emplace_back(id, values);
+  children_.emplace_back(id, values, node_.id());
   return *this;
 }
 
 XVIZTreeTableRowBuilder& XVIZTreeTableRowBuilder::Children(int id, std::vector<std::string>&& values) {
-  children_.emplace_back(id, std::move(values));
+  children_.emplace_back(id, std::move(values), node_.id());
   return *this;
 }
 
@@ -98,16 +98,16 @@ XVIZUIPrimitiveBuilder& XVIZUIPrimitiveBuilder::TreeTable(std::vector<TreeTableC
   return *this;
 }
 
-XVIZUIPrimitiveBuilder& XVIZUIPrimitiveBuilder::Row(int id, const std::vector<std::string>& values) {
+XVIZTreeTableRowBuilder& XVIZUIPrimitiveBuilder::Row(int id, const std::vector<std::string>& values) {
   row_ = std::make_shared<XVIZTreeTableRowBuilder>(id, values);
   type_ = std::make_shared<UIPrimitiveType>(UIPrimitiveType::StreamMetadata_UIPrimitiveType_TREETABLE);
-  return *this;
+  return *row_;
 }
 
-XVIZUIPrimitiveBuilder& XVIZUIPrimitiveBuilder::Row(int id, std::vector<std::string>&& values) {
+XVIZTreeTableRowBuilder& XVIZUIPrimitiveBuilder::Row(int id, std::vector<std::string>&& values) {
   row_ = std::make_shared<XVIZTreeTableRowBuilder>(id, std::move(values));
   type_ = std::make_shared<UIPrimitiveType>(UIPrimitiveType::StreamMetadata_UIPrimitiveType_TREETABLE);
-  return *this;
+  return *row_;
 }
 
 std::shared_ptr<std::unordered_map<std::string, UIPrimitiveState>> XVIZUIPrimitiveBuilder::GetData() {
