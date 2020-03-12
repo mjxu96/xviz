@@ -68,6 +68,7 @@ void XVIZUIPrimitiveBuilder::DeepCopyFrom(const XVIZUIPrimitiveBuilder& other) {
   DeepCopyPtr(primitives_, other.primitives_);
   DeepCopyPtr(type_, other.type_);
   DeepCopyPtr(columns_, other.columns_);
+  DeepCopyPtr(column_, other.column_);
   DeepCopyPtr(row_, other.row_);
 }
 
@@ -112,16 +113,22 @@ XVIZUIPrimitiveBuilder& XVIZUIPrimitiveBuilder::Column(const std::string& displa
   return *this;
 }
 
-XVIZTreeTableRowBuilder& XVIZUIPrimitiveBuilder::Row(int id, const std::vector<std::string>& values) {
-  row_ = std::make_shared<XVIZTreeTableRowBuilder>(id, values);
+XVIZTreeTableRowBuilder& XVIZUIPrimitiveBuilder::Row(int id) {
+  if (type_ != nullptr) {
+    Flush();
+  }
+  row_ = std::make_shared<XVIZTreeTableRowBuilder>(id, std::vector<std::string>());
   type_ = std::make_shared<UIPrimitiveType>(UIPrimitiveType::StreamMetadata_UIPrimitiveType_TREETABLE);
   return *row_;
 }
 
-XVIZTreeTableRowBuilder& XVIZUIPrimitiveBuilder::Row(int id, std::vector<std::string>&& values) {
-  row_ = std::make_shared<XVIZTreeTableRowBuilder>(id, std::move(values));
+XVIZUIPrimitiveBuilder& XVIZUIPrimitiveBuilder::Row(int id, const std::vector<std::string>& values) {
+  if (type_ != nullptr) {
+    Flush();
+  }
+  row_ = std::make_shared<XVIZTreeTableRowBuilder>(id, values);
   type_ = std::make_shared<UIPrimitiveType>(UIPrimitiveType::StreamMetadata_UIPrimitiveType_TREETABLE);
-  return *row_;
+  return *this;
 }
 
 std::shared_ptr<std::unordered_map<std::string, UIPrimitiveState>> XVIZUIPrimitiveBuilder::GetData() {
@@ -151,8 +158,8 @@ void XVIZUIPrimitiveBuilder::FlushPrimitives() {
         (*primitives_)[stream_id_] = UIPrimitiveState();
       }
 
-      if (columns_ == nullptr && column_ == nullptr) {
-        LOG_ERROR("Plase first call TreeTable() or Column()");
+      if (columns_ == nullptr && column_ == nullptr && row_ == nullptr) {
+        LOG_ERROR("Plase first call TreeTable() or Column() or Row()");
         Reset();
         return;
       }

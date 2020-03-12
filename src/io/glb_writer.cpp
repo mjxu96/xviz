@@ -21,6 +21,13 @@ bool AddOneImage(Document& document, std::vector<uint8_t>& buffer, uint32_t imag
   if (image_ptr->data().size() <= 0) {
     return false;
   }
+  if (image_ptr->is_encoded()) {
+    LOG_WARNING("If you want to use GLBWriter, please don't encode the image");
+    auto& encoded_data = image_ptr->data();
+    auto decoded_data = base64_decode(encoded_data);
+    image_ptr->set_data(std::move(decoded_data));
+    image_ptr->set_is_encoded(false);
+  }
   document.bufferViews.push_back(fx::gltf::BufferView());
   document.bufferViews.back().byteOffset = buffer.size();
   document.bufferViews.back().byteLength = image_ptr->data().size();

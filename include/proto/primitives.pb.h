@@ -556,6 +556,7 @@ class Image :
     kBaseFieldNumber = 1,
     kWidthPxFieldNumber = 4,
     kHeightPxFieldNumber = 5,
+    kIsEncodedFieldNumber = 6,
   };
   // repeated float position = 2;
   int position_size() const;
@@ -628,6 +629,15 @@ class Image :
   void _internal_set_height_px(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
+  // bool is_encoded = 6;
+  void clear_is_encoded();
+  bool is_encoded() const;
+  void set_is_encoded(bool value);
+  private:
+  bool _internal_is_encoded() const;
+  void _internal_set_is_encoded(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:xviz.Image)
  private:
   class _Internal;
@@ -639,6 +649,7 @@ class Image :
   ::xviz::PrimitiveBase* base_;
   ::PROTOBUF_NAMESPACE_ID::uint32 width_px_;
   ::PROTOBUF_NAMESPACE_ID::uint32 height_px_;
+  bool is_encoded_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_primitives_2eproto;
 };
@@ -2057,6 +2068,26 @@ inline void Image::_internal_set_height_px(::PROTOBUF_NAMESPACE_ID::uint32 value
 inline void Image::set_height_px(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_height_px(value);
   // @@protoc_insertion_point(field_set:xviz.Image.height_px)
+}
+
+// bool is_encoded = 6;
+inline void Image::clear_is_encoded() {
+  is_encoded_ = false;
+}
+inline bool Image::_internal_is_encoded() const {
+  return is_encoded_;
+}
+inline bool Image::is_encoded() const {
+  // @@protoc_insertion_point(field_get:xviz.Image.is_encoded)
+  return _internal_is_encoded();
+}
+inline void Image::_internal_set_is_encoded(bool value) {
+  
+  is_encoded_ = value;
+}
+inline void Image::set_is_encoded(bool value) {
+  _internal_set_is_encoded(value);
+  // @@protoc_insertion_point(field_set:xviz.Image.is_encoded)
 }
 
 // -------------------------------------------------------------------

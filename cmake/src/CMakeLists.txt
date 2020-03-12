@@ -33,6 +33,7 @@ target_link_libraries(xviz-pb ${PROTOBUF_LIBRARIES})
 
 add_library(xviz-utils
   ${XVIZ_ROOT_DIR}/src/utils/utils.cpp
+  ${XVIZ_ROOT_DIR}/src/utils/base64.cpp
 )
 
 add_library(xviz-ui-builder

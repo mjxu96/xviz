@@ -44,3 +44,4 @@ make xviz-test -j12
 3. [mcrodrigues macro-logger](https://github.com/dmcrodrigues/macro-logger)
 4. [nlohmann json](https://github.com/nlohmann/json)
 5. [jessey-git fx-gltf](https://github.com/jessey-git/fx-gltf)
+6. [ReneNyffenegger cpp-base64](https://github.com/ReneNyffenegger/cpp-base64)

@@ -188,32 +188,37 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Dimensions(uint32_t width_pixel, uin
   return *this;
 }
 
-XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Image(const std::string& raw_data_str) {
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Image(const std::string& raw_data_str, bool is_encoding_needed) {
   if (type_ != nullptr) {
     Flush();
   }
   type_ = std::make_shared<Primitive>();
   *type_ = Primitive::StreamMetadata_PrimitiveType_IMAGE;
   image_ = std::make_shared<xviz::Image>();
-  // image_->set_data(base64_encode((const unsigned char*)raw_data_str.c_str(), raw_data_str.size()));
-  image_->set_data(raw_data_str);
+  if (is_encoding_needed) {
+    image_->set_data(base64_encode((const unsigned char*)raw_data_str.c_str(), raw_data_str.size()));
+    image_->set_is_encoded(true);
+  } else {
+    image_->set_data(raw_data_str);
+    image_->set_is_encoded(false);
+  }
   return *this;
 }
 
-XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Image(std::string&& raw_data_str) {
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Image(std::string&& raw_data_str, bool is_encoding_needed) {
   if (type_ != nullptr) {
     Flush();
   }
   type_ = std::make_shared<Primitive>();
   *type_ = Primitive::StreamMetadata_PrimitiveType_IMAGE;
   image_ = std::make_shared<xviz::Image>();
-  // image_->set_data(std::move(raw_data_str));
-  // google::protobuf::Value data_value;
-  // data_value.set_string_value(std::move(raw_data_str));
-  // auto data_ptr = image_->mutable_data();
-  // (*data_ptr) = std::move(data_value);
-  // image_->set_data(base64_encode((const unsigned char*)raw_data_str.c_str(), raw_data_str.size()));
-  image_->set_data(std::move(raw_data_str));
+  if (is_encoding_needed) {
+    image_->set_data(base64_encode((const unsigned char*)raw_data_str.c_str(), raw_data_str.size()));
+    image_->set_is_encoded(true);
+  } else {
+    image_->set_data(std::move(raw_data_str));
+    image_->set_is_encoded(false);
+  }
   return *this;
 }
 

@@ -7,24 +7,30 @@
 
 #include "test_utils.h"
 
-::testing::AssertionResult xviz::test::IsSameJson(const nlohmann::json& expected_json, const nlohmann::json& given_json) {
+::testing::AssertionResult xviz::test::IsSameJson(
+    const nlohmann::json& expected_json, const nlohmann::json& given_json) {
   if (expected_json == given_json) {
     return ::testing::AssertionSuccess();
   }
-  return ::testing::AssertionFailure() << "\nexpected: \n" <<
-    expected_json << "\nbut get:\n" << given_json << "\ndifference: \n" <<
-    nlohmann::json::diff(given_json, expected_json) << std::endl;
+  return ::testing::AssertionFailure()
+         << "\nexpected: \n"
+         << expected_json << "\nbut get:\n"
+         << given_json << "\ndifference: \n"
+         << nlohmann::json::diff(given_json, expected_json) << std::endl;
 }
 
-::testing::AssertionResult xviz::test::IsDifferentJson(const nlohmann::json& expected_json, const nlohmann::json& given_json) {
+::testing::AssertionResult xviz::test::IsDifferentJson(
+    const nlohmann::json& expected_json, const nlohmann::json& given_json) {
   if (expected_json != given_json) {
     return ::testing::AssertionSuccess();
   }
-  return ::testing::AssertionFailure() << "\nexpected different json " <<
-    "but get same json: \n" << expected_json << std::endl;
+  return ::testing::AssertionFailure() << "\nexpected different json "
+                                       << "but get same json: \n"
+                                       << expected_json << std::endl;
 }
 
-std::unordered_map<std::string, xviz::XVIZUIBuilder> xviz::test::GetTestUIBuilders() {
+std::unordered_map<std::string, xviz::XVIZUIBuilder>
+xviz::test::GetTestUIBuilders() {
   using namespace xviz;
 
   std::unordered_map<std::string, XVIZUIBuilder> ui_builders;
@@ -40,7 +46,7 @@ std::unordered_map<std::string, xviz::XVIZUIBuilder> xviz::test::GetTestUIBuilde
   // auto camera_builder = std::make_shared<XVIZVideoBuilder>(cameras);
   XVIZVideoBuilder camera_builder(cameras);
   XVIZPlotBuilder plot_builder("title", "des", "indep_var",
-                                std::move(dep_vars));
+                               std::move(dep_vars));
   XVIZTableBuilder table_builder("title", "des", "/some_stream/table", true);
 
   std::shared_ptr<XVIZBaseUIBuilder> metric_builder1 =
@@ -69,98 +75,109 @@ xviz::XVIZMetadataBuilder xviz::test::GetTestMetadataBuilder() {
       "{\"fill_color\": \"#fff\", \"point_cloud_mode\": "
       "\"distance_to_vehicle\"}";
 
-  metadata_builder.Stream("/vehicle_pose").Category(xviz::Category::StreamMetadata_Category_POSE)
-    .Stream("/object/shape").Category(xviz::Category::StreamMetadata_Category_PRIMITIVE).Type(xviz::Primitive::StreamMetadata_PrimitiveType_POLYGON)
-    .Coordinate(xviz::CoordinateType::StreamMetadata_CoordinateType_VEHICLE_RELATIVE)//.Unit("123").Source("123")
-    .StreamStyle(s1)
-    .Stream("/object/shape2").Category(xviz::Category::StreamMetadata_Category_PRIMITIVE).Type(xviz::Primitive::StreamMetadata_PrimitiveType_POLYGON)
-    .Stream("/object/circles").Category(xviz::Category::StreamMetadata_Category_PRIMITIVE).Type(xviz::Primitive::StreamMetadata_PrimitiveType_CIRCLE)
-    .Stream("/camera/images0").Category(xviz::Category::StreamMetadata_Category_PRIMITIVE).Type(xviz::Primitive::StreamMetadata_PrimitiveType_IMAGE)
-    .Stream("/object/text").Category(xviz::Category::StreamMetadata_Category_PRIMITIVE).Type(xviz::Primitive::StreamMetadata_PrimitiveType_TEXT)
-    .Stream("/object/stadium").Category(xviz::Category::StreamMetadata_Category_PRIMITIVE).Type(xviz::Primitive::StreamMetadata_PrimitiveType_STADIUM)
-    .Stream("/object/ts").Category(xviz::Category::StreamMetadata_Category_TIME_SERIES)
-    .Stream("/object/uptest").Category(xviz::Category::StreamMetadata_Category_UI_PRIMITIVE)
-    .UI(std::move(GetTestUIBuilders()));
+  metadata_builder
+      .Stream("/vehicle_pose")
+        .Category(xviz::Category::StreamMetadata_Category_POSE)
+      .Stream("/object/shape")
+        .Category(xviz::Category::StreamMetadata_Category_PRIMITIVE)
+        .Type(xviz::Primitive::StreamMetadata_PrimitiveType_POLYGON)
+        .Coordinate(
+          xviz::CoordinateType::
+              StreamMetadata_CoordinateType_VEHICLE_RELATIVE)  //.Unit("123").Source("123")
+        .StreamStyle(s1)
+      .Stream("/object/shape2")
+        .Category(xviz::Category::StreamMetadata_Category_PRIMITIVE)
+        .Type(xviz::Primitive::StreamMetadata_PrimitiveType_POLYGON)
+      .Stream("/object/circles")
+        .Category(xviz::Category::StreamMetadata_Category_PRIMITIVE)
+        .Type(xviz::Primitive::StreamMetadata_PrimitiveType_CIRCLE)
+      .Stream("/camera/images0")
+        .Category(xviz::Category::StreamMetadata_Category_PRIMITIVE)
+        .Type(xviz::Primitive::StreamMetadata_PrimitiveType_IMAGE)
+      .Stream("/object/text")
+        .Category(xviz::Category::StreamMetadata_Category_PRIMITIVE)
+        .Type(xviz::Primitive::StreamMetadata_PrimitiveType_TEXT)
+      .Stream("/object/stadium")
+        .Category(xviz::Category::StreamMetadata_Category_PRIMITIVE)
+        .Type(xviz::Primitive::StreamMetadata_PrimitiveType_STADIUM)
+      .Stream("/object/ts")
+        .Category(xviz::Category::StreamMetadata_Category_TIME_SERIES)
+      .Stream("/object/uptest")
+        .Category(xviz::Category::StreamMetadata_Category_UI_PRIMITIVE)
+      .UI(std::move(GetTestUIBuilders()));
   metadata_builder.StartTime(1000).EndTime(1010);
   return metadata_builder;
 }
 
 nlohmann::json xviz::test::GetTestMetadataExpectedJson() {
-  std::string expected_str =       
-    "{\"log_info\":{\"end_time\":1010,\"start_time\":1000},\"streams\":{\"/"
-    "camera/"
-    "images0\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"IMAGE\"},\"/"
-    "object/"
-    "circles\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"CIRCLE\"},\"/"
-    "object/"
-    "shape\":{\"category\":\"PRIMITIVE\",\"coordinate\":\"VEHICLE_RELATIVE\","
-    "\"primitive_type\":\"POLYGON\",\"stream_style\":{\"fill_color\":\"#"
-    "fff\",\"point_cloud_mode\":\"distance_to_vehicle\"}},\"/object/"
-    "shape2\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"POLYGON\"},\"/"
-    "object/"
-    "stadium\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"STADIUM\"},"
-    "\"/object/"
-    "text\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"TEXT\"},\"/"
-    "object/ts\":{\"category\":\"TIME_SERIES\"},\"/object/"
-    "uptest\":{\"category\":\"UI_PRIMITIVE\"},\"/"
-    "vehicle_pose\":{\"category\":\"POSE\"}},\"ui_config\":{\"Camera\":{"
-    "\"children\":[{\"cameras\":[\"/camera/"
-    "images0\"],\"type\":\"VIDEO\"}],\"name\":\"Camera\",\"type\":\"panel\"},"
-    "\"Metrics\":{\"children\":[{\"children\":[{\"description\":\"123\","
-    "\"streams\":[\"/object/"
-    "ts\"],\"title\":\"123\",\"type\":\"METRIC\"},{\"description\":\"123\","
-    "\"streams\":[\"/object/"
-    "ts\"],\"title\":\"123\",\"type\":\"METRIC\"},{\"description\":\"123\","
-    "\"streams\":[\"/object/"
-    "ts\"],\"title\":\"123\",\"type\":\"METRIC\"}],\"name\":\"metrics\","
-    "\"type\":\"CONTAINER\"}],\"name\":\"Metrics\",\"type\":\"panel\"},"
-    "\"Plot\":{\"children\":[{\"dependent_variables\":[\"ddd\",\"aaa\"],"
-    "\"description\":\"des\",\"independent_variable\":\"indep_var\","
-    "\"title\":\"title\",\"type\":\"PLOT\"}],\"name\":\"Plot\",\"type\":"
-    "\"panel\"},\"Table\":{\"children\":[{\"description\":\"des\",\"display_"
-    "object_id\":true,\"stream\":\"/some_stream/"
-    "table\",\"title\":\"title\"}],\"name\":\"Table\",\"type\":\"panel\"}},"
-    "\"version\":\"2.0.0\"}";
+  std::string expected_str =
+      "{\"log_info\":{\"end_time\":1010,\"start_time\":1000},\"streams\":{\"/"
+      "camera/"
+      "images0\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"IMAGE\"},\"/"
+      "object/"
+      "circles\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"CIRCLE\"},\"/"
+      "object/"
+      "shape\":{\"category\":\"PRIMITIVE\",\"coordinate\":\"VEHICLE_RELATIVE\","
+      "\"primitive_type\":\"POLYGON\",\"stream_style\":{\"fill_color\":\"#"
+      "fff\",\"point_cloud_mode\":\"distance_to_vehicle\"}},\"/object/"
+      "shape2\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"POLYGON\"},\"/"
+      "object/"
+      "stadium\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"STADIUM\"},"
+      "\"/object/"
+      "text\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"TEXT\"},\"/"
+      "object/ts\":{\"category\":\"TIME_SERIES\"},\"/object/"
+      "uptest\":{\"category\":\"UI_PRIMITIVE\"},\"/"
+      "vehicle_pose\":{\"category\":\"POSE\"}},\"ui_config\":{\"Camera\":{"
+      "\"children\":[{\"cameras\":[\"/camera/"
+      "images0\"],\"type\":\"VIDEO\"}],\"name\":\"Camera\",\"type\":\"panel\"},"
+      "\"Metrics\":{\"children\":[{\"children\":[{\"description\":\"123\","
+      "\"streams\":[\"/object/"
+      "ts\"],\"title\":\"123\",\"type\":\"METRIC\"},{\"description\":\"123\","
+      "\"streams\":[\"/object/"
+      "ts\"],\"title\":\"123\",\"type\":\"METRIC\"},{\"description\":\"123\","
+      "\"streams\":[\"/object/"
+      "ts\"],\"title\":\"123\",\"type\":\"METRIC\"}],\"name\":\"metrics\","
+      "\"type\":\"CONTAINER\"}],\"name\":\"Metrics\",\"type\":\"panel\"},"
+      "\"Plot\":{\"children\":[{\"dependent_variables\":[\"ddd\",\"aaa\"],"
+      "\"description\":\"des\",\"independent_variable\":\"indep_var\","
+      "\"title\":\"title\",\"type\":\"PLOT\"}],\"name\":\"Plot\",\"type\":"
+      "\"panel\"},\"Table\":{\"children\":[{\"description\":\"des\",\"display_"
+      "object_id\":true,\"stream\":\"/some_stream/"
+      "table\",\"title\":\"title\",\"type\":\"TABLE\"}],\"name\":\"Table\","
+      "\"type\":\"panel\"}},\"version\":\"2.0.0\"}";
   return nlohmann::json::parse(expected_str);
 }
 
-xviz::XVIZBuilder xviz::test::GetTestUpdateBuilder(const std::shared_ptr<xviz::Metadata>& metadata) {
-  std::string s = "{\"fill_color\": \"#fff\"}"; 
-  std::string s1 = "{\"fill_color\": \"#fff\", \"point_cloud_mode\": \"distance_to_vehicle\"}"; 
+xviz::XVIZBuilder xviz::test::GetTestUpdateBuilder(
+    const std::shared_ptr<xviz::Metadata>& metadata) {
+  std::string s = "{\"fill_color\": \"#fff\"}";
+  std::string s1 =
+      "{\"fill_color\": \"#fff\", \"point_cloud_mode\": "
+      "\"distance_to_vehicle\"}";
   xviz::XVIZBuilder builder(metadata);
   builder.Pose("/vehicle_pose")
-    .Timestamp(1000)
-    .MapOrigin(0.00, 0.00, 0.000)
-    .Orientation(0, 0, 0);
+      .Timestamp(1000)
+      .MapOrigin(0.00, 0.00, 0.000)
+      .Orientation(0, 0, 0);
 
   builder.Primitive("/object/shape")
       .Polygon({10, 14, 0, 7, 10, 0, 13, 6, 0})
       .Polygon({-2, 20, 0, 5, 14, 0, 8, 17, 0, 1, 23, 0})
       .Style(s);
-  builder.Primitive("/object/shape2")
-    .Points({1, 2, 3}).Colors({0, 1, 2, 3});
+  builder.Primitive("/object/shape2").Points({1, 2, 3}).Colors({0, 1, 2, 3});
 
-  builder.Primitive("/object/circles")
-    .Circle({1, 2, 3}, 1.0)
-    .Style(s);
+  builder.Primitive("/object/circles").Circle({1, 2, 3}, 1.0).Style(s);
 
-  builder.Primitive("/object/text")
-    .Text("hello world")
-    .Position({1, 2, 3});
-  
-  builder.Primitive("/object/stadium")
-    .Stadium({0, 0, 0}, {1, 1, 1}, 10);
+  builder.Primitive("/object/text").Text("hello world").Position({1, 2, 3});
 
-  builder.Primitive("/camera/images0")
-    .Image("123231");
+  builder.Primitive("/object/stadium").Stadium({0, 0, 0}, {1, 1, 1}, 10);
 
-  builder.TimeSeries("/object/ts")
-    .Id("123")
-    .Timestamp(123)
-    .Value("123");
+  builder.Primitive("/camera/images0").Image("123231");
+
+  builder.TimeSeries("/object/ts").Id("123").Timestamp(123).Value("123");
 
   builder.UIPrimitive("/object/uptest")
-    .TreeTable(std::vector<xviz::TreeTableColumn>())
-    .Row(1, {"123"});
+      .TreeTable(std::vector<xviz::TreeTableColumn>())
+      .Row(1, {"123"});
   return builder;
 }

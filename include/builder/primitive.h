@@ -10,6 +10,7 @@
 #include "base_builder.h"
 #include "utils/json.hpp"
 #include "utils/macrologger.h"
+#include "utils/base64.h"
 #include "utils/utils.h"
 #include "proto/core.pb.h"
 #include "proto/primitives.pb.h"
@@ -50,8 +51,8 @@ public:
   XVIZPrimitiveBuilder& Circle(const std::shared_ptr<std::vector<double>>& vertices_ptr, const std::shared_ptr<double>& radius);
 
   XVIZPrimitiveBuilder& Dimensions(uint32_t width_pixel, uint32_t height_pixel);
-  XVIZPrimitiveBuilder& Image(const std::string& raw_data_str);
-  XVIZPrimitiveBuilder& Image(std::string&& raw_data_str);
+  XVIZPrimitiveBuilder& Image(const std::string& raw_data_str, bool is_encoding_needed=false);
+  XVIZPrimitiveBuilder& Image(std::string&& raw_data_str, bool is_encoding_needed=false);
 
   XVIZPrimitiveBuilder& Text(const std::string& message);
   XVIZPrimitiveBuilder& Text(std::string&& message);

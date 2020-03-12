@@ -203,6 +203,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_primitives_2eproto::offsets[] 
   PROTOBUF_FIELD_OFFSET(::xviz::Image, data_),
   PROTOBUF_FIELD_OFFSET(::xviz::Image, width_px_),
   PROTOBUF_FIELD_OFFSET(::xviz::Image, height_px_),
+  PROTOBUF_FIELD_OFFSET(::xviz::Image, is_encoded_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::xviz::Point, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -248,11 +249,11 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 0, -1, sizeof(::xviz::PrimitiveBase)},
   { 8, -1, sizeof(::xviz::Circle)},
   { 16, -1, sizeof(::xviz::Image)},
-  { 26, -1, sizeof(::xviz::Point)},
-  { 34, -1, sizeof(::xviz::Polygon)},
-  { 41, -1, sizeof(::xviz::Polyline)},
-  { 49, -1, sizeof(::xviz::Stadium)},
-  { 58, -1, sizeof(::xviz::Text)},
+  { 27, -1, sizeof(::xviz::Point)},
+  { 35, -1, sizeof(::xviz::Polygon)},
+  { 42, -1, sizeof(::xviz::Polyline)},
+  { 50, -1, sizeof(::xviz::Stadium)},
+  { 59, -1, sizeof(::xviz::Text)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -273,26 +274,27 @@ const char descriptor_table_protodef_primitives_2eproto[] PROTOBUF_SECTION_VARIA
   "\n\007classes\030\002 \003(\t\022%\n\005style\030\003 \001(\0132\026.xviz.St"
   "yleObjectValue\"b\n\006Circle\022!\n\004base\030\001 \001(\0132\023"
   ".xviz.PrimitiveBase\022\016\n\006center\030\002 \003(\002\022\016\n\006r"
-  "adius\030\003 \001(\002:\025\302\273\032\021primitives/circle\"\205\001\n\005I"
+  "adius\030\003 \001(\002:\025\302\273\032\021primitives/circle\"\231\001\n\005I"
   "mage\022!\n\004base\030\001 \001(\0132\023.xviz.PrimitiveBase\022"
   "\020\n\010position\030\002 \003(\002\022\014\n\004data\030\003 \001(\t\022\020\n\010width"
-  "_px\030\004 \001(\r\022\021\n\theight_px\030\005 \001(\r:\024\302\273\032\020primit"
-  "ives/image\"\220\001\n\005Point\022!\n\004base\030\001 \001(\0132\023.xvi"
-  "z.PrimitiveBase\022&\n\006points\030\002 \001(\0132\026.google"
-  ".protobuf.Value\022&\n\006colors\030\003 \001(\0132\026.google"
-  ".protobuf.Value:\024\302\273\032\020primitives/point\"V\n"
-  "\007Polygon\022!\n\004base\030\001 \001(\0132\023.xviz.PrimitiveB"
-  "ase\022\020\n\010vertices\030\002 \003(\002:\026\302\273\032\022primitives/po"
-  "lygon\"h\n\010Polyline\022!\n\004base\030\001 \001(\0132\023.xviz.P"
-  "rimitiveBase\022\020\n\010vertices\030\002 \003(\002\022\016\n\006colors"
-  "\030\003 \001(\014:\027\302\273\032\023primitives/polyline\"p\n\007Stadi"
-  "um\022!\n\004base\030\001 \001(\0132\023.xviz.PrimitiveBase\022\r\n"
-  "\005start\030\002 \003(\002\022\013\n\003end\030\003 \003(\002\022\016\n\006radius\030\004 \001("
-  "\002:\026\302\273\032\022primitives/stadium\"^\n\004Text\022!\n\004bas"
-  "e\030\001 \001(\0132\023.xviz.PrimitiveBase\022\020\n\010position"
-  "\030\002 \003(\002\022\014\n\004text\030\003 \001(\t:\023\302\273\032\017primitives/tex"
-  "tB7\n\013com.xviz.v2B\017PrimitivesProtoP\001Z\004v2p"
-  "b\242\002\004XVIZ\252\002\007xviz.V2b\006proto3"
+  "_px\030\004 \001(\r\022\021\n\theight_px\030\005 \001(\r\022\022\n\nis_encod"
+  "ed\030\006 \001(\010:\024\302\273\032\020primitives/image\"\220\001\n\005Point"
+  "\022!\n\004base\030\001 \001(\0132\023.xviz.PrimitiveBase\022&\n\006p"
+  "oints\030\002 \001(\0132\026.google.protobuf.Value\022&\n\006c"
+  "olors\030\003 \001(\0132\026.google.protobuf.Value:\024\302\273\032"
+  "\020primitives/point\"V\n\007Polygon\022!\n\004base\030\001 \001"
+  "(\0132\023.xviz.PrimitiveBase\022\020\n\010vertices\030\002 \003("
+  "\002:\026\302\273\032\022primitives/polygon\"h\n\010Polyline\022!\n"
+  "\004base\030\001 \001(\0132\023.xviz.PrimitiveBase\022\020\n\010vert"
+  "ices\030\002 \003(\002\022\016\n\006colors\030\003 \001(\014:\027\302\273\032\023primitiv"
+  "es/polyline\"p\n\007Stadium\022!\n\004base\030\001 \001(\0132\023.x"
+  "viz.PrimitiveBase\022\r\n\005start\030\002 \003(\002\022\013\n\003end\030"
+  "\003 \003(\002\022\016\n\006radius\030\004 \001(\002:\026\302\273\032\022primitives/st"
+  "adium\"^\n\004Text\022!\n\004base\030\001 \001(\0132\023.xviz.Primi"
+  "tiveBase\022\020\n\010position\030\002 \003(\002\022\014\n\004text\030\003 \001(\t"
+  ":\023\302\273\032\017primitives/textB7\n\013com.xviz.v2B\017Pr"
+  "imitivesProtoP\001Z\004v2pb\242\002\004XVIZ\252\002\007xviz.V2b\006"
+  "proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_primitives_2eproto_deps[3] = {
   &::descriptor_table_google_2fprotobuf_2fstruct_2eproto,
@@ -312,7 +314,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_pri
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_primitives_2eproto_once;
 static bool descriptor_table_primitives_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_primitives_2eproto = {
-  &descriptor_table_primitives_2eproto_initialized, descriptor_table_protodef_primitives_2eproto, "primitives.proto", 1026,
+  &descriptor_table_primitives_2eproto_initialized, descriptor_table_protodef_primitives_2eproto, "primitives.proto", 1046,
   &descriptor_table_primitives_2eproto_once, descriptor_table_primitives_2eproto_sccs, descriptor_table_primitives_2eproto_deps, 8, 3,
   schemas, file_default_instances, TableStruct_primitives_2eproto::offsets,
   file_level_metadata_primitives_2eproto, 8, file_level_enum_descriptors_primitives_2eproto, file_level_service_descriptors_primitives_2eproto,
@@ -906,8 +908,8 @@ Image::Image(const Image& from)
     base_ = nullptr;
   }
   ::memcpy(&width_px_, &from.width_px_,
-    static_cast<size_t>(reinterpret_cast<char*>(&height_px_) -
-    reinterpret_cast<char*>(&width_px_)) + sizeof(height_px_));
+    static_cast<size_t>(reinterpret_cast<char*>(&is_encoded_) -
+    reinterpret_cast<char*>(&width_px_)) + sizeof(is_encoded_));
   // @@protoc_insertion_point(copy_constructor:xviz.Image)
 }
 
@@ -915,8 +917,8 @@ void Image::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Image_primitives_2eproto.base);
   data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&base_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&height_px_) -
-      reinterpret_cast<char*>(&base_)) + sizeof(height_px_));
+      reinterpret_cast<char*>(&is_encoded_) -
+      reinterpret_cast<char*>(&base_)) + sizeof(is_encoded_));
 }
 
 Image::~Image() {
@@ -951,8 +953,8 @@ void Image::Clear() {
   }
   base_ = nullptr;
   ::memset(&width_px_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&height_px_) -
-      reinterpret_cast<char*>(&width_px_)) + sizeof(height_px_));
+      reinterpret_cast<char*>(&is_encoded_) -
+      reinterpret_cast<char*>(&width_px_)) + sizeof(is_encoded_));
   _internal_metadata_.Clear();
 }
 
@@ -1000,6 +1002,13 @@ const char* Image::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
           height_px_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // bool is_encoded = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
+          is_encoded_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1064,6 +1073,12 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(5, this->_internal_height_px(), target);
   }
 
+  // bool is_encoded = 6;
+  if (this->is_encoded() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(6, this->_internal_is_encoded(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target, stream);
@@ -1123,6 +1138,11 @@ size_t Image::ByteSizeLong() const {
         this->_internal_height_px());
   }
 
+  // bool is_encoded = 6;
+  if (this->is_encoded() != 0) {
+    total_size += 1 + 1;
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
         _internal_metadata_, total_size, &_cached_size_);
@@ -1168,6 +1188,9 @@ void Image::MergeFrom(const Image& from) {
   if (from.height_px() != 0) {
     _internal_set_height_px(from._internal_height_px());
   }
+  if (from.is_encoded() != 0) {
+    _internal_set_is_encoded(from._internal_is_encoded());
+  }
 }
 
 void Image::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -1197,6 +1220,7 @@ void Image::InternalSwap(Image* other) {
   swap(base_, other->base_);
   swap(width_px_, other->width_px_);
   swap(height_px_, other->height_px_);
+  swap(is_encoded_, other->is_encoded_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Image::GetMetadata() const {
