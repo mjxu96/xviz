@@ -41,8 +41,7 @@ public:
 
   XVIZUIPrimitiveBuilder& TreeTable(const std::vector<TreeTableColumn>& tree_table_columns);
   XVIZUIPrimitiveBuilder& TreeTable(std::vector<TreeTableColumn>&& tree_table_columns);
-  XVIZUIPrimitiveBuilder& Column(const std::vector<TreeTableColumn>& tree_table_columns);
-  XVIZUIPrimitiveBuilder& Column(std::vector<TreeTableColumn>&& tree_table_columns);
+  XVIZUIPrimitiveBuilder& Column(const std::string& display_text, xviz::TreeTableColumn::ColumnType type_id, std::optional<std::string> unit=std::nullopt);
   XVIZTreeTableRowBuilder& Row(int id, const std::vector<std::string>& values);
   XVIZTreeTableRowBuilder& Row(int id, std::vector<std::string>&& values);
 
@@ -56,6 +55,7 @@ private:
   std::shared_ptr<std::unordered_map<std::string, UIPrimitiveState>> primitives_{nullptr};
   std::shared_ptr<UIPrimitiveType> type_{nullptr};
   std::shared_ptr<std::vector<TreeTableColumn>> columns_{nullptr};
+  std::shared_ptr<TreeTableColumn> column_{nullptr};
   std::shared_ptr<XVIZTreeTableRowBuilder> row_{nullptr};
 };
   

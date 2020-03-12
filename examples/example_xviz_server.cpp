@@ -40,6 +40,7 @@ std::unordered_map<std::string, XVIZUIBuilder> GetUIBuilders() {
   XVIZVideoBuilder camera_builder(cameras);
 
   auto table_builder1 = std::make_shared<XVIZTableBuilder>("table1", "table1", "/table/1", false);
+  auto table_builder2 = std::make_shared<XVIZTableBuilder>("table2", "table2", "/table/2", true);
   
   std::shared_ptr<XVIZBaseUIBuilder> metric_builder1 = std::make_shared<XVIZMetricBuilder>(streams, "acceleration", "acceleration");
   // std::shared_ptr<XVIZBaseUIBuilder> metric_builder2 = std::make_shared<XVIZMetricBuilder>(streams, "acceleration", "acceleration");
@@ -48,10 +49,13 @@ std::unordered_map<std::string, XVIZUIBuilder> GetUIBuilders() {
   container_builder->Child(metric_builder1);
   // container_builder->Child(metric_builder2);
   // container_builder->Child(streams, "acceleration", "acceleration");
+  std::shared_ptr<XVIZBaseUIBuilder> container_builder2 = std::make_shared<XVIZContainerBuilder>("tables", LayoutType::VERTICAL);
+  container_builder2->Child(table_builder1);
+  container_builder2->Child(table_builder2);
 
   ui_builders["Camera"].Child(std::move(camera_builder));
   ui_builders["Metrics"].Child(container_builder);
-  ui_builders["Tables"].Child(table_builder1);
+  ui_builders["Tables"].Child(container_builder2);
   return ui_builders;
 }
 
@@ -97,6 +101,7 @@ public:
       .StreamStyle(s)
       .Stream("/camera/images0").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_IMAGE)
       .Stream("/table/1").Category(Category::StreamMetadata_Category_UI_PRIMITIVE)//.Type(UIPrimitiveType::StreamMetadata_UIPrimitiveType_TREETABLE)
+      .Stream("/table/2").Category(Category::StreamMetadata_Category_UI_PRIMITIVE)//.Type(UIPrimitiveType::StreamMetadata_UIPrimitiveType_TREETABLE)
       .Stream("/vehicle/acceleration")
         .Category(Category::StreamMetadata_Category_TIME_SERIES)
         .Unit("m/s^2")
@@ -134,29 +139,34 @@ public:
       .Value(cnt % 10)
       .Id("acceleration");
 
-    std::vector<TreeTableColumn> columns;
-    TreeTableColumn column1;
-    column1.set_display_text("Number");
-    column1.set_type(TreeTableColumn_ColumnType::TreeTableColumn_ColumnType_INT32);
-    columns.push_back(column1);
-
-    TreeTableColumn column2;
-    column2.set_display_text("Test");
-    column2.set_type(TreeTableColumn_ColumnType::TreeTableColumn_ColumnType_STRING);
-    columns.push_back(column2);
-
     builder.UIPrimitive("/table/1")
-      .TreeTable(columns)
+      .Column("Number", TreeTableColumn::INT32, "m/s")
+      .Column("Test", TreeTableColumn::STRING)
       .Row(0, {})
         .Children(1, {"1", "test"})
-        .Children(2, {"2", "ggg"});
+        .Children(2, {"1", "test"})
+        .Children(3, {"1", "test"})
+        .Children(4, {"1", "test"})
+        .Children(5, {"1", "test"})
+        .Children(6, {"1", "test"})
+        .Children(7, {"1", "test"})
+        .Children(8, {"2", "ggg"});
+    
+    builder.UIPrimitive("/table/2")
+      .Column("Number", TreeTableColumn::INT32, "m/s")
+      .Row(0, {"1"})
+        .Children(1, {"1"})
+        .Children(2, {"2"})
+        .Children(3, {"3"})
+        .Children(4, {"4"});
+
     cnt++;
     XVIZGLBWriter writer;
     std::string str;
     writer.WriteMessage(str, builder.GetMessage());
     return str;
-    // return builder.GetMessage().ToObjectString();
   }
+
 private:
   std::shared_ptr<xviz::XVIZMetadataBuilder> metadata_ptr_{};
   int cnt = 11;

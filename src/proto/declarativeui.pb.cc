@@ -77,11 +77,11 @@ const char descriptor_table_protodef_declarativeui_2eproto[] PROTOBUF_SECTION_VA
   "ent_variables\030\n \003(\t\022\016\n\006stream\030\013 \001(\t\022\031\n\021d"
   "isplay_object_id\030\014 \001(\010:\032\302\273\032\026declarativeu"
   "i/ui_panel**\n\nLayoutType\022\014\n\010VERTICAL\020\000\022\016"
-  "\n\nHORIZONTAL\020\001*e\n\rComponentType\022\t\n\005TABLE"
-  "\020\000\022\n\n\006METRIC\020\001\022\010\n\004PLOT\020\002\022\r\n\tTREETABLE\020\003\022"
-  "\t\n\005VIDEO\020\004\022\n\n\006SELECT\020\005\022\r\n\tCONTAINER\020\006B:\n"
-  "\013com.xviz.v2B\022DeclarativeUIProtoP\001Z\004v2pb"
-  "\242\002\004XVIZ\252\002\007xviz.V2b\006proto3"
+  "\n\nHORIZONTAL\020\001*o\n\rComponentType\022\010\n\004NONE\020"
+  "\000\022\t\n\005TABLE\020\001\022\n\n\006METRIC\020\002\022\010\n\004PLOT\020\003\022\r\n\tTR"
+  "EETABLE\020\004\022\t\n\005VIDEO\020\005\022\n\n\006SELECT\020\006\022\r\n\tCONT"
+  "AINER\020\007B:\n\013com.xviz.v2B\022DeclarativeUIPro"
+  "toP\001Z\004v2pb\242\002\004XVIZ\252\002\007xviz.V2b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_declarativeui_2eproto_deps[1] = {
   &::descriptor_table_options_2eproto,
@@ -92,7 +92,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_dec
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_declarativeui_2eproto_once;
 static bool descriptor_table_declarativeui_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_declarativeui_2eproto = {
-  &descriptor_table_declarativeui_2eproto_initialized, descriptor_table_protodef_declarativeui_2eproto, "declarativeui.proto", 585,
+  &descriptor_table_declarativeui_2eproto_initialized, descriptor_table_protodef_declarativeui_2eproto, "declarativeui.proto", 595,
   &descriptor_table_declarativeui_2eproto_once, descriptor_table_declarativeui_2eproto_sccs, descriptor_table_declarativeui_2eproto_deps, 1, 1,
   schemas, file_default_instances, TableStruct_declarativeui_2eproto::offsets,
   file_level_metadata_declarativeui_2eproto, 1, file_level_enum_descriptors_declarativeui_2eproto, file_level_service_descriptors_declarativeui_2eproto,
@@ -128,6 +128,7 @@ bool ComponentType_IsValid(int value) {
     case 4:
     case 5:
     case 6:
+    case 7:
       return true;
     default:
       return false;

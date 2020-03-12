@@ -98,6 +98,20 @@ XVIZUIPrimitiveBuilder& XVIZUIPrimitiveBuilder::TreeTable(std::vector<TreeTableC
   return *this;
 }
 
+XVIZUIPrimitiveBuilder& XVIZUIPrimitiveBuilder::Column(const std::string& display_text, xviz::TreeTableColumn::ColumnType type_id, std::optional<std::string> unit) {
+  if (type_ != nullptr) {
+    Flush();
+  }
+  column_ = std::make_shared<TreeTableColumn>();
+  column_->set_display_text(display_text);
+  column_->set_type(type_id);
+  if (unit.has_value()) {
+    column_->set_unit(unit.value());
+  }
+  type_ = std::make_shared<UIPrimitiveType>(UIPrimitiveType::StreamMetadata_UIPrimitiveType_TREETABLE);
+  return *this;
+}
+
 XVIZTreeTableRowBuilder& XVIZUIPrimitiveBuilder::Row(int id, const std::vector<std::string>& values) {
   row_ = std::make_shared<XVIZTreeTableRowBuilder>(id, values);
   type_ = std::make_shared<UIPrimitiveType>(UIPrimitiveType::StreamMetadata_UIPrimitiveType_TREETABLE);
@@ -137,17 +151,24 @@ void XVIZUIPrimitiveBuilder::FlushPrimitives() {
         (*primitives_)[stream_id_] = UIPrimitiveState();
       }
 
-      if (columns_ == nullptr) {
-        LOG_ERROR("Plase first call TreeTable()");
+      if (columns_ == nullptr && column_ == nullptr) {
+        LOG_ERROR("Plase first call TreeTable() or Column()");
         Reset();
         return;
       }
 
       auto tree_table_ptr = (*primitives_)[stream_id_].mutable_treetable();
-      for (auto& column : *columns_) {
-        auto new_column_ptr = tree_table_ptr->add_columns();
-        *new_column_ptr = std::move(column);
+      if (columns_ != nullptr) {
+        for (auto& column : *columns_) {
+          auto new_column_ptr = tree_table_ptr->add_columns();
+          *new_column_ptr = std::move(column);
+        }
       }
+      if (column_ != nullptr) {
+        auto new_column_ptr = tree_table_ptr->add_columns();
+        *new_column_ptr = std::move(*column_);
+      }
+      
 
       if (row_ != nullptr) {
         auto rows = row_->GetData();
@@ -167,6 +188,7 @@ void XVIZUIPrimitiveBuilder::FlushPrimitives() {
 
 void XVIZUIPrimitiveBuilder::Reset() {
   type_ = nullptr;
+  column_ = nullptr;
   columns_ = nullptr;
   row_ = nullptr;
 }

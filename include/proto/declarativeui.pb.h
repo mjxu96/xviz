@@ -92,18 +92,19 @@ inline bool LayoutType_Parse(
     LayoutType_descriptor(), name, value);
 }
 enum ComponentType : int {
-  TABLE = 0,
-  METRIC = 1,
-  PLOT = 2,
-  TREETABLE = 3,
-  VIDEO = 4,
-  SELECT = 5,
-  CONTAINER = 6,
+  NONE = 0,
+  TABLE = 1,
+  METRIC = 2,
+  PLOT = 3,
+  TREETABLE = 4,
+  VIDEO = 5,
+  SELECT = 6,
+  CONTAINER = 7,
   ComponentType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
   ComponentType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool ComponentType_IsValid(int value);
-constexpr ComponentType ComponentType_MIN = TABLE;
+constexpr ComponentType ComponentType_MIN = NONE;
 constexpr ComponentType ComponentType_MAX = CONTAINER;
 constexpr int ComponentType_ARRAYSIZE = ComponentType_MAX + 1;
 
