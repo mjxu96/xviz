@@ -10,7 +10,7 @@ Please see [example.cpp](https://github.com/wx9698/xviz/blob/master/examples/exa
 
 ## Build
 
-1. Build xviz builder example
+### Build xviz builder example
 ```bash
 mkdir build && cd build
 cmake ../
@@ -18,7 +18,7 @@ make example -j12
 ../bin/example
 ```
 
-2. Build xviz server example
+### Build xviz server example
 ```bash
 mkdir build && cd build
 cmake ../
@@ -26,12 +26,19 @@ make example-server -j12
 ../bin/example-server [PNG FILE PATH (this is optional)]
 ```
 
-3. Build tests
+### Build tests
 ```bash
 mkdir build && cd build
 cmake ../ -DBUILD_TEST=ON
 make xviz-test -j12
 ../bin/xviz-test
+```
+
+### Install
+```bash
+mkdir build && build
+cmake ../ -DCMAKE_INSTALL_PREFIX=/path/you/want/to/install/
+make install
 ```
 
 ## Related Work
