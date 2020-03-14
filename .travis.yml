@@ -1,5 +1,8 @@
 language: cpp
-compiler: gcc
+compiler: 
+  - gcc
+  - clang
+
 dist: bionic
 
 before_install:
