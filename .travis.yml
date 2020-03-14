@@ -1,7 +1,5 @@
 language: cpp
-compiler: 
-  - gcc
-  - clang
+compiler: gcc
 
 dist: bionic
 
@@ -10,7 +8,7 @@ before_install:
 
 install: 
   # cmake make tool
-  - sudo apt-get install -y cmake make libgtest-dev
+  - sudo apt-get install -y cmake make libgtest-dev clang
 
   # protobuf 3.11.2
   - wget https://github.com/protocolbuffers/protobuf/releases/download/v3.11.2/protobuf-cpp-3.11.2.tar.gz
@@ -21,6 +19,13 @@ install:
   - pushd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make && sudo cp *.a /usr/lib && popd
 
 script: 
+  # build with g++
   - mkdir build
   - pushd build && cmake ../ -DBUILD_TEST=ON && make example example-server xviz-test -j2 && popd
+  - pwd && ./bin/xviz-test
+
+  # build with clang++ again
+  - rm -rf build
+  - mkdir build
+  - pushd build && cmake ../ -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DBUILD_TEST=ON && make example example-server xviz-test -j2 && popd
   - pwd && ./bin/xviz-test
