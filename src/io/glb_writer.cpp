@@ -123,7 +123,9 @@ void GetStateUpdateData(std::string& sink, xviz::XVIZMessage& message) {
   uint32_t image_idx = 0u;
   uint32_t accessor_idx = 0u;
   for (auto itr = update->mutable_updates()->begin(); itr != update->mutable_updates()->end(); itr++) {
-    for (auto& [k, v] : *(itr->mutable_primitives())) {
+    for (const auto& kv_pair : itr->primitives()) {
+      auto k = kv_pair.first;
+      auto& v = (*(itr->mutable_primitives()))[k];
       for (uint32_t i = 0; i < v.images_size(); i++) {
         if (AddOneImage(document, buffer, image_idx, (image_idx + accessor_idx), v.mutable_images(i))) {
           image_idx++;
@@ -131,19 +133,11 @@ void GetStateUpdateData(std::string& sink, xviz::XVIZMessage& message) {
       }
       for (uint32_t i = 0; i < v.points_size(); i++) {
         accessor_idx += AddOnePoint(document, buffer, accessor_idx, (image_idx + accessor_idx), v.mutable_points(i));
-        //   accessor_idx++;
-        // }
       }
     }
   }
 
-  // for (auto itr = update->mutable_updates()->begin(); itr != update->mutable_updates()->end(); itr++) {
-  //   for (auto& [k, v] : *(itr->mutable_primitives())) {
-  //   }
-  // }
-
   std::string xviz_str = message.ToObjectString();
-  // std::cout << xviz_str << std::endl;
 
   if (!buffer.empty()) {
     document.buffers.push_back(fx::gltf::Buffer());

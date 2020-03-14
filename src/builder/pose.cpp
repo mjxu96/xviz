@@ -8,7 +8,8 @@
 
 using namespace xviz;
 
-XVIZPoseBuilder::XVIZPoseBuilder(const std::shared_ptr<xviz::Metadata>& metadata) : XVIZBaseBuilder(xviz::StreamMetadata::POSE, metadata_) {
+XVIZPoseBuilder::XVIZPoseBuilder(const std::shared_ptr<xviz::Metadata>& metadata) : 
+  XVIZBaseBuilder(xviz::StreamMetadata::POSE, metadata) {
   poses_ = nullptr;
   temp_poses_ = xviz::Pose();
 }
