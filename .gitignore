@@ -1,5 +1,5 @@
 /.vscode
-/pb
+/pb/**/
 /bin
 /build
 
