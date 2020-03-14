@@ -179,6 +179,7 @@ public:
   }
 
   void OnConnect() override {
+    LOG_INFO("Frontend connected");
     conn_ptr_->send(sce_.GetMetaBuilder()->GetMessage().ToObjectString());
     conn_ptr_->set_message_handler(std::bind(
       &LiveSession::MessageHandler, this, std::placeholders::_1, std::placeholders::_2)
@@ -196,7 +197,7 @@ public:
   }
 
   void OnDisconnect() override {
-    // conn_ptr_->send("byebye");
+    LOG_INFO("Frontend disconnected");
   }
 
 private:

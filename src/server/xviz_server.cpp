@@ -95,7 +95,6 @@ void XVIZServer::HandleSession(websocketpp::connection_hdl hdl) {
   auto conn = internal_server_ptr_->get_con_from_hdl(hdl);
   auto query = conn->get_uri()->get_query();
   auto params = ParseURIParameters(query);
-  LOG_DEBUG("Parameters from this connection are: %s", query.c_str());
 
   for (const auto& handler_ptr : handlers_) {
     auto session_ptr = handler_ptr->GetSession(params, conn);
@@ -110,7 +109,6 @@ void XVIZServer::HandleSession(websocketpp::connection_hdl hdl) {
 }
 
 void XVIZServer::SessionThread(std::shared_ptr<XVIZBaseSession> session_ptr) {
-  LOG_DEBUG("start a thread to handle session");
   try {
     session_ptr->OnConnect();
     session_ptr->Main();
@@ -118,7 +116,6 @@ void XVIZServer::SessionThread(std::shared_ptr<XVIZBaseSession> session_ptr) {
   } catch (const websocketpp::exception& e) {
     LOG_WARNING("%s", e.what());
   }
-  LOG_DEBUG("end a thread to handle session");
 }
 
 void XVIZServer::Serve() {

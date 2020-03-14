@@ -19,6 +19,9 @@ make example -j12
 ```
 
 ### Build xviz server example
+Frontend is needed. You can refer to these two repos for frontend:
+1. [CarlaViz Frontend](https://github.com/wx9698/carlaviz/tree/master/frontend)
+2. [uber streetscape.gl](https://github.com/uber/streetscape.gl)
 ```bash
 mkdir build && cd build
 cmake ../
