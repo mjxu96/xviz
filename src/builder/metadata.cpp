@@ -5,7 +5,7 @@
  */
 
 
-#include "builder/metadata.h"
+#include "xviz/builder/metadata.h"
 
 using namespace xviz;
 

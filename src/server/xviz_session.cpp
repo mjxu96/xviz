@@ -4,7 +4,7 @@
  * File Created: Monday, 17th February 2020 3:13:44 pm
  */
 
-#include "server/xviz_session.h"
+#include "xviz/server/xviz_session.h"
 
 using namespace xviz;
 

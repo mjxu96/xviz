@@ -5,7 +5,7 @@
  */
 
 
-#include "server/xviz_server.h"
+#include "xviz/server/xviz_server.h"
 
 using namespace xviz;
 

@@ -4,7 +4,7 @@
  * File Created: Monday, 17th February 2020 3:13:36 pm
  */
 
-#include "server/xviz_handler.h"
+#include "xviz/server/xviz_handler.h"
 
 using namespace xviz;
 

@@ -4,7 +4,7 @@
  * File Created: Tuesday, 17th December 2019 10:00:38 pm
  */
 
-#include "builder/primitive.h"
+#include "xviz/builder/primitive.h"
 
 using namespace xviz;
 using Json = nlohmann::json;

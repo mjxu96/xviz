@@ -4,7 +4,7 @@
  * File Created: Tuesday, 17th December 2019 2:42:17 am
  */
 
-#include "message.h"
+#include "xviz/message.h"
 
 
 using Json = nlohmann::json;

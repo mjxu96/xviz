@@ -4,22 +4,22 @@
  * File Created: Monday, 17th February 2020 3:16:09 pm
  */
 
-#include "server/xviz_server.h"
-#include "server/xviz_handler.h"
-#include "server/xviz_session.h"
+#include "xviz/server/xviz_server.h"
+#include "xviz/server/xviz_handler.h"
+#include "xviz/server/xviz_session.h"
 
 #include <iostream>
 #include <fstream>
-#include "proto/primitives.pb.h"
-#include "builder/pose.h"
-#include "builder/xviz_builder.h"
-#include "builder/metadata.h"
+#include "xviz/proto/primitives.pb.h"
+#include "xviz/builder/pose.h"
+#include "xviz/builder/xviz_builder.h"
+#include "xviz/builder/metadata.h"
 
-#include "builder/declarative_ui/video_builder.h"
-#include "builder/declarative_ui/metric_builder.h"
-#include "builder/declarative_ui/table_builder.h"
-#include "builder/declarative_ui/container_builder.h"
-#include "io/glb_writer.h"
+#include "xviz/builder/declarative_ui/video_builder.h"
+#include "xviz/builder/declarative_ui/metric_builder.h"
+#include "xviz/builder/declarative_ui/table_builder.h"
+#include "xviz/builder/declarative_ui/container_builder.h"
+#include "xviz/io/glb_writer.h"
 
 using namespace xviz;
 

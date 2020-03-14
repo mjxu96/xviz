@@ -9,9 +9,9 @@
 #define XVIZ_TEST_UTILS_H_
 
 #include <gtest/gtest.h>
-#include "utils/json.hpp"
-#include "builder/metadata.h"
-#include "builder/xviz_builder.h"
+#include "xviz/utils/json.hpp"
+#include "xviz/builder/metadata.h"
+#include "xviz/builder/xviz_builder.h"
 
 namespace xviz {
 namespace test {

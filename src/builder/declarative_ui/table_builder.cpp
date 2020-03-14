@@ -4,7 +4,7 @@
  * File Created: Saturday, 11th January 2020 7:57:27 am
  */
 
-#include "builder/declarative_ui/table_builder.h"
+#include "xviz/builder/declarative_ui/table_builder.h"
 
 using namespace xviz;
 XVIZTableBuilder::XVIZTableBuilder(const std::string& title, const std::string& description, const std::string& stream, bool display_object_id) 

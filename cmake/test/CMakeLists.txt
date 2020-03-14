@@ -25,5 +25,3 @@ add_executable(xviz-test
 target_link_libraries(xviz-test xviz-test-lib xviz ${GTEST_BOTH_LIBRARIES})
 
 gtest_add_tests(TARGET xviz-test)
-                # TEST_LIST xvizTests)
-# set_tests_properties(${xvizTests} PROPERTIES TIMEOUT 3)

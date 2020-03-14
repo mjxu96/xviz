@@ -4,10 +4,10 @@
  * File Created: Wednesday, 8th January 2020 2:01:34 am
  */
 
-#include "builder/declarative_ui/base_ui_builder.h"
-#include "builder/declarative_ui/video_builder.h"
-#include "builder/declarative_ui/container_builder.h"
-#include "builder/declarative_ui/metric_builder.h"
+#include "xviz/builder/declarative_ui/base_ui_builder.h"
+#include "xviz/builder/declarative_ui/video_builder.h"
+#include "xviz/builder/declarative_ui/container_builder.h"
+#include "xviz/builder/declarative_ui/metric_builder.h"
 
 using namespace xviz;
 

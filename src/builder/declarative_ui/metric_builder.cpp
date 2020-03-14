@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th January 2020 2:59:47 am
  */
 
-#include "builder/declarative_ui/metric_builder.h"
+#include "xviz/builder/declarative_ui/metric_builder.h"
 
 using namespace xviz;
 

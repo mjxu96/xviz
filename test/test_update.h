@@ -6,7 +6,7 @@
 #ifndef XVIZ_TEST_UPDATE_H_
 #define XVIZ_TEST_UPDATE_H_
 
-#include "builder/xviz_builder.h"
+#include "xviz/builder/xviz_builder.h"
 #include "test_utils.h"
 #include "gtest/gtest.h"
 

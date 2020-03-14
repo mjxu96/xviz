@@ -4,7 +4,7 @@
  * File Created: Saturday, 7th December 2019 2:55:16 pm
  */
 
-#include "builder/pose.h"
+#include "xviz/builder/pose.h"
 
 using namespace xviz;
 

@@ -7,7 +7,7 @@
 #ifndef XVIZ_TEST_SERVER_H_
 #define XVIZ_TEST_SERVER_H_
 
-#include "server/xviz_server.h"
+#include "xviz/server/xviz_server.h"
 #include <gtest/gtest.h>
 
 class XVIZServerTest : public ::testing::Test {

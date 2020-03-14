@@ -4,7 +4,7 @@
  * File Created: Tuesday, 7th January 2020 3:06:21 am
  */
 
-#include "builder/ui_primitive.h"
+#include "xviz/builder/ui_primitive.h"
 
 using namespace xviz;
 

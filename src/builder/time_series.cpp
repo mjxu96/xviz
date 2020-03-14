@@ -4,7 +4,7 @@
  * File Created: Saturday, 4th January 2020 5:18:49 am
  */
 
-#include "builder/time_series.h"
+#include "xviz/builder/time_series.h"
 
 using namespace xviz;
 

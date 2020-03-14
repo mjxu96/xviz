@@ -4,7 +4,7 @@
  * File Created: Saturday, 11th January 2020 7:57:20 am
  */
 
-#include "builder/declarative_ui/plot_builder.h"
+#include "xviz/builder/declarative_ui/plot_builder.h"
 
 using namespace xviz;
 XVIZPlotBuilder::XVIZPlotBuilder(const std::string& title, const std::string& description, const std::string& independent_variable,

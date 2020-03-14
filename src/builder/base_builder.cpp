@@ -4,7 +4,7 @@
  * File Created: Saturday, 7th December 2019 2:44:22 pm
  */
 
-#include "builder/base_builder.h"
+#include "xviz/builder/base_builder.h"
 
 using namespace xviz;
 

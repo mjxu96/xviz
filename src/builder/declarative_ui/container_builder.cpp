@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th January 2020 3:23:56 am
  */
 
-#include "builder/declarative_ui/container_builder.h"
+#include "xviz/builder/declarative_ui/container_builder.h"
 
 using namespace xviz;
 XVIZContainerBuilder::XVIZContainerBuilder(const std::string& name, LayoutType layout)

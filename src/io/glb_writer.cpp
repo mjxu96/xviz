@@ -4,7 +4,7 @@
  * File Created: Monday, 20th January 2020 4:27:46 pm
  */
 
-#include "io/glb_writer.h"
+#include "xviz/io/glb_writer.h"
 
 using namespace xviz;
 using namespace fx::gltf;

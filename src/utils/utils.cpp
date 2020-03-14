@@ -4,7 +4,7 @@
  * File Created: Tuesday, 24th December 2019 8:42:41 pm
  */
 
-#include "utils/utils.h"
+#include "xviz/utils/utils.h"
 
 using Json = nlohmann::json;
 

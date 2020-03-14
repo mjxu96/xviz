@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th January 2020 1:37:33 am
  */
 
-#include "builder/declarative_ui/ui_builder.h"
+#include "xviz/builder/declarative_ui/ui_builder.h"
 
 using namespace xviz;
 

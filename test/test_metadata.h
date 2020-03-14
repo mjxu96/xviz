@@ -7,7 +7,7 @@
 #ifndef XVIZ_TEST_METADATA_H_
 #define XVIZ_TEST_METADATA_H_
 
-#include "builder/metadata.h"
+#include "xviz/builder/metadata.h"
 
 #include "test_utils.h"
 
