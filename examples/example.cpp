@@ -43,7 +43,7 @@ std::unordered_map<std::string, XVIZUIBuilder> GetUIBuilders() {
   std::shared_ptr<XVIZBaseUIBuilder> container_builder = std::make_shared<XVIZContainerBuilder>("metrics", LayoutType::VERTICAL);
   container_builder->Child(metric_builder1);
   container_builder->Child(metric_builder2);
-  container_builder->Child(streams, "123", "123");
+  container_builder->Child<XVIZMetricBuilder>(streams, "123", "123");
   ui_builders["Camera"].Child(std::move(camera_builder));
   ui_builders["Metrics"].Child(container_builder);
   ui_builders["Plot"].Child(plot_builder);

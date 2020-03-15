@@ -8,6 +8,9 @@
 
 Please see [example.cpp](https://github.com/wx9698/xviz/blob/master/examples/example.cpp), [example_xviz_server.cpp](https://github.com/wx9698/xviz/blob/master/examples/example_xviz_server.cpp) and [CMakeLists.txt](https://github.com/wx9698/xviz/blob/master/CMakeLists.txt) for more information.
 
+## Use Case
+1. [CarlaViz](https://github.com/wx9698/carlaviz)
+
 ## Build
 
 ### Build xviz builder example
@@ -39,8 +42,9 @@ make xviz-test -j12
 
 ### Install
 ```bash
-mkdir build && build
+mkdir build && cd build
 cmake ../ -DCMAKE_INSTALL_PREFIX=/path/you/want/to/install/
+make example example-server xviz-test -j12
 make install
 ```
 

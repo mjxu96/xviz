@@ -21,12 +21,19 @@ public:
 
   virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const std::shared_ptr<XVIZBaseUIBuilder>& child);
 
-  // Video child
-  virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const std::vector<std::string>& cameras);
-  // Metric child
-  virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const std::vector<std::string>& streams, const std::string& description, const std::string& title);
-  // Container child
-  virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const std::string& name, LayoutType layout);
+  template<typename UIBuilderType, typename... Args>
+  std::shared_ptr<XVIZBaseUIBuilder> Child(Args&&... args) {
+    auto child = std::make_shared<UIBuilderType>(std::forward<Args>(args)...);
+    children_.push_back(child);
+    return child;
+  }
+
+  // // Video child
+  // virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const std::vector<std::string>& cameras);
+  // // Metric child
+  // virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const std::vector<std::string>& streams, const std::string& description, const std::string& title);
+  // // Container child
+  // virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const std::string& name, LayoutType layout);
 
   // virtual void Child(const std::shared_ptr<XVIZBaseUIBuilder>& child);
   virtual UIPanel GetUI();
