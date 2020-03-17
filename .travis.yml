@@ -8,7 +8,7 @@ before_install:
 
 install: 
   # cmake make tool
-  - sudo apt-get install -y cmake make libgtest-dev clang gcov lcov
+  - sudo apt-get install -y cmake make libgtest-dev clang lcov
 
   # protobuf 3.11.2
   - wget https://github.com/protocolbuffers/protobuf/releases/download/v3.11.2/protobuf-cpp-3.11.2.tar.gz
@@ -36,4 +36,6 @@ after-success:
   # debug code coverage info
   - pwd
   - lcov --list ./build/xviz-test-coverage.info
+
+  # submit code coverage info
   - bash <(curl -s https://codecov.io/bash) -f ./build/xviz-test-coverage.info || echo "Codecov did not collect coverage reports"
