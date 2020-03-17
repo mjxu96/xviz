@@ -56,7 +56,7 @@ int main() {
   circle.add_center(0);
   // auto builder = std::make_shared<XVIZBuilder>(std::make_shared<Metadata>());
   std::string s = "{\"fill_color\": \"#fff\"}"; 
-  std::string s1 = "{\"fill_color\": \"#fff\", \"point_color_mode\": \"DISTANCE_TO_VEHICLE\"}"; 
+  std::string s1 = "{\"fill_color\": \"#fff\"}"; //, \"point_color_mode\": \"DISTANCE_TO_VEHICLE\"}"; 
 
 
   auto metadata_builder = std::make_shared<XVIZMetadataBuilder>();
@@ -69,7 +69,7 @@ int main() {
     .Stream("/camera/images0").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_IMAGE)
     .Stream("/object/text").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_TEXT)
     .Stream("/object/stadium").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_STADIUM)
-    .Stream("/object/ts").Category(Category::StreamMetadata_Category_TIME_SERIES)
+    .Stream("/object/ts").Category(Category::StreamMetadata_Category_TIME_SERIES).Type(xviz::StreamMetadata::STRING)
     .Stream("/object/uptest").Category(Category::StreamMetadata_Category_UI_PRIMITIVE)
     .UI(std::move(GetUIBuilders()));
   metadata_builder->StartTime(1000).EndTime(1010);

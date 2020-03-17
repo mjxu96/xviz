@@ -34,13 +34,15 @@ std::string VectorToString(const std::vector<T>& vector) {
   std::string output = "[";
   std::ostringstream ss;
   if (!vector.empty()) {
-    std::copy(vector.begin(), vector.end() - 1, std::ostream_iterator<T>(ss, ","));
+    std::copy(vector.begin(), vector.end() - 1, std::ostream_iterator<T>(ss, ", "));
     ss << vector.back();
   }
   output += ss.str();
   output += "]";
   return output;
 }
+
+std::string AllEnumOptionNames(const google::protobuf::EnumDescriptor* enum_desc);
 
 template<typename T>
 void DeepCopyPtr(std::shared_ptr<T>& dest_ptr, const std::shared_ptr<T>& source_ptr) {

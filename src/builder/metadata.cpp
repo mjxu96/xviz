@@ -116,12 +116,12 @@ XVIZMetadataBuilder& XVIZMetadataBuilder::Coordinate(CoordinateType coordinate_t
 }
 
 XVIZMetadataBuilder& XVIZMetadataBuilder::Type(Primitive primitive_type) {
-  type_ = (uint32_t)primitive_type;
+  type_ = (int)primitive_type;
   return *this;
 }
 
 XVIZMetadataBuilder& XVIZMetadataBuilder::Type(ScalarType scalar_type) {
-  type_ = (uint32_t)scalar_type;
+  type_ = (int)scalar_type;
   return *this;
 }
 
@@ -135,7 +135,14 @@ XVIZMetadataBuilder& XVIZMetadataBuilder::TransformMatrix(const std::vector<doub
 
 XVIZMetadataBuilder& XVIZMetadataBuilder::StreamStyle(const std::string& style_str) {
   auto stream_style = temp_stream_.mutable_stream_style();
-  stream_style->MergeFrom(*JsonStringToStyleStream(style_str));
+  auto style_stream_ptr = JsonStringToStyleStream(style_str);
+  if (xviz::StreamMetadata::PrimitiveType_IsValid(type_)) {
+    ValidateStyle((xviz::StreamMetadata::PrimitiveType)type_, style_stream_ptr);
+    temp_stream_.mutable_stream_style()->MergeFrom(*style_stream_ptr);
+  } else {
+    LOG_WARNING("Before calling StreamStyle(), you must set the primitive type for this stream %s",
+      stream_id_.c_str());
+  }
   return *this;
 }
 
@@ -156,8 +163,7 @@ XVIZMetadataBuilder& XVIZMetadataBuilder::LogInfo() {
 void XVIZMetadataBuilder::Reset() {
   stream_id_ = "";
   temp_stream_ = StreamMetadata();
-  // TODO is this value correct?
-  type_ = 0u;
+  type_ = -1;
 }
 
 void XVIZMetadataBuilder::Flush() {
@@ -166,11 +172,37 @@ void XVIZMetadataBuilder::Flush() {
     return;
   }  
 
-  auto category_int = (uint32_t)(temp_stream_.category());
-  if (category_int == 1u || category_int == 5u) {
-    temp_stream_.set_primitive_type((Primitive)(type_));
-  } else if (category_int == 2u || category_int == 3u) {
-    temp_stream_.set_scalar_type((ScalarType)type_);
+  auto category = temp_stream_.category();
+  if (category == xviz::StreamMetadata::PRIMITIVE || 
+      category == xviz::StreamMetadata::FUTURE_INSTANCE) {
+    if (type_ == -1) {
+      LOG_WARNING("Did not set type for category: %s in stream: %s, available types are: %s", 
+            xviz::StreamMetadata::Category_Name(category).c_str(), stream_id_.c_str(),
+            xviz::AllEnumOptionNames(xviz::StreamMetadata::PrimitiveType_descriptor()).c_str());
+    } else {
+      if (!xviz::StreamMetadata::PrimitiveType_IsValid(type_)) {
+        LOG_ERROR("Type %s in category %d is invalid.", xviz::StreamMetadata::Category_Name(category).c_str(),
+                  type_);
+        return;
+      } else {
+        temp_stream_.set_primitive_type((Primitive)(type_));
+      }
+    }
+  } else if (category == xviz::StreamMetadata::TIME_SERIES || 
+             category == xviz::StreamMetadata::VARIABLE) {
+    if (type_ == -1) {
+      LOG_WARNING("Did not set type for category: %s in stream: %s, avaiable types are: %s", 
+            xviz::StreamMetadata::Category_Name(category).c_str(), stream_id_.c_str(),
+            xviz::AllEnumOptionNames(xviz::StreamMetadata::ScalarType_descriptor()).c_str());
+    } else {
+      if (!xviz::StreamMetadata::ScalarType_IsValid(type_)) {
+        LOG_ERROR("Type %s in category %d is invalid.", xviz::StreamMetadata::Category_Name(category).c_str(),
+                  type_);
+        return;
+      } else {
+        temp_stream_.set_scalar_type((ScalarType)type_);
+      }
+    }
   }
 
   auto streams = data_->mutable_streams();

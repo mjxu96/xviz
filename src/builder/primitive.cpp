@@ -11,82 +11,7 @@ using Json = nlohmann::json;
 
 // TODO: It is not correct, should be divided into per object
 // and per stream
-std::unordered_map<Primitive, std::unordered_set<std::string>> 
-  XVIZBaseBuilder::primitive_style_map_ = 
-  {
-    {
-      Primitive::StreamMetadata_PrimitiveType_CIRCLE, {
-        "opacity",
-        "stroked",
-        "filled",
-        "stroke_color",
-        "fill_color",
-        "radius",
-        "radius_min_pixels",
-        "radius_max_pixels",
-        "stroke_width",
-        "stroke_width_min_pixels",
-        "stroke_width_max_pixels"
-      }
-    },
-    {
-      Primitive::StreamMetadata_PrimitiveType_IMAGE, {
-      }
-    },
-    {
-      Primitive::StreamMetadata_PrimitiveType_POINT, {
-        "opacity",
-        "fill_color",
-        "radius_pixels",
-        "point_color_mode",
-        "point_color_domain"
-      }
-    },
-    {
-      Primitive::StreamMetadata_PrimitiveType_POLYGON, {
-        "stroke_color",
-        "fill_color",
-        "stroke_width",
-        "stroke_width_min_pixels",
-        "stroke_width_max_pixels",
-        "height",
-        "opacity",
-        "stroked",
-        "filled",
-        "extruded"
-      }
-    },
-    {
-      Primitive::StreamMetadata_PrimitiveType_POLYLINE, {
-        "opacity",
-        "stroke_color",
-        "stroke_width",
-        "stroke_width_min_pixels",
-        "stroke_width_max_pixels"
-      }
-    },
-    {
-      Primitive::StreamMetadata_PrimitiveType_TEXT, {
-        "opacity",
-        "font_family",
-        "font_weight",
-        "text_size",
-        "text_rotation",
-        "text_anchor",
-        "text_baseline",
-        "fill_color"
-      }
-    },
-    {
-      Primitive::StreamMetadata_PrimitiveType_STADIUM, {
-        "opacity",
-        "fill_color",
-        "radius",
-        "radius_min_pixels",
-        "radius_max_pixels"
-      }
-    }
-  };
+
 
 template<typename T>
 void AddVertices(T& vertice_to_add, const std::shared_ptr<std::vector<double>>& vertices) {
@@ -636,26 +561,5 @@ void XVIZPrimitiveBuilder::Reset() {
 }
 
 void XVIZPrimitiveBuilder::ValidatePrimitiveStyleObject() {
-  if (primitive_style_map_.find(*type_) == primitive_style_map_.end()) {
-    LOG_WARNING("Type: %s is not supported currently.", xviz::StreamMetadata::PrimitiveType_Name(*type_).c_str());
-    return;
-  }
-
-  auto desc = style_->GetDescriptor();
-  auto refl = style_->GetReflection();
-  std::vector<std::string> invalid_field_names;
-  for (auto i = 0; i < desc->field_count(); i++) {
-    auto field_ptr = desc->field(i);
-    if (refl->HasField(*style_, field_ptr)) {
-      auto field_name = field_ptr->name();
-      if (primitive_style_map_[*type_].find(field_name) == primitive_style_map_[*type_].end()) {
-        invalid_field_names.push_back(field_name);
-      }
-    }
-  }
-
-  if (!invalid_field_names.empty()) {
-    LOG_WARNING("Primitive type: %s does not have these style options: %s.", xviz::StreamMetadata::PrimitiveType_Name(*type_).c_str(),
-        xviz::VectorToString(invalid_field_names).c_str());
-  }
+  ValidateStyle(*type_, style_);
 }

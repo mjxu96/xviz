@@ -69,9 +69,9 @@ xviz::test::GetTestUIBuilders() {
 xviz::XVIZMetadataBuilder xviz::test::GetTestMetadataBuilder() {
   xviz::XVIZMetadataBuilder metadata_builder;
   std::string s = "{\"fill_color\": \"#fff\"}";
-  std::string s1 =
-      "{\"fill_color\": \"#fff\", \"point_color_mode\": "
-      "\"DISTANCE_TO_VEHICLE\"}";
+  // std::string s1 =
+  //     "{\"fill_color\": \"#fff\", \"point_color_mode\": "
+  //     "\"DISTANCE_TO_VEHICLE\"}";
 
   metadata_builder
       .Stream("/vehicle_pose")
@@ -82,7 +82,7 @@ xviz::XVIZMetadataBuilder xviz::test::GetTestMetadataBuilder() {
         .Coordinate(
           xviz::CoordinateType::
               StreamMetadata_CoordinateType_VEHICLE_RELATIVE)  //.Unit("123").Source("123")
-        .StreamStyle(s1)
+        .StreamStyle(s)
       .Stream("/object/shape2")
         .Category(xviz::Category::StreamMetadata_Category_PRIMITIVE)
         .Type(xviz::Primitive::StreamMetadata_PrimitiveType_POLYGON)
@@ -100,6 +100,7 @@ xviz::XVIZMetadataBuilder xviz::test::GetTestMetadataBuilder() {
         .Type(xviz::Primitive::StreamMetadata_PrimitiveType_STADIUM)
       .Stream("/object/ts")
         .Category(xviz::Category::StreamMetadata_Category_TIME_SERIES)
+        .Type(xviz::ScalarType::StreamMetadata_ScalarType_STRING)
       .Stream("/object/uptest")
         .Category(xviz::Category::StreamMetadata_Category_UI_PRIMITIVE)
       .UI(std::move(GetTestUIBuilders()));
@@ -114,7 +115,7 @@ xviz::XVIZMetadataBuilder xviz::test::GetBuilderTestMetadataBuilderForPrimitive(
     "/copy", "/move", "/pointer"
   };
   uint32_t cnt = 0u;
-  metadata_builder.Stream("/primitive").Category(xviz::StreamMetadata::PRIMITIVE);
+  metadata_builder.Stream("/primitive").Category(xviz::StreamMetadata::PRIMITIVE).Type(xviz::StreamMetadata::POLYGON);
   for (auto primitive_type = xviz::StreamMetadata::PrimitiveType::StreamMetadata_PrimitiveType_CIRCLE;
             primitive_type <= xviz::StreamMetadata::PrimitiveType::StreamMetadata_PrimitiveType_TEXT;
             primitive_type = (xviz::StreamMetadata::PrimitiveType)((int) primitive_type + 1)) {
@@ -139,13 +140,13 @@ nlohmann::json xviz::test::GetTestMetadataExpectedJson() {
       "object/"
       "shape\":{\"category\":\"PRIMITIVE\",\"coordinate\":\"VEHICLE_RELATIVE\","
       "\"primitive_type\":\"POLYGON\",\"stream_style\":{\"fill_color\":\"#"
-      "fff\",\"point_color_mode\":\"DISTANCE_TO_VEHICLE\"}},\"/object/"
+      "fff\"}},\"/object/"
       "shape2\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"POLYGON\"},\"/"
       "object/"
       "stadium\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"STADIUM\"},"
       "\"/object/"
       "text\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"TEXT\"},\"/"
-      "object/ts\":{\"category\":\"TIME_SERIES\"},\"/object/"
+      "object/ts\":{\"category\":\"TIME_SERIES\", \"scalar_type\": \"STRING\"},\"/object/"
       "uptest\":{\"category\":\"UI_PRIMITIVE\"},\"/"
       "vehicle_pose\":{\"category\":\"POSE\"}},\"ui_config\":{\"Camera\":{"
       "\"children\":[{\"cameras\":[\"/camera/"

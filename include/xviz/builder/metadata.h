@@ -8,6 +8,7 @@
 #define XVIZ_METADATA_BUILDER_H_
 
 #include "declarative_ui/ui_builder.h"
+#include "base_builder.h"
 
 #include "xviz/utils/macrologger.h"
 #include "xviz/utils/definitions.h"
@@ -20,14 +21,13 @@
 
 namespace xviz {
 
-class XVIZMetadataBuilder {
+class XVIZMetadataBuilder : public XVIZBaseBuilder {
 public:
   XVIZMetadataBuilder();
   std::shared_ptr<Metadata> GetData();
   XVIZMessage GetMessage();
 
   XVIZMetadataBuilder& Stream(const std::string& stream_id);
-  // XVIZMetadataBuilder& Stream(std::string&& stream_id);
 
   XVIZMetadataBuilder& StartTime(double time);
   XVIZMetadataBuilder& EndTime(double time);
@@ -61,11 +61,13 @@ private:
   void Flush();
   void Reset();
 
+  void Vaildate();
+
   std::shared_ptr<Metadata> data_{nullptr};
   std::shared_ptr<std::unordered_map<std::string, XVIZUIBuilder>> ui_{nullptr};
-  std::string stream_id_{};
+  // std::string stream_id_{};
   StreamMetadata temp_stream_{};
-  uint32_t type_ = -1;
+  int type_ = -1;
   // TODO TMP TYPE
 };
   

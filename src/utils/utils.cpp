@@ -450,3 +450,10 @@ std::shared_ptr<xviz::StyleStreamValue> xviz::JsonStringToStyleStream(const std:
 //   return JsonObjectToStyleStream(Json::parse(std::move(json_str)));
 // }
 
+std::string xviz::AllEnumOptionNames(const google::protobuf::EnumDescriptor* enum_desc) {
+  std::vector<std::string> names;
+  for (int i = 0; i < enum_desc->value_count(); i++) {
+    names.push_back(enum_desc->value(i)->full_name());
+  }
+  return VectorToString(names);
+}
