@@ -130,6 +130,27 @@ xviz::XVIZMetadataBuilder xviz::test::GetBuilderTestMetadataBuilderForPrimitive(
   return metadata_builder;
 }
 
+xviz::XVIZMetadataBuilder xviz::test::GetBuilderTestMetadataBuilderForTimeSeries() {
+  xviz::XVIZMetadataBuilder metadata_builder;
+  metadata_builder.Stream("/vehicle_pose").Category(xviz::StreamMetadata::POSE);
+  for (auto ts_type = xviz::StreamMetadata::ScalarType::StreamMetadata_ScalarType_FLOAT;
+       ts_type <= xviz::StreamMetadata::ScalarType::StreamMetadata_ScalarType_BOOL;
+       ts_type = (xviz::StreamMetadata::ScalarType)((int) ts_type + 1)) {
+    std::string name = "/ts/" + xviz::StreamMetadata::ScalarType_Name(ts_type);
+    metadata_builder.Stream(name).Category(xviz::StreamMetadata::TIME_SERIES)
+      .Type(ts_type);
+  }
+  return metadata_builder;
+}
+
+xviz::XVIZMetadataBuilder xviz::test::GetBuilderTestMetadataBuilderForUIPrimitive() {
+  xviz::XVIZMetadataBuilder metadata_builder;
+  metadata_builder.Stream("/vehicle_pose").Category(xviz::StreamMetadata::POSE);
+  metadata_builder.Stream("/ui/1").Category(xviz::StreamMetadata::UI_PRIMITIVE);
+  metadata_builder.Stream("/ui/2").Category(xviz::StreamMetadata::UI_PRIMITIVE);
+  return metadata_builder;
+}
+
 nlohmann::json xviz::test::GetTestMetadataExpectedJson() {
   std::string expected_str =
       "{\"log_info\":{\"end_time\":1010,\"start_time\":1000},\"streams\":{\"/"
@@ -198,7 +219,7 @@ xviz::XVIZBuilder xviz::test::GetTestUpdateBuilder(
   builder.TimeSeries("/object/ts").Id("123").Timestamp(123).Value("123");
 
   builder.UIPrimitive("/object/uptest")
-      .TreeTable(std::vector<xviz::TreeTableColumn>())
+      // .TreeTable(std::vector<xviz::TreeTableColumn>())
       .Row(1, {"123"});
   return builder;
 }

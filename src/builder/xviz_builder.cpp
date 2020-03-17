@@ -67,12 +67,12 @@ XVIZUIPrimitiveBuilder& XVIZBuilder::UIPrimitive(const std::string& stream_id) {
 XVIZFrame XVIZBuilder::GetData() {
   auto data = std::make_shared<StreamSet>();
   auto poses = pose_builder_->GetData();
-  if (poses->find(primary_pose_stream) == poses->end()) {
+  if (poses == nullptr || poses->find(primary_pose_stream) == poses->end()) {
     LOG_ERROR("every frame requires a %s message", primary_pose_stream.c_str());
   }
-  data->set_timestamp((*poses)[primary_pose_stream].timestamp());
-  auto pose_map = data->mutable_poses();
   if (poses != nullptr) {
+    data->set_timestamp((*poses)[primary_pose_stream].timestamp());
+    auto pose_map = data->mutable_poses();
     ConvertFromStdMapToProtoBufMap<std::string, xviz::Pose>(pose_map, *poses);
   }
 

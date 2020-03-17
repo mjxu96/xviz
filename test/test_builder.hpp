@@ -164,8 +164,70 @@ TEST_F(XVIZBuilderTest, PritimiveEmptyErrorTest) {
 }
 
 TEST_F(XVIZBuilderTest, TimeSeriesTest) {
+  auto metadata_builder = xviz::test::GetBuilderTestMetadataBuilderForTimeSeries();
+  metadata_builder.Stream("/ts/NONE").Category(xviz::StreamMetadata::TIME_SERIES) 
+    .Type(xviz::StreamMetadata::STRING);
+  auto builder = GetInitialBuilderWithMetadata(metadata_builder);
+  std::string tmp = "123";
+  builder.TimeSeries("/ts/STRING")
+    .Id(tmp).Timestamp(123).Value(tmp);
+  builder.TimeSeries("/ts/STRING")
+    .Id(std::move(tmp)).Timestamp(123).Value(std::move(tmp));
+  builder.TimeSeries("/ts/STRING")
+    .Id("123").Timestamp(123).Value("123");
+  builder.TimeSeries("/ts/STRING")
+    .Id("123").Timestamp(123).Value(123);
 
+  builder.TimeSeries("/ts/BOOL")
+    .Id("1234").Timestamp(123).Value(true);
+
+  builder.TimeSeries("/ts/INT32")
+    .Id("1235").Timestamp(1234).Value(1);
+
+  builder.TimeSeries("/ts/FLOAT")
+    .Id("1236").Timestamp(123).Value(1.1);
+
+  builder.TimeSeries("/ts/NONE")
+    .Id("1236").Timestamp(123);
+
+  builder.TimeSeries("/ts/NONE")
+    .Id("1236").Timestamp(123);
+
+  auto message = builder.GetMessage();
+  auto expected_json = nlohmann::json::parse("{\"update_type\":\"SNAPSHOT\",\"updates\":[{\"timestamp\":1000,\"poses\":{\"/vehicle_pose\":{\"timestamp\":1000,\"map_origin\":{},\"position\":[0,0,0],\"orientation\":[0,0,0]}},\"time_series\":[{\"timestamp\":1234,\"object_id\":\"1235\",\"streams\":[\"/ts/INT32\"],\"values\":{\"int32s\":[1]}},{\"timestamp\":123,\"object_id\":\"1236\",\"streams\":[\"/ts/FLOAT\"],\"values\":{\"doubles\":[1.1]}},{\"timestamp\":123,\"object_id\":\"1234\",\"streams\":[\"/ts/BOOL\"],\"values\":{\"bools\":[true]}},{\"timestamp\":123,\"object_id\":\"123\",\"streams\":[\"/ts/STRING\"],\"values\":{\"int32s\":[123]}},{\"timestamp\":123,\"object_id\":\"123\",\"streams\":[\"/ts/STRING\",\"/ts/STRING\",\"/ts/STRING\"],\"values\":{\"strings\":[\"123\",\"\",\"123\"]}}]}]}");
+  auto builder_json = message.ToObject();
+  ASSERT_TRUE(xviz::test::IsSameJson(expected_json, builder_json));
 }
 
+TEST_F(XVIZBuilderTest, UIPrimitiveTest) {
+  auto metadata_builder = xviz::test::GetBuilderTestMetadataBuilderForUIPrimitive();
+  auto builder = GetInitialBuilderWithMetadata(metadata_builder);
 
+  auto& builder_column = builder.UIPrimitive("/ui/1")
+    .Column("title", xviz::TreeTableColumn::ColumnType::TreeTableColumn_ColumnType_INT32, "m/s");
+  std::vector<std::string>  values = {"123"};
+  builder_column.Row(0)
+      .Children(1, {"123"})
+      .Children(2, values);
+  builder_column.Column("title2", xviz::TreeTableColumn::ColumnType::TreeTableColumn_ColumnType_BOOLEAN)
+      .Row(3, {"false"});
+
+  builder.UIPrimitive("/ui/2")
+    .Column("test", xviz::TreeTableColumn::BOOLEAN);
+
+  std::cerr << builder.GetMessage().ToObject() << std::endl;
+}
+
+TEST_F(XVIZBuilderTest, UIPrimitiveErrorTest) {
+  auto metadata_builder = xviz::test::GetBuilderTestMetadataBuilderForUIPrimitive();
+  auto builder = GetInitialBuilderWithMetadata(metadata_builder);
+  builder.UIPrimitive("/ui/1");//.Row(0);
+  builder.UIPrimitive("/ui/2");//.Row(0);
+  std::cerr << builder.GetMessage().ToObject() << std::endl;
+}
+
+TEST_F(XVIZBuilderTest, XVIZBuilderNoPoseTest) {
+  xviz::XVIZBuilder builder(nullptr);
+  std::cerr << builder.GetMessage().ToObject() << std::endl;
+}
 #endif

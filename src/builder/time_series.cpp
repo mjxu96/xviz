@@ -87,17 +87,18 @@ std::shared_ptr<std::vector<TimeSeriesState>> XVIZTimeSeriesBuilder::GetData() {
 
   auto ts_state = std::make_shared<std::vector<TimeSeriesState>>();
 
-  if (!IsDataPending()) {
-    Reset();
-    return ts_state;
-  }
+  // if (IsDataPending()) {
+  //   AddTimestampEntry();
+  //   Reset();
+  //   return ts_state;
+  // }
 
   for (const auto& [timestamp, ids] : *data_) {
     for (const auto& [id, fields] : ids) {
       for (const auto& [field_name, entry] : fields) {
         TimeSeriesState ts;
-        ts.set_object_id(*id_);
-        ts.set_timestamp(*timestamp_);
+        ts.set_object_id(id);
+        ts.set_timestamp(timestamp);
         for (const auto& stream : std::get<0>(entry)) {
           auto new_stream_ptr = ts.add_streams();
           // TODO is it correct?
@@ -107,8 +108,8 @@ std::shared_ptr<std::vector<TimeSeriesState>> XVIZTimeSeriesBuilder::GetData() {
         auto value_ptr = ts.mutable_values();
         for (auto& [fn, values] : std::get<1>(entry)) {
           for (auto& value : values) {
-            // auto vpos = value_->index();
-            switch (vpos_) {
+            auto vpos = value.index();
+            switch (vpos) {
               case 0u:
                 value_ptr->add_strings(std::get<0u>(value));
                 break;
@@ -141,9 +142,9 @@ void XVIZTimeSeriesBuilder::Validate() {
 }
 
 void XVIZTimeSeriesBuilder::AddTimestampEntry() {
-  if (!IsDataPending()) {
-    return;
-  }
+  // if (!IsDataPending()) {
+  //   return;
+  // }
   std::string field_name;
 
   vpos_ = value_->index();

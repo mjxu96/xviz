@@ -67,7 +67,7 @@ void XVIZUIPrimitiveBuilder::DeepCopyFrom(const XVIZUIPrimitiveBuilder& other) {
   XVIZBaseBuilder::DeepCopyFrom(other);
   DeepCopyPtr(primitives_, other.primitives_);
   DeepCopyPtr(type_, other.type_);
-  DeepCopyPtr(columns_, other.columns_);
+  // DeepCopyPtr(columns_, other.columns_);
   DeepCopyPtr(column_, other.column_);
   DeepCopyPtr(row_, other.row_);
 }
@@ -81,23 +81,23 @@ XVIZUIPrimitiveBuilder& XVIZUIPrimitiveBuilder::Stream(const std::string& stream
   return *this;
 }
 
-XVIZUIPrimitiveBuilder& XVIZUIPrimitiveBuilder::TreeTable(const std::vector<TreeTableColumn>& tree_table_columns) {
-  if (type_ != nullptr) {
-    Flush();
-  }
-  columns_ = std::make_shared<std::vector<TreeTableColumn>>(tree_table_columns);
-  type_ = std::make_shared<UIPrimitiveType>(UIPrimitiveType::StreamMetadata_UIPrimitiveType_TREETABLE);
-  return *this;
-}
+// XVIZUIPrimitiveBuilder& XVIZUIPrimitiveBuilder::TreeTable(const std::vector<TreeTableColumn>& tree_table_columns) {
+//   if (type_ != nullptr) {
+//     Flush();
+//   }
+//   columns_ = std::make_shared<std::vector<TreeTableColumn>>(tree_table_columns);
+//   type_ = std::make_shared<UIPrimitiveType>(UIPrimitiveType::StreamMetadata_UIPrimitiveType_TREETABLE);
+//   return *this;
+// }
 
-XVIZUIPrimitiveBuilder& XVIZUIPrimitiveBuilder::TreeTable(std::vector<TreeTableColumn>&& tree_table_columns) {
-  if (type_ != nullptr) {
-    Flush();
-  }
-  columns_ = std::make_shared<std::vector<TreeTableColumn>>(std::move(tree_table_columns));
-  type_ = std::make_shared<UIPrimitiveType>(UIPrimitiveType::StreamMetadata_UIPrimitiveType_TREETABLE);
-  return *this;
-}
+// XVIZUIPrimitiveBuilder& XVIZUIPrimitiveBuilder::TreeTable(std::vector<TreeTableColumn>&& tree_table_columns) {
+//   if (type_ != nullptr) {
+//     Flush();
+//   }
+//   columns_ = std::make_shared<std::vector<TreeTableColumn>>(std::move(tree_table_columns));
+//   type_ = std::make_shared<UIPrimitiveType>(UIPrimitiveType::StreamMetadata_UIPrimitiveType_TREETABLE);
+//   return *this;
+// }
 
 XVIZUIPrimitiveBuilder& XVIZUIPrimitiveBuilder::Column(const std::string& display_text, xviz::TreeTableColumn::ColumnType type_id, std::optional<std::string> unit) {
   if (type_ != nullptr) {
@@ -151,6 +151,7 @@ void XVIZUIPrimitiveBuilder::Flush() {
 void XVIZUIPrimitiveBuilder::FlushPrimitives() {
   if (type_ == nullptr) {
     LOG_ERROR("Please at least indicate a type for ui primitive");
+    return;
   }
   switch (*type_) {
     case UIPrimitiveType::StreamMetadata_UIPrimitiveType_TREETABLE: {
@@ -158,19 +159,19 @@ void XVIZUIPrimitiveBuilder::FlushPrimitives() {
         (*primitives_)[stream_id_] = UIPrimitiveState();
       }
 
-      if (columns_ == nullptr && column_ == nullptr && row_ == nullptr) {
-        LOG_ERROR("Plase first call TreeTable() or Column() or Row()");
+      if (column_ == nullptr && row_ == nullptr) {
+        LOG_ERROR("Plase first call Column() or Row()");
         Reset();
         return;
       }
 
       auto tree_table_ptr = (*primitives_)[stream_id_].mutable_treetable();
-      if (columns_ != nullptr) {
-        for (auto& column : *columns_) {
-          auto new_column_ptr = tree_table_ptr->add_columns();
-          *new_column_ptr = std::move(column);
-        }
-      }
+      // if (columns_ != nullptr) {
+      //   for (auto& column : *columns_) {
+      //     auto new_column_ptr = tree_table_ptr->add_columns();
+      //     *new_column_ptr = std::move(column);
+      //   }
+      // }
       if (column_ != nullptr) {
         auto new_column_ptr = tree_table_ptr->add_columns();
         *new_column_ptr = std::move(*column_);
@@ -196,6 +197,6 @@ void XVIZUIPrimitiveBuilder::FlushPrimitives() {
 void XVIZUIPrimitiveBuilder::Reset() {
   type_ = nullptr;
   column_ = nullptr;
-  columns_ = nullptr;
+  // columns_ = nullptr;
   row_ = nullptr;
 }
