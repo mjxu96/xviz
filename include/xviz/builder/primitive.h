@@ -69,9 +69,9 @@ public:
   XVIZPrimitiveBuilder& Stadium(const std::vector<double>& start, const std::vector<double>& end, double radius);
 
   XVIZPrimitiveBuilder& Style(const nlohmann::json& style_json);
-  XVIZPrimitiveBuilder& Style(nlohmann::json&& style_json);
+  // XVIZPrimitiveBuilder& Style(nlohmann::json&& style_json);
   XVIZPrimitiveBuilder& Style(const std::string& style_json_str);
-  XVIZPrimitiveBuilder& Style(std::string&& style_json_str);
+  // XVIZPrimitiveBuilder& Style(std::string&& style_json_str);
   XVIZPrimitiveBuilder& Style(const std::shared_ptr<StyleObjectValue>& style_object);
 private:
   void Reset();
@@ -80,6 +80,7 @@ private:
   std::pair<bool, PrimitiveBase> FlushPrimitiveBase();
   void Validate();
   void ValidatePrerequisite();
+  void ValidatePrimitiveStyleObject();
 
   // void SetVertices(const std::shared_ptr<std::vector<double>>& vertices_ptr);
   

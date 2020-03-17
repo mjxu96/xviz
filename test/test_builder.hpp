@@ -114,16 +114,14 @@ TEST_F(XVIZBuilderTest, PritimiveStyleTest) {
   auto metadata_builder = xviz::test::GetBuilderTestMetadataBuilderForPrimitive();
   auto builder = GetInitialBuilderWithMetadata(metadata_builder);
   auto& primitive_builder = builder.Primitive("/primitive").Points({1, 2, 3});
-  std::string style_str = "{\"fill_color\": \"#ffa\", \"point_color_mode\": "
-      "\"DISTANCE_TO_VEHICLE\"}";
+  std::string style_str = "{\"fill_color\": \"#ffa\", \"text_anchor\": \"start\"}";
   nlohmann::json style_json = nlohmann::json::parse(style_str);
   primitive_builder.Style(style_str);
-  primitive_builder.Style(std::move(style_str));
   primitive_builder.Style(style_json);
-  primitive_builder.Style(std::move(style_json));
 
   auto builder_json = builder.GetMessage().ToObject();
-  std::cerr << builder_json << std::endl;
+  auto expected_json = nlohmann::json::parse("{\"update_type\":\"SNAPSHOT\",\"updates\":[{\"poses\":{\"/vehicle_pose\":{\"map_origin\":{},\"orientation\":[0,0,0],\"position\":[0,0,0],\"timestamp\":1000}},\"primitives\":{\"/primitive\":{\"points\":[{\"base\":{\"style\":{\"fill_color\":\"#ffa\",\"text_anchor\":\"START\"}},\"points\":[1,2,3]}]}},\"timestamp\":1000}]}");
+  ASSERT_TRUE(xviz::test::IsSameJson(expected_json, builder_json));
 }
 
 TEST_F(XVIZBuilderTest, PritimiveEmptyErrorTest) {
