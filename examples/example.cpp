@@ -56,7 +56,7 @@ int main() {
   circle.add_center(0);
   // auto builder = std::make_shared<XVIZBuilder>(std::make_shared<Metadata>());
   std::string s = "{\"fill_color\": \"#fff\"}"; 
-  std::string s1 = "{\"fill_color\": \"#fff\", \"point_color_mode\": \"distance_to_vehicle\"}"; 
+  std::string s1 = "{\"fill_color\": \"#fff\", \"point_color_mode\": \"DISTANCE_TO_VEHICLE\"}"; 
 
 
   auto metadata_builder = std::make_shared<XVIZMetadataBuilder>();

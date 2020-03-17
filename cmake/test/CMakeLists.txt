@@ -35,7 +35,7 @@ if (BUILD_XVIZ_TESTS_GCOVR)
       EXECUTABLE xviz-test
       DEPENDENCIES xviz
       BASE_DIRECTORY "${XVIZ_ROOT_DIR}"
-      EXCLUDE "/usr/*" "7/*" "test/*" "include/xviz/proto/*" "include/xviz/third_party/*" "include/xviz/utils/base64.h" "include/xviz/utils/gltf.h" "include/xviz/utils/json.hpp" "include/xviz/utils/macrologger.h" "src/proto/*" "src/utils/base64.cpp")
+      EXCLUDE "/usr/*" "7/*" "test/*" "examples/*" "include/xviz/proto/*" "include/xviz/third_party/*" "include/xviz/utils/base64.h" "include/xviz/utils/gltf.h" "include/xviz/utils/json.hpp" "include/xviz/utils/macrologger.h" "src/proto/*" "src/utils/base64.cpp")
 endif (BUILD_XVIZ_TESTS_GCOVR)
 
 # cmake targets for traivs
@@ -49,5 +49,5 @@ if (BUILD_XVIZ_TESTS_LCOV)
       EXECUTABLE xviz-test
       DEPENDENCIES xviz
       BASE_DIRECTORY "${XVIZ_ROOT_DIR}"
-      EXCLUDE "/usr/*" "7/*" "test/*" "include/xviz/proto/*" "include/xviz/third_party/*" "include/xviz/utils/base64.h" "include/xviz/utils/gltf.h" "include/xviz/utils/json.hpp" "include/xviz/utils/macrologger.h" "src/proto/*" "src/utils/base64.cpp")
+      EXCLUDE "/usr/*" "7/*" "test/*" "examples/*" "include/xviz/proto/*" "include/xviz/third_party/*" "include/xviz/utils/base64.h" "include/xviz/utils/gltf.h" "include/xviz/utils/json.hpp" "include/xviz/utils/macrologger.h" "src/proto/*" "src/utils/base64.cpp")
 endif (BUILD_XVIZ_TESTS_LCOV)

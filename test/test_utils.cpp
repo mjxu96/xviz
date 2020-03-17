@@ -70,8 +70,8 @@ xviz::XVIZMetadataBuilder xviz::test::GetTestMetadataBuilder() {
   xviz::XVIZMetadataBuilder metadata_builder;
   std::string s = "{\"fill_color\": \"#fff\"}";
   std::string s1 =
-      "{\"fill_color\": \"#fff\", \"point_cloud_mode\": "
-      "\"distance_to_vehicle\"}";
+      "{\"fill_color\": \"#fff\", \"point_color_mode\": "
+      "\"DISTANCE_TO_VEHICLE\"}";
 
   metadata_builder
       .Stream("/vehicle_pose")
@@ -107,6 +107,28 @@ xviz::XVIZMetadataBuilder xviz::test::GetTestMetadataBuilder() {
   return metadata_builder;
 }
 
+xviz::XVIZMetadataBuilder xviz::test::GetBuilderTestMetadataBuilderForPrimitive() {
+  xviz::XVIZMetadataBuilder metadata_builder;
+  metadata_builder.Stream("/vehicle_pose").Category(xviz::StreamMetadata::POSE);
+  std::vector<std::string> suffix = {
+    "/copy", "/move", "/pointer"
+  };
+  uint32_t cnt = 0u;
+  metadata_builder.Stream("/primitive").Category(xviz::StreamMetadata::PRIMITIVE);
+  for (auto primitive_type = xviz::StreamMetadata::PrimitiveType::StreamMetadata_PrimitiveType_CIRCLE;
+            primitive_type <= xviz::StreamMetadata::PrimitiveType::StreamMetadata_PrimitiveType_TEXT;
+            primitive_type = (xviz::StreamMetadata::PrimitiveType)((int) primitive_type + 1)) {
+    for (auto cnt = 0u; cnt < 3u; cnt++) {
+      std::string name = "/primitive/" + xviz::StreamMetadata::PrimitiveType_Name(primitive_type);
+      name += suffix[cnt];
+      metadata_builder.Stream(name)
+                        .Category(xviz::StreamMetadata::PRIMITIVE)
+                        .Type(primitive_type);
+    }
+  }
+  return metadata_builder;
+}
+
 nlohmann::json xviz::test::GetTestMetadataExpectedJson() {
   std::string expected_str =
       "{\"log_info\":{\"end_time\":1010,\"start_time\":1000},\"streams\":{\"/"
@@ -117,7 +139,7 @@ nlohmann::json xviz::test::GetTestMetadataExpectedJson() {
       "object/"
       "shape\":{\"category\":\"PRIMITIVE\",\"coordinate\":\"VEHICLE_RELATIVE\","
       "\"primitive_type\":\"POLYGON\",\"stream_style\":{\"fill_color\":\"#"
-      "fff\",\"point_cloud_mode\":\"distance_to_vehicle\"}},\"/object/"
+      "fff\",\"point_color_mode\":\"DISTANCE_TO_VEHICLE\"}},\"/object/"
       "shape2\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"POLYGON\"},\"/"
       "object/"
       "stadium\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"STADIUM\"},"
@@ -150,8 +172,8 @@ xviz::XVIZBuilder xviz::test::GetTestUpdateBuilder(
     const std::shared_ptr<xviz::Metadata>& metadata) {
   std::string s = "{\"fill_color\": \"#fff\"}";
   std::string s1 =
-      "{\"fill_color\": \"#fff\", \"point_cloud_mode\": "
-      "\"distance_to_vehicle\"}";
+      "{\"fill_color\": \"#fff\", \"point_color_mode\": "
+      "\"DISTANCE_TO_VEHICLE\"}";
   xviz::XVIZBuilder builder(metadata);
   builder.Pose("/vehicle_pose")
       .Timestamp(1000)

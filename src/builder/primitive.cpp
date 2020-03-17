@@ -17,8 +17,6 @@ void AddVertices(T& vertice_to_add, const std::shared_ptr<std::vector<double>>& 
   }
   for (const auto& v : *vertices) {
     vertice_to_add.add_vertices(v);
-    // vertice_to_add.add_vertices(point.y);
-    // vertice_to_add.add_vertices(point.z);
   }
 }
 
@@ -71,7 +69,7 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Polygon(const std::shared_ptr<std::v
   if (type_ != nullptr) {
     Flush();
   }
-  vertices_ = std::shared_ptr<std::vector<double>>(vertices_ptr);
+  vertices_ = vertices_ptr;
   type_ = std::make_shared<Primitive>();
   *type_ = Primitive::StreamMetadata_PrimitiveType_POLYGON;
   return *this;
@@ -92,7 +90,7 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Polyline(const std::shared_ptr<std::
   if (type_ != nullptr) {
     Flush();
   }
-  vertices_ = std::shared_ptr<std::vector<double>>(vertices_ptr);
+  vertices_ = vertices_ptr;
   type_ = std::make_shared<Primitive>();
   *type_ = Primitive::StreamMetadata_PrimitiveType_POLYLINE;
   return *this;
@@ -113,7 +111,7 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Points(const std::shared_ptr<std::ve
   if (type_ != nullptr) {
     Flush();
   }
-  vertices_ = std::shared_ptr<std::vector<double>>(vertices_ptr);
+  vertices_ = vertices_ptr;
   type_ = std::make_shared<Primitive>();
   *type_ = Primitive::StreamMetadata_PrimitiveType_POINT;
   return *this;
@@ -147,8 +145,8 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Position(std::vector<double>&& verti
 }
 
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Position(const std::shared_ptr<std::vector<double>>& vertices_ptr) {
-  if (vertices_ptr->size() != 3u) {
-    LOG_ERROR("A position must be of the form [x, y, z]");
+  if (vertices_ptr == nullptr || vertices_ptr->size() != 3u) {
+    LOG_ERROR("A position should not be null and must be of the form [x, y, z]");
     return *this;
   }
   vertices_ = vertices_ptr;
@@ -157,20 +155,20 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Position(const std::shared_ptr<std::
 
 // Circle
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Circle(const std::vector<double>& vertices, double radius) {
-  return Circle(std::make_shared<std::vector<double>>(vertices), std::make_shared<double>(radius));
+  return Circle(std::make_shared<std::vector<double>>(vertices), radius);
 }
 
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Circle(std::vector<double>&& vertices, double radius) {
-  return Circle(std::make_shared<std::vector<double>>(std::move(vertices)), std::make_shared<double>(radius));
+  return Circle(std::make_shared<std::vector<double>>(std::move(vertices)), radius);
 }
 
-XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Circle(const std::shared_ptr<std::vector<double>>& vertices_ptr, const std::shared_ptr<double>& radius) {
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Circle(const std::shared_ptr<std::vector<double>>& vertices_ptr, double radius) {
   if (type_ != nullptr) {
     Flush();
   }
 
   Position(vertices_ptr);
-  radius_ = radius;
+  radius_ = std::make_shared<double>(radius);
   type_ = std::make_shared<Primitive>();
   *type_ = Primitive::StreamMetadata_PrimitiveType_CIRCLE;
   return *this;
@@ -484,6 +482,7 @@ void XVIZPrimitiveBuilder::FlushPrimitives() {
         break;
       }
     
+    // STADIUM,
     case xviz::StreamMetadata::STADIUM:
      {
        auto stadium_ptr = stream_ptr->add_stadiums();
@@ -502,10 +501,9 @@ void XVIZPrimitiveBuilder::FlushPrimitives() {
        break;
      }
 
-    // STADIUM,
 
     default:
-      LOG_ERROR("No this type exists %d", *type_);
+      LOG_ERROR("This type is not supported currently %d.", *type_);
       return;
   }
 

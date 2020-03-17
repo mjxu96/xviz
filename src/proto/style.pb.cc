@@ -91,7 +91,7 @@ static void InitDefaultsscc_info_StyleStreamValue_style_2eproto() {
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_StyleStreamValue_style_2eproto}, {}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_style_2eproto[4];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_style_2eproto[2];
+static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_style_2eproto[3];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_style_2eproto = nullptr;
 
 const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_style_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -141,7 +141,8 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_style_2eproto::offsets[] PROTO
   PROTOBUF_FIELD_OFFSET(::xviz::StyleStreamValue, radius_pixels_),
   PROTOBUF_FIELD_OFFSET(::xviz::StyleStreamValue, font_weight_),
   PROTOBUF_FIELD_OFFSET(::xviz::StyleStreamValue, font_family_),
-  PROTOBUF_FIELD_OFFSET(::xviz::StyleStreamValue, point_cloud_mode_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StyleStreamValue, point_color_mode_),
+  PROTOBUF_FIELD_OFFSET(::xviz::StyleStreamValue, point_color_domain_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::xviz::Color, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -153,7 +154,7 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 0, -1, sizeof(::xviz::StyleClass)},
   { 7, -1, sizeof(::xviz::StyleObjectValue)},
   { 21, -1, sizeof(::xviz::StyleStreamValue)},
-  { 47, -1, sizeof(::xviz::Color)},
+  { 48, -1, sizeof(::xviz::Color)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -173,7 +174,7 @@ const char descriptor_table_protodef_style_2eproto[] PROTOBUF_SECTION_VARIABLE(p
   "\n\rtext_rotation\030\006 \001(\002\022%\n\013text_anchor\030\007 \001"
   "(\0162\020.xviz.TextAnchor\0222\n\rtext_baseline\030\010 "
   "\001(\0162\033.xviz.TextAlignmentBaseline\022\016\n\006heig"
-  "ht\030\t \001(\002:\026\302\273\032\022style/object_value\"\246\004\n\020Sty"
+  "ht\030\t \001(\002:\026\302\273\032\022style/object_value\"\330\004\n\020Sty"
   "leStreamValue\022\022\n\nfill_color\030\001 \001(\t\022\024\n\014str"
   "oke_color\030\002 \001(\t\022\024\n\014stroke_width\030\003 \001(\002\022\016\n"
   "\006radius\030\004 \001(\002\022\021\n\ttext_size\030\005 \001(\002\022\025\n\rtext"
@@ -186,14 +187,18 @@ const char descriptor_table_protodef_style_2eproto[] PROTOBUF_SECTION_VARIABLE(p
   "(\r\022\017\n\007opacity\030\016 \001(\002\022\017\n\007stroked\030\017 \001(\010\022\016\n\006"
   "filled\030\020 \001(\010\022\020\n\010extruded\030\021 \001(\010\022\025\n\rradius"
   "_pixels\030\022 \001(\r\022\023\n\013font_weight\030\023 \001(\r\022\023\n\013fo"
-  "nt_family\030\024 \001(\t\022\030\n\020point_cloud_mode\030\025 \001("
-  "\t:\026\302\273\032\022style/stream_value\"\027\n\005Color\022\016\n\006va"
-  "lues\030\001 \001(\014*E\n\nTextAnchor\022\027\n\023TEXT_ANCHOR_"
-  "INVALID\020\000\022\t\n\005START\020\001\022\n\n\006MIDDLE\020\002\022\007\n\003END\020"
-  "\003*]\n\025TextAlignmentBaseline\022#\n\037TEXT_ALIGN"
-  "MENT_BASELINE_INVALID\020\000\022\007\n\003TOP\020\001\022\n\n\006CENT"
-  "ER\020\002\022\n\n\006BOTTOM\020\003B2\n\013com.xviz.v2B\nStylePr"
-  "otoP\001Z\004v2pb\242\002\004XVIZ\252\002\007xviz.V2b\006proto3"
+  "nt_family\030\024 \001(\t\022.\n\020point_color_mode\030\025 \001("
+  "\0162\024.xviz.PointColorMode\022\032\n\022point_color_d"
+  "omain\030\026 \003(\002:\026\302\273\032\022style/stream_value\"\027\n\005C"
+  "olor\022\016\n\006values\030\001 \001(\014*E\n\nTextAnchor\022\027\n\023TE"
+  "XT_ANCHOR_INVALID\020\000\022\t\n\005START\020\001\022\n\n\006MIDDLE"
+  "\020\002\022\007\n\003END\020\003*]\n\025TextAlignmentBaseline\022#\n\037"
+  "TEXT_ALIGNMENT_BASELINE_INVALID\020\000\022\007\n\003TOP"
+  "\020\001\022\n\n\006CENTER\020\002\022\n\n\006BOTTOM\020\003*V\n\016PointColor"
+  "Mode\022\034\n\030POINT_COLOR_MODE_INVALID\020\000\022\r\n\tEL"
+  "EVATION\020\001\022\027\n\023DISTANCE_TO_VEHICLE\020\002B2\n\013co"
+  "m.xviz.v2B\nStyleProtoP\001Z\004v2pb\242\002\004XVIZ\252\002\007x"
+  "viz.V2b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_style_2eproto_deps[1] = {
   &::descriptor_table_options_2eproto,
@@ -207,7 +212,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_sty
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_style_2eproto_once;
 static bool descriptor_table_style_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_style_2eproto = {
-  &descriptor_table_style_2eproto_initialized, descriptor_table_protodef_style_2eproto, "style.proto", 1196,
+  &descriptor_table_style_2eproto_initialized, descriptor_table_protodef_style_2eproto, "style.proto", 1334,
   &descriptor_table_style_2eproto_once, descriptor_table_style_2eproto_sccs, descriptor_table_style_2eproto_deps, 4, 1,
   schemas, file_default_instances, TableStruct_style_2eproto::offsets,
   file_level_metadata_style_2eproto, 4, file_level_enum_descriptors_style_2eproto, file_level_service_descriptors_style_2eproto,
@@ -242,6 +247,21 @@ bool TextAlignmentBaseline_IsValid(int value) {
     case 1:
     case 2:
     case 3:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* PointColorMode_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_style_2eproto);
+  return file_level_enum_descriptors_style_2eproto[2];
+}
+bool PointColorMode_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
       return true;
     default:
       return false;
@@ -914,7 +934,8 @@ StyleStreamValue::StyleStreamValue()
 }
 StyleStreamValue::StyleStreamValue(const StyleStreamValue& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _internal_metadata_(nullptr) {
+      _internal_metadata_(nullptr),
+      point_color_domain_(from.point_color_domain_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   fill_color_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_fill_color().empty()) {
@@ -928,13 +949,9 @@ StyleStreamValue::StyleStreamValue(const StyleStreamValue& from)
   if (!from._internal_font_family().empty()) {
     font_family_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.font_family_);
   }
-  point_cloud_mode_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_point_cloud_mode().empty()) {
-    point_cloud_mode_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.point_cloud_mode_);
-  }
   ::memcpy(&stroke_width_, &from.stroke_width_,
-    static_cast<size_t>(reinterpret_cast<char*>(&font_weight_) -
-    reinterpret_cast<char*>(&stroke_width_)) + sizeof(font_weight_));
+    static_cast<size_t>(reinterpret_cast<char*>(&point_color_mode_) -
+    reinterpret_cast<char*>(&stroke_width_)) + sizeof(point_color_mode_));
   // @@protoc_insertion_point(copy_constructor:xviz.StyleStreamValue)
 }
 
@@ -943,10 +960,9 @@ void StyleStreamValue::SharedCtor() {
   fill_color_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   stroke_color_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   font_family_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  point_cloud_mode_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&stroke_width_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&font_weight_) -
-      reinterpret_cast<char*>(&stroke_width_)) + sizeof(font_weight_));
+      reinterpret_cast<char*>(&point_color_mode_) -
+      reinterpret_cast<char*>(&stroke_width_)) + sizeof(point_color_mode_));
 }
 
 StyleStreamValue::~StyleStreamValue() {
@@ -958,7 +974,6 @@ void StyleStreamValue::SharedDtor() {
   fill_color_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   stroke_color_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   font_family_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  point_cloud_mode_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void StyleStreamValue::SetCachedSize(int size) const {
@@ -976,13 +991,13 @@ void StyleStreamValue::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  point_color_domain_.Clear();
   fill_color_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   stroke_color_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   font_family_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  point_cloud_mode_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&stroke_width_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&font_weight_) -
-      reinterpret_cast<char*>(&stroke_width_)) + sizeof(font_weight_));
+      reinterpret_cast<char*>(&point_color_mode_) -
+      reinterpret_cast<char*>(&stroke_width_)) + sizeof(point_color_mode_));
   _internal_metadata_.Clear();
 }
 
@@ -1141,13 +1156,22 @@ const char* StyleStreamValue::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string point_cloud_mode = 21;
+      // .xviz.PointColorMode point_color_mode = 21;
       case 21:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 170)) {
-          auto str = _internal_mutable_point_cloud_mode();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "xviz.StyleStreamValue.point_cloud_mode"));
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 168)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
+          _internal_set_point_color_mode(static_cast<::xviz::PointColorMode>(val));
+        } else goto handle_unusual;
+        continue;
+      // repeated float point_color_domain = 22;
+      case 22:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 178)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedFloatParser(_internal_mutable_point_color_domain(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 181) {
+          _internal_add_point_color_domain(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
+          ptr += sizeof(float);
         } else goto handle_unusual;
         continue;
       default: {
@@ -1310,14 +1334,16 @@ failure:
         20, this->_internal_font_family(), target);
   }
 
-  // string point_cloud_mode = 21;
-  if (this->point_cloud_mode().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_point_cloud_mode().data(), static_cast<int>(this->_internal_point_cloud_mode().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "xviz.StyleStreamValue.point_cloud_mode");
-    target = stream->WriteStringMaybeAliased(
-        21, this->_internal_point_cloud_mode(), target);
+  // .xviz.PointColorMode point_color_mode = 21;
+  if (this->point_color_mode() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      21, this->_internal_point_color_mode(), target);
+  }
+
+  // repeated float point_color_domain = 22;
+  if (this->_internal_point_color_domain_size() > 0) {
+    target = stream->WriteFixedPacked(22, _internal_point_color_domain(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1335,6 +1361,21 @@ size_t StyleStreamValue::ByteSizeLong() const {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // repeated float point_color_domain = 22;
+  {
+    unsigned int count = static_cast<unsigned int>(this->_internal_point_color_domain_size());
+    size_t data_size = 4UL * count;
+    if (data_size > 0) {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
+    }
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
+    _point_color_domain_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
+    total_size += data_size;
+  }
 
   // string fill_color = 1;
   if (this->fill_color().size() > 0) {
@@ -1355,13 +1396,6 @@ size_t StyleStreamValue::ByteSizeLong() const {
     total_size += 2 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_font_family());
-  }
-
-  // string point_cloud_mode = 21;
-  if (this->point_cloud_mode().size() > 0) {
-    total_size += 2 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_point_cloud_mode());
   }
 
   // float stroke_width = 3;
@@ -1463,6 +1497,12 @@ size_t StyleStreamValue::ByteSizeLong() const {
         this->_internal_font_weight());
   }
 
+  // .xviz.PointColorMode point_color_mode = 21;
+  if (this->point_color_mode() != 0) {
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_point_color_mode());
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
         _internal_metadata_, total_size, &_cached_size_);
@@ -1494,6 +1534,7 @@ void StyleStreamValue::MergeFrom(const StyleStreamValue& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  point_color_domain_.MergeFrom(from.point_color_domain_);
   if (from.fill_color().size() > 0) {
 
     fill_color_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.fill_color_);
@@ -1505,10 +1546,6 @@ void StyleStreamValue::MergeFrom(const StyleStreamValue& from) {
   if (from.font_family().size() > 0) {
 
     font_family_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.font_family_);
-  }
-  if (from.point_cloud_mode().size() > 0) {
-
-    point_cloud_mode_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.point_cloud_mode_);
   }
   if (!(from.stroke_width() <= 0 && from.stroke_width() >= 0)) {
     _internal_set_stroke_width(from._internal_stroke_width());
@@ -1561,6 +1598,9 @@ void StyleStreamValue::MergeFrom(const StyleStreamValue& from) {
   if (from.font_weight() != 0) {
     _internal_set_font_weight(from._internal_font_weight());
   }
+  if (from.point_color_mode() != 0) {
+    _internal_set_point_color_mode(from._internal_point_color_mode());
+  }
 }
 
 void StyleStreamValue::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -1584,13 +1624,12 @@ bool StyleStreamValue::IsInitialized() const {
 void StyleStreamValue::InternalSwap(StyleStreamValue* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  point_color_domain_.InternalSwap(&other->point_color_domain_);
   fill_color_.Swap(&other->fill_color_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   stroke_color_.Swap(&other->stroke_color_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   font_family_.Swap(&other->font_family_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  point_cloud_mode_.Swap(&other->point_cloud_mode_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(stroke_width_, other->stroke_width_);
   swap(radius_, other->radius_);
@@ -1609,6 +1648,7 @@ void StyleStreamValue::InternalSwap(StyleStreamValue* other) {
   swap(extruded_, other->extruded_);
   swap(radius_pixels_, other->radius_pixels_);
   swap(font_weight_, other->font_weight_);
+  swap(point_color_mode_, other->point_color_mode_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata StyleStreamValue::GetMetadata() const {

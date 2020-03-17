@@ -83,7 +83,7 @@ public:
 
   std::shared_ptr<XVIZMetadataBuilder> GetMetaBuilder() {
     std::string s = "{\"fill_color\": \"#fff\"}"; 
-    std::string s1 = "{\"fill_color\": \"#fff\", \"point_color_mode\": \"distance_to_vehicle\"}"; 
+    std::string s1 = "{\"fill_color\": \"#fff\"}"; //, \"point_color_mode\": \"ELEVATION\"}"; 
     auto metadata_builder = std::make_shared<XVIZMetadataBuilder>();
     metadata_builder->Stream("/vehicle_pose").Category(Category::StreamMetadata_Category_POSE)
       .Stream("/object/shape").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_POINT)

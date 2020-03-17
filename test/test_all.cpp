@@ -8,6 +8,7 @@
 #include "test_metadata.h"
 #include "test_update.h"
 #include "test_server.h"
+#include "test_builder.hpp"
 
 int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);

@@ -132,6 +132,32 @@ inline bool TextAlignmentBaseline_Parse(
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<TextAlignmentBaseline>(
     TextAlignmentBaseline_descriptor(), name, value);
 }
+enum PointColorMode : int {
+  POINT_COLOR_MODE_INVALID = 0,
+  ELEVATION = 1,
+  DISTANCE_TO_VEHICLE = 2,
+  PointColorMode_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  PointColorMode_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+};
+bool PointColorMode_IsValid(int value);
+constexpr PointColorMode PointColorMode_MIN = POINT_COLOR_MODE_INVALID;
+constexpr PointColorMode PointColorMode_MAX = DISTANCE_TO_VEHICLE;
+constexpr int PointColorMode_ARRAYSIZE = PointColorMode_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* PointColorMode_descriptor();
+template<typename T>
+inline const std::string& PointColorMode_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, PointColorMode>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function PointColorMode_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    PointColorMode_descriptor(), enum_t_value);
+}
+inline bool PointColorMode_Parse(
+    const std::string& name, PointColorMode* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<PointColorMode>(
+    PointColorMode_descriptor(), name, value);
+}
 // ===================================================================
 
 class StyleClass :
@@ -622,10 +648,10 @@ class StyleStreamValue :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kPointColorDomainFieldNumber = 22,
     kFillColorFieldNumber = 1,
     kStrokeColorFieldNumber = 2,
     kFontFamilyFieldNumber = 20,
-    kPointCloudModeFieldNumber = 21,
     kStrokeWidthFieldNumber = 3,
     kRadiusFieldNumber = 4,
     kTextSizeFieldNumber = 5,
@@ -643,7 +669,30 @@ class StyleStreamValue :
     kExtrudedFieldNumber = 17,
     kRadiusPixelsFieldNumber = 18,
     kFontWeightFieldNumber = 19,
+    kPointColorModeFieldNumber = 21,
   };
+  // repeated float point_color_domain = 22;
+  int point_color_domain_size() const;
+  private:
+  int _internal_point_color_domain_size() const;
+  public:
+  void clear_point_color_domain();
+  private:
+  float _internal_point_color_domain(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      _internal_point_color_domain() const;
+  void _internal_add_point_color_domain(float value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      _internal_mutable_point_color_domain();
+  public:
+  float point_color_domain(int index) const;
+  void set_point_color_domain(int index, float value);
+  void add_point_color_domain(float value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      point_color_domain() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      mutable_point_color_domain();
+
   // string fill_color = 1;
   void clear_fill_color();
   const std::string& fill_color() const;
@@ -690,22 +739,6 @@ class StyleStreamValue :
   const std::string& _internal_font_family() const;
   void _internal_set_font_family(const std::string& value);
   std::string* _internal_mutable_font_family();
-  public:
-
-  // string point_cloud_mode = 21;
-  void clear_point_cloud_mode();
-  const std::string& point_cloud_mode() const;
-  void set_point_cloud_mode(const std::string& value);
-  void set_point_cloud_mode(std::string&& value);
-  void set_point_cloud_mode(const char* value);
-  void set_point_cloud_mode(const char* value, size_t size);
-  std::string* mutable_point_cloud_mode();
-  std::string* release_point_cloud_mode();
-  void set_allocated_point_cloud_mode(std::string* point_cloud_mode);
-  private:
-  const std::string& _internal_point_cloud_mode() const;
-  void _internal_set_point_cloud_mode(const std::string& value);
-  std::string* _internal_mutable_point_cloud_mode();
   public:
 
   // float stroke_width = 3;
@@ -861,15 +894,25 @@ class StyleStreamValue :
   void _internal_set_font_weight(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
+  // .xviz.PointColorMode point_color_mode = 21;
+  void clear_point_color_mode();
+  ::xviz::PointColorMode point_color_mode() const;
+  void set_point_color_mode(::xviz::PointColorMode value);
+  private:
+  ::xviz::PointColorMode _internal_point_color_mode() const;
+  void _internal_set_point_color_mode(::xviz::PointColorMode value);
+  public:
+
   // @@protoc_insertion_point(class_scope:xviz.StyleStreamValue)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > point_color_domain_;
+  mutable std::atomic<int> _point_color_domain_cached_byte_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr fill_color_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr stroke_color_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr font_family_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr point_cloud_mode_;
   float stroke_width_;
   float radius_;
   float text_size_;
@@ -887,6 +930,7 @@ class StyleStreamValue :
   bool extruded_;
   ::PROTOBUF_NAMESPACE_ID::uint32 radius_pixels_;
   ::PROTOBUF_NAMESPACE_ID::uint32 font_weight_;
+  int point_color_mode_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_style_2eproto;
 };
@@ -1944,64 +1988,71 @@ inline void StyleStreamValue::set_allocated_font_family(std::string* font_family
   // @@protoc_insertion_point(field_set_allocated:xviz.StyleStreamValue.font_family)
 }
 
-// string point_cloud_mode = 21;
-inline void StyleStreamValue::clear_point_cloud_mode() {
-  point_cloud_mode_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+// .xviz.PointColorMode point_color_mode = 21;
+inline void StyleStreamValue::clear_point_color_mode() {
+  point_color_mode_ = 0;
 }
-inline const std::string& StyleStreamValue::point_cloud_mode() const {
-  // @@protoc_insertion_point(field_get:xviz.StyleStreamValue.point_cloud_mode)
-  return _internal_point_cloud_mode();
+inline ::xviz::PointColorMode StyleStreamValue::_internal_point_color_mode() const {
+  return static_cast< ::xviz::PointColorMode >(point_color_mode_);
 }
-inline void StyleStreamValue::set_point_cloud_mode(const std::string& value) {
-  _internal_set_point_cloud_mode(value);
-  // @@protoc_insertion_point(field_set:xviz.StyleStreamValue.point_cloud_mode)
+inline ::xviz::PointColorMode StyleStreamValue::point_color_mode() const {
+  // @@protoc_insertion_point(field_get:xviz.StyleStreamValue.point_color_mode)
+  return _internal_point_color_mode();
 }
-inline std::string* StyleStreamValue::mutable_point_cloud_mode() {
-  // @@protoc_insertion_point(field_mutable:xviz.StyleStreamValue.point_cloud_mode)
-  return _internal_mutable_point_cloud_mode();
-}
-inline const std::string& StyleStreamValue::_internal_point_cloud_mode() const {
-  return point_cloud_mode_.GetNoArena();
-}
-inline void StyleStreamValue::_internal_set_point_cloud_mode(const std::string& value) {
+inline void StyleStreamValue::_internal_set_point_color_mode(::xviz::PointColorMode value) {
   
-  point_cloud_mode_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  point_color_mode_ = value;
 }
-inline void StyleStreamValue::set_point_cloud_mode(std::string&& value) {
-  
-  point_cloud_mode_.SetNoArena(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:xviz.StyleStreamValue.point_cloud_mode)
+inline void StyleStreamValue::set_point_color_mode(::xviz::PointColorMode value) {
+  _internal_set_point_color_mode(value);
+  // @@protoc_insertion_point(field_set:xviz.StyleStreamValue.point_color_mode)
 }
-inline void StyleStreamValue::set_point_cloud_mode(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  point_cloud_mode_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:xviz.StyleStreamValue.point_cloud_mode)
+
+// repeated float point_color_domain = 22;
+inline int StyleStreamValue::_internal_point_color_domain_size() const {
+  return point_color_domain_.size();
 }
-inline void StyleStreamValue::set_point_cloud_mode(const char* value, size_t size) {
-  
-  point_cloud_mode_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:xviz.StyleStreamValue.point_cloud_mode)
+inline int StyleStreamValue::point_color_domain_size() const {
+  return _internal_point_color_domain_size();
 }
-inline std::string* StyleStreamValue::_internal_mutable_point_cloud_mode() {
-  
-  return point_cloud_mode_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void StyleStreamValue::clear_point_color_domain() {
+  point_color_domain_.Clear();
 }
-inline std::string* StyleStreamValue::release_point_cloud_mode() {
-  // @@protoc_insertion_point(field_release:xviz.StyleStreamValue.point_cloud_mode)
-  
-  return point_cloud_mode_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline float StyleStreamValue::_internal_point_color_domain(int index) const {
+  return point_color_domain_.Get(index);
 }
-inline void StyleStreamValue::set_allocated_point_cloud_mode(std::string* point_cloud_mode) {
-  if (point_cloud_mode != nullptr) {
-    
-  } else {
-    
-  }
-  point_cloud_mode_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), point_cloud_mode);
-  // @@protoc_insertion_point(field_set_allocated:xviz.StyleStreamValue.point_cloud_mode)
+inline float StyleStreamValue::point_color_domain(int index) const {
+  // @@protoc_insertion_point(field_get:xviz.StyleStreamValue.point_color_domain)
+  return _internal_point_color_domain(index);
+}
+inline void StyleStreamValue::set_point_color_domain(int index, float value) {
+  point_color_domain_.Set(index, value);
+  // @@protoc_insertion_point(field_set:xviz.StyleStreamValue.point_color_domain)
+}
+inline void StyleStreamValue::_internal_add_point_color_domain(float value) {
+  point_color_domain_.Add(value);
+}
+inline void StyleStreamValue::add_point_color_domain(float value) {
+  _internal_add_point_color_domain(value);
+  // @@protoc_insertion_point(field_add:xviz.StyleStreamValue.point_color_domain)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+StyleStreamValue::_internal_point_color_domain() const {
+  return point_color_domain_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+StyleStreamValue::point_color_domain() const {
+  // @@protoc_insertion_point(field_list:xviz.StyleStreamValue.point_color_domain)
+  return _internal_point_color_domain();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+StyleStreamValue::_internal_mutable_point_color_domain() {
+  return &point_color_domain_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+StyleStreamValue::mutable_point_color_domain() {
+  // @@protoc_insertion_point(field_mutable_list:xviz.StyleStreamValue.point_color_domain)
+  return _internal_mutable_point_color_domain();
 }
 
 // -------------------------------------------------------------------
@@ -2093,6 +2144,11 @@ template <> struct is_proto_enum< ::xviz::TextAlignmentBaseline> : ::std::true_t
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::xviz::TextAlignmentBaseline>() {
   return ::xviz::TextAlignmentBaseline_descriptor();
+}
+template <> struct is_proto_enum< ::xviz::PointColorMode> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::xviz::PointColorMode>() {
+  return ::xviz::PointColorMode_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

@@ -25,6 +25,8 @@ std::unordered_map<std::string, xviz::XVIZUIBuilder> GetTestUIBuilders();
 
 XVIZMetadataBuilder GetTestMetadataBuilder();
 
+XVIZMetadataBuilder GetBuilderTestMetadataBuilderForPrimitive();
+
 nlohmann::json GetTestMetadataExpectedJson();
 
 // Update

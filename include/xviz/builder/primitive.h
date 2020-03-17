@@ -48,7 +48,7 @@ public:
 
   XVIZPrimitiveBuilder& Circle(const std::vector<double>& vertices, double radius);
   XVIZPrimitiveBuilder& Circle(std::vector<double>&& vertices, double radius);
-  XVIZPrimitiveBuilder& Circle(const std::shared_ptr<std::vector<double>>& vertices_ptr, const std::shared_ptr<double>& radius);
+  XVIZPrimitiveBuilder& Circle(const std::shared_ptr<std::vector<double>>& vertices_ptr, double radius);
 
   XVIZPrimitiveBuilder& Dimensions(uint32_t width_pixel, uint32_t height_pixel);
   XVIZPrimitiveBuilder& Image(const std::string& raw_data_str, bool is_encoding_needed=false);
