@@ -35,7 +35,7 @@ make example-server -j12
 ### Build tests
 ```bash
 mkdir build && cd build
-cmake ../ -DBUILD_TEST=ON
+cmake ../ -DBUILD_XVIZ_TESTS=ON
 make xviz-test -j12
 ../bin/xviz-test
 ```
