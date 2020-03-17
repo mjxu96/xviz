@@ -127,7 +127,7 @@ int main() {
     .Value("123");
 
   builder.UIPrimitive("/object/uptest")
-    .TreeTable(std::vector<xviz::TreeTableColumn>())
+    .Column("title", xviz::TreeTableColumn::INT32)
     .Row(1, {"123"});
 
 

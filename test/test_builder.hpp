@@ -214,8 +214,9 @@ TEST_F(XVIZBuilderTest, UIPrimitiveTest) {
 
   builder.UIPrimitive("/ui/2")
     .Column("test", xviz::TreeTableColumn::BOOLEAN);
-
-  std::cerr << builder.GetMessage().ToObject() << std::endl;
+  auto expected_json = nlohmann::json::parse("{\"update_type\":\"SNAPSHOT\",\"updates\":[{\"poses\":{\"/vehicle_pose\":{\"map_origin\":{},\"orientation\":[0,0,0],\"position\":[0,0,0],\"timestamp\":1000}},\"timestamp\":1000,\"ui_primitives\":{\"/ui/1\":{\"treetable\":{\"columns\":[{\"display_text\":\"title\",\"type\":\"INT32\",\"unit\":\"m/s\"},{\"display_text\":\"title2\",\"type\":\"BOOLEAN\"}],\"nodes\":[{},{\"column_values\":[\"123\"],\"id\":1},{\"column_values\":[\"123\"],\"id\":2},{\"column_values\":[\"false\"],\"id\":3}]}},\"/ui/2\":{\"treetable\":{\"columns\":[{\"display_text\":\"test\",\"type\":\"BOOLEAN\"}]}}}}]}");
+  auto builder_json = builder.GetMessage().ToObject();
+  ASSERT_TRUE(xviz::test::IsSameJson(expected_json, builder_json));
 }
 
 TEST_F(XVIZBuilderTest, UIPrimitiveErrorTest) {
@@ -223,11 +224,11 @@ TEST_F(XVIZBuilderTest, UIPrimitiveErrorTest) {
   auto builder = GetInitialBuilderWithMetadata(metadata_builder);
   builder.UIPrimitive("/ui/1");//.Row(0);
   builder.UIPrimitive("/ui/2");//.Row(0);
-  std::cerr << builder.GetMessage().ToObject() << std::endl;
+  auto builder_json = builder.GetMessage().ToObject();
 }
 
 TEST_F(XVIZBuilderTest, XVIZBuilderNoPoseTest) {
   xviz::XVIZBuilder builder(nullptr);
-  std::cerr << builder.GetMessage().ToObject() << std::endl;
+  auto builder_json = builder.GetMessage().ToObject();
 }
 #endif
