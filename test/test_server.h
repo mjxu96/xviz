@@ -14,6 +14,24 @@ class XVIZServerTest : public ::testing::Test {
 
 };
 
+class TestSession : public xviz::XVIZBaseSession {
+ public:
+  TestSession() : xviz::XVIZBaseSession(nullptr) {}
+  void OnConnect() override {}
+  void Main() override {}
+  void OnDisconnect() override {}
+  std::string Name() const {return "TestSession";}
+};
+
+class TestHandler : public xviz::XVIZBaseHandler {
+ public:
+  TestHandler() = default;
+  std::shared_ptr<xviz::XVIZBaseSession> GetSession(const std::unordered_map<std::string, std::string>& params,
+    std::shared_ptr<websocketpp::connection<websocketpp::config::asio>> conn_ptr) override {
+    return std::make_shared<TestSession>();
+  }
+};
+
 TEST_F(XVIZServerTest, PercentDecoderPassTest) {
   std::string original_str = "hello%20world%21";
   std::string expected_decoded_str = "hello world!";
@@ -75,6 +93,19 @@ TEST_F(XVIZServerTest, ParametersParserDecodePassTest) {
   std::string uri = "key1=value%201&key2=value%252&key3=value%263";
 
   EXPECT_EQ(expected_param_map, xviz::ParseURIParameters(uri));
+}
+
+TEST_F(XVIZServerTest, ServerTest) {
+  auto handler_ptr = std::make_shared<TestHandler>();
+  auto base_session_ptr = handler_ptr->GetSession(
+    std::unordered_map<std::string, std::string>(), nullptr
+  );
+  auto session_ptr = std::dynamic_pointer_cast<TestSession>(base_session_ptr);
+
+  ASSERT_NE(session_ptr, nullptr);
+  ASSERT_EQ(session_ptr->Name(), "TestSession");
+
+  xviz::XVIZServer server({handler_ptr});
 }
 
 #endif

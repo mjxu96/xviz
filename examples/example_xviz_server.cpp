@@ -83,13 +83,13 @@ public:
 
   std::shared_ptr<XVIZMetadataBuilder> GetMetaBuilder() {
     std::string s = "{\"fill_color\": \"#fff\"}"; 
-    std::string s1 = "{\"fill_color\": \"#fff\"}"; //, \"point_color_mode\": \"ELEVATION\"}"; 
+    std::string s1 = "{\"fill_color\": \"#0ff\"}"; //, \"point_color_mode\": \"ELEVATION\"}"; 
     auto metadata_builder = std::make_shared<XVIZMetadataBuilder>();
     metadata_builder->Stream("/vehicle_pose").Category(Category::StreamMetadata_Category_POSE)
       .Stream("/object/shape").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_POINT)
-      .StreamStyle(s1)
+        .StreamStyle(s)
       .Stream("/object/circles").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_CIRCLE)
-      .StreamStyle(s)
+        .StyleClass("circle", s1)
       .Stream("/camera/images0").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_IMAGE)
       .Stream("/table/1").Category(Category::StreamMetadata_Category_UI_PRIMITIVE)
       .Stream("/table/2").Category(Category::StreamMetadata_Category_UI_PRIMITIVE)
@@ -117,7 +117,8 @@ public:
       .MapOrigin(0.00, 0.00, 0.000)
       .Orientation(0, 0, 0);
     builder.Primitive("/object/circles")
-      .Circle({1, 2, 3}, 20.0);
+      .Circle({1, 2, 3}, 20.0)
+      .Classes({"circle"});
     builder.Primitive("/object/shape")
       .Points(points_)
       .Colors(colors_);

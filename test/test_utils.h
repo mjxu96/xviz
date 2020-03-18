@@ -9,6 +9,7 @@
 #define XVIZ_TEST_UTILS_H_
 
 #include <gtest/gtest.h>
+#include <sstream>
 #include "xviz/utils/json.hpp"
 #include "xviz/builder/metadata.h"
 #include "xviz/builder/xviz_builder.h"
@@ -33,6 +34,8 @@ nlohmann::json GetTestMetadataExpectedJson();
 
 // Update
 xviz::XVIZBuilder GetTestUpdateBuilder(const std::shared_ptr<xviz::Metadata>& metadata);
+
+std::string ConvertBinaryToReadableChar(const std::string& input);
 
 
 // Server

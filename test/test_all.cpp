@@ -9,6 +9,8 @@
 #include "test_update.h"
 #include "test_server.h"
 #include "test_builder.hpp"
+#include "test_writer.hpp"
+#include "test_message.hpp"
 
 int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);

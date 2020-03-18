@@ -83,9 +83,11 @@ xviz::XVIZMetadataBuilder xviz::test::GetTestMetadataBuilder() {
           xviz::CoordinateType::
               StreamMetadata_CoordinateType_VEHICLE_RELATIVE)  //.Unit("123").Source("123")
         .StreamStyle(s)
+        .StyleClass("name1", s)
       .Stream("/object/shape2")
         .Category(xviz::Category::StreamMetadata_Category_PRIMITIVE)
         .Type(xviz::Primitive::StreamMetadata_PrimitiveType_POLYGON)
+        .TransformMatrix({1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16})
       .Stream("/object/circles")
         .Category(xviz::Category::StreamMetadata_Category_PRIMITIVE)
         .Type(xviz::Primitive::StreamMetadata_PrimitiveType_CIRCLE)
@@ -101,8 +103,11 @@ xviz::XVIZMetadataBuilder xviz::test::GetTestMetadataBuilder() {
       .Stream("/object/ts")
         .Category(xviz::Category::StreamMetadata_Category_TIME_SERIES)
         .Type(xviz::ScalarType::StreamMetadata_ScalarType_STRING)
+        .Unit("m/s")
       .Stream("/object/uptest")
         .Category(xviz::Category::StreamMetadata_Category_UI_PRIMITIVE)
+        .Source("unknown source")
+      .LogInfo(100, 10000)
       .UI(std::move(GetTestUIBuilders()));
   metadata_builder.StartTime(1000).EndTime(1010);
   return metadata_builder;
@@ -153,40 +158,7 @@ xviz::XVIZMetadataBuilder xviz::test::GetBuilderTestMetadataBuilderForUIPrimitiv
 
 nlohmann::json xviz::test::GetTestMetadataExpectedJson() {
   std::string expected_str =
-      "{\"log_info\":{\"end_time\":1010,\"start_time\":1000},\"streams\":{\"/"
-      "camera/"
-      "images0\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"IMAGE\"},\"/"
-      "object/"
-      "circles\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"CIRCLE\"},\"/"
-      "object/"
-      "shape\":{\"category\":\"PRIMITIVE\",\"coordinate\":\"VEHICLE_RELATIVE\","
-      "\"primitive_type\":\"POLYGON\",\"stream_style\":{\"fill_color\":\"#"
-      "fff\"}},\"/object/"
-      "shape2\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"POLYGON\"},\"/"
-      "object/"
-      "stadium\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"STADIUM\"},"
-      "\"/object/"
-      "text\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"TEXT\"},\"/"
-      "object/ts\":{\"category\":\"TIME_SERIES\", \"scalar_type\": \"STRING\"},\"/object/"
-      "uptest\":{\"category\":\"UI_PRIMITIVE\"},\"/"
-      "vehicle_pose\":{\"category\":\"POSE\"}},\"ui_config\":{\"Camera\":{"
-      "\"children\":[{\"cameras\":[\"/camera/"
-      "images0\"],\"type\":\"VIDEO\"}],\"name\":\"Camera\",\"type\":\"panel\"},"
-      "\"Metrics\":{\"children\":[{\"children\":[{\"description\":\"123\","
-      "\"streams\":[\"/object/"
-      "ts\"],\"title\":\"123\",\"type\":\"METRIC\"},{\"description\":\"123\","
-      "\"streams\":[\"/object/"
-      "ts\"],\"title\":\"123\",\"type\":\"METRIC\"},{\"description\":\"123\","
-      "\"streams\":[\"/object/"
-      "ts\"],\"title\":\"123\",\"type\":\"METRIC\"}],\"name\":\"metrics\","
-      "\"type\":\"CONTAINER\"}],\"name\":\"Metrics\",\"type\":\"panel\"},"
-      "\"Plot\":{\"children\":[{\"dependent_variables\":[\"ddd\",\"aaa\"],"
-      "\"description\":\"des\",\"independent_variable\":\"indep_var\","
-      "\"title\":\"title\",\"type\":\"PLOT\"}],\"name\":\"Plot\",\"type\":"
-      "\"panel\"},\"Table\":{\"children\":[{\"description\":\"des\",\"display_"
-      "object_id\":true,\"stream\":\"/some_stream/"
-      "table\",\"title\":\"title\",\"type\":\"TABLE\"}],\"name\":\"Table\","
-      "\"type\":\"panel\"}},\"version\":\"2.0.0\"}";
+      "{\"log_info\":{\"end_time\":1010,\"start_time\":1000},\"streams\":{\"/camera/images0\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"IMAGE\"},\"/object/circles\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"CIRCLE\"},\"/object/shape\":{\"category\":\"PRIMITIVE\",\"coordinate\":\"VEHICLE_RELATIVE\",\"primitive_type\":\"POLYGON\",\"stream_style\":{\"fill_color\":\"#fff\"},\"style_classes\":[{\"name\":\"name1\",\"style\":{\"fill_color\":\"#fff\"}}]},\"/object/shape2\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"POLYGON\",\"transform\":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]},\"/object/stadium\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"STADIUM\"},\"/object/text\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"TEXT\"},\"/object/ts\":{\"category\":\"TIME_SERIES\",\"scalar_type\":\"STRING\",\"units\":\"m/s\"},\"/object/uptest\":{\"category\":\"UI_PRIMITIVE\",\"source\":\"unknown source\"},\"/vehicle_pose\":{\"category\":\"POSE\"}},\"ui_config\":{\"Camera\":{\"children\":[{\"cameras\":[\"/camera/images0\"],\"type\":\"VIDEO\"}],\"name\":\"Camera\",\"type\":\"panel\"},\"Metrics\":{\"children\":[{\"children\":[{\"description\":\"123\",\"streams\":[\"/object/ts\"],\"title\":\"123\",\"type\":\"METRIC\"},{\"description\":\"123\",\"streams\":[\"/object/ts\"],\"title\":\"123\",\"type\":\"METRIC\"},{\"description\":\"123\",\"streams\":[\"/object/ts\"],\"title\":\"123\",\"type\":\"METRIC\"}],\"name\":\"metrics\",\"type\":\"CONTAINER\"}],\"name\":\"Metrics\",\"type\":\"panel\"},\"Plot\":{\"children\":[{\"dependent_variables\":[\"ddd\",\"aaa\"],\"description\":\"des\",\"independent_variable\":\"indep_var\",\"title\":\"title\",\"type\":\"PLOT\"}],\"name\":\"Plot\",\"type\":\"panel\"},\"Table\":{\"children\":[{\"description\":\"des\",\"display_object_id\":true,\"stream\":\"/some_stream/table\",\"title\":\"title\",\"type\":\"TABLE\"}],\"name\":\"Table\",\"type\":\"panel\"}},\"version\":\"2.0.0\"}";
   return nlohmann::json::parse(expected_str);
 }
 
@@ -222,4 +194,18 @@ xviz::XVIZBuilder xviz::test::GetTestUpdateBuilder(
       // .TreeTable(std::vector<xviz::TreeTableColumn>())
       .Row(1, {"123"});
   return builder;
+}
+
+std::string xviz::test::ConvertBinaryToReadableChar(const std::string& input) {
+  std::ostringstream oss;
+  for (unsigned char c : input) {
+    if (std::isprint(c)) {
+      oss << c;
+    } else {
+      std::ostringstream tmp_oss;
+      tmp_oss << "\\x" << std::setw(2) << std::setfill('0') << std::hex << (int)c;
+      oss << tmp_oss.str();
+    }
+  }
+  return oss.str();
 }

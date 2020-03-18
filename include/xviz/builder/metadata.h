@@ -37,11 +37,11 @@ public:
   XVIZMetadataBuilder& UI(const std::shared_ptr<std::unordered_map<std::string, XVIZUIBuilder>>& ui_builder_ptr);
 
   XVIZMetadataBuilder& Source(const std::string& source);
-  XVIZMetadataBuilder& Source(std::string&& source);
-  XVIZMetadataBuilder& Source(const char* source);
+  // XVIZMetadataBuilder& Source(std::string&& source);
+  // XVIZMetadataBuilder& Source(const char* source);
   XVIZMetadataBuilder& Unit(const std::string& unit);
-  XVIZMetadataBuilder& Unit(std::string&& unit);
-  XVIZMetadataBuilder& Unit(const char* unit);
+  // XVIZMetadataBuilder& Unit(std::string&& unit);
+  // XVIZMetadataBuilder& Unit(const char* unit);
 
   XVIZMetadataBuilder& Category(Category category);
   XVIZMetadataBuilder& Type(Primitive primitive_type);
@@ -52,10 +52,10 @@ public:
   XVIZMetadataBuilder& TransformMatrix(const std::vector<double>& matrix);
 
   XVIZMetadataBuilder& StreamStyle(const std::string& style_str);
-  XVIZMetadataBuilder& StyleClass();
+  XVIZMetadataBuilder& StyleClass(const std::string& name, const std::string& style_str);
+  XVIZMetadataBuilder& StyleClass(const std::string& name, const nlohmann::json& style_json);
 
-  // TODO to imple
-  XVIZMetadataBuilder& LogInfo();
+  XVIZMetadataBuilder& LogInfo(double start_time, double end_time);
 
 private:
   void Flush();
