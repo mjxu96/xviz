@@ -16,7 +16,7 @@ using Json = nlohmann::json;
 template<typename T>
 void AddVertices(T& vertice_to_add, const std::shared_ptr<std::vector<double>>& vertices) {
   if (vertices == nullptr) {
-    LOG_ERROR("Vertice pointer is NULL");
+    XVIZ_LOG_ERROR("Vertice pointer is NULL");
     return;
   }
   for (const auto& v : *vertices) {
@@ -132,7 +132,7 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Colors(std::vector<uint8_t>&& colors
 
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Colors(const std::shared_ptr<std::vector<uint8_t>>& colors_ptr) {
   if (type_ == nullptr || *type_ != xviz::StreamMetadata::POINT) {
-    LOG_ERROR("Points() needs to be called before calling Colors()");
+    XVIZ_LOG_ERROR("Points() needs to be called before calling Colors()");
     return *this;
   }
   colors_ = colors_ptr;
@@ -150,7 +150,7 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Position(std::vector<double>&& verti
 
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Position(const std::shared_ptr<std::vector<double>>& vertices_ptr) {
   if (vertices_ptr == nullptr || vertices_ptr->size() != 3u) {
-    LOG_ERROR("A position should not be null and must be of the form [x, y, z]");
+    XVIZ_LOG_ERROR("A position should not be null and must be of the form [x, y, z]");
     return *this;
   }
   vertices_ = vertices_ptr;
@@ -181,7 +181,7 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Circle(const std::shared_ptr<std::ve
 // Image
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Dimensions(uint32_t width_pixel, uint32_t height_pixel) {
   if (image_ == nullptr) {
-    LOG_ERROR("An image must be set before call Dimensions()");
+    XVIZ_LOG_ERROR("An image must be set before call Dimensions()");
     return *this;
   }
 
@@ -256,7 +256,7 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Classes(std::vector<std::string>&& c
 
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Classes(const std::shared_ptr<std::vector<std::string>>& classes_ptr) {
   if (type_ == nullptr) {
-    LOG_WARNING("Must call some pritimive functions like Points() before calling Classes()");
+    XVIZ_LOG_WARNING("Must call some pritimive functions like Points() before calling Classes()");
     return *this;
   }
   classes_ = classes_ptr;
@@ -273,7 +273,7 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::ObjectId(std::string&& object_id) {
 
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::ObjectId(const std::shared_ptr<std::string>& object_id) {
   if (type_ == nullptr) {
-    LOG_WARNING("Must call some pritimive functions like Points() before calling ObjectId()");
+    XVIZ_LOG_WARNING("Must call some pritimive functions like Points() before calling ObjectId()");
     return *this;
   }
   id_ = object_id;
@@ -286,7 +286,7 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Stadium(const std::vector<double>& s
   }
 
   if (start.size() != 3 || end.size() != 3) {
-    LOG_ERROR("The start/end position should be the form of [x, y, z]");
+    XVIZ_LOG_ERROR("The start/end position should be the form of [x, y, z]");
     return *this;
   }
   vertices_ = std::make_shared<std::vector<double>>();
@@ -350,7 +350,7 @@ void XVIZPrimitiveBuilder::Validate() {
 
 void XVIZPrimitiveBuilder::ValidatePrerequisite() {
   if (type_ == nullptr) {
-    LOG_ERROR("Start from a primitive first, e.g Polygon(), Image(), etc.");
+    XVIZ_LOG_ERROR("Start from a primitive first, e.g Polygon(), Image(), etc.");
   }
 }
 
@@ -395,7 +395,7 @@ void XVIZPrimitiveBuilder::FlushPrimitives() {
     case Primitive::StreamMetadata_PrimitiveType_POINT:
       {
         if (vertices_ == nullptr) {
-          LOG_ERROR("Vertice pointer is NULL");
+          XVIZ_LOG_ERROR("Vertice pointer is NULL");
           break;
         }
         auto point_size = vertices_->size();
@@ -415,7 +415,7 @@ void XVIZPrimitiveBuilder::FlushPrimitives() {
 
         if (colors_ != nullptr) {
           if (colors_->size() / 4u != point_size / 3u) {
-            LOG_WARNING("Point size and color size not match, not showing colors");
+            XVIZ_LOG_WARNING("Point size and color size not match, not showing colors");
             break;
           }
           google::protobuf::Value* colors_value_ptr = new google::protobuf::Value();
@@ -459,7 +459,7 @@ void XVIZPrimitiveBuilder::FlushPrimitives() {
       {
         auto circle_ptr = stream_ptr->add_circles();
         if (vertices_ == nullptr || vertices_->size() != 3) {
-          LOG_ERROR("Circle's center must be the form of [x, y, z]");
+          XVIZ_LOG_ERROR("Circle's center must be the form of [x, y, z]");
           break;
         }
         for (auto v : *vertices_) {
@@ -478,7 +478,7 @@ void XVIZPrimitiveBuilder::FlushPrimitives() {
       {
         auto text_ptr = stream_ptr->add_texts();
         if (vertices_ == nullptr || vertices_->size() != 3) {
-          LOG_ERROR("Text's position must be the form of [x, y, z]");
+          XVIZ_LOG_ERROR("Text's position must be the form of [x, y, z]");
           break;
         }
         text_ptr->set_text(*text_);
@@ -494,7 +494,7 @@ void XVIZPrimitiveBuilder::FlushPrimitives() {
      {
        auto stadium_ptr = stream_ptr->add_stadiums();
        if (vertices_ == nullptr || vertices_->size() != 6) {
-         LOG_ERROR("Stadium should give start and end.");
+         XVIZ_LOG_ERROR("Stadium should give start and end.");
          break;
        }
        for (int i = 0; i < 3; i++) {
@@ -510,7 +510,7 @@ void XVIZPrimitiveBuilder::FlushPrimitives() {
 
 
     default:
-      LOG_ERROR("This type is not supported currently %d.", *type_);
+      XVIZ_LOG_ERROR("This type is not supported currently %d.", *type_);
       return;
   }
 

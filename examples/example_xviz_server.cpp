@@ -63,12 +63,12 @@ public:
       colors_.push_back(255u);
     }
     if (png_file_name.empty()) {
-      LOG_INFO("No png is shown");
+      XVIZ_LOG_INFO("No png is shown");
       return;
     }
     std::ifstream in(png_file_name, std::ios::binary);
     if (!in.is_open()) {
-      LOG_INFO("No png is shown");
+      XVIZ_LOG_INFO("No png is shown");
       return;
     }
     while (in) {
@@ -78,7 +78,7 @@ public:
         image.push_back(c);
       }
     }
-    LOG_INFO("Image length: %ld", image.size());
+    XVIZ_LOG_INFO("Image length: %ld", image.size());
   }
 
   std::shared_ptr<XVIZMetadataBuilder> GetMetaBuilder() {
@@ -172,11 +172,11 @@ public:
     const Scenario& sce) : XVIZBaseSession(conn_ptr), sce_(sce) {}
 
   void MessageHandler(websocketpp::connection_hdl hdl, std::shared_ptr<websocketpp::config::core::message_type> msg) {
-    LOG_INFO("%s", msg->get_payload().c_str());
+    XVIZ_LOG_INFO("%s", msg->get_payload().c_str());
   }
 
   void OnConnect() override {
-    LOG_INFO("Frontend connected");
+    XVIZ_LOG_INFO("Frontend connected");
     conn_ptr_->send(sce_.GetMetaBuilder()->GetMessage().ToObjectString());
     conn_ptr_->set_message_handler(std::bind(
       &LiveSession::MessageHandler, this, std::placeholders::_1, std::placeholders::_2)
@@ -194,7 +194,7 @@ public:
   }
 
   void OnDisconnect() override {
-    LOG_INFO("Frontend disconnected");
+    XVIZ_LOG_INFO("Frontend disconnected");
   }
 
 private:

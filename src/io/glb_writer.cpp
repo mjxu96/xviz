@@ -22,7 +22,7 @@ bool AddOneImage(Document& document, std::vector<uint8_t>& buffer, uint32_t imag
     return false;
   }
   if (image_ptr->is_encoded()) {
-    LOG_WARNING("If you want to use GLBWriter, please don't encode the image");
+    XVIZ_LOG_WARNING("If you want to use GLBWriter, please don't encode the image");
     auto& encoded_data = image_ptr->data();
     auto decoded_data = base64_decode(encoded_data);
     image_ptr->set_data(std::move(decoded_data));
@@ -77,7 +77,7 @@ int AddOnePoint(Document& document, std::vector<uint8_t>& buffer, uint32_t point
   if (point_ptr->colors().has_list_value()) {
     auto color_size = point_ptr->colors().list_value().values_size();
     if (color_size / 4u != value_size / 3u) {
-      LOG_WARNING("Point size and color size not match, no gltf writer for colors");
+      XVIZ_LOG_WARNING("Point size and color size not match, no gltf writer for colors");
       return 1;
     }
     document.bufferViews.push_back(fx::gltf::BufferView());

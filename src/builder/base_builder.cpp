@@ -92,7 +92,7 @@ template <typename T>
 void ValidateStyleObjectOrStyleValue(xviz::StreamMetadata::PrimitiveType primitive_type, 
   const std::shared_ptr<T>& style, bool is_object_style) {
   if (XVIZBaseBuilder::primitive_style_map_.find(primitive_type) == XVIZBaseBuilder::primitive_style_map_.end()) {
-    LOG_WARNING("Type: %s is not supported currently.", xviz::StreamMetadata::PrimitiveType_Name(primitive_type).c_str());
+    XVIZ_LOG_WARNING("Type: %s is not supported currently.", xviz::StreamMetadata::PrimitiveType_Name(primitive_type).c_str());
     return;
   }
 
@@ -120,11 +120,11 @@ void ValidateStyleObjectOrStyleValue(xviz::StreamMetadata::PrimitiveType primiti
   }
 
   if (!invalid_field_names.empty()) {
-    LOG_WARNING("Primitive type: %s does not have these style options: %s.", xviz::StreamMetadata::PrimitiveType_Name(primitive_type).c_str(),
+    XVIZ_LOG_WARNING("Primitive type: %s does not have these style options: %s.", xviz::StreamMetadata::PrimitiveType_Name(primitive_type).c_str(),
         xviz::VectorToString(invalid_field_names).c_str());
   }
   if (!invalid_per_object_style_names.empty()) {
-    LOG_WARNING("Primitive type: %s cannot set these style options: %s per object. You should set these styles in the metadata.", 
+    XVIZ_LOG_WARNING("Primitive type: %s cannot set these style options: %s per object. You should set these styles in the metadata.", 
         xviz::StreamMetadata::PrimitiveType_Name(primitive_type).c_str(),
         xviz::VectorToString(invalid_per_object_style_names).c_str());
   }
@@ -150,13 +150,13 @@ void XVIZBaseBuilder::Validate() {
 
 void XVIZBaseBuilder::ValidateMatchMetadata() {
   if (metadata_ == nullptr) {
-    LOG_WARNING("Metadata is missing.");
+    XVIZ_LOG_WARNING("Metadata is missing.");
   } else if (metadata_->streams().find(stream_id_) == metadata_->streams().end()) {
-    LOG_WARNING("%s is not defined in metadata.", stream_id_.c_str());
+    XVIZ_LOG_WARNING("%s is not defined in metadata.", stream_id_.c_str());
   } else {
     auto cat = (*(metadata_->streams().find(stream_id_))).second.category();
     if (cat != category_) {
-      LOG_WARNING("Stream %s category %s does not match metadata definition %s", stream_id_.c_str(), 
+      XVIZ_LOG_WARNING("Stream %s category %s does not match metadata definition %s", stream_id_.c_str(), 
         StreamMetadata::Category_Name(category_).c_str(), StreamMetadata::Category_Name(cat).c_str());
     }
   }

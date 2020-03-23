@@ -123,7 +123,7 @@ std::shared_ptr<std::vector<TimeSeriesState>> XVIZTimeSeriesBuilder::GetData() {
                 value_ptr->add_doubles(std::get<3u>(value));
                 break;
               default:
-                LOG_ERROR("The type of input value is not reconized");
+                XVIZ_LOG_ERROR("The type of input value is not reconized");
             }
           }
         }
@@ -163,7 +163,7 @@ void XVIZTimeSeriesBuilder::AddTimestampEntry() {
       field_name = "doubles";
       break;
     default:
-      LOG_ERROR("The type of input value is not reconized");
+      XVIZ_LOG_ERROR("The type of input value is not reconized");
       return;
   }
 

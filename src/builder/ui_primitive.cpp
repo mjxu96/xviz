@@ -150,7 +150,7 @@ void XVIZUIPrimitiveBuilder::Flush() {
 
 void XVIZUIPrimitiveBuilder::FlushPrimitives() {
   if (type_ == nullptr) {
-    LOG_ERROR("Please at least indicate a type for ui primitive");
+    XVIZ_LOG_ERROR("Please at least indicate a type for ui primitive");
     return;
   }
   switch (*type_) {
@@ -160,7 +160,7 @@ void XVIZUIPrimitiveBuilder::FlushPrimitives() {
       }
 
       if (column_ == nullptr && row_ == nullptr) {
-        LOG_ERROR("Plase first call Column() or Row()");
+        XVIZ_LOG_ERROR("Plase first call Column() or Row()");
         Reset();
         return;
       }
@@ -188,7 +188,7 @@ void XVIZUIPrimitiveBuilder::FlushPrimitives() {
       break;
     }
     default:
-      LOG_INFO("Unknown type");
+      XVIZ_LOG_INFO("Unknown type");
   }
 
   Reset();

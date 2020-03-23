@@ -42,11 +42,11 @@ std::shared_ptr<xviz::StyleObjectValue> xviz::JsonObjectToStyleObject(const nloh
     json.erase(invalid_key);
   }
   if (!invalid_json_fields.empty()) {
-    LOG_WARNING("Keys: %s are invalid in StyleObject.", VectorToString(invalid_json_fields).c_str());
+    XVIZ_LOG_WARNING("Keys: %s are invalid in StyleObject.", VectorToString(invalid_json_fields).c_str());
   }
   auto status = google::protobuf::util::JsonStringToMessage(json.dump(), style_object.get());
   if (!status.ok()) {
-    LOG_WARNING("Parse style object json (%s) with error: %s, not parsing this one.", json_ori.dump().c_str(),
+    XVIZ_LOG_WARNING("Parse style object json (%s) with error: %s, not parsing this one.", json_ori.dump().c_str(),
       status.ToString().c_str());
   }
   return style_object;
@@ -119,7 +119,7 @@ std::shared_ptr<xviz::StyleObjectValue> xviz::JsonObjectToStyleObject(const nloh
 
   // if (json.size() != 0) {
   //   for (auto json_itr = json.begin(); json_itr != json.end(); json_itr++) {
-  //     LOG_WARNING("Key: %s is not valid in a StyleObject.", json_itr.key().c_str());
+  //     XVIZ_LOG_WARNING("Key: %s is not valid in a StyleObject.", json_itr.key().c_str());
   //   }
   // }
   // return style_object;
@@ -158,12 +158,12 @@ std::shared_ptr<xviz::StyleObjectValue> xviz::JsonObjectToStyleObject(const nloh
 //   }
 
 //   if (json.find("text_anchor") != json.end()) {
-//     LOG_ERROR("TEXT ANCHOR STYLE NOT IMPLEMENTED");
+//     XVIZ_LOG_ERROR("TEXT ANCHOR STYLE NOT IMPLEMENTED");
 //     throw std::runtime_error("not implement");
 //   }
 
 //   if (json.find("text_baseline") != json.end()) {
-//     LOG_ERROR("TEXT BASELINE STYLE NOT IMPLEMENTED");
+//     XVIZ_LOG_ERROR("TEXT BASELINE STYLE NOT IMPLEMENTED");
 //     throw std::runtime_error("not implement");
 //   }
 
@@ -205,11 +205,11 @@ std::shared_ptr<xviz::StyleStreamValue> xviz::JsonObjectToStyleStream(const nloh
     json.erase(invalid_key);
   }
   if (!invalid_json_fields.empty()) {
-    LOG_WARNING("Keys: %s are invalid in StyleStream.", VectorToString(invalid_json_fields).c_str());
+    XVIZ_LOG_WARNING("Keys: %s are invalid in StyleStream.", VectorToString(invalid_json_fields).c_str());
   }
   auto status = google::protobuf::util::JsonStringToMessage(json.dump(), style_stream.get());
   if (!status.ok()) {
-    LOG_WARNING("Parse style stream json (%s) with error: %s, not parsing this one.", json_ori.dump().c_str(),
+    XVIZ_LOG_WARNING("Parse style stream json (%s) with error: %s, not parsing this one.", json_ori.dump().c_str(),
       status.ToString().c_str());
   }
 
@@ -248,12 +248,12 @@ std::shared_ptr<xviz::StyleStreamValue> xviz::JsonObjectToStyleStream(const nloh
   // }
 
   // if (json.find("text_anchor") != json.end()) {
-  //   LOG_ERROR("TEXT ANCHOR STYLE NOT IMPLEMENTED");
+  //   XVIZ_LOG_ERROR("TEXT ANCHOR STYLE NOT IMPLEMENTED");
   //   throw std::runtime_error("not implement");
   // }
 
   // if (json.find("text_baseline") != json.end()) {
-  //   LOG_ERROR("TEXT BASELINE STYLE NOT IMPLEMENTED");
+  //   XVIZ_LOG_ERROR("TEXT BASELINE STYLE NOT IMPLEMENTED");
   //   throw std::runtime_error("not implement");
   // }
 
@@ -313,7 +313,7 @@ std::shared_ptr<xviz::StyleStreamValue> xviz::JsonObjectToStyleStream(const nloh
   // }
 
   // if (json.find("font_family") != json.end()) {
-  //   LOG_ERROR("FONT FAMILY STYLE NOT IMPLEMENTED");
+  //   XVIZ_LOG_ERROR("FONT FAMILY STYLE NOT IMPLEMENTED");
   //   throw std::runtime_error("not implemented");
   // }
 
@@ -360,12 +360,12 @@ std::shared_ptr<xviz::StyleStreamValue> xviz::JsonObjectToStyleStream(const nloh
 //   }
 
 //   if (json.find("text_anchor") != json.end()) {
-//     LOG_ERROR("TEXT ANCHOR STYLE NOT IMPLEMENTED");
+//     XVIZ_LOG_ERROR("TEXT ANCHOR STYLE NOT IMPLEMENTED");
 //     throw std::runtime_error("not implement");
 //   }
 
 //   if (json.find("text_baseline") != json.end()) {
-//     LOG_ERROR("TEXT BASELINE STYLE NOT IMPLEMENTED");
+//     XVIZ_LOG_ERROR("TEXT BASELINE STYLE NOT IMPLEMENTED");
 //     throw std::runtime_error("not implement");
 //   }
 
@@ -425,7 +425,7 @@ std::shared_ptr<xviz::StyleStreamValue> xviz::JsonObjectToStyleStream(const nloh
 //   }
 
 //   if (json.find("font_family") != json.end()) {
-//     LOG_ERROR("FONT FAMILY STYLE NOT IMPLEMENTED");
+//     XVIZ_LOG_ERROR("FONT FAMILY STYLE NOT IMPLEMENTED");
 //     throw std::runtime_error("not implemented");
 //   }
 

@@ -127,7 +127,7 @@ XVIZMetadataBuilder& XVIZMetadataBuilder::Type(ScalarType scalar_type) {
 
 XVIZMetadataBuilder& XVIZMetadataBuilder::TransformMatrix(const std::vector<double>& matrix) {
   if (matrix.size() != 16u) {
-    LOG_ERROR("Transform matrix should be a 4x4 matrix");
+    XVIZ_LOG_ERROR("Transform matrix should be a 4x4 matrix");
     return *this;
   }
   for (auto v : matrix) {
@@ -144,7 +144,7 @@ XVIZMetadataBuilder& XVIZMetadataBuilder::StreamStyle(const std::string& style_s
     ValidateStyle((xviz::StreamMetadata::PrimitiveType)type_, style_stream_ptr);
     temp_stream_.mutable_stream_style()->MergeFrom(*style_stream_ptr);
   } else {
-    LOG_WARNING("Before calling StreamStyle(), you must set the primitive type for this stream %s",
+    XVIZ_LOG_WARNING("Before calling StreamStyle(), you must set the primitive type for this stream %s",
       stream_id_.c_str());
   }
   return *this;
@@ -185,12 +185,12 @@ void XVIZMetadataBuilder::Flush() {
   if (category == xviz::StreamMetadata::PRIMITIVE || 
       category == xviz::StreamMetadata::FUTURE_INSTANCE) {
     if (type_ == -1) {
-      LOG_WARNING("Did not set type for category: %s in stream: %s, available types are: %s", 
+      XVIZ_LOG_WARNING("Did not set type for category: %s in stream: %s, available types are: %s", 
             xviz::StreamMetadata::Category_Name(category).c_str(), stream_id_.c_str(),
             xviz::AllEnumOptionNames(xviz::StreamMetadata::PrimitiveType_descriptor()).c_str());
     } else {
       if (!xviz::StreamMetadata::PrimitiveType_IsValid(type_)) {
-        LOG_ERROR("Type %s in category %d is invalid.", xviz::StreamMetadata::Category_Name(category).c_str(),
+        XVIZ_LOG_ERROR("Type %s in category %d is invalid.", xviz::StreamMetadata::Category_Name(category).c_str(),
                   type_);
         return;
       } else {
@@ -200,12 +200,12 @@ void XVIZMetadataBuilder::Flush() {
   } else if (category == xviz::StreamMetadata::TIME_SERIES || 
              category == xviz::StreamMetadata::VARIABLE) {
     if (type_ == -1) {
-      LOG_WARNING("Did not set type for category: %s in stream: %s, avaiable types are: %s", 
+      XVIZ_LOG_WARNING("Did not set type for category: %s in stream: %s, avaiable types are: %s", 
             xviz::StreamMetadata::Category_Name(category).c_str(), stream_id_.c_str(),
             xviz::AllEnumOptionNames(xviz::StreamMetadata::ScalarType_descriptor()).c_str());
     } else {
       if (!xviz::StreamMetadata::ScalarType_IsValid(type_)) {
-        LOG_ERROR("Type %s in category %d is invalid.", xviz::StreamMetadata::Category_Name(category).c_str(),
+        XVIZ_LOG_ERROR("Type %s in category %d is invalid.", xviz::StreamMetadata::Category_Name(category).c_str(),
                   type_);
         return;
       } else {

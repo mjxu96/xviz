@@ -29,7 +29,7 @@ std::unordered_map<std::string, std::string> xviz::ParseURIParameters(const std:
     auto key_value_pair = ParseOnePair(uri.substr(last_and_sign_pos, and_sign - last_and_sign_pos));
     last_and_sign_pos = and_sign + 1;
     if (key_value_pair.first.empty() || key_value_pair.second.empty()) {
-      LOG_WARNING("This uri is not correct: %s", uri.c_str());
+      XVIZ_LOG_WARNING("This uri is not correct: %s", uri.c_str());
       break;
     }
     parameters.insert(std::move(key_value_pair));
@@ -37,7 +37,7 @@ std::unordered_map<std::string, std::string> xviz::ParseURIParameters(const std:
   if (last_and_sign_pos < uri.size()) {
     auto key_value_pair = ParseOnePair(uri.substr(last_and_sign_pos));
     if (key_value_pair.first.empty() || key_value_pair.second.empty()) {
-      LOG_WARNING("This uri is not correct: %s", uri.c_str());
+      XVIZ_LOG_WARNING("This uri is not correct: %s", uri.c_str());
     } else {
       parameters.insert(std::move(key_value_pair));
     }
@@ -114,7 +114,7 @@ void XVIZServer::SessionThread(std::shared_ptr<XVIZBaseSession> session_ptr) {
     session_ptr->Main();
     session_ptr->OnDisconnect();
   } catch (const websocketpp::exception& e) {
-    LOG_WARNING("%s", e.what());
+    XVIZ_LOG_WARNING("%s", e.what());
   }
 }
 
