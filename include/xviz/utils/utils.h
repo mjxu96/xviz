@@ -13,6 +13,7 @@
 #include "xviz/utils/json.hpp"
 #include "xviz/proto/xviz/v2/style.pb.h"
 #include "base64.h"
+#include <nlohmann/json.hpp>
 
 #include <memory>
 #include <google/protobuf/util/json_util.h>

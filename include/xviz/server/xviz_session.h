@@ -6,11 +6,11 @@
 
 #ifndef XVIZ_SESSION_H_
 #define XVIZ_SESSION_H_
-#define ASIO_STANDALONE
+// #define ASIO_STANDALONE
 
 #include <functional>
-#include <xviz/third_party/websocketpp/config/asio_no_tls.hpp>
-#include <xviz/third_party/websocketpp/server.hpp>
+#include <websocketpp/config/asio_no_tls.hpp>
+#include <websocketpp/server.hpp>
 
 namespace xviz {
 

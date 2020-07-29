@@ -7,11 +7,13 @@
 #ifndef XVIZ_MESSAGE_H_
 #define XVIZ_MESSAGE_H_
 
+
 #include "xviz/proto/xviz/v2/core.pb.h"
 #include "xviz/proto/xviz/v2/session.pb.h"
 #include "xviz/proto/xviz/v2/options.pb.h"
 #include "xviz/proto/xviz/v2/envelope.pb.h"
 #include "xviz/utils/json.hpp"
+
 #include "xviz/utils/macrologger.h"
 #include "xviz/utils/utils.h"
 

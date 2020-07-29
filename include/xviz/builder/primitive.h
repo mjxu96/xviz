@@ -8,9 +8,9 @@
 #define XVIZ_PRIMITIVE_BUILDER_H_
 
 #include "base_builder.h"
-#include "xviz/utils/json.hpp"
+#include <nlohmann/json.hpp>
 #include "xviz/utils/macrologger.h"
-#include "xviz/utils/base64.h"
+#include <cpp-base64/base64.h>
 #include "xviz/utils/utils.h"
 #include "xviz/proto/xviz/v2/core.pb.h"
 #include "xviz/proto/xviz/v2/primitives.pb.h"

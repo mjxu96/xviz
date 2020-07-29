@@ -6,7 +6,7 @@
 
 #ifndef XVIZ_SERVER_H_
 #define XVIZ_SERVER_H_
-#define ASIO_STANDALONE
+// #define ASIO_STANDALONE
 
 #include <vector>
 #include <stdint.h>
@@ -14,8 +14,8 @@
 #include <functional>
 #include <unordered_map>
 
-#include <xviz/third_party/websocketpp/config/asio_no_tls.hpp>
-#include <xviz/third_party/websocketpp/server.hpp>
+#include <websocketpp/config/asio_no_tls.hpp>
+#include <websocketpp/server.hpp>
 
 #include "xviz_handler.h"
 #include "xviz/utils/macrologger.h"

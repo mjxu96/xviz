@@ -10,7 +10,7 @@
 
 #include <gtest/gtest.h>
 #include <sstream>
-#include "xviz/utils/json.hpp"
+#include <nlohmann/json.hpp>
 #include "xviz/builder/metadata.h"
 #include "xviz/builder/xviz_builder.h"
 #include "xviz/builder/declarative_ui/metric_builder.h"
