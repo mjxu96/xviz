@@ -7,11 +7,11 @@
 #ifndef XVIZ_METADATA_BUILDER_H_
 #define XVIZ_METADATA_BUILDER_H_
 
-#include "declarative_ui/ui_builder.h"
 #include "base_builder.h"
+#include "declarative_ui/ui_builder.h"
 
-#include "xviz/utils/macrologger.h"
 #include "xviz/utils/definitions.h"
+#include "xviz/utils/macrologger.h"
 #include "xviz/utils/utils.h"
 
 #include "xviz/message.h"
@@ -22,7 +22,7 @@
 namespace xviz {
 
 class XVIZMetadataBuilder : public XVIZBaseBuilder {
-public:
+ public:
   XVIZMetadataBuilder();
   std::shared_ptr<Metadata> GetData();
   XVIZMessage GetMessage();
@@ -52,12 +52,14 @@ public:
   XVIZMetadataBuilder& TransformMatrix(const std::vector<double>& matrix);
 
   XVIZMetadataBuilder& StreamStyle(const std::string& style_str);
-  XVIZMetadataBuilder& StyleClass(const std::string& name, const std::string& style_str);
-  XVIZMetadataBuilder& StyleClass(const std::string& name, const nlohmann::json& style_json);
+  XVIZMetadataBuilder& StyleClass(const std::string& name,
+                                  const std::string& style_str);
+  XVIZMetadataBuilder& StyleClass(const std::string& name,
+                                  const nlohmann::json& style_json);
 
   XVIZMetadataBuilder& LogInfo(double start_time, double end_time);
 
-private:
+ private:
   void Flush();
   void Reset();
 
@@ -70,9 +72,7 @@ private:
   int type_ = -1;
   // TODO TMP TYPE
 };
-  
-} // namespace xviz
 
-
+}  // namespace xviz
 
 #endif

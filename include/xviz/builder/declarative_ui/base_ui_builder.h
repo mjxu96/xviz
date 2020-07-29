@@ -29,11 +29,15 @@ public:
   // }
 
   // // Video child
-  // virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const std::vector<std::string>& cameras);
+  // virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const
+  // std::vector<std::string>& cameras);
   // // Metric child
-  // virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const std::vector<std::string>& streams, const std::string& description, const std::string& title);
+  // virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const
+  // std::vector<std::string>& streams, const std::string& description, const
+  // std::string& title);
   // // Container child
-  // virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const std::string& name, LayoutType layout);
+  // virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const std::string& name,
+  // LayoutType layout);
 
   // virtual void Child(const std::shared_ptr<XVIZBaseUIBuilder>& child);
   virtual nlohmann::json GetUI() const;
@@ -43,8 +47,7 @@ protected:
   std::string type_;
   // std::vector<std::shared_ptr<XVIZBaseUIBuilder>> children_{};
 };
-  
-} // namespace xviz
 
+}  // namespace xviz
 
 #endif

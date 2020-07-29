@@ -9,8 +9,8 @@
 
 #include "base_ui_component_builder.h"
 
-#include <vector>
 #include <string>
+#include <vector>
 
 namespace xviz {
 
@@ -23,8 +23,7 @@ public:
 private:
   std::vector<std::string> cameras_{};
 };
-  
-} // namespace xviz
 
+}  // namespace xviz
 
 #endif

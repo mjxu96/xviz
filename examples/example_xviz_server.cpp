@@ -4,18 +4,18 @@
  * File Created: Monday, 17th February 2020 3:16:09 pm
  */
 
-#include "xviz/server/xviz_server.h"
 #include "xviz/server/xviz_handler.h"
+#include "xviz/server/xviz_server.h"
 #include "xviz/server/xviz_session.h"
 
-#include <iostream>
 #include <fstream>
 #include "xviz/proto/xviz/v2/primitives.pb.h"
+#include <iostream>
+#include "xviz/builder/metadata.h"
 #include "xviz/builder/pose.h"
 #include "xviz/builder/xviz_builder.h"
-#include "xviz/builder/metadata.h"
 
-#include "xviz/builder/declarative_ui/video_builder.h"
+#include "xviz/builder/declarative_ui/container_builder.h"
 #include "xviz/builder/declarative_ui/metric_builder.h"
 #include "xviz/builder/declarative_ui/table_builder.h"
 #include "xviz/builder/declarative_ui/container_builder.h"
@@ -50,7 +50,6 @@ XVIZUIBuilder GetUIBuilder() {
   // std::vector<std::string> streams = {"/vehicle/acceleration"};
   // std::vector<std::string> dep_vars = {"ddd", "aaa"};
   // XVIZVideoBuilder camera_builder(cameras);
-
   // std::shared_ptr<XVIZBaseUIBuilder> container_builder = std::make_shared<XVIZContainerBuilder>("metrics", LayoutType::VERTICAL);
   // container_builder->Child<XVIZMetricBuilder>(streams, "acceleration", "acceleration");
 
@@ -66,7 +65,7 @@ XVIZUIBuilder GetUIBuilder() {
 }
 
 class Scenario {
-public:
+ public:
   Scenario(const std::string& png_file_name) {
     for (int i = 0; i < 10; i++) {
       points_.push_back(0);
@@ -106,15 +105,24 @@ public:
   //   std::cout << s << std::endl;
 
     auto metadata_builder = std::make_shared<XVIZMetadataBuilder>();
-    metadata_builder->Stream("/vehicle_pose").Category(Category::StreamMetadata_Category_POSE)
-      .Stream("/object/shape").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_POINT)
+    metadata_builder->Stream("/vehicle_pose")
+        .Category(Category::StreamMetadata_Category_POSE)
+        .Stream("/object/shape")
+        .Category(Category::StreamMetadata_Category_PRIMITIVE)
+        .Type(Primitive::StreamMetadata_PrimitiveType_POINT)
         .StreamStyle(s)
-      .Stream("/object/circles").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_CIRCLE)
+        .Stream("/object/circles")
+        .Category(Category::StreamMetadata_Category_PRIMITIVE)
+        .Type(Primitive::StreamMetadata_PrimitiveType_CIRCLE)
         .StyleClass("circle", s1)
-      .Stream("/camera/images0").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_IMAGE)
-      .Stream("/table/1").Category(Category::StreamMetadata_Category_UI_PRIMITIVE)
-      .Stream("/table/2").Category(Category::StreamMetadata_Category_UI_PRIMITIVE)
-      .Stream("/vehicle/acceleration")
+        .Stream("/camera/images0")
+        .Category(Category::StreamMetadata_Category_PRIMITIVE)
+        .Type(Primitive::StreamMetadata_PrimitiveType_IMAGE)
+        .Stream("/table/1")
+        .Category(Category::StreamMetadata_Category_UI_PRIMITIVE)
+        .Stream("/table/2")
+        .Category(Category::StreamMetadata_Category_UI_PRIMITIVE)
+        .Stream("/vehicle/acceleration")
         .Category(Category::StreamMetadata_Category_TIME_SERIES)
         .Unit("m/s^2")
         .Type(ScalarType::StreamMetadata_ScalarType_FLOAT)
@@ -134,28 +142,25 @@ public:
 
     XVIZBuilder builder(metadata_ptr_->GetData());
     builder.Pose("/vehicle_pose")
-      .Timestamp(cnt)
-      .MapOrigin(0.00, 0.00, 0.000)
-      .Orientation(0, 0, 0);
+        .Timestamp(cnt)
+        .MapOrigin(0.00, 0.00, 0.000)
+        .Orientation(0, 0, 0);
     builder.Primitive("/object/circles")
-      .Circle({1, 2, 3}, 20.0)
-      .Classes({"circle"});
-    builder.Primitive("/object/shape")
-      .Points(points_)
-      .Colors(colors_);
+        .Circle({1, 2, 3}, 20.0)
+        .Classes({"circle"});
+    builder.Primitive("/object/shape").Points(points_).Colors(colors_);
     if (!image.empty()) {
-      builder.Primitive("/camera/images0")
-        .Image(image);
+      builder.Primitive("/camera/images0").Image(image);
     }
     builder.TimeSeries("/vehicle/acceleration")
-      .Timestamp(cnt)
-      .Value(cnt % 10)
-      .Id("acceleration");
+        .Timestamp(cnt)
+        .Value(cnt % 10)
+        .Id("acceleration");
 
     builder.UIPrimitive("/table/1")
-      .Column("Number", TreeTableColumn::INT32, "m/s")
-      .Column("Test", TreeTableColumn::STRING)
-      .Row(0)
+        .Column("Number", TreeTableColumn::INT32, "m/s")
+        .Column("Test", TreeTableColumn::STRING)
+        .Row(0)
         .Children(1, {"1", "test"})
         .Children(2, {"1", "test"})
         .Children(3, {"1", "test"})
@@ -164,11 +169,11 @@ public:
         .Children(6, {"1", "test"})
         .Children(7, {"1", "test"})
         .Children(8, {"2", "ggg"});
-    
+
     builder.UIPrimitive("/table/2")
-      .Column("Number", TreeTableColumn::INT32, "m/s")
-      .Row(0, {"1"})
-      .Row(1, {"2"});
+        .Column("Number", TreeTableColumn::INT32, "m/s")
+        .Row(0, {"1"})
+        .Row(1, {"2"});
 
     cnt++;
     std::string str;
@@ -180,7 +185,7 @@ public:
     // return builder.GetMessage().ToObjectString();
   }
 
-private:
+ private:
   std::shared_ptr<xviz::XVIZMetadataBuilder> metadata_ptr_{};
   int cnt = 11;
   std::vector<double> points_{};
@@ -188,50 +193,56 @@ private:
   std::string image;
 };
 
-
 class LiveSession : public XVIZBaseSession {
-public:
-  LiveSession(std::shared_ptr<websocketpp::connection<websocketpp::config::asio>> conn_ptr,
-    const Scenario& sce) : XVIZBaseSession(conn_ptr), sce_(sce) {}
+ public:
+  LiveSession(
+      std::shared_ptr<websocketpp::connection<websocketpp::config::asio>>
+          conn_ptr,
+      const Scenario& sce)
+      : XVIZBaseSession(conn_ptr), sce_(sce) {}
 
-  void MessageHandler(websocketpp::connection_hdl hdl, std::shared_ptr<websocketpp::config::core::message_type> msg) {
+  void MessageHandler(
+      websocketpp::connection_hdl hdl,
+      std::shared_ptr<websocketpp::config::core::message_type> msg) {
     XVIZ_LOG_INFO("%s", msg->get_payload().c_str());
   }
 
   void OnConnect() override {
     XVIZ_LOG_INFO("Frontend connected");
     conn_ptr_->send(sce_.GetMetaBuilder()->GetMessage().ToObjectString());
-    conn_ptr_->set_message_handler(std::bind(
-      &LiveSession::MessageHandler, this, std::placeholders::_1, std::placeholders::_2)
-    );
+    conn_ptr_->set_message_handler(std::bind(&LiveSession::MessageHandler, this,
+                                             std::placeholders::_1,
+                                             std::placeholders::_2));
   }
-  
+
   void Main() override {
     while (true) {
       std::this_thread::sleep_for(std::chrono::seconds(1));
-      auto err_code = conn_ptr_->send(sce_.GetUpdate(), websocketpp::frame::opcode::BINARY);
+      auto err_code =
+          conn_ptr_->send(sce_.GetUpdate(), websocketpp::frame::opcode::BINARY);
       if (err_code) {
         throw websocketpp::exception("loss connection");
       }
     }
   }
 
-  void OnDisconnect() override {
-    XVIZ_LOG_INFO("Frontend disconnected");
-  }
+  void OnDisconnect() override { XVIZ_LOG_INFO("Frontend disconnected"); }
 
-private:
+ private:
   Scenario sce_{""};
 };
 
 class LiveHandler : public XVIZBaseHandler {
-public:
+ public:
   LiveHandler(const Scenario& sce) : sce_(sce), XVIZBaseHandler() {}
-  std::shared_ptr<XVIZBaseSession> GetSession(const std::unordered_map<std::string, std::string>& params,
-    std::shared_ptr<websocketpp::connection<websocketpp::config::asio>> conn_ptr) override {
+  std::shared_ptr<XVIZBaseSession> GetSession(
+      const std::unordered_map<std::string, std::string>& params,
+      std::shared_ptr<websocketpp::connection<websocketpp::config::asio>>
+          conn_ptr) override {
     return std::make_shared<LiveSession>(conn_ptr, sce_);
   }
-private:
+
+ private:
   Scenario sce_;
 };
 

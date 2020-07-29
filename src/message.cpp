@@ -6,7 +6,6 @@
 
 #include "xviz/message.h"
 
-
 using Json = nlohmann::json;
 using namespace xviz;
 
@@ -18,7 +17,8 @@ void UnravelStyle(nlohmann::json& style_json, const std::string& style_name) {
 
 Json MessageObjectToJson(std::shared_ptr<google::protobuf::Message> data) {
   if (data == nullptr) {
-    throw std::runtime_error("dynamic cast from StreamSet to google::protobuf::Message error");
+    throw std::runtime_error(
+        "dynamic cast from StreamSet to google::protobuf::Message error");
     return Json();
   }
   std::string json_str;
@@ -94,15 +94,15 @@ std::string MessageObjectToString(std::shared_ptr<google::protobuf::Message> dat
   return MessageObjectToJson(data).dump();
 }
 
-XVIZFrame::XVIZFrame(std::shared_ptr<StreamSet> data) : data_(data) {
-}
+XVIZFrame::XVIZFrame(std::shared_ptr<StreamSet> data) : data_(data) {}
 
 Json XVIZFrame::ToObject(bool unravel) {
-  auto message_ptr = std::dynamic_pointer_cast<google::protobuf::Message>(data_);
+  auto message_ptr =
+      std::dynamic_pointer_cast<google::protobuf::Message>(data_);
   return MessageObjectToJson(message_ptr);
   // if (message_ptr == nullptr) {
-  //   throw std::runtime_error("dynamic cast from StreamSet to google::protobuf::Message error");
-  //   return Json();
+  //   throw std::runtime_error("dynamic cast from StreamSet to
+  //   google::protobuf::Message error"); return Json();
   // }
   // std::string json_str;
   // google::protobuf::util::MessageToJsonString(*message_ptr, &json_str);
@@ -110,35 +110,35 @@ Json XVIZFrame::ToObject(bool unravel) {
 }
 
 std::string XVIZFrame::ToObjectString(bool unravel) {
-  auto message_ptr = std::dynamic_pointer_cast<google::protobuf::Message>(data_);
+  auto message_ptr =
+      std::dynamic_pointer_cast<google::protobuf::Message>(data_);
   return MessageObjectToString(message_ptr);
 }
 
-std::shared_ptr<StreamSet> XVIZFrame::Data() {
-  return data_;
-}
+std::shared_ptr<StreamSet> XVIZFrame::Data() { return data_; }
 
-// XVIZMessage::XVIZMessage(std::shared_ptr<StateUpdate> update, std::shared_ptr<Metadata> meatadata) :
+// XVIZMessage::XVIZMessage(std::shared_ptr<StateUpdate> update,
+// std::shared_ptr<Metadata> meatadata) :
 //   update_(update), meatadata_(meatadata) {
 // }
 
-XVIZMessage::XVIZMessage(std::shared_ptr<Metadata> meatadata) : 
-  metadata_(meatadata), update_(nullptr) {
-}
+XVIZMessage::XVIZMessage(std::shared_ptr<Metadata> meatadata)
+    : metadata_(meatadata), update_(nullptr) {}
 
-XVIZMessage::XVIZMessage(std::shared_ptr<StateUpdate> update) :
-  metadata_(nullptr), update_(update) {
-}
+XVIZMessage::XVIZMessage(std::shared_ptr<StateUpdate> update)
+    : metadata_(nullptr), update_(update) {}
 
 nlohmann::json XVIZMessage::ToObject(bool unravel) {
   if (update_ != nullptr) {
-    auto message_ptr = std::dynamic_pointer_cast<google::protobuf::Message>(update_);
+    auto message_ptr =
+        std::dynamic_pointer_cast<google::protobuf::Message>(update_);
     if (!unravel) {
       return MessageObjectToJson(message_ptr);
     }
     return MessageObjectToJson(message_ptr);
   } else if (metadata_ != nullptr) {
-    auto message_ptr = std::dynamic_pointer_cast<google::protobuf::Message>(metadata_);
+    auto message_ptr =
+        std::dynamic_pointer_cast<google::protobuf::Message>(metadata_);
     if (!unravel) {
       return MessageObjectToJson(message_ptr);
     }
@@ -151,13 +151,15 @@ nlohmann::json XVIZMessage::ToObject(bool unravel) {
 
 std::string XVIZMessage::ToObjectString(bool unravel) {
   if (update_ != nullptr) {
-    auto message_ptr = std::dynamic_pointer_cast<google::protobuf::Message>(update_);
+    auto message_ptr =
+        std::dynamic_pointer_cast<google::protobuf::Message>(update_);
     if (!unravel) {
       return MessageObjectToString(message_ptr);
     }
     return MessageObjectToString(message_ptr);
   } else if (metadata_ != nullptr) {
-    auto message_ptr = std::dynamic_pointer_cast<google::protobuf::Message>(metadata_);
+    auto message_ptr =
+        std::dynamic_pointer_cast<google::protobuf::Message>(metadata_);
     if (!unravel) {
       return MessageObjectToString(message_ptr);
     }

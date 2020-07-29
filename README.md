@@ -57,6 +57,12 @@ make example example-server xviz-test -j12
 make install
 ```
 
+### Format
+```bash
+find . -name "*.h" -not -wholename "**/proto/*.h" -exec clang-format -style=file -i {} \;
+find . -name "*.cpp" -not -wholename "./build/*" -exec clang-format -style=file -i {} \;
+```
+
 ## Related Work
 1. [uber xviz](https://github.com/uber/xviz)
 2. [cmpute xviz.py](https://github.com/cmpute/xviz.py)

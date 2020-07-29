@@ -14,12 +14,9 @@
 #include <vector>
 
 namespace xviz {
-  
-
 
 class XVIZUIBuilder {
-public:
-
+ public:
   XVIZUIBuilder();
 
 
@@ -49,5 +46,5 @@ private:
   std::vector<XVIZContainerBuilder> container_children_{};
 };
 
-} // namespace xviz
+}  // namespace xviz
 #endif

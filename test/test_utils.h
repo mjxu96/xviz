@@ -4,13 +4,12 @@
  * File Created: Friday, 14th February 2020 11:03:25 am
  */
 
-
 #ifndef XVIZ_TEST_UTILS_H_
 #define XVIZ_TEST_UTILS_H_
 
 #include <gtest/gtest.h>
-#include <sstream>
 #include <nlohmann/json.hpp>
+#include <sstream>
 #include "xviz/builder/metadata.h"
 #include "xviz/builder/xviz_builder.h"
 #include "xviz/builder/declarative_ui/metric_builder.h"
@@ -19,9 +18,11 @@
 namespace xviz {
 namespace test {
 
-::testing::AssertionResult IsSameJson(const nlohmann::json& expected_json, const nlohmann::json& given_json);
+::testing::AssertionResult IsSameJson(const nlohmann::json& expected_json,
+                                      const nlohmann::json& given_json);
 
-::testing::AssertionResult IsDifferentJson(const nlohmann::json& expected_json, const nlohmann::json& given_json);
+::testing::AssertionResult IsDifferentJson(const nlohmann::json& expected_json,
+                                           const nlohmann::json& given_json);
 
 // Metadata
 xviz::XVIZUIBuilder GetTestUIBuilders();
@@ -35,16 +36,15 @@ XVIZMetadataBuilder GetBuilderTestMetadataBuilderForUIPrimitive();
 nlohmann::json GetTestMetadataExpectedJson();
 
 // Update
-xviz::XVIZBuilder GetTestUpdateBuilder(const std::shared_ptr<xviz::Metadata>& metadata);
+xviz::XVIZBuilder GetTestUpdateBuilder(
+    const std::shared_ptr<xviz::Metadata>& metadata);
 
 std::string ConvertBinaryToReadableChar(const std::string& input);
-
 
 // Server
 // std::unordered_map<std::string, std::string> GetExpectedParameterMap();
 
-} // namespace test
-} // namespace xviz
-
+}  // namespace test
+}  // namespace xviz
 
 #endif

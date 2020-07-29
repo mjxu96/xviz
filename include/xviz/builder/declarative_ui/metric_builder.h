@@ -4,15 +4,12 @@
  * File Created: Wednesday, 8th January 2020 1:17:21 am
  */
 
-
 #ifndef XVIZ_DECLARATIVE_UI_METRIC_BUILDER_H_
 #define XVIZ_DECLARATIVE_UI_METRIC_BUILDER_H_
 
 #include "base_ui_component_builder.h"
 
 namespace xviz {
-  
-
 
 class XVIZMetricBuilder : public XVIZBaseUIComponentBuilder {
 public:
@@ -21,9 +18,9 @@ public:
 
   nlohmann::json GetUI() const override;
 
-private:
+ private:
   std::vector<std::string> streams_{};
 };
 
-} // namespace xviz
+}  // namespace xviz
 #endif

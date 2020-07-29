@@ -4,7 +4,6 @@
  * File Created: Wednesday, 8th January 2020 1:17:51 am
  */
 
-
 #ifndef XVIZ_DECLARATIVE_UI_CONTAINER_BUILDER_H_
 #define XVIZ_DECLARATIVE_UI_CONTAINER_BUILDER_H_
 
@@ -31,8 +30,7 @@ private:
   std::string interactions_;
   std::vector<std::shared_ptr<XVIZBaseUIBuilder>> children_{};
 };
-  
-} // namespace xviz
 
+}  // namespace xviz
 
 #endif

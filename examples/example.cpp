@@ -4,17 +4,16 @@
  * File Created: Saturday, 7th December 2019 1:35:32 pm
  */
 
-
 #include <iostream>
 #include "xviz/proto/xviz/v2/primitives.pb.h"
+#include "xviz/builder/metadata.h"
 #include "xviz/builder/pose.h"
 #include "xviz/builder/xviz_builder.h"
-#include "xviz/builder/metadata.h"
 
-#include "xviz/builder/declarative_ui/video_builder.h"
-#include "xviz/builder/declarative_ui/metric_builder.h"
 #include "xviz/builder/declarative_ui/container_builder.h"
-// #include "xviz/io/glb_writer.h"
+#include "xviz/builder/declarative_ui/metric_builder.h"
+#include "xviz/builder/declarative_ui/video_builder.h"
+#include "xviz/io/glb_writer.h"
 
 #include <memory>
 
@@ -100,12 +99,12 @@ int main() {
   // XVIZBuilder builder(std::make_shared<Metadata>());
   // auto builder = std::make_shared<XVIZPoseBuilder>(Metadata());
   builder.Pose("/vehicle_pose")
-    .Timestamp(1000)
-    .MapOrigin(0.00, 0.00, 0.000)
-    .Orientation(0, 0, 0);
-    // ->Stream("234")
-    // ->Timestamp(123123123)
-    // ->Position(1, 2, 3);
+      .Timestamp(1000)
+      .MapOrigin(0.00, 0.00, 0.000)
+      .Orientation(0, 0, 0);
+  // ->Stream("234")
+  // ->Timestamp(123123123)
+  // ->Position(1, 2, 3);
   // builder->Pose("123")
   //   ->Orientation(1, 2, 3)
   //   ->Position(3, 4, 5)
@@ -126,32 +125,21 @@ int main() {
   //     .Polygon({2, 2, 2})
   //     .Style(nlohmann::json::parse(s1));
 
-  builder.Primitive("/object/shape2")
-    .Points({1, 2, 3}).Colors({0, 1, 2, 3});
+  builder.Primitive("/object/shape2").Points({1, 2, 3}).Colors({0, 1, 2, 3});
 
-  builder.Primitive("/object/circles")
-    .Circle({1, 2, 3}, 1.0)
-    .Style(s);
+  builder.Primitive("/object/circles").Circle({1, 2, 3}, 1.0).Style(s);
 
-  builder.Primitive("/object/text")
-    .Text("hello world")
-    .Position({1, 2, 3});
-  
-  builder.Primitive("/object/stadium")
-    .Stadium({0, 0, 0}, {1, 1, 1}, 10);
+  builder.Primitive("/object/text").Text("hello world").Position({1, 2, 3});
 
-  builder.Primitive("/camera/images0")
-    .Image("123231");
+  builder.Primitive("/object/stadium").Stadium({0, 0, 0}, {1, 1, 1}, 10);
 
-  builder.TimeSeries("/object/ts")
-    .Id("123")
-    .Timestamp(123)
-    .Value("123");
+  builder.Primitive("/camera/images0").Image("123231");
+
+  builder.TimeSeries("/object/ts").Id("123").Timestamp(123).Value("123");
 
   builder.UIPrimitive("/object/uptest")
-    .Column("title", xviz::TreeTableColumn::INT32)
-    .Row(1, {"123"});
-
+      .Column("title", xviz::TreeTableColumn::INT32)
+      .Row(1, {"123"});
 
   auto metadata_res = metadata_builder->GetMessage();
   auto res = builder.GetMessage();
