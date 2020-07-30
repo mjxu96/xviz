@@ -12,7 +12,11 @@ install:
 
   # vcpkg
   - git clone https://github.com/microsoft/vcpkg.git
-  - pushd vcpkg && ./bootstrap-vcpkg.sh && ./vcpkg install websocketpp nlohmann-json cpp-base64 && popd
+  - pushd vcpkg && pwd && ./bootstrap-vcpkg.sh && ./vcpkg install websocketpp nlohmann-json cpp-base64 && popd
+
+  # protoc 3.11.2
+  - wget https://github.com/protocolbuffers/protobuf/releases/download/v3.11.2/protoc-3.11.2-linux-x86_64.zip
+  - sudo unzip protoc-3.11.2-linux-x86_64.zip -d /usr/bin
 
   # protobuf 3.11.2
   - wget https://github.com/protocolbuffers/protobuf/releases/download/v3.11.2/protobuf-cpp-3.11.2.tar.gz
@@ -25,13 +29,13 @@ install:
 script: 
   # build with clang++
   - mkdir build
-  - pushd build && cmake ../ -DCMAKE_TOOLCHAIN_FILE=~/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DBUILD_XVIZ_TESTS=ON && make example example-server xviz-test -j2 && popd
+  - pushd build && cmake ../ -DCMAKE_TOOLCHAIN_FILE=~/build/wx9698/xviz/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DBUILD_XVIZ_TESTS=ON && make example example-server xviz-test -j2 && popd
   - ./bin/xviz-test
 
   # build with g++ again
   - rm -rf build
   - mkdir build
-  - pushd build && cmake ../ -DCMAKE_TOOLCHAIN_FILE=~/vcpkg/scripts/buildsystems/vcpkg.cmake -DBUILD_XVIZ_TESTS_LCOV=ON && make example example-server xviz-test -j2 && popd
+  - pushd build && cmake ../ -DCMAKE_TOOLCHAIN_FILE=~/build/wx9698/xviz/vcpkg/scripts/buildsystems/vcpkg.cmake -DBUILD_XVIZ_TESTS_LCOV=ON && make example example-server xviz-test -j2 && popd
   - ./bin/xviz-test
   - pushd build && make xviz-test-coverage -j2 && popd
 
