@@ -9,31 +9,51 @@ else()
     message(FATAL_ERROR "protobuf library is needed but cant be found")
 endif()
 
+execute_process(COMMAND ${Protobuf_PROTOC_EXECUTABLE} --version 
+  OUTPUT_VARIABLE PROTOC_VERSION
+)
+string(STRIP ${PROTOC_VERSION} PROTOC_VERSION)
+string(SUBSTRING ${PROTOC_VERSION} 10 -1 PROTOC_VERSION)
+
+message(STATUS "Protobuf version: " ${Protobuf_VERSION})
+message(STATUS "Protoc version: " ${PROTOC_VERSION})
+if (NOT PROTOC_VERSION STREQUAL Protobuf_VERSION)
+  message(WARNING "Please make sure your protobuf version and protoc version match with each other. Maybe it can compile but without any guarantee.")
+endif()
+
+# generate protobuf files
+file(GLOB PROTO_FILES "${XVIZ_ROOT_DIR}/pb/*.proto")
+protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${PROTO_FILES})
+
 find_package(websocketpp CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 find_path(CPP_BASE64_INCLUDE_DIRS "cpp-base64/base64.cpp")
 
 
-
 include_directories(${XVIZ_ROOT_DIR}/include)
-include_directories(${XVIZ_ROOT_DIR}/include/xviz/proto)
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${PROTOBUF_INCLUDE_DIRS})
 
 # all headers
 install(DIRECTORY ${XVIZ_ROOT_DIR}/include/xviz DESTINATION include)
 
+add_library(libxviz_pb ${PROTO_HDRS} ${PROTO_SRCS})
+target_include_directories(libxviz_pb PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+
 # protobuf files
-file(GLOB libxviz_pb_sources
-  "${XVIZ_ROOT_DIR}/src/proto/xviz/v2/session.pb.cc"
-  "${XVIZ_ROOT_DIR}/src/proto/xviz/v2/core.pb.cc"
-  "${XVIZ_ROOT_DIR}/src/proto/xviz/v2/annotation.pb.cc"
-  "${XVIZ_ROOT_DIR}/src/proto/xviz/v2/primitives.pb.cc"
-  "${XVIZ_ROOT_DIR}/src/proto/xviz/v2/uiprimitives.pb.cc"
-  "${XVIZ_ROOT_DIR}/src/proto/xviz/v2/style.pb.cc"
-  "${XVIZ_ROOT_DIR}/src/proto/xviz/v2/options.pb.cc"
-  "${XVIZ_ROOT_DIR}/src/proto/xviz/v2/envelope.pb.cc"
-)
-set(libxviz_sources "${libxviz_sources};${libxviz_pb_sources}")
+# file(GLOB libxviz_pb_sources
+#   "${XVIZ_ROOT_DIR}/src/proto/declarativeui.pb.cc"
+#   "${XVIZ_ROOT_DIR}/src/proto/session.pb.cc"
+#   "${XVIZ_ROOT_DIR}/src/proto/session.pb.cc"
+#   "${XVIZ_ROOT_DIR}/src/proto/core.pb.cc"
+#   "${XVIZ_ROOT_DIR}/src/proto/annotation.pb.cc"
+#   "${XVIZ_ROOT_DIR}/src/proto/primitives.pb.cc"
+#   "${XVIZ_ROOT_DIR}/src/proto/uiprimitives.pb.cc"
+#   "${XVIZ_ROOT_DIR}/src/proto/style.pb.cc"
+#   "${XVIZ_ROOT_DIR}/src/proto/options.pb.cc"
+#   "${XVIZ_ROOT_DIR}/src/proto/envelope.pb.cc"
+# )
+# set(libxviz_sources "${libxviz_sources};${libxviz_pb_sources}")
 
 # utils sources
 file(GLOB libxviz_utils_sources
@@ -94,6 +114,7 @@ add_library(xviz
   ${libxviz_sources}
 )
 
+target_link_libraries(xviz libxviz_pb)
 target_link_libraries(xviz ${PROTOBUF_LIBRARIES})
 target_link_libraries(xviz websocketpp::websocketpp)
 target_link_libraries(xviz cpp-base64)

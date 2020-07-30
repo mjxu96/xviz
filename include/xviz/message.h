@@ -12,8 +12,8 @@
 #include "xviz/proto/xviz/v2/session.pb.h"
 #include "xviz/proto/xviz/v2/options.pb.h"
 #include "xviz/proto/xviz/v2/envelope.pb.h"
-#include "xviz/utils/json.hpp"
 
+#include <nlohmann/json.hpp>
 #include "xviz/utils/macrologger.h"
 #include "xviz/utils/utils.h"
 
@@ -43,7 +43,6 @@ class XVIZMessage {
 
   nlohmann::json ToObject(bool unravel = true);
   std::string ToObjectString(bool unravel = true);
-<<<<<<< HEAD
   std::shared_ptr<StateUpdate> GetStateUpdate() const;
   std::shared_ptr<Metadata> GetMetadata() const;
   std::string GetSchema() const;
@@ -63,15 +62,6 @@ private:
 };
   
 } // namespace xviz
-=======
-  std::shared_ptr<StateUpdate> GetStateUpdate();
-  std::shared_ptr<Metadata> GetMetadata();
-
- private:
-  std::shared_ptr<StateUpdate> update_{nullptr};
-  std::shared_ptr<Metadata> metadata_{nullptr};
-};
->>>>>>> format all files
 
 }  // namespace xviz
 

@@ -55,15 +55,8 @@ class XVIZPrimitiveBuilder : public XVIZBaseBuilder {
       const std::shared_ptr<std::vector<double>>& vertices_ptr, double radius);
 
   XVIZPrimitiveBuilder& Dimensions(uint32_t width_pixel, uint32_t height_pixel);
-<<<<<<< HEAD
   XVIZPrimitiveBuilder& Image(const std::string& raw_data_str);
   XVIZPrimitiveBuilder& Image(std::string&& raw_data_str);
-=======
-  XVIZPrimitiveBuilder& Image(const std::string& raw_data_str,
-                              bool is_encoding_needed = false);
-  XVIZPrimitiveBuilder& Image(std::string&& raw_data_str,
-                              bool is_encoding_needed = false);
->>>>>>> format all files
 
   XVIZPrimitiveBuilder& Text(const std::string& message);
   XVIZPrimitiveBuilder& Text(std::string&& message);
