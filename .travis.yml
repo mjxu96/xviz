@@ -8,11 +8,11 @@ before_install:
 
 install: 
   # cmake make tool
-  - sudo apt-get install -y cmake make clang lcov tar wget
+  - sudo apt-get install -y make clang lcov tar wget
 
   # cmake
   - wget https://github.com/Kitware/CMake/releases/download/v3.17.4/cmake-3.17.4-Linux-x86_64.tar.gz
-  - tar xzf cmake-3.17.4-Linux-x86_64.tar.gz && pushd cmake-3.17.4-Linux-x86_64/bin && cmake --version && popd
+  - tar xzf cmake-3.17.4-Linux-x86_64.tar.gz && ./cmake-3.17.4-Linux-x86_64/bin/cmake --version
 
   # vcpkg
   - git clone https://github.com/microsoft/vcpkg.git
