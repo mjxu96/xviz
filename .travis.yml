@@ -12,19 +12,7 @@ install:
 
   # vcpkg
   - git clone https://github.com/microsoft/vcpkg.git
-  - pushd vcpkg && pwd && ./bootstrap-vcpkg.sh && ./vcpkg install websocketpp nlohmann-json cpp-base64 && popd
-
-  # protoc 3.11.2
-  - wget https://github.com/protocolbuffers/protobuf/releases/download/v3.11.2/protoc-3.11.2-linux-x86_64.zip
-  - sudo unzip protoc-3.11.2-linux-x86_64.zip -d /usr/bin
-
-  # protobuf 3.11.2
-  - wget https://github.com/protocolbuffers/protobuf/releases/download/v3.11.2/protobuf-cpp-3.11.2.tar.gz
-  - tar -xzvf protobuf-cpp-3.11.2.tar.gz
-  - pushd protobuf-3.11.2 && ./configure && make -j2 && sudo make install && sudo ldconfig && popd
-
-  # gtest lib
-  - pushd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make && sudo cp *.a /usr/lib && popd
+  - pushd vcpkg && pwd && ./bootstrap-vcpkg.sh && ./vcpkg install websocketpp nlohmann-json cpp-base64 protobuf gtest && popd
 
 script: 
   # build with clang++

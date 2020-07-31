@@ -1,12 +1,7 @@
 message(STATUS "xviz-test CMAKE_CXX_FLAGS: " ${CMAKE_CXX_FLAGS})
 
-find_package(GTest REQUIRED)
-if (GTEST_FOUND)
-    message(STATUS "gtest library found")
-else()
-    message(FATAL_ERROR "gtest library is needed but cant be found. If you don't want to build tests, please set -DBUILD_XVIZ_TESTS=OFF.")
-endif()
-
+enable_testing()
+find_package(GTest CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 
 include_directories(${XVIZ_ROOT_DIR}/include)
@@ -24,10 +19,12 @@ add_executable(xviz-test
 
 target_link_libraries(xviz-test-lib nlohmann_json nlohmann_json::nlohmann_json)
 target_link_libraries(xviz-test-lib xviz)
-target_link_libraries(xviz-test xviz-test-lib xviz ${GTEST_BOTH_LIBRARIES})
-set_target_properties(xviz-test PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${XVIZ_ROOT_DIR}/bin)
+target_link_libraries(xviz-test xviz-test-lib)
+target_link_libraries(xviz-test GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
 
-gtest_add_tests(TARGET xviz-test)
+set_target_properties(xviz-test PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${XVIZ_ROOT_DIR}/bin)
+add_test(AllTestsInMain xviz-test)
+
 
 # cmake targets for local tests
 if (BUILD_XVIZ_TESTS_GCOVR)

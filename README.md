@@ -17,6 +17,8 @@ Please see [example.cpp](https://github.com/wx9698/xviz/blob/master/examples/exa
 ```bash
 cd VCPKG_PATH
 ./vcpkg install websocketpp nlohmann-json cpp-base64 protobuf
+# if you want to build tests, don't forget to download gtest
+./vcpkg install gtest
 ```
 
 ### Build xviz builder example
