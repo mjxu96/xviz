@@ -7,6 +7,7 @@ else()
     message(FATAL_ERROR "gtest library is needed but cant be found. If you don't want to build tests, please set -DBUILD_XVIZ_TESTS=OFF.")
 endif()
 
+find_package(nlohmann_json CONFIG REQUIRED)
 
 include_directories(${XVIZ_ROOT_DIR}/include)
 include_directories(${XVIZ_ROOT_DIR}/include/xviz/proto)
@@ -20,6 +21,9 @@ add_executable(xviz-test
   ${XVIZ_ROOT_DIR}/test/test_all.cpp
 )
 
+
+target_link_libraries(xviz-test-lib nlohmann_json nlohmann_json::nlohmann_json)
+target_link_libraries(xviz-test-lib xviz)
 target_link_libraries(xviz-test xviz-test-lib xviz ${GTEST_BOTH_LIBRARIES})
 set_target_properties(xviz-test PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${XVIZ_ROOT_DIR}/bin)
 
