@@ -8,7 +8,7 @@
 #define XVIZ_TIME_SERIES_H_
 
 #include "base_builder.h"
-#include "xviz/proto/core.pb.h"
+#include "xviz/proto/xviz/v2/core.pb.h"
 #include "xviz/utils/macrologger.h"
 #include "xviz/utils/utils.h"
 

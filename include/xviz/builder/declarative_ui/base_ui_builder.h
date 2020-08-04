@@ -7,8 +7,8 @@
 #ifndef XVIZ_DECLARATIVE_UI_BASE_BUILDER_H_
 #define XVIZ_DECLARATIVE_UI_BASE_BUILDER_H_
 
-#include "xviz/proto/declarativeui.pb.h"
-
+#include "xviz/utils/json.hpp"
+#include "xviz/utils/definitions.h"
 
 #include <memory>
 #include <vector>
@@ -17,16 +17,16 @@ namespace xviz {
 
 class XVIZBaseUIBuilder : std::enable_shared_from_this<XVIZBaseUIBuilder> {
 public:
-  XVIZBaseUIBuilder(ComponentType type);
+  XVIZBaseUIBuilder(const std::string& type);
 
-  virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const std::shared_ptr<XVIZBaseUIBuilder>& child);
+  // virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const std::shared_ptr<XVIZBaseUIBuilder>& child);
 
-  template<typename UIBuilderType, typename... Args>
-  std::shared_ptr<XVIZBaseUIBuilder> Child(Args&&... args) {
-    auto child = std::make_shared<UIBuilderType>(std::forward<Args>(args)...);
-    children_.push_back(child);
-    return child;
-  }
+  // template<typename UIBuilderType, typename... Args>
+  // UIBuilderType& Child(Args&&... args) {
+  //   auto child = std::make_shared<UIBuilderType>(std::forward<Args>(args)...);
+  //   children_.push_back(child);
+  //   return *child;
+  // }
 
   // // Video child
   // virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const std::vector<std::string>& cameras);
@@ -36,12 +36,12 @@ public:
   // virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const std::string& name, LayoutType layout);
 
   // virtual void Child(const std::shared_ptr<XVIZBaseUIBuilder>& child);
-  virtual UIPanel GetUI();
-  void AddChildUIs(UIPanel& ui_panel);
+  virtual nlohmann::json GetUI() const;
+  // void AddChildUIs(const nlohmann::json& ui_panel);
 
 protected:
-  std::shared_ptr<ComponentType> type_{nullptr};
-  std::vector<std::shared_ptr<XVIZBaseUIBuilder>> children_{};
+  std::string type_;
+  // std::vector<std::shared_ptr<XVIZBaseUIBuilder>> children_{};
 };
   
 } // namespace xviz

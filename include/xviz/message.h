@@ -7,8 +7,10 @@
 #ifndef XVIZ_MESSAGE_H_
 #define XVIZ_MESSAGE_H_
 
-#include "xviz/proto/core.pb.h"
-#include "xviz/proto/session.pb.h"
+#include "xviz/proto/xviz/v2/core.pb.h"
+#include "xviz/proto/xviz/v2/session.pb.h"
+#include "xviz/proto/xviz/v2/options.pb.h"
+#include "xviz/proto/xviz/v2/envelope.pb.h"
 #include "xviz/utils/json.hpp"
 #include "xviz/utils/macrologger.h"
 #include "xviz/utils/utils.h"
@@ -37,11 +39,22 @@ public:
 
   nlohmann::json ToObject(bool unravel = true);
   std::string ToObjectString(bool unravel = true);
-  std::shared_ptr<StateUpdate> GetStateUpdate();
-  std::shared_ptr<Metadata> GetMetadata();
+  std::shared_ptr<StateUpdate> GetStateUpdate() const;
+  std::shared_ptr<Metadata> GetMetadata() const;
+  std::string GetSchema() const;
 private:
   std::shared_ptr<StateUpdate> update_{nullptr};
   std::shared_ptr<Metadata> metadata_{nullptr};
+};
+
+class XVIZEnvelope {
+public:
+  XVIZEnvelope(const XVIZMessage& message, bool is_update=true);
+
+  const std::shared_ptr<xviz::v2::Envelope> GetData() const;
+
+private:
+  std::shared_ptr<xviz::v2::Envelope> data_{nullptr};
 };
   
 } // namespace xviz

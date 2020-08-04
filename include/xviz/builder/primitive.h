@@ -12,8 +12,8 @@
 #include "xviz/utils/macrologger.h"
 #include "xviz/utils/base64.h"
 #include "xviz/utils/utils.h"
-#include "xviz/proto/core.pb.h"
-#include "xviz/proto/primitives.pb.h"
+#include "xviz/proto/xviz/v2/core.pb.h"
+#include "xviz/proto/xviz/v2/primitives.pb.h"
 
 
 namespace xviz {
@@ -51,8 +51,8 @@ public:
   XVIZPrimitiveBuilder& Circle(const std::shared_ptr<std::vector<double>>& vertices_ptr, double radius);
 
   XVIZPrimitiveBuilder& Dimensions(uint32_t width_pixel, uint32_t height_pixel);
-  XVIZPrimitiveBuilder& Image(const std::string& raw_data_str, bool is_encoding_needed=false);
-  XVIZPrimitiveBuilder& Image(std::string&& raw_data_str, bool is_encoding_needed=false);
+  XVIZPrimitiveBuilder& Image(const std::string& raw_data_str);
+  XVIZPrimitiveBuilder& Image(std::string&& raw_data_str);
 
   XVIZPrimitiveBuilder& Text(const std::string& message);
   XVIZPrimitiveBuilder& Text(std::string&& message);

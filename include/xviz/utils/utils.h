@@ -11,7 +11,8 @@
 #include "xviz/utils/definitions.h"
 #include "xviz/utils/macrologger.h"
 #include "xviz/utils/json.hpp"
-#include "xviz/proto/style.pb.h"
+#include "xviz/proto/xviz/v2/style.pb.h"
+#include "base64.h"
 
 #include <memory>
 #include <google/protobuf/util/json_util.h>

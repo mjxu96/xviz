@@ -13,6 +13,8 @@
 #include "xviz/utils/json.hpp"
 #include "xviz/builder/metadata.h"
 #include "xviz/builder/xviz_builder.h"
+#include "xviz/builder/declarative_ui/metric_builder.h"
+#include "xviz/builder/declarative_ui/video_builder.h"
 
 namespace xviz {
 namespace test {
@@ -22,7 +24,7 @@ namespace test {
 ::testing::AssertionResult IsDifferentJson(const nlohmann::json& expected_json, const nlohmann::json& given_json);
 
 // Metadata
-std::unordered_map<std::string, xviz::XVIZUIBuilder> GetTestUIBuilders();
+xviz::XVIZUIBuilder GetTestUIBuilders();
 
 XVIZMetadataBuilder GetTestMetadataBuilder();
 

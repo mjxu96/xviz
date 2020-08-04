@@ -22,6 +22,14 @@ std::string ToUpper(const std::string& input) {
 
 std::shared_ptr<xviz::StyleObjectValue> xviz::JsonObjectToStyleObject(const nlohmann::json& json_ori) {
   auto json = json_ori;
+  if (json.find("fill_color") != json.end()) {
+    auto color = json["fill_color"].get<std::string>();
+    json["fill_color"] = base64_encode((const unsigned char *)color.data(), color.size());
+  }
+  if (json.find("stroke_color") != json.end()) {
+    auto color = json["stroke_color"].get<std::string>();
+    json["stroke_color"] = base64_encode((const unsigned char *)color.data(), color.size());
+  }
   auto style_object = std::make_shared<xviz::StyleObjectValue>();
   auto desc = style_object->GetDescriptor();
   std::vector<std::string> invalid_json_fields;
@@ -185,6 +193,15 @@ std::shared_ptr<xviz::StyleObjectValue> xviz::JsonStringToStyleObject(const std:
 std::shared_ptr<xviz::StyleStreamValue> xviz::JsonObjectToStyleStream(const nlohmann::json& json_ori) {
   auto style_stream = std::make_shared<xviz::StyleStreamValue>();
   auto json = json_ori;
+  if (json.find("fill_color") != json.end()) {
+    auto color = json["fill_color"].get<std::string>();
+    json["fill_color"] = base64_encode((const unsigned char *)color.data(), color.size());
+  }
+  if (json.find("stroke_color") != json.end()) {
+    auto color = json["stroke_color"].get<std::string>();
+    json["stroke_color"] = base64_encode((const unsigned char *)color.data(), color.size());
+  }
+
 
   auto desc = style_stream->GetDescriptor();
   std::vector<std::string> invalid_json_fields;

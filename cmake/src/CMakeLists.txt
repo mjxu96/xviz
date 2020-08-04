@@ -11,6 +11,7 @@ endif()
 
 
 include_directories(${XVIZ_ROOT_DIR}/include)
+include_directories(${XVIZ_ROOT_DIR}/include/xviz/proto)
 include_directories(${PROTOBUF_INCLUDE_DIRS})
 
 # all headers
@@ -18,16 +19,14 @@ install(DIRECTORY ${XVIZ_ROOT_DIR}/include/xviz DESTINATION include)
 
 # protobuf files
 file(GLOB libxviz_pb_sources
-  "${XVIZ_ROOT_DIR}/src/proto/declarativeui.pb.cc"
-  "${XVIZ_ROOT_DIR}/src/proto/session.pb.cc"
-  "${XVIZ_ROOT_DIR}/src/proto/session.pb.cc"
-  "${XVIZ_ROOT_DIR}/src/proto/core.pb.cc"
-  "${XVIZ_ROOT_DIR}/src/proto/annotation.pb.cc"
-  "${XVIZ_ROOT_DIR}/src/proto/primitives.pb.cc"
-  "${XVIZ_ROOT_DIR}/src/proto/uiprimitives.pb.cc"
-  "${XVIZ_ROOT_DIR}/src/proto/style.pb.cc"
-  "${XVIZ_ROOT_DIR}/src/proto/options.pb.cc"
-  "${XVIZ_ROOT_DIR}/src/proto/envelope.pb.cc"
+  "${XVIZ_ROOT_DIR}/src/proto/xviz/v2/session.pb.cc"
+  "${XVIZ_ROOT_DIR}/src/proto/xviz/v2/core.pb.cc"
+  "${XVIZ_ROOT_DIR}/src/proto/xviz/v2/annotation.pb.cc"
+  "${XVIZ_ROOT_DIR}/src/proto/xviz/v2/primitives.pb.cc"
+  "${XVIZ_ROOT_DIR}/src/proto/xviz/v2/uiprimitives.pb.cc"
+  "${XVIZ_ROOT_DIR}/src/proto/xviz/v2/style.pb.cc"
+  "${XVIZ_ROOT_DIR}/src/proto/xviz/v2/options.pb.cc"
+  "${XVIZ_ROOT_DIR}/src/proto/xviz/v2/envelope.pb.cc"
 )
 set(libxviz_sources "${libxviz_sources};${libxviz_pb_sources}")
 
@@ -45,8 +44,10 @@ file(GLOB libxviz_builder_sources
   "${XVIZ_ROOT_DIR}/src/builder/declarative_ui/plot_builder.cpp"
   "${XVIZ_ROOT_DIR}/src/builder/declarative_ui/table_builder.cpp"
   "${XVIZ_ROOT_DIR}/src/builder/declarative_ui/video_builder.cpp"
+  "${XVIZ_ROOT_DIR}/src/builder/declarative_ui/panel_builder.cpp"
   "${XVIZ_ROOT_DIR}/src/builder/declarative_ui/metric_builder.cpp"
   "${XVIZ_ROOT_DIR}/src/builder/declarative_ui/base_ui_builder.cpp"
+  "${XVIZ_ROOT_DIR}/src/builder/declarative_ui/base_ui_component_builder.cpp"
 
   "${XVIZ_ROOT_DIR}/src/builder/metadata.cpp"
   "${XVIZ_ROOT_DIR}/src/builder/base_builder.cpp"
@@ -60,7 +61,7 @@ set(libxviz_sources "${libxviz_sources};${libxviz_builder_sources}")
 
 # io sources
 file(GLOB libxviz_io_sources
-  "${XVIZ_ROOT_DIR}/src/io/glb_writer.cpp"
+  "${XVIZ_ROOT_DIR}/src/io/protobuf_writer.cpp"
 )
 set(libxviz_sources "${libxviz_sources};${libxviz_io_sources}")
 
@@ -87,3 +88,4 @@ target_link_libraries(xviz ${PROTOBUF_LIBRARIES})
 install(TARGETS xviz DESTINATION lib)
 
 target_include_directories(xviz PUBLIC ${XVIZ_ROOT_DIR}/include)
+target_include_directories(xviz PUBLIC ${XVIZ_ROOT_DIR}/include/xviz/proto)

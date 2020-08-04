@@ -7,14 +7,29 @@
 #include "xviz/builder/declarative_ui/container_builder.h"
 
 using namespace xviz;
-XVIZContainerBuilder::XVIZContainerBuilder(const std::string& name, LayoutType layout)
-  : XVIZBaseUIBuilder(ComponentType::CONTAINER), name_(name), layout_(layout) {}
+XVIZContainerBuilder::XVIZContainerBuilder(const std::string& name, const std::string& layout,
+    const std::string& interactions)
+  : XVIZBaseUIBuilder("CONTAINER"), name_(name), layout_(layout), interactions_(interactions) {}
 
 
-UIPanel XVIZContainerBuilder::GetUI() {
-  UIPanel ui_panel = XVIZBaseUIBuilder::GetUI();
-  ui_panel.set_name(name_);
-  ui_panel.set_layout(layout_);
+const std::string XVIZContainerBuilder::Name() const {
+  return name_;
+}
 
+nlohmann::json XVIZContainerBuilder::GetUI() const {
+  nlohmann::json ui_panel = XVIZBaseUIBuilder::GetUI();
+  ui_panel["name"] = name_;
+  uint32_t cnt = 0u;
+  for (auto& child : children_) {
+    ui_panel["children"][cnt] = child->GetUI();
+    cnt++;
+  }
+  if (!layout_.empty()) {
+    ui_panel["layout"] = layout_;
+  }
+
+  if (!interactions_.empty()) {
+    ui_panel["interactions"] = interactions_;
+  }
   return ui_panel;
 }

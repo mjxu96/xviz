@@ -9,6 +9,7 @@ endif()
 
 
 include_directories(${XVIZ_ROOT_DIR}/include)
+include_directories(${XVIZ_ROOT_DIR}/include/xviz/proto)
 include_directories(${GTEST_INCLUDE_DIRS})
 
 add_library(xviz-test-lib
