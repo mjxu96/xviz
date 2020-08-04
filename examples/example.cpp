@@ -5,10 +5,10 @@
  */
 
 #include <iostream>
-#include "xviz/v2/primitives.pb.h"
 #include "xviz/builder/metadata.h"
 #include "xviz/builder/pose.h"
 #include "xviz/builder/xviz_builder.h"
+#include "xviz/v2/primitives.pb.h"
 
 #include "xviz/builder/declarative_ui/container_builder.h"
 #include "xviz/builder/declarative_ui/metric_builder.h"
@@ -33,7 +33,6 @@ XVIZUIBuilder GetUIBuilder() {
   container.Child<XVIZMetricBuilder>(streams, "123", "123");
   ui_builder.Child(container);
 
-
   return ui_builder;
   // std::unordered_map<std::string, XVIZUIBuilder> ui_builders;
 
@@ -45,14 +44,19 @@ XVIZUIBuilder GetUIBuilder() {
   // std::vector<std::string> streams = {"/object/ts"};
   // std::vector<std::string> dep_vars = {"ddd", "aaa"};
   // XVIZVideoBuilder camera_builder(cameras);
-  // XVIZPlotBuilder plot_builder("title", "des", "indep_var", std::move(dep_vars));
-  // XVIZTableBuilder table_builder("title", "des", "/some_stream/table", true);
-  
-  // std::shared_ptr<XVIZBaseUIBuilder> metric_builder1 = std::make_shared<XVIZMetricBuilder>(streams, "123", "123");
-  // std::shared_ptr<XVIZBaseUIBuilder> metric_builder2 = std::make_shared<XVIZMetricBuilder>(streams, "123", "123");
-  // std::shared_ptr<XVIZBaseUIBuilder> metric_builder3 = std::make_shared<XVIZMetricBuilder>(streams, "123", "123");
+  // XVIZPlotBuilder plot_builder("title", "des", "indep_var",
+  // std::move(dep_vars)); XVIZTableBuilder table_builder("title", "des",
+  // "/some_stream/table", true);
 
-  // std::shared_ptr<XVIZBaseUIBuilder> container_builder = std::make_shared<XVIZContainerBuilder>("metrics", LayoutType::VERTICAL);
+  // std::shared_ptr<XVIZBaseUIBuilder> metric_builder1 =
+  // std::make_shared<XVIZMetricBuilder>(streams, "123", "123");
+  // std::shared_ptr<XVIZBaseUIBuilder> metric_builder2 =
+  // std::make_shared<XVIZMetricBuilder>(streams, "123", "123");
+  // std::shared_ptr<XVIZBaseUIBuilder> metric_builder3 =
+  // std::make_shared<XVIZMetricBuilder>(streams, "123", "123");
+
+  // std::shared_ptr<XVIZBaseUIBuilder> container_builder =
+  // std::make_shared<XVIZContainerBuilder>("metrics", LayoutType::VERTICAL);
   // container_builder->Child(metric_builder1);
   // container_builder->Child(metric_builder2);
   // container_builder->Child<XVIZMetricBuilder>(streams, "123", "123");
@@ -67,31 +71,49 @@ int main() {
   // Circle circle;
   // circle.add_center(0);
   // auto builder = std::make_shared<XVIZBuilder>(std::make_shared<Metadata>());
-  std::string s = "{\"fill_color\": \"#f00\"}"; 
-  std::string s1 = "{\"fill_color\": \"#f00\"}"; //, \"point_color_mode\": \"DISTANCE_TO_VEHICLE\"}"; 
+  std::string s = "{\"fill_color\": \"#f00\"}";
+  std::string s1 = "{\"fill_color\": \"#f00\"}";  //, \"point_color_mode\":
+                                                  //\"DISTANCE_TO_VEHICLE\"}";
   // std::vector<unsigned char> colors = {(unsigned char)255, 0 ,0};
   // auto ss = base64_encode(colors.data(), colors.size());
 
-  //   std::string s = "{\"fill_color\":\"" + ss + "\"}"; 
+  //   std::string s = "{\"fill_color\":\"" + ss + "\"}";
   //   std::cout << s << std::endl;
-  //   // std::string s1 = "{\"fill_color\": [255, 0, 0]}"; //, \"point_color_mode\": \"ELEVATION\"}"; 
-  //   auto s1 = s;
-
+  //   // std::string s1 = "{\"fill_color\": [255, 0, 0]}"; //,
+  //   \"point_color_mode\": \"ELEVATION\"}"; auto s1 = s;
 
   auto metadata_builder = std::make_shared<XVIZMetadataBuilder>();
-  metadata_builder->Stream("/vehicle_pose").Category(Category::StreamMetadata_Category_POSE)
-    .Stream("/object/shape").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_POLYGON)
-    .Coordinate(CoordinateType::StreamMetadata_CoordinateType_VEHICLE_RELATIVE)//.Unit("123").Source("123")
-    .StreamStyle(s1)
-    .Stream("/object/shape2").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_POLYGON)
-    .StyleClass("circle", s1)
-    .Stream("/object/circles").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_CIRCLE)
-    .Stream("/camera/images0").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_IMAGE)
-    .Stream("/object/text").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_TEXT)
-    .Stream("/object/stadium").Category(Category::StreamMetadata_Category_PRIMITIVE).Type(Primitive::StreamMetadata_PrimitiveType_STADIUM)
-    .Stream("/object/ts").Category(Category::StreamMetadata_Category_TIME_SERIES).Type(xviz::StreamMetadata::STRING)
-    .Stream("/object/uptest").Category(Category::StreamMetadata_Category_UI_PRIMITIVE)
-    .UI(GetUIBuilder());
+  metadata_builder->Stream("/vehicle_pose")
+      .Category(Category::StreamMetadata_Category_POSE)
+      .Stream("/object/shape")
+      .Category(Category::StreamMetadata_Category_PRIMITIVE)
+      .Type(Primitive::StreamMetadata_PrimitiveType_POLYGON)
+      .Coordinate(
+          CoordinateType::
+              StreamMetadata_CoordinateType_VEHICLE_RELATIVE)  //.Unit("123").Source("123")
+      .StreamStyle(s1)
+      .Stream("/object/shape2")
+      .Category(Category::StreamMetadata_Category_PRIMITIVE)
+      .Type(Primitive::StreamMetadata_PrimitiveType_POLYGON)
+      .StyleClass("circle", s1)
+      .Stream("/object/circles")
+      .Category(Category::StreamMetadata_Category_PRIMITIVE)
+      .Type(Primitive::StreamMetadata_PrimitiveType_CIRCLE)
+      .Stream("/camera/images0")
+      .Category(Category::StreamMetadata_Category_PRIMITIVE)
+      .Type(Primitive::StreamMetadata_PrimitiveType_IMAGE)
+      .Stream("/object/text")
+      .Category(Category::StreamMetadata_Category_PRIMITIVE)
+      .Type(Primitive::StreamMetadata_PrimitiveType_TEXT)
+      .Stream("/object/stadium")
+      .Category(Category::StreamMetadata_Category_PRIMITIVE)
+      .Type(Primitive::StreamMetadata_PrimitiveType_STADIUM)
+      .Stream("/object/ts")
+      .Category(Category::StreamMetadata_Category_TIME_SERIES)
+      .Type(xviz::StreamMetadata::STRING)
+      .Stream("/object/uptest")
+      .Category(Category::StreamMetadata_Category_UI_PRIMITIVE)
+      .UI(GetUIBuilder());
   metadata_builder->StartTime(1000).EndTime(1010);
 
   XVIZBuilder builder(metadata_builder->GetData());

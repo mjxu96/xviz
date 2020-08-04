@@ -218,7 +218,8 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Dimensions(uint32_t width_pixel,
   return *this;
 }
 
-XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Image(const std::string& raw_data_str) {
+XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Image(
+    const std::string& raw_data_str) {
   if (type_ != nullptr) {
     Flush();
   }
@@ -230,7 +231,6 @@ XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Image(const std::string& raw_data_st
 }
 
 XVIZPrimitiveBuilder& XVIZPrimitiveBuilder::Image(std::string&& raw_data_str) {
-
   if (type_ != nullptr) {
     Flush();
   }
@@ -425,40 +425,42 @@ void XVIZPrimitiveBuilder::FlushPrimitives() {
     }
 
     case Primitive::StreamMetadata_PrimitiveType_POINT: {
-        if (vertices_ == nullptr) {
-          XVIZ_LOG_ERROR("Vertice pointer is NULL");
+      if (vertices_ == nullptr) {
+        XVIZ_LOG_ERROR("Vertice pointer is NULL");
+        break;
+      }
+      auto point_size = vertices_->size();
+      auto point_ptr = stream_ptr->add_points();
+      for (const auto p : *vertices_) {
+        point_ptr->add_points(p);
+      }
+      // google::protobuf::Value* points_value_ptr = new
+      // google::protobuf::Value(); google::protobuf::ListValue*
+      // points_list_value_ptr = new google::protobuf::ListValue(); for (auto v
+      // : *vertices_) {
+      //   google::protobuf::Value tmp_point_value;
+      //   tmp_point_value.set_number_value(v);
+      //   auto new_value_ptr = points_list_value_ptr->add_values();
+      //   (*new_value_ptr) = std::move(tmp_point_value);
+      // }
+      // points_value_ptr->set_allocated_list_value(points_list_value_ptr);
+      // point_ptr->set_allocated_points(points_value_ptr);
+
+      AddBase<xviz::Point>(point_ptr, base_pair);
+
+      if (colors_ != nullptr) {
+        if (colors_->size() / 4u != point_size / 3u) {
+          XVIZ_LOG_WARNING(
+              "Point size and color size not match, not showing colors");
           break;
         }
-        auto point_size = vertices_->size();
-        auto point_ptr = stream_ptr->add_points();
-        for (const auto p : *vertices_) {
-          point_ptr->add_points(p);
-        }
-        // google::protobuf::Value* points_value_ptr = new google::protobuf::Value();
-        // google::protobuf::ListValue* points_list_value_ptr = new google::protobuf::ListValue();
-        // for (auto v : *vertices_) {
-        //   google::protobuf::Value tmp_point_value;
-        //   tmp_point_value.set_number_value(v);
-        //   auto new_value_ptr = points_list_value_ptr->add_values();
-        //   (*new_value_ptr) = std::move(tmp_point_value);
-        // }
-        // points_value_ptr->set_allocated_list_value(points_list_value_ptr);
-        // point_ptr->set_allocated_points(points_value_ptr);
-
-        AddBase<xviz::Point>(point_ptr, base_pair);
-
-        if (colors_ != nullptr) {
-          if (colors_->size() / 4u != point_size / 3u) {
-            XVIZ_LOG_WARNING("Point size and color size not match, not showing colors");
-            break;
-          }
-          point_ptr->set_colors((const void*)colors_->data(), colors_->size());
-        }
-        // if (has_base) {
-        //   auto cur_base_ptr = point_ptr->mutable_base();
-        //   cur_base_ptr->MergeFrom(base);
-        // }
-        break;
+        point_ptr->set_colors((const void*)colors_->data(), colors_->size());
+      }
+      // if (has_base) {
+      //   auto cur_base_ptr = point_ptr->mutable_base();
+      //   cur_base_ptr->MergeFrom(base);
+      // }
+      break;
     }
 
     case Primitive::StreamMetadata_PrimitiveType_IMAGE: {

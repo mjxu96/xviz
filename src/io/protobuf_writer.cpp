@@ -7,11 +7,13 @@
 
 #include "xviz/io/protobuf_writer.h"
 
-std::string xviz::WriteToProtobuf(const xviz::XVIZMessage& message, bool is_update) {
+std::string xviz::WriteToProtobuf(const xviz::XVIZMessage& message,
+                                  bool is_update) {
   std::string prefix = "\x50\x42\x45\x31";
   std::string result;
   if (is_update) {
-    auto data = xviz::XVIZEnvelope(message).GetData();//message.GetStateUpdate();
+    auto data =
+        xviz::XVIZEnvelope(message).GetData();  // message.GetStateUpdate();
     if (!data->SerializeToString(&result)) {
       XVIZ_LOG_WARNING("protobuf serialization fails");
     }

@@ -7,11 +7,10 @@
 #ifndef XVIZ_MESSAGE_H_
 #define XVIZ_MESSAGE_H_
 
-
 #include "xviz/v2/core.pb.h"
-#include "xviz/v2/session.pb.h"
-#include "xviz/v2/options.pb.h"
 #include "xviz/v2/envelope.pb.h"
+#include "xviz/v2/options.pb.h"
+#include "xviz/v2/session.pb.h"
 
 #include <nlohmann/json.hpp>
 #include "xviz/utils/macrologger.h"
@@ -46,21 +45,22 @@ class XVIZMessage {
   std::shared_ptr<StateUpdate> GetStateUpdate() const;
   std::shared_ptr<Metadata> GetMetadata() const;
   std::string GetSchema() const;
-private:
+
+ private:
   std::shared_ptr<StateUpdate> update_{nullptr};
   std::shared_ptr<Metadata> metadata_{nullptr};
 };
 
 class XVIZEnvelope {
-public:
-  XVIZEnvelope(const XVIZMessage& message, bool is_update=true);
+ public:
+  XVIZEnvelope(const XVIZMessage& message, bool is_update = true);
 
   const std::shared_ptr<xviz::v2::Envelope> GetData() const;
 
-private:
+ private:
   std::shared_ptr<xviz::v2::Envelope> data_{nullptr};
 };
-  
-} // namespace xviz
+
+}  // namespace xviz
 
 #endif

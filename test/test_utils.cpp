@@ -29,8 +29,7 @@
                                        << expected_json << std::endl;
 }
 
-xviz::XVIZUIBuilder
-xviz::test::GetTestUIBuilders() {
+xviz::XVIZUIBuilder xviz::test::GetTestUIBuilders() {
   using namespace xviz;
   XVIZUIBuilder ui_builder;
 
@@ -45,7 +44,6 @@ xviz::test::GetTestUIBuilders() {
   container.Child<XVIZMetricBuilder>(streams, "123", "123");
   container.Child<XVIZMetricBuilder>(streams, "123", "123");
   ui_builder.Child(container);
-
 
   return ui_builder;
   // using namespace xviz;
@@ -72,7 +70,8 @@ xviz::test::GetTestUIBuilders() {
   //     std::make_shared<XVIZMetricBuilder>(streams, "123", "123");
 
   // std::shared_ptr<XVIZBaseUIBuilder> container_builder =
-  //     std::make_shared<XVIZContainerBuilder>("metrics", LayoutType::VERTICAL);
+  //     std::make_shared<XVIZContainerBuilder>("metrics",
+  //     LayoutType::VERTICAL);
   // container_builder->Child(metric_builder1);
   // container_builder->Child(metric_builder2);
   // container_builder->Child<XVIZMetricBuilder>(streams, "123", "123");
@@ -185,7 +184,38 @@ xviz::test::GetBuilderTestMetadataBuilderForUIPrimitive() {
 
 nlohmann::json xviz::test::GetTestMetadataExpectedJson() {
   std::string expected_str =
-      "{\"log_info\":{\"end_time\":1010,\"start_time\":1000},\"streams\":{\"/camera/images0\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"IMAGE\"},\"/object/circles\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"CIRCLE\"},\"/object/shape\":{\"category\":\"PRIMITIVE\",\"coordinate\":\"VEHICLE_RELATIVE\",\"primitive_type\":\"POLYGON\",\"stream_style\":{\"fill_color\":\"#fff\"},\"style_classes\":[{\"name\":\"name1\",\"style\":{\"fill_color\":\"#fff\"}}]},\"/object/shape2\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"POLYGON\",\"transform\":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]},\"/object/stadium\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"STADIUM\"},\"/object/text\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"TEXT\"},\"/object/ts\":{\"category\":\"TIME_SERIES\",\"scalar_type\":\"STRING\",\"units\":\"m/s\"},\"/object/uptest\":{\"category\":\"UI_PRIMITIVE\",\"source\":\"unknown source\"},\"/vehicle_pose\":{\"category\":\"POSE\"}},\"ui_config\":{\"Camera\":{\"config\":{\"children\":[{\"cameras\":[\"/camera/images0\"],\"type\":\"VIDEO\"}],\"name\":\"Camera\",\"type\":\"PANEL\"},\"name\":\"Camera\"},\"Metrics\":{\"config\":{\"children\":[{\"description\":\"123\",\"streams\":[\"/vehicle/acceleration\"],\"title\":\"123\",\"type\":\"METRIC\"},{\"description\":\"123\",\"streams\":[\"/vehicle/acceleration\"],\"title\":\"123\",\"type\":\"METRIC\"},{\"description\":\"123\",\"streams\":[\"/vehicle/acceleration\"],\"title\":\"123\",\"type\":\"METRIC\"}],\"layout\":\"VERTICAL\",\"name\":\"Metrics\",\"type\":\"CONTAINER\"},\"name\":\"Metrics\"}},\"version\":\"2.0.0\"}";
+      "{\"log_info\":{\"end_time\":1010,\"start_time\":1000},\"streams\":{\"/"
+      "camera/"
+      "images0\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"IMAGE\"},\"/"
+      "object/"
+      "circles\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"CIRCLE\"},\"/"
+      "object/"
+      "shape\":{\"category\":\"PRIMITIVE\",\"coordinate\":\"VEHICLE_RELATIVE\","
+      "\"primitive_type\":\"POLYGON\",\"stream_style\":{\"fill_color\":\"#"
+      "fff\"},\"style_classes\":[{\"name\":\"name1\",\"style\":{\"fill_color\":"
+      "\"#fff\"}}]},\"/object/"
+      "shape2\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"POLYGON\","
+      "\"transform\":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]},\"/object/"
+      "stadium\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"STADIUM\"},"
+      "\"/object/"
+      "text\":{\"category\":\"PRIMITIVE\",\"primitive_type\":\"TEXT\"},\"/"
+      "object/"
+      "ts\":{\"category\":\"TIME_SERIES\",\"scalar_type\":\"STRING\",\"units\":"
+      "\"m/s\"},\"/object/"
+      "uptest\":{\"category\":\"UI_PRIMITIVE\",\"source\":\"unknown "
+      "source\"},\"/"
+      "vehicle_pose\":{\"category\":\"POSE\"}},\"ui_config\":{\"Camera\":{"
+      "\"config\":{\"children\":[{\"cameras\":[\"/camera/"
+      "images0\"],\"type\":\"VIDEO\"}],\"name\":\"Camera\",\"type\":\"PANEL\"},"
+      "\"name\":\"Camera\"},\"Metrics\":{\"config\":{\"children\":[{"
+      "\"description\":\"123\",\"streams\":[\"/vehicle/"
+      "acceleration\"],\"title\":\"123\",\"type\":\"METRIC\"},{\"description\":"
+      "\"123\",\"streams\":[\"/vehicle/"
+      "acceleration\"],\"title\":\"123\",\"type\":\"METRIC\"},{\"description\":"
+      "\"123\",\"streams\":[\"/vehicle/"
+      "acceleration\"],\"title\":\"123\",\"type\":\"METRIC\"}],\"layout\":"
+      "\"VERTICAL\",\"name\":\"Metrics\",\"type\":\"CONTAINER\"},\"name\":"
+      "\"Metrics\"}},\"version\":\"2.0.0\"}";
   return nlohmann::json::parse(expected_str);
 }
 

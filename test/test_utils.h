@@ -10,10 +10,10 @@
 #include <gtest/gtest.h>
 #include <nlohmann/json.hpp>
 #include <sstream>
-#include "xviz/builder/metadata.h"
-#include "xviz/builder/xviz_builder.h"
 #include "xviz/builder/declarative_ui/metric_builder.h"
 #include "xviz/builder/declarative_ui/video_builder.h"
+#include "xviz/builder/metadata.h"
+#include "xviz/builder/xviz_builder.h"
 
 namespace xviz {
 namespace test {

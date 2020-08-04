@@ -14,8 +14,9 @@ namespace xviz {
 
 class XVIZBaseUIComponentBuilder : public XVIZBaseUIBuilder {
  public:
-  XVIZBaseUIComponentBuilder(const std::string& type, const std::string& title="",
-    const std::string& description="");
+  XVIZBaseUIComponentBuilder(const std::string& type,
+                             const std::string& title = "",
+                             const std::string& description = "");
 
   virtual nlohmann::json GetUI() const override;
 
@@ -23,8 +24,7 @@ class XVIZBaseUIComponentBuilder : public XVIZBaseUIBuilder {
   std::string title_;
   std::string description_;
 };
-  
-} // namespace xviz
 
+}  // namespace xviz
 
 #endif

@@ -36,7 +36,8 @@ using namespace xviz;
 
 XVIZBaseUIBuilder::XVIZBaseUIBuilder(const std::string& type) : type_(type) {}
 
-// std::shared_ptr<XVIZBaseUIBuilder> XVIZBaseUIBuilder::Child(const std::shared_ptr<XVIZBaseUIBuilder>& child) {
+// std::shared_ptr<XVIZBaseUIBuilder> XVIZBaseUIBuilder::Child(const
+// std::shared_ptr<XVIZBaseUIBuilder>& child) {
 //   children_.push_back(child);
 //   return child;
 // }

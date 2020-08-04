@@ -31,7 +31,8 @@ XVIZUIBuilder& XVIZUIBuilder::Child(const XVIZContainerBuilder& container) {
   container_children_.emplace_back(container);
   return *this;
 }
-// XVIZUIBuilder& XVIZUIBuilder::Child(const std::shared_ptr<XVIZBaseUIBuilder>& child) {
+// XVIZUIBuilder& XVIZUIBuilder::Child(const std::shared_ptr<XVIZBaseUIBuilder>&
+// child) {
 //   children_.push_back(child);
 //   return *this;
 // }

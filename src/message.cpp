@@ -40,7 +40,8 @@ Json MessageObjectToJson(std::shared_ptr<google::protobuf::Message> data) {
                 if (point_item.find("colors") != point_item.end()) {
                   auto encoded_colors = point_item["colors"].get<std::string>();
                   auto decoded_colors = base64_decode(encoded_colors);
-                  std::vector<unsigned char> colors(decoded_colors.begin(), decoded_colors.end());
+                  std::vector<unsigned char> colors(decoded_colors.begin(),
+                                                    decoded_colors.end());
                   point_item["colors"] = std::move(colors);
                 }
               }
@@ -48,7 +49,8 @@ Json MessageObjectToJson(std::shared_ptr<google::protobuf::Message> data) {
             for (auto& primitive_item : item.value()) {
               for (auto& property_item : primitive_item) {
                 if (property_item.find("base") != property_item.end() &&
-                    property_item["base"].find("style") != property_item["base"].end()) {
+                    property_item["base"].find("style") !=
+                        property_item["base"].end()) {
                   UnravelStyle(property_item["base"]["style"], "fill_color");
                   UnravelStyle(property_item["base"]["style"], "stroke_color");
                 }
@@ -65,11 +67,13 @@ Json MessageObjectToJson(std::shared_ptr<google::protobuf::Message> data) {
   if (json.find("streams") != json.end()) {
     for (auto& metadata_stream_itr : json["streams"].items()) {
       auto& metadata_stream_value = metadata_stream_itr.value();
-      if (metadata_stream_value.find("stream_style") != metadata_stream_value.end()) {
+      if (metadata_stream_value.find("stream_style") !=
+          metadata_stream_value.end()) {
         UnravelStyle(metadata_stream_value["stream_style"], "fill_color");
         UnravelStyle(metadata_stream_value["stream_style"], "stroke_color");
       }
-      if (metadata_stream_value.find("style_classes") != metadata_stream_value.end()) {
+      if (metadata_stream_value.find("style_classes") !=
+          metadata_stream_value.end()) {
         for (auto& style_class : metadata_stream_value["style_classes"]) {
           UnravelStyle(style_class["style"], "fill_color");
           UnravelStyle(style_class["style"], "stroke_color");
@@ -78,14 +82,14 @@ Json MessageObjectToJson(std::shared_ptr<google::protobuf::Message> data) {
     }
   }
 
-
   return json;
 }
 
-std::string MessageObjectToString(std::shared_ptr<google::protobuf::Message> data) {
+std::string MessageObjectToString(
+    std::shared_ptr<google::protobuf::Message> data) {
   // if (data == nullptr) {
-  //   throw std::runtime_error("dynamic cast from StreamSet to google::protobuf::Message error");
-  //   return Json();
+  //   throw std::runtime_error("dynamic cast from StreamSet to
+  //   google::protobuf::Message error"); return Json();
   // }
   // std::string json_str;
   // google::protobuf::util::JsonOptions options;
@@ -174,25 +178,24 @@ std::shared_ptr<StateUpdate> XVIZMessage::GetStateUpdate() const {
   return update_;
 }
 
-std::shared_ptr<Metadata> XVIZMessage::GetMetadata() const {
-  return metadata_;
-}
+std::shared_ptr<Metadata> XVIZMessage::GetMetadata() const { return metadata_; }
 
 std::string XVIZMessage::GetSchema() const {
-  return update_->descriptor()->options().GetExtension(xviz::v2::xviz_json_schema);
+  return update_->descriptor()->options().GetExtension(
+      xviz::v2::xviz_json_schema);
 }
 
 XVIZEnvelope::XVIZEnvelope(const XVIZMessage& message, bool is_update) {
-    data_ = std::make_shared<xviz::v2::Envelope>();
-    auto schema_str = message.GetSchema(); 
-    schema_str = std::string("xviz") + schema_str.substr(schema_str.find("/"));
-    data_->set_type(schema_str);
-    auto data_ptr = data_->mutable_data();
-    if (is_update) {
-      data_ptr->PackFrom(*(message.GetStateUpdate()));
-    } else {
-      data_ptr->PackFrom(*(message.GetMetadata()));
-    }
+  data_ = std::make_shared<xviz::v2::Envelope>();
+  auto schema_str = message.GetSchema();
+  schema_str = std::string("xviz") + schema_str.substr(schema_str.find("/"));
+  data_->set_type(schema_str);
+  auto data_ptr = data_->mutable_data();
+  if (is_update) {
+    data_ptr->PackFrom(*(message.GetStateUpdate()));
+  } else {
+    data_ptr->PackFrom(*(message.GetMetadata()));
+  }
 }
 
 const std::shared_ptr<xviz::v2::Envelope> XVIZEnvelope::GetData() const {

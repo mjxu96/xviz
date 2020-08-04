@@ -8,8 +8,8 @@
 #define XVIZ_DECLARATIVE_UI_BUILDER_H_
 
 #include "xviz/builder/declarative_ui/base_ui_builder.h"
-#include "xviz/builder/declarative_ui/panel_builder.h"
 #include "xviz/builder/declarative_ui/container_builder.h"
+#include "xviz/builder/declarative_ui/panel_builder.h"
 
 #include <vector>
 
@@ -18,7 +18,6 @@ namespace xviz {
 class XVIZUIBuilder {
  public:
   XVIZUIBuilder();
-
 
   XVIZUIBuilder& Child(const XVIZPanelBuilder& panel);
   XVIZUIBuilder& Child(const XVIZContainerBuilder& container);
@@ -41,7 +40,7 @@ class XVIZUIBuilder {
 
   std::unordered_map<std::string, nlohmann::json> GetUI() const;
 
-private:
+ private:
   std::vector<XVIZPanelBuilder> panel_children_{};
   std::vector<XVIZContainerBuilder> container_children_{};
 };

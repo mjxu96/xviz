@@ -13,10 +13,9 @@
 
 namespace xviz {
 
-::std::string WriteToProtobuf(const XVIZMessage& message, bool is_update=true);
-  
-} // namespace xviz
+::std::string WriteToProtobuf(const XVIZMessage& message,
+                              bool is_update = true);
 
-
+}  // namespace xviz
 
 #endif

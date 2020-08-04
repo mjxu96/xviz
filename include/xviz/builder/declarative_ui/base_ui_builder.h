@@ -16,14 +16,16 @@
 namespace xviz {
 
 class XVIZBaseUIBuilder : std::enable_shared_from_this<XVIZBaseUIBuilder> {
-public:
+ public:
   XVIZBaseUIBuilder(const std::string& type);
 
-  // virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const std::shared_ptr<XVIZBaseUIBuilder>& child);
+  // virtual std::shared_ptr<XVIZBaseUIBuilder> Child(const
+  // std::shared_ptr<XVIZBaseUIBuilder>& child);
 
   // template<typename UIBuilderType, typename... Args>
   // UIBuilderType& Child(Args&&... args) {
-  //   auto child = std::make_shared<UIBuilderType>(std::forward<Args>(args)...);
+  //   auto child =
+  //   std::make_shared<UIBuilderType>(std::forward<Args>(args)...);
   //   children_.push_back(child);
   //   return *child;
   // }
@@ -43,7 +45,7 @@ public:
   virtual nlohmann::json GetUI() const;
   // void AddChildUIs(const nlohmann::json& ui_panel);
 
-protected:
+ protected:
   std::string type_;
   // std::vector<std::shared_ptr<XVIZBaseUIBuilder>> children_{};
 };

@@ -15,12 +15,13 @@
 namespace xviz {
 
 class XVIZVideoBuilder : public XVIZBaseUIComponentBuilder {
-public:
+ public:
   XVIZVideoBuilder(const std::vector<std::string>& cameras);
   XVIZVideoBuilder(std::vector<std::string>&& cameras);
 
   nlohmann::json GetUI() const override;
-private:
+
+ private:
   std::vector<std::string> cameras_{};
 };
 

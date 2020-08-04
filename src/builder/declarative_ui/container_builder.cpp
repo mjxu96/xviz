@@ -7,14 +7,15 @@
 #include "xviz/builder/declarative_ui/container_builder.h"
 
 using namespace xviz;
-XVIZContainerBuilder::XVIZContainerBuilder(const std::string& name, const std::string& layout,
-    const std::string& interactions)
-  : XVIZBaseUIBuilder("CONTAINER"), name_(name), layout_(layout), interactions_(interactions) {}
+XVIZContainerBuilder::XVIZContainerBuilder(const std::string& name,
+                                           const std::string& layout,
+                                           const std::string& interactions)
+    : XVIZBaseUIBuilder("CONTAINER"),
+      name_(name),
+      layout_(layout),
+      interactions_(interactions) {}
 
-
-const std::string XVIZContainerBuilder::Name() const {
-  return name_;
-}
+const std::string XVIZContainerBuilder::Name() const { return name_; }
 
 nlohmann::json XVIZContainerBuilder::GetUI() const {
   nlohmann::json ui_panel = XVIZBaseUIBuilder::GetUI();

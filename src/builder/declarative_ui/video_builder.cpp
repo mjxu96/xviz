@@ -8,12 +8,11 @@
 
 using namespace xviz;
 
-XVIZVideoBuilder::XVIZVideoBuilder(const std::vector<std::string>& cameras) 
-  : XVIZBaseUIComponentBuilder("VIDEO"), cameras_(cameras) {
-  }
+XVIZVideoBuilder::XVIZVideoBuilder(const std::vector<std::string>& cameras)
+    : XVIZBaseUIComponentBuilder("VIDEO"), cameras_(cameras) {}
 
 XVIZVideoBuilder::XVIZVideoBuilder(std::vector<std::string>&& cameras)
-  : XVIZBaseUIComponentBuilder("VIDEO"), cameras_(std::move(cameras)) {}
+    : XVIZBaseUIComponentBuilder("VIDEO"), cameras_(std::move(cameras)) {}
 
 nlohmann::json XVIZVideoBuilder::GetUI() const {
   nlohmann::json ui_panel = XVIZBaseUIBuilder::GetUI();

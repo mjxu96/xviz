@@ -7,15 +7,17 @@
 
 #include "xviz/builder/declarative_ui/panel_builder.h"
 
-
 using namespace xviz;
 
-XVIZPanelBuilder::XVIZPanelBuilder(const std::string& name, const std::string& layout,
-    const std::string interactions) : XVIZBaseUIBuilder("PANEL"), name_(name), layout_(layout), interactions_(interactions) {}
+XVIZPanelBuilder::XVIZPanelBuilder(const std::string& name,
+                                   const std::string& layout,
+                                   const std::string interactions)
+    : XVIZBaseUIBuilder("PANEL"),
+      name_(name),
+      layout_(layout),
+      interactions_(interactions) {}
 
-const std::string XVIZPanelBuilder::Name() const {
-  return name_;
-}
+const std::string XVIZPanelBuilder::Name() const { return name_; }
 
 nlohmann::json XVIZPanelBuilder::GetUI() const {
   auto json = XVIZBaseUIBuilder::GetUI();
@@ -35,5 +37,4 @@ nlohmann::json XVIZPanelBuilder::GetUI() const {
     json["interactions"] = interactions_;
   }
   return json;
-
 }

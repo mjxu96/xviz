@@ -25,7 +25,8 @@ std::shared_ptr<Metadata> XVIZMetadataBuilder::GetData() {
       xviz::v2::UIPanelInfo panel;
       panel.set_name(panel_key);
       google::protobuf::Struct s;
-      google::protobuf::util::JsonStringToMessage(ui.dump(), &s, google::protobuf::util::JsonParseOptions());
+      google::protobuf::util::JsonStringToMessage(
+          ui.dump(), &s, google::protobuf::util::JsonParseOptions());
       panel.mutable_config()->MergeFrom(std::move(s));
       ui_config->insert({panel_key, panel});
     }
@@ -62,7 +63,8 @@ XVIZMetadataBuilder& XVIZMetadataBuilder::UI(XVIZUIBuilder&& ui_builder) {
   return UI(std::make_shared<XVIZUIBuilder>(std::move(ui_builder)));
 }
 
-XVIZMetadataBuilder& XVIZMetadataBuilder::UI(const std::shared_ptr<XVIZUIBuilder>& ui_builder_ptr) {
+XVIZMetadataBuilder& XVIZMetadataBuilder::UI(
+    const std::shared_ptr<XVIZUIBuilder>& ui_builder_ptr) {
   ui_ = ui_builder_ptr;
   return *this;
 }

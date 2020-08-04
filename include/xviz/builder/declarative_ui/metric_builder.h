@@ -12,9 +12,13 @@
 namespace xviz {
 
 class XVIZMetricBuilder : public XVIZBaseUIComponentBuilder {
-public:
-  XVIZMetricBuilder(const std::vector<std::string>& streams, const std::string& title="", const std::string& description="");
-  XVIZMetricBuilder(std::vector<std::string>&& streams, const std::string& title="", const std::string& description="");
+ public:
+  XVIZMetricBuilder(const std::vector<std::string>& streams,
+                    const std::string& title = "",
+                    const std::string& description = "");
+  XVIZMetricBuilder(std::vector<std::string>&& streams,
+                    const std::string& title = "",
+                    const std::string& description = "");
 
   nlohmann::json GetUI() const override;
 

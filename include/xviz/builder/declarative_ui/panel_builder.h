@@ -13,12 +13,12 @@
 namespace xviz {
 
 class XVIZPanelBuilder : public XVIZBaseUIBuilder {
-public:
-  XVIZPanelBuilder(const std::string& name, const std::string& layout="",
-    const std::string interactions="");
+ public:
+  XVIZPanelBuilder(const std::string& name, const std::string& layout = "",
+                   const std::string interactions = "");
   const std::string Name() const;
 
-  template<typename UIBuilderType, typename... Args>
+  template <typename UIBuilderType, typename... Args>
   UIBuilderType& Child(Args&&... args) {
     auto child = std::make_shared<UIBuilderType>(std::forward<Args>(args)...);
     children_.push_back(child);
@@ -27,16 +27,13 @@ public:
 
   nlohmann::json GetUI() const override;
 
-private:
+ private:
   const std::string name_;
   const std::string layout_;
   const std::string interactions_;
   std::vector<std::shared_ptr<XVIZBaseUIBuilder>> children_;
-
 };
-  
-} // namespace xviz
 
-
+}  // namespace xviz
 
 #endif

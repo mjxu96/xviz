@@ -40,7 +40,6 @@ using TimeSeriesState = v2::TimeSeriesState;
 using UIPrimitiveState = v2::UIPrimitiveState;
 using PrimitiveState = v2::PrimitiveState;
 
-
 // ui
 
 // struct PurePoint {

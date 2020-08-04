@@ -8,11 +8,10 @@
 #define XVIZ_PRIMITIVE_BUILDER_H_
 
 #include <cpp-base64/base64.h>
+#include "base_builder.h"
 #include "xviz/utils/utils.h"
 #include "xviz/v2/core.pb.h"
 #include "xviz/v2/primitives.pb.h"
-#include "base_builder.h"
-
 
 namespace xviz {
 

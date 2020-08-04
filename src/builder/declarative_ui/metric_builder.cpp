@@ -8,10 +8,16 @@
 
 using namespace xviz;
 
-XVIZMetricBuilder::XVIZMetricBuilder(const std::vector<std::string>& streams, const std::string& title, const std::string& description) 
-  : XVIZBaseUIComponentBuilder("METRIC", title, description), streams_(streams) {}
-XVIZMetricBuilder::XVIZMetricBuilder(std::vector<std::string>&& streams, const std::string& title, const std::string& description)
-  : XVIZBaseUIComponentBuilder("METRIC", title, description), streams_(std::move(streams)) {}
+XVIZMetricBuilder::XVIZMetricBuilder(const std::vector<std::string>& streams,
+                                     const std::string& title,
+                                     const std::string& description)
+    : XVIZBaseUIComponentBuilder("METRIC", title, description),
+      streams_(streams) {}
+XVIZMetricBuilder::XVIZMetricBuilder(std::vector<std::string>&& streams,
+                                     const std::string& title,
+                                     const std::string& description)
+    : XVIZBaseUIComponentBuilder("METRIC", title, description),
+      streams_(std::move(streams)) {}
 
 nlohmann::json XVIZMetricBuilder::GetUI() const {
   nlohmann::json ui_panel = XVIZBaseUIComponentBuilder::GetUI();
