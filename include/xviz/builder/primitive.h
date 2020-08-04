@@ -9,8 +9,9 @@
 
 #include <cpp-base64/base64.h>
 #include "xviz/utils/utils.h"
-#include "xviz/proto/xviz/v2/core.pb.h"
-#include "xviz/proto/xviz/v2/primitives.pb.h"
+#include "xviz/v2/core.pb.h"
+#include "xviz/v2/primitives.pb.h"
+#include "base_builder.h"
 
 
 namespace xviz {

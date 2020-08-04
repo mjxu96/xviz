@@ -15,7 +15,7 @@
 #include "xviz/utils/utils.h"
 
 #include "xviz/message.h"
-#include "xviz/proto/xviz/v2/session.pb.h"
+#include "xviz/v2/session.pb.h"
 
 #include <memory>
 

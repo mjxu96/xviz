@@ -7,7 +7,7 @@
 #ifndef XVIZ_DECLARATIVE_UI_BASE_BUILDER_H_
 #define XVIZ_DECLARATIVE_UI_BASE_BUILDER_H_
 
-#include "xviz/utils/json.hpp"
+#include <nlohmann/json.hpp>
 #include "xviz/utils/definitions.h"
 
 #include <memory>

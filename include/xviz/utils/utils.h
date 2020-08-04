@@ -9,9 +9,9 @@
 
 #include "xviz/utils/definitions.h"
 #include "xviz/utils/macrologger.h"
-#include "xviz/utils/json.hpp"
-#include "xviz/proto/xviz/v2/style.pb.h"
-#include "base64.h"
+#include <nlohmann/json.hpp>
+#include "xviz/v2/style.pb.h"
+#include <cpp-base64/base64.h>
 #include <nlohmann/json.hpp>
 
 #include <google/protobuf/util/json_util.h>

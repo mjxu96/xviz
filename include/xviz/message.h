@@ -8,10 +8,10 @@
 #define XVIZ_MESSAGE_H_
 
 
-#include "xviz/proto/xviz/v2/core.pb.h"
-#include "xviz/proto/xviz/v2/session.pb.h"
-#include "xviz/proto/xviz/v2/options.pb.h"
-#include "xviz/proto/xviz/v2/envelope.pb.h"
+#include "xviz/v2/core.pb.h"
+#include "xviz/v2/session.pb.h"
+#include "xviz/v2/options.pb.h"
+#include "xviz/v2/envelope.pb.h"
 
 #include <nlohmann/json.hpp>
 #include "xviz/utils/macrologger.h"
@@ -62,7 +62,5 @@ private:
 };
   
 } // namespace xviz
-
-}  // namespace xviz
 
 #endif

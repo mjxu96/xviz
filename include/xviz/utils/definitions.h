@@ -7,8 +7,8 @@
 #ifndef XVIZ_DEFINES_H_
 #define XVIZ_DEFINES_H_
 
-#include "xviz/proto/xviz/v2/session.pb.h"
-#include "xviz/proto/xviz/v2/style.pb.h"
+#include "xviz/v2/session.pb.h"
+#include "xviz/v2/style.pb.h"
 
 namespace xviz {
 

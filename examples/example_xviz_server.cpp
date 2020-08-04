@@ -9,7 +9,7 @@
 #include "xviz/server/xviz_session.h"
 
 #include <fstream>
-#include "xviz/proto/xviz/v2/primitives.pb.h"
+#include "xviz/v2/primitives.pb.h"
 #include <iostream>
 #include "xviz/builder/metadata.h"
 #include "xviz/builder/pose.h"
@@ -19,6 +19,7 @@
 #include "xviz/builder/declarative_ui/metric_builder.h"
 #include "xviz/builder/declarative_ui/table_builder.h"
 #include "xviz/builder/declarative_ui/container_builder.h"
+#include "xviz/builder/declarative_ui/video_builder.h"
 #include "xviz/io/protobuf_writer.h"
 
 using namespace xviz;

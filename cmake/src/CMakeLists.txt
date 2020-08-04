@@ -74,7 +74,7 @@ add_library(xviz
 )
 
 # generate protobuf files
-file(GLOB PROTO_FILES "${XVIZ_ROOT_DIR}/pb/*.proto")
+file(GLOB PROTO_FILES "${XVIZ_ROOT_DIR}/pb/xviz/v2/*.proto")
 protobuf_generate(
   LANGUAGE CPP
   TARGET xviz
@@ -91,5 +91,5 @@ target_include_directories(xviz PUBLIC ${XVIZ_ROOT_DIR}/include)
 
 install(TARGETS xviz DESTINATION lib)
 
-target_include_directories(xviz PUBLIC ${XVIZ_ROOT_DIR}/include)
-target_include_directories(xviz PUBLIC ${XVIZ_ROOT_DIR}/include/xviz/proto)
+# target_include_directories(xviz PUBLIC ${XVIZ_ROOT_DIR}/include)
+# target_include_directories(xviz PUBLIC ${XVIZ_ROOT_DIR}/include/xviz/proto)

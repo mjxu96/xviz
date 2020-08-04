@@ -5,7 +5,7 @@
  */
 
 #include <iostream>
-#include "xviz/proto/xviz/v2/primitives.pb.h"
+#include "xviz/v2/primitives.pb.h"
 #include "xviz/builder/metadata.h"
 #include "xviz/builder/pose.h"
 #include "xviz/builder/xviz_builder.h"
@@ -13,7 +13,6 @@
 #include "xviz/builder/declarative_ui/container_builder.h"
 #include "xviz/builder/declarative_ui/metric_builder.h"
 #include "xviz/builder/declarative_ui/video_builder.h"
-#include "xviz/io/glb_writer.h"
 
 #include <memory>
 
