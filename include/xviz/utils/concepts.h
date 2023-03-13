@@ -4,7 +4,7 @@
  * Author: Minjun Xu (mjxu96@outlook.com)
  * -----
  * MIT License
- * Copyright (c) 2023 Minjun Xu
+ * Copyright (c) 2022 Minjun Xu
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -27,13 +27,12 @@
 
 #pragma once
 
-#include <xviz/def.h>
-
+#include <concepts>
 #include <string>
-#include <vector>
 
-namespace xviz::util {
+namespace xviz::concepts {
 
-std::vector<uint8_t> GetBytesArrayFromHexString(std::string_view hexstring);
+template <typename... Args>
+concept CanConstructString = std::constructible_from<std::string, Args...>;
 
-}  // namespace xviz::util
+}  // namespace xviz::concepts

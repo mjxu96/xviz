@@ -23,17 +23,62 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
- */
+*/
 
 #pragma once
 
-#include <xviz/def.h>
+#include <cassert>
 
-#include <string>
-#include <vector>
+namespace xviz {
 
-namespace xviz::util {
+template <typename BuilderT, typename BaseBuilderT, typename DataT>
+class BuilderMixin {
+public:
+  BuilderMixin(BaseBuilderT& builder) : builder_(builder) {}
 
-std::vector<uint8_t> GetBytesArrayFromHexString(std::string_view hexstring);
+  auto&& GetMessage() {
+    return builder_.GetMessage();
+  }
 
-}  // namespace xviz::util
+  template <typename ...Args>
+  auto&& Primitive(Args&&... args) {
+    return builder_.Primitive(std::forward<Args>(args)...);
+  }
+
+  template <typename ...Args>
+  auto&& Pose(Args&&... args) {
+    return builder_.Pose(std::forward<Args>(args)...);
+  }
+
+  template <typename ...Args>
+  auto&& TimeSeries(Args&&... args) {
+    return builder_.TimeSeries(std::forward<Args>(args)...);
+  }
+
+protected:
+  friend class Builder;
+  DataT* data_{nullptr};
+
+  DataT& Data() {
+    assert(data_);
+    return *data_;
+  }
+
+  BuilderT& Start(DataT& data) {
+    assert(!data_);
+    data_ = &data;
+    return static_cast<BuilderT&>(*this);
+  }
+
+  void End() {
+    if (!data_) {
+      return;
+    }
+    // TODO do some checks
+    data_ = nullptr;
+  }
+private:
+  BaseBuilderT& builder_;
+};
+  
+} // namespace xviz

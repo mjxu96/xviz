@@ -1,12 +1,19 @@
+cmake_minimum_required(VERSION 3.14)
 
-cmake_minimum_required(VERSION 3.5.1)
+if(NOT XVIZ_VERSION)
+  set(XVIZ_VERSION "l.0.0")
+endif()
 
-project(libxviz
-        VERSION 1.0.0
-        DESCRIPTION "C++ Implementation of the XVIZ Protocol"
-        LANGUAGES CXX)
+project(
+  xviz
+  VERSION ${XVIZ_VERSION}
+  DESCRIPTION "C++ Implementation of XVIZ Protocol"
+  LANGUAGES CXX)
 
-set(XVIZ_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+add_subdirectory("src")
+if(XVIZ_BUILD_TESTS)
+  enable_testing()
+  add_subdirectory("tests")
+endif()
 
-add_subdirectory("cmake")
-
+add_subdirectory("examples")

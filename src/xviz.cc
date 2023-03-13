@@ -23,17 +23,8 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
- */
+*/
 
-#pragma once
+#include <xviz/xviz.h>
 
-#include <xviz/def.h>
-
-#include <string>
-#include <vector>
-
-namespace xviz::util {
-
-std::vector<uint8_t> GetBytesArrayFromHexString(std::string_view hexstring);
-
-}  // namespace xviz::util
+const std::string_view xviz::Version() { return XVIZ_VERSION; }

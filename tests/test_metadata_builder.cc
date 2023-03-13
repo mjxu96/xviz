@@ -23,17 +23,25 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
- */
+*/
 
-#pragma once
+#include <gtest/gtest.h>
 
-#include <xviz/def.h>
+namespace xviz::tests {
+class MetadataBuilderTest : public ::testing::Test {
+public:
+  void SetUp() override {
 
-#include <string>
-#include <vector>
+  }
 
-namespace xviz::util {
+  void TearDown() override {
 
-std::vector<uint8_t> GetBytesArrayFromHexString(std::string_view hexstring);
+  }
 
-}  // namespace xviz::util
+};
+
+TEST_F(MetadataBuilderTest, DummyTest) {
+  EXPECT_EQ(1, 1);
+}
+
+} // namespace xviz::tests

@@ -23,17 +23,32 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
- */
+*/
 
 #pragma once
 
-#include <xviz/def.h>
-
+#include <concepts>
+#include <utility>
 #include <string>
-#include <vector>
 
-namespace xviz::util {
+namespace xviz {
 
-std::vector<uint8_t> GetBytesArrayFromHexString(std::string_view hexstring);
+template <typename MetadataBuilderT>
+class MetadataBuilderMixin {
+public:
+  MetadataBuilderMixin(MetadataBuilderT& builder) : builder_(builder) {}
 
-}  // namespace xviz::util
+  template <typename ...Args>
+  auto&& Stream(Args&&... args) {
+    return builder_.Stream(std::forward<Args>(args)...);
+  }
+
+  auto&& GetMessage() {
+    return builder_.GetMessage();
+  }
+
+private:
+  MetadataBuilderT& builder_;
+};
+
+} // namespace xviz
