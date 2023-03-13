@@ -2,6 +2,7 @@
 /pb/**/
 /bin
 /build
+/consumer
 
 # Prerequisites
 *.d
@@ -35,3 +36,5 @@
 *.exe
 *.out
 *.app
+
+CMakeUserPresets.json

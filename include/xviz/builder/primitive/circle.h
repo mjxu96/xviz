@@ -27,13 +27,23 @@
 
 #pragma once
 
-#include <xviz/def.h>
+#include "primitive_base.h"
 
-#include <string>
-#include <vector>
+namespace xviz {
 
-namespace xviz::util {
+template <typename PrimitiveBuilderType, typename BuilderType>
+class PrimitiveCircleBuilder
+    : public PrimitiveBaseBuilder<
+          PrimitiveCircleBuilder<PrimitiveBuilderType, BuilderType>, Circle,
+          PrimitiveBuilderType, BuilderType> {
+  using BaseType = PrimitiveBaseBuilder<
+      PrimitiveCircleBuilder<PrimitiveBuilderType, BuilderType>, Circle,
+      PrimitiveBuilderType, BuilderType>;
 
-std::vector<uint8_t> GetBytesArrayFromHexString(std::string_view hexstring);
+ public:
+  using BaseType::BaseType;
+  using BaseType::Start;
+  using BaseType::End;
+};
 
-}  // namespace xviz::util
+}  // namespace xviz

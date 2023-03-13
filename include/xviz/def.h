@@ -27,13 +27,30 @@
 
 #pragma once
 
-#include <xviz/def.h>
+#include <xviz/v2/session.pb.h>
+#include <xviz/v2/style.pb.h>
+#include <xviz/v2/core.pb.h>
+#include <xviz/v2/primitives.pb.h>
+#include <xviz/v2/envelope.pb.h>
 
+#include <xviz/utils/concepts.h>
+
+#include <concepts>
+#include <iostream>
 #include <string>
-#include <vector>
 
-namespace xviz::util {
+#ifdef __cpp_lib_format
+#include <format>
+#else
+#include <fmt/format.h>
+namespace std {
+using fmt::format;
+}
 
-std::vector<uint8_t> GetBytesArrayFromHexString(std::string_view hexstring);
+#endif
 
-}  // namespace xviz::util
+namespace xviz {
+
+using namespace v2;
+
+}  // namespace xviz

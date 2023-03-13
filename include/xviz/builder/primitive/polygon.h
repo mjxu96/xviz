@@ -26,14 +26,24 @@
  */
 
 #pragma once
+#include "primitive_base.h"
 
-#include <xviz/def.h>
+namespace xviz {
 
-#include <string>
-#include <vector>
+template <typename PrimitiveBuilderType, typename BuilderType>
+class PrimitivePolygonBuilder
+    : public PrimitiveBaseBuilder<
+          PrimitivePolygonBuilder<PrimitiveBuilderType, BuilderType>,
+          Polygon, PrimitiveBuilderType, BuilderType> {
+  using BaseType = PrimitiveBaseBuilder<
+      PrimitivePolygonBuilder<PrimitiveBuilderType, BuilderType>, Polygon,
+      PrimitiveBuilderType, BuilderType>;
 
-namespace xviz::util {
+ public:
+  using BaseType::BaseType;
+  using BaseType::Start;
+  using BaseType::End;
+};
 
-std::vector<uint8_t> GetBytesArrayFromHexString(std::string_view hexstring);
 
-}  // namespace xviz::util
+}  // namespace xviz

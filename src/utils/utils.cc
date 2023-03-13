@@ -25,15 +25,19 @@
  * IN THE SOFTWARE.
  */
 
-#pragma once
+#include <xviz/utils/utils.h>
 
-#include <xviz/def.h>
+#include <cstdint>
+#include <stdexcept>
 
-#include <string>
-#include <vector>
-
-namespace xviz::util {
-
-std::vector<uint8_t> GetBytesArrayFromHexString(std::string_view hexstring);
-
-}  // namespace xviz::util
+std::vector<uint8_t> xviz::util::GetBytesArrayFromHexString(
+    std::string_view hexstring) {
+  if (hexstring.size() % 2 == 1) [[unlikely]] {
+    throw std::runtime_error("TODO hex string should has even numbers of data");
+  }
+  std::vector<uint8_t> bytearray(hexstring.size() / 2, 0);
+  for (size_t i = 0, j = 0; i < (hexstring.size() / 2); i++, j += 2)
+    bytearray[i] =
+        (hexstring[j] % 32 + 9) % 25 * 16 + (hexstring[j + 1] % 32 + 9) % 25;
+  return bytearray;
+}
