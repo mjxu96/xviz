@@ -23,32 +23,30 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
-*/
+ */
 
 #pragma once
 
 #include <concepts>
-#include <utility>
 #include <string>
+#include <utility>
 
 namespace xviz {
 
 template <typename MetadataBuilderT>
 class MetadataBuilderMixin {
-public:
+ public:
   MetadataBuilderMixin(MetadataBuilderT& builder) : builder_(builder) {}
 
-  template <typename ...Args>
+  template <typename... Args>
   auto&& Stream(Args&&... args) {
     return builder_.Stream(std::forward<Args>(args)...);
   }
 
-  auto&& GetMessage() {
-    return builder_.GetMessage();
-  }
+  auto&& GetMessage() { return builder_.GetMessage(); }
 
-private:
+ private:
   MetadataBuilderT& builder_;
 };
 
-} // namespace xviz
+}  // namespace xviz

@@ -82,7 +82,6 @@ class PoseBuilder
   PoseBuilder& Orientation(const std::array<double, 3>& orientations) {
     return this->Orientation(orientations[0], orientations[1], orientations[2]);
   }
-
 };
 
 }  // namespace xviz

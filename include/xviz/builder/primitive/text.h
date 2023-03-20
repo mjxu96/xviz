@@ -33,17 +33,16 @@ namespace xviz {
 template <typename PrimitiveBuilderType, typename BuilderType>
 class PrimitiveTextBuilder
     : public PrimitiveBaseBuilder<
-          PrimitiveTextBuilder<PrimitiveBuilderType, BuilderType>,
-          Text, PrimitiveBuilderType, BuilderType> {
+          PrimitiveTextBuilder<PrimitiveBuilderType, BuilderType>, Text,
+          PrimitiveBuilderType, BuilderType> {
   using BaseType = PrimitiveBaseBuilder<
       PrimitiveTextBuilder<PrimitiveBuilderType, BuilderType>, Text,
       PrimitiveBuilderType, BuilderType>;
 
  public:
   using BaseType::BaseType;
-  using BaseType::Start;
   using BaseType::End;
+  using BaseType::Start;
 };
-
 
 }  // namespace xviz

@@ -37,7 +37,6 @@
 using namespace xviz;
 
 int main() {
-
   xviz::MetadataBuilder meta_builder;
 
   // clang-format off
