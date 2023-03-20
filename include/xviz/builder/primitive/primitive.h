@@ -118,7 +118,6 @@ class PrimitiveBuilder : public BuilderMixin<PrimitiveBuilder<BaseBuilder>,
 
   // TODO DELETE
   // PrimitiveState* data_;
-
 };
 
 }  // namespace xviz

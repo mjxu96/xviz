@@ -23,7 +23,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
-*/
+ */
 
 #pragma once
 
@@ -33,29 +33,27 @@ namespace xviz {
 
 template <typename BuilderT, typename BaseBuilderT, typename DataT>
 class BuilderMixin {
-public:
+ public:
   BuilderMixin(BaseBuilderT& builder) : builder_(builder) {}
 
-  auto&& GetMessage() {
-    return builder_.GetMessage();
-  }
+  auto&& GetMessage() { return builder_.GetMessage(); }
 
-  template <typename ...Args>
+  template <typename... Args>
   auto&& Primitive(Args&&... args) {
     return builder_.Primitive(std::forward<Args>(args)...);
   }
 
-  template <typename ...Args>
+  template <typename... Args>
   auto&& Pose(Args&&... args) {
     return builder_.Pose(std::forward<Args>(args)...);
   }
 
-  template <typename ...Args>
+  template <typename... Args>
   auto&& TimeSeries(Args&&... args) {
     return builder_.TimeSeries(std::forward<Args>(args)...);
   }
 
-protected:
+ protected:
   friend class Builder;
   DataT* data_{nullptr};
 
@@ -77,8 +75,9 @@ protected:
     // TODO do some checks
     data_ = nullptr;
   }
-private:
+
+ private:
   BaseBuilderT& builder_;
 };
-  
-} // namespace xviz
+
+}  // namespace xviz

@@ -33,17 +33,16 @@ namespace xviz {
 template <typename PrimitiveBuilderType, typename BuilderType>
 class PrimitivePolygonBuilder
     : public PrimitiveBaseBuilder<
-          PrimitivePolygonBuilder<PrimitiveBuilderType, BuilderType>,
-          Polygon, PrimitiveBuilderType, BuilderType> {
+          PrimitivePolygonBuilder<PrimitiveBuilderType, BuilderType>, Polygon,
+          PrimitiveBuilderType, BuilderType> {
   using BaseType = PrimitiveBaseBuilder<
       PrimitivePolygonBuilder<PrimitiveBuilderType, BuilderType>, Polygon,
       PrimitiveBuilderType, BuilderType>;
 
  public:
   using BaseType::BaseType;
-  using BaseType::Start;
   using BaseType::End;
+  using BaseType::Start;
 };
-
 
 }  // namespace xviz

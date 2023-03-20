@@ -46,8 +46,8 @@ class Builder {
   }
 
   template <typename... Args>
-    requires(std::constructible_from<std::string, Args...>)
-  PoseBuilder<Builder>& Pose(Args&&... args) {
+  requires(std::constructible_from<std::string, Args...>) PoseBuilder<Builder>
+  &Pose(Args&&... args) {
     pose_builder_.End();
     std::string stream_id = std::string(std::forward<Args>(args)...);
 
@@ -66,8 +66,9 @@ class Builder {
   }
 
   template <typename... Args>
-    requires(std::constructible_from<std::string, Args...>)
-  PrimitiveBuilder<Builder>& Primitive(Args&&... args) {
+  requires(std::constructible_from<std::string, Args...>)
+      PrimitiveBuilder<Builder>
+  &Primitive(Args&&... args) {
     primitive_builder_.End();
     std::string stream_id = std::string(std::forward<Args>(args)...);
 

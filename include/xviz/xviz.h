@@ -23,12 +23,12 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
-*/
+ */
 
 #pragma once
 
-#include <xviz/def.h>
 #include <xviz/builder/builder.h>
+#include <xviz/def.h>
 #include <xviz/message.h>
 
 #include <string>
@@ -37,4 +37,4 @@ namespace xviz {
 
 const std::string_view Version();
 
-} // namespace xviz
+}  // namespace xviz

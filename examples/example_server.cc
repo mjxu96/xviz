@@ -123,7 +123,7 @@ void UpdatePeriodcally(
     x += 10;
     auto update_string = GetUpdate(x).ToProtobufBinary();
     err = conn->send(update_string.data(), update_string.size(),
-               websocketpp::frame::opcode::binary);
+                     websocketpp::frame::opcode::binary);
   }
   std::cout << "disconnected " << err << std::endl;
 }

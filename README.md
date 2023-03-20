@@ -1,5 +1,9 @@
 # XVIZ In C++ [![Build Status](https://travis-ci.com/wx9698/xviz.svg?branch=master)](https://travis-ci.com/wx9698/xviz) [![codecov](https://codecov.io/gh/wx9698/xviz/branch/master/graph/badge.svg)](https://codecov.io/gh/wx9698/xviz)
 
+```bash
+find . -iname *.h -not -path "./build/*" -o -iname *.cc -not -path "./build/*" | xargs clang-format -i -style=file
+```
+
 ## Minimum Requirements
 1. CMake 3.5.0+
 2. Protobuf 3.11.0+

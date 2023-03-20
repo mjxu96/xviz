@@ -39,13 +39,14 @@ class PrimitiveBaseBuilder
     : public PrimitiveBuilderMixin<PrimitiveBuilderType,
                                    PrimitiveSubBuilderType, BuilderType,
                                    PrimitiveSubType> {
-  using BaseType = PrimitiveBuilderMixin<PrimitiveBuilderType, PrimitiveSubBuilderType, BuilderType,
-                                         PrimitiveSubType>;
+  using BaseType =
+      PrimitiveBuilderMixin<PrimitiveBuilderType, PrimitiveSubBuilderType,
+                            BuilderType, PrimitiveSubType>;
 
  public:
   using BaseType::BaseType;
-  using BaseType::Start;
   using BaseType::End;
+  using BaseType::Start;
 
   template <xviz::concepts::CanConstructString... Args>
   PrimitiveSubBuilderType& ID(Args&&... args) {

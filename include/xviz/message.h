@@ -34,15 +34,15 @@
 
 namespace xviz {
 
-template<typename MessageType>
+template <typename MessageType>
 struct MessageTypeStr;
 
-template<>
+template <>
 struct MessageTypeStr<StateUpdate> {
   constexpr static auto value = "xviz/state_update";
 };
 
-template<>
+template <>
 struct MessageTypeStr<Metadata> {
   constexpr static auto value = "xviz/metadata";
 };

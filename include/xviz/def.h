@@ -27,11 +27,11 @@
 
 #pragma once
 
+#include <xviz/v2/core.pb.h>
+#include <xviz/v2/envelope.pb.h>
+#include <xviz/v2/primitives.pb.h>
 #include <xviz/v2/session.pb.h>
 #include <xviz/v2/style.pb.h>
-#include <xviz/v2/core.pb.h>
-#include <xviz/v2/primitives.pb.h>
-#include <xviz/v2/envelope.pb.h>
 
 #include <xviz/utils/concepts.h>
 

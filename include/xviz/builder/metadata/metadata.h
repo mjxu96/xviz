@@ -39,9 +39,7 @@ using namespace v2;
 
 class MetadataBuilder {
  public:
-  MetadataBuilder() : stream_builder_(*this) {
-    data_.set_version("2.0.0");
-  }
+  MetadataBuilder() : stream_builder_(*this) { data_.set_version("2.0.0"); }
 
   template <concepts::CanConstructString... Args>
   MetadataBuilder& Version(Args&&... args) {
@@ -50,8 +48,9 @@ class MetadataBuilder {
   }
 
   template <typename... Args>
-    requires(std::constructible_from<std::string, Args...>)
-  StreamMetadataBuilder<MetadataBuilder>& Stream(Args&&... args) {
+  requires(std::constructible_from<std::string, Args...>)
+      StreamMetadataBuilder<MetadataBuilder>
+  &Stream(Args&&... args) {
     stream_builder_.EndStream();
     std::string stream_id = std::string(std::forward<Args>(args)...);
     auto stream_metadata_itr = data_.mutable_streams()->find(stream_id);

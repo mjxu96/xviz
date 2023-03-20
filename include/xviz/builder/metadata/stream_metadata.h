@@ -120,8 +120,8 @@ class StreamMetadataCategoryBuilderBase
   }
 
   template <bool ForceCheck, typename... Args>
-    requires(std::constructible_from<std::string, Args...>)
-  void SetUnit(Args&&... args) {
+  requires(std::constructible_from<std::string, Args...>) void SetUnit(
+      Args&&... args) {
     if constexpr (ForceCheck) {
       if ((data_->category() != StreamMetadata::TIME_SERIES) &&
           (data_->category() != StreamMetadata::VARIABLE)) [[unlikely]] {
@@ -157,18 +157,17 @@ class StreamMetadataCategoryBuilder
  public:
   using BaseT::BaseT;
 
-  StreamMetadataCategoryBuilder& Type(StreamMetadata::PrimitiveType type)
-    requires(C == StreamMetadata::PRIMITIVE)
-  {
+  StreamMetadataCategoryBuilder& Type(
+      StreamMetadata::PrimitiveType type) requires(C ==
+                                                   StreamMetadata::PRIMITIVE) {
     BaseT::template SetType<false, StreamMetadata::PrimitiveType>(type);
     return *this;
   }
 
   template <typename... Args>
-    requires(std::constructible_from<std::string, Args...> &&
-             (C == StreamMetadata::VARIABLE ||
-              C == StreamMetadata::TIME_SERIES))
-  StreamMetadataCategoryBuilder& Unit(Args&&... args) {
+  requires(std::constructible_from<std::string, Args...> &&
+           (C == StreamMetadata::VARIABLE || C == StreamMetadata::TIME_SERIES))
+      StreamMetadataCategoryBuilder& Unit(Args&&... args) {
     BaseT::template SetUnit<false, Args...>(std::forward<Args>(args)...);
     return *this;
   }
@@ -190,9 +189,7 @@ class StreamMetadataBuilder : public MetadataBuilderMixin<BaseBuilder> {
 
   template <StreamMetadata::Category C>
   StreamMetadataCategoryBuilder<StreamMetadataBuilder, C, BaseBuilder>&
-  Category()
-    requires(C != StreamMetadata::STREAM_METADATA_CATEGORY_INVALID)
-  {
+  Category() requires(C != StreamMetadata::STREAM_METADATA_CATEGORY_INVALID) {
     category_builder_.EndCategory();
     auto& builder = reinterpret_cast<
         StreamMetadataCategoryBuilder<StreamMetadataBuilder, C, BaseBuilder>&>(
@@ -208,8 +205,8 @@ class StreamMetadataBuilder : public MetadataBuilderMixin<BaseBuilder> {
   }
 
   template <typename... Args>
-    requires(std::constructible_from<std::string, Args...>)
-  StreamMetadataBuilder& Unit(Args&&... args) {
+  requires(std::constructible_from<std::string, Args...>)
+      StreamMetadataBuilder& Unit(Args&&... args) {
     category_builder_.template SetUnit<false, Args...>(
         std::forward<Args>(args)...);
     return *this;

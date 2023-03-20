@@ -42,8 +42,8 @@ class PrimitiveCircleBuilder
 
  public:
   using BaseType::BaseType;
-  using BaseType::Start;
   using BaseType::End;
+  using BaseType::Start;
 };
 
 }  // namespace xviz
