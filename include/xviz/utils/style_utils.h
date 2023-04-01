@@ -40,19 +40,19 @@
 
 namespace xviz {
 
-class StyleValueVarint {
+class StyleValueVariant {
  public:
-  StyleValueVarint(const std::string& v) : storage_(v) {}
-  StyleValueVarint(const char* v) : storage_(v) {}
-  StyleValueVarint(uint32_t v) : storage_(v) {}
-  StyleValueVarint(float v) : storage_(v) {}
-  StyleValueVarint(bool v) : storage_(v) {}
+  StyleValueVariant(const std::string& v) : storage_(v) {}
+  StyleValueVariant(const char* v) : storage_(v) {}
+  StyleValueVariant(uint32_t v) : storage_(v) {}
+  StyleValueVariant(float v) : storage_(v) {}
+  StyleValueVariant(bool v) : storage_(v) {}
 
-  StyleValueVarint(TextAnchor v) : storage_(static_cast<int>(v)) {}
-  StyleValueVarint(TextAlignmentBaseline v) : storage_(static_cast<int>(v)) {}
-  StyleValueVarint(PointColorMode v) : storage_(static_cast<int>(v)) {}
-  StyleValueVarint(const std::vector<float>& v) : storage_(v) {}
-  StyleValueVarint(std::initializer_list<float> v)
+  StyleValueVariant(TextAnchor v) : storage_(static_cast<int>(v)) {}
+  StyleValueVariant(TextAlignmentBaseline v) : storage_(static_cast<int>(v)) {}
+  StyleValueVariant(PointColorMode v) : storage_(static_cast<int>(v)) {}
+  StyleValueVariant(const std::vector<float>& v) : storage_(v) {}
+  StyleValueVariant(std::initializer_list<float> v)
       : storage_(std::vector<float>(v)) {}
 
   auto&& Variant() { return storage_; }
@@ -80,7 +80,7 @@ class StyleValueVarint {
       storage_;
 };
 
-using StyleType = std::unordered_map<std::string, StyleValueVarint>;
+using StyleType = std::unordered_map<std::string, StyleValueVariant>;
 
 namespace detail {
 
@@ -162,6 +162,6 @@ Ret ConvertInternalTypeToProtobufType(const xviz::StyleType& style) {
   }
   return ret;
 }
-}  // namespace detail
 
+}  // namespace detail
 }  // namespace xviz

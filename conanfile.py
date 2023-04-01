@@ -12,12 +12,14 @@ class XVIZ(ConanFile):
         "shared": [True, False],
         "fPIC": [True, False],
         "build_tests": [True, False],
+        "build_examples": [True, False],
         "coverage": [True, False],
     }
     default_options = {
         "shared": False,
         "fPIC": True,
         "build_tests": True,
+        "build_examples": True,
         "coverage": False,
     }
 
@@ -37,6 +39,8 @@ class XVIZ(ConanFile):
         variables = {"XVIZ_VERSION": f"{self.version}"}
         if self.options.build_tests:
             variables["XVIZ_BUILD_TESTS"] = "ON"
+        if self.options.build_examples:
+            variables["XVIZ_BUILD_EXAMPLES"] = "ON"
         if self.options.coverage:
             variables["XVIZ_BUILD_COVERAGE"] = "ON"
         cmake.configure(variables=variables)
@@ -50,6 +54,16 @@ class XVIZ(ConanFile):
         except:
             self.version = "1.0.0"
 
+    def requirements(self):
+        self.requires("protobuf/3.21.9")
+        self.requires("fmt/9.1.0")
+        if self.options.build_tests:
+            self.requires("gtest/cci.20210126")
+        if self.options.build_examples:
+            self.requires("websocketpp/0.8.2")
+            self.requires("lodepng/cci.20200615")
+            self.options["websocketpp"].asio = "standalone"
+
     def config_options(self):
         if self.settings.os == "Windows":
             del self.options.fPIC
@@ -58,17 +72,9 @@ class XVIZ(ConanFile):
             self.options.coverage = False
         if self.settings.build_type != "Debug":
             self.options.coverage = False
-        self.options["websocketpp"].asio = "standalone"
 
     def layout(self):
         cmake_layout(self)
-
-    def requirements(self):
-        self.requires("protobuf/3.21.9")
-        self.requires("fmt/9.1.0")
-        self.requires("websocketpp/0.8.2")
-        if self.options.build_tests:
-            self.requires("gtest/cci.20210126")
 
     def generate(self):
         dp = CMakeDeps(self)

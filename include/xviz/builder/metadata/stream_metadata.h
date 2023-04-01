@@ -43,7 +43,8 @@ using namespace v2;
 
 class MetadataBuilder;
 
-template <typename StreamMetadataBuilderT, typename MetadataBuilderT>
+template <typename StreamMetadataBuilderT, typename MetadataBuilderT,
+          typename DerivedBuilderT>
 class StreamMetadataBuilderMixin
     : public MetadataBuilderMixin<MetadataBuilderT> {
   using BaseT = MetadataBuilderMixin<MetadataBuilderT>;
@@ -54,39 +55,52 @@ class StreamMetadataBuilderMixin
       : BaseT(parent_builder), builder_(builder) {}
 
   auto&& Category(StreamMetadata::Category category) {
-    return builder_.Category(category);
+    if constexpr (std::is_void_v<DerivedBuilderT>) {
+      return builder_.Category(category);
+    } else {
+      builder_.Category(category);
+      return reinterpret_cast<DerivedBuilderT&>(*this);
+    }
   }
 
   auto&& Coordinate(StreamMetadata::CoordinateType coordinate_type) {
-    return builder_.Coordinate(coordinate_type);
+    builder_.Coordinate(coordinate_type);
+    return reinterpret_cast<DerivedBuilderT&>(*this);
   }
 
   auto&& StreamStyle(const StyleType& style) {
-    return builder_.StreamStyle(style);
+    builder_.StreamStyle(style);
+    return reinterpret_cast<DerivedBuilderT&>(*this);
   }
 
   template <std::same_as<StyleStreamValue> T>
   auto&& StreamStyle(T&& style) {
-    return builder_.StreamStyle(std::forward<T>(style));
+    builder_.StreamStyle(std::forward<T>(style));
+    return reinterpret_cast<DerivedBuilderT&>(*this);
   }
 
   auto&& StyleClass(const std::string_view class_name, const StyleType& style) {
-    return builder_.StyleClass(class_name, style);
+    builder_.StyleClass(class_name, style);
+    return reinterpret_cast<DerivedBuilderT&>(*this);
   }
 
   template <std::same_as<StyleObjectValue> T>
   auto&& StyleClass(const std::string_view class_name, T&& style) {
-    return builder_.StyleClass(class_name, std::forward<T>(style));
+    builder_.StyleClass(class_name, std::forward<T>(style));
+    return reinterpret_cast<DerivedBuilderT&>(*this);
   }
 
  private:
   StreamMetadataBuilderT& builder_;
 };
 
-template <typename BaseBuilder, typename MetadataBuilderT>
+template <typename BaseBuilder, typename MetadataBuilderT,
+          typename DerivedBuilderT>
 class StreamMetadataCategoryBuilderBase
-    : public StreamMetadataBuilderMixin<BaseBuilder, MetadataBuilderT> {
-  using BaseT = StreamMetadataBuilderMixin<BaseBuilder, MetadataBuilderT>;
+    : public StreamMetadataBuilderMixin<BaseBuilder, MetadataBuilderT,
+                                        DerivedBuilderT> {
+  using BaseT = StreamMetadataBuilderMixin<BaseBuilder, MetadataBuilderT,
+                                           DerivedBuilderT>;
 
  public:
   using BaseT::BaseT;
@@ -125,7 +139,8 @@ class StreamMetadataCategoryBuilderBase
     if constexpr (ForceCheck) {
       if ((data_->category() != StreamMetadata::TIME_SERIES) &&
           (data_->category() != StreamMetadata::VARIABLE)) [[unlikely]] {
-        throw std::runtime_error("TODO");
+        throw std::runtime_error(
+            std::format("TODO {} category cannot set unit", data_->category()));
       }
     }
     data_->set_units(std::forward<Args>(args)...);
@@ -150,9 +165,12 @@ class StreamMetadataCategoryBuilderBase
 template <typename BaseBuilder, StreamMetadata::Category C,
           typename MetadataBuilderT>
 class StreamMetadataCategoryBuilder
-    : public StreamMetadataCategoryBuilderBase<BaseBuilder, MetadataBuilderT> {
-  using BaseT =
-      StreamMetadataCategoryBuilderBase<BaseBuilder, MetadataBuilderT>;
+    : public StreamMetadataCategoryBuilderBase<
+          BaseBuilder, MetadataBuilderT,
+          StreamMetadataCategoryBuilder<BaseBuilder, C, MetadataBuilderT>> {
+  using BaseT = StreamMetadataCategoryBuilderBase<
+      BaseBuilder, MetadataBuilderT,
+      StreamMetadataCategoryBuilder<BaseBuilder, C, MetadataBuilderT>>;
 
  public:
   using BaseT::BaseT;
@@ -161,6 +179,12 @@ class StreamMetadataCategoryBuilder
       StreamMetadata::PrimitiveType type) requires(C ==
                                                    StreamMetadata::PRIMITIVE) {
     BaseT::template SetType<false, StreamMetadata::PrimitiveType>(type);
+    return *this;
+  }
+
+  StreamMetadataCategoryBuilder& Type(StreamMetadata::ScalarType type) requires(
+      C == StreamMetadata::VARIABLE || C == StreamMetadata::TIME_SERIES) {
+    BaseT::template SetType<false, StreamMetadata::ScalarType>(type);
     return *this;
   }
 
@@ -207,7 +231,7 @@ class StreamMetadataBuilder : public MetadataBuilderMixin<BaseBuilder> {
   template <typename... Args>
   requires(std::constructible_from<std::string, Args...>)
       StreamMetadataBuilder& Unit(Args&&... args) {
-    category_builder_.template SetUnit<false, Args...>(
+    category_builder_.template SetUnit<true, Args...>(
         std::forward<Args>(args)...);
     return *this;
   }
@@ -261,7 +285,7 @@ class StreamMetadataBuilder : public MetadataBuilderMixin<BaseBuilder> {
     data_ = nullptr;
   }
   StreamMetadata* data_{nullptr};
-  StreamMetadataCategoryBuilderBase<StreamMetadataBuilder, BaseBuilder>
+  StreamMetadataCategoryBuilderBase<StreamMetadataBuilder, BaseBuilder, void>
       category_builder_;
 };
 

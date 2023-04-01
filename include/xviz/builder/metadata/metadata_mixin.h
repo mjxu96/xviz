@@ -43,6 +43,11 @@ class MetadataBuilderMixin {
     return builder_.Stream(std::forward<Args>(args)...);
   }
 
+  template <typename... Args>
+  auto&& UI(Args&&... args) {
+    return builder_.UI(std::forward<Args>(args)...);
+  }
+
   auto&& GetMessage() { return builder_.GetMessage(); }
 
  private:

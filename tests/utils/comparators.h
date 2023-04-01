@@ -26,32 +26,21 @@
  */
 
 #pragma once
-#include "primitive_base.h"
 
-#include <array>
+#include <xviz/xviz.h>
 
-namespace xviz {
+#include <google/protobuf/util/message_differencer.h>
 
-template <typename PrimitiveBuilderType, typename BuilderType>
-class PrimitiveTextBuilder
-    : public PrimitiveBaseBuilder<
-          PrimitiveTextBuilder<PrimitiveBuilderType, BuilderType>, Text,
-          PrimitiveBuilderType, BuilderType> {
-  using BaseType = PrimitiveBaseBuilder<
-      PrimitiveTextBuilder<PrimitiveBuilderType, BuilderType>, Text,
-      PrimitiveBuilderType, BuilderType>;
+namespace xviz::v2 {
 
- public:
-  using BaseType::BaseType;
-  using BaseType::End;
-  using BaseType::Start;
+bool operator==(const StyleStreamValue& message1,
+                const StyleStreamValue& message2) {
+  return google::protobuf::util::MessageDifferencer::Equals(message1, message2);
+}
 
-  PrimitiveTextBuilder& Position(const std::array<float, 3>& positions) {
-    for (float pos : positions) {
-      this->Data().add_position(pos);
-    }
-    return *this;
-  }
-};
+bool operator==(const StyleObjectValue& message1,
+                const StyleObjectValue& message2) {
+  return google::protobuf::util::MessageDifferencer::Equals(message1, message2);
+}
 
-}  // namespace xviz
+};  // namespace xviz::v2

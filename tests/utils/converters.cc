@@ -25,33 +25,31 @@
  * IN THE SOFTWARE.
  */
 
-#pragma once
-#include "primitive_base.h"
+#include "converters.h"
+#include <xviz/utils/style_utils.h>
 
-#include <array>
+namespace xviz::tests {
 
-namespace xviz {
-
-template <typename PrimitiveBuilderType, typename BuilderType>
-class PrimitiveTextBuilder
-    : public PrimitiveBaseBuilder<
-          PrimitiveTextBuilder<PrimitiveBuilderType, BuilderType>, Text,
-          PrimitiveBuilderType, BuilderType> {
-  using BaseType = PrimitiveBaseBuilder<
-      PrimitiveTextBuilder<PrimitiveBuilderType, BuilderType>, Text,
-      PrimitiveBuilderType, BuilderType>;
-
- public:
-  using BaseType::BaseType;
-  using BaseType::End;
-  using BaseType::Start;
-
-  PrimitiveTextBuilder& Position(const std::array<float, 3>& positions) {
-    for (float pos : positions) {
-      this->Data().add_position(pos);
-    }
-    return *this;
+std::unordered_map<std::string, xviz::v2::StyleObjectValue>
+ConvertStyleClassToMap(
+    const google::protobuf::RepeatedPtrField<xviz::v2::StyleClass>& input) {
+  std::unordered_map<std::string, xviz::v2::StyleObjectValue> ret;
+  for (const auto& style_class : input) {
+    ret[style_class.name()] = style_class.style();
   }
-};
+  return ret;
+}
 
-}  // namespace xviz
+std::unordered_map<std::string, xviz::v2::StyleObjectValue>
+ConvertMapToStyleClass(
+    const std::unordered_map<std::string, xviz::StyleType>& input) {
+  std::unordered_map<std::string, xviz::v2::StyleObjectValue> ret;
+  for (const auto& [name, style_class] : input) {
+    ret[name] =
+        detail::ConvertInternalTypeToProtobufType<xviz::v2::StyleObjectValue>(
+            style_class);
+  }
+  return ret;
+}
+
+}  // namespace xviz::tests

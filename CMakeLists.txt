@@ -10,10 +10,15 @@ project(
   DESCRIPTION "C++ Implementation of XVIZ Protocol"
   LANGUAGES CXX)
 
+set(CMAKE_CXX_STANDARD 20)
+
 add_subdirectory("src")
+
 if(XVIZ_BUILD_TESTS)
   enable_testing()
   add_subdirectory("tests")
 endif()
 
-add_subdirectory("examples")
+if (XVIZ_BUILD_EXAMPLES)
+  add_subdirectory("examples")
+endif()

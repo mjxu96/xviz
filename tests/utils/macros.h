@@ -26,32 +26,12 @@
  */
 
 #pragma once
-#include "primitive_base.h"
 
-#include <array>
+#define CONVERT_PROTOBUF_FIELD_TO_OPTIONAL(msg, field_name)        \
+  (msg.has_##field_name() ? (std::make_optional(msg.field_name())) \
+                          : (std::nullopt))
 
-namespace xviz {
-
-template <typename PrimitiveBuilderType, typename BuilderType>
-class PrimitiveTextBuilder
-    : public PrimitiveBaseBuilder<
-          PrimitiveTextBuilder<PrimitiveBuilderType, BuilderType>, Text,
-          PrimitiveBuilderType, BuilderType> {
-  using BaseType = PrimitiveBaseBuilder<
-      PrimitiveTextBuilder<PrimitiveBuilderType, BuilderType>, Text,
-      PrimitiveBuilderType, BuilderType>;
-
- public:
-  using BaseType::BaseType;
-  using BaseType::End;
-  using BaseType::Start;
-
-  PrimitiveTextBuilder& Position(const std::array<float, 3>& positions) {
-    for (float pos : positions) {
-      this->Data().add_position(pos);
-    }
-    return *this;
-  }
-};
-
-}  // namespace xviz
+#define CONVERT_PROTOBUF_ENUM_TO_OPTIONAL(msg, field_name) \
+  (static_cast<int>(msg.field_name()) != 0                 \
+       ? (std::make_optional(msg.field_name()))            \
+       : (std::nullopt))

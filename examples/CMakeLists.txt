@@ -1,9 +1,12 @@
+find_package(websocketpp REQUIRED)
+find_package(lodepng REQUIRED)
 
 function(build_examples)
   foreach(example_file ${ARGV})
     get_filename_component(example_name ${example_file} NAME_WE)
     add_executable(${example_name} ${example_file})
-    target_link_libraries(${example_name} xviz)
+    target_link_libraries(${example_name} xviz websocketpp::websocketpp
+                          lodepng::lodepng)
   endforeach(example_file ${ARGV})
 endfunction()
 

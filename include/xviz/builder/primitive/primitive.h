@@ -90,6 +90,25 @@ class PrimitiveBuilder : public BuilderMixin<PrimitiveBuilder<BaseBuilder>,
     return circle_builder_.Start(*new_circle);
   }
 
+  template <typename... Args>
+  PrimitiveImageBuilder<PrimitiveBuilder<BaseBuilder>, BaseBuilder>& Image(
+      Args&&... args) {
+    image_builder_.End();
+    auto new_image = this->Data().add_images();
+    new_image->set_data(std::forward<Args>(args)...);
+    return image_builder_.Start(*new_image);
+  }
+
+  template <typename... Args>
+  requires(std::constructible_from<std::string, Args...>)
+      PrimitiveTextBuilder<PrimitiveBuilder<BaseBuilder>, BaseBuilder>
+  &Text(Args&&... args) {
+    text_builder_.End();
+    auto new_text = this->Data().add_texts();
+    new_text->set_text(std::forward<Args>(args)...);
+    return text_builder_.Start(*new_text);
+  }
+
  protected:
   friend class Builder;
 
