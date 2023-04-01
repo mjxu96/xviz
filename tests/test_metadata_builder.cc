@@ -60,7 +60,6 @@ class MetadataBuilderTest : public ::testing::Test {
              const MetadataBuilderChecker& checker) {
     EXPECT_NE(msg.streams().find(stream_id), msg.streams().end());
     const auto& stream = msg.streams().find(stream_id)->second;
-    static_cast<int>(stream.category()) == 0;
     checker.Check(CONVERT_PROTOBUF_ENUM_TO_OPTIONAL(stream, category),
                   CONVERT_PROTOBUF_ENUM_TO_OPTIONAL(stream, scalar_type),
                   CONVERT_PROTOBUF_ENUM_TO_OPTIONAL(stream, primitive_type),

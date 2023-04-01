@@ -1,65 +1,49 @@
-# XVIZ In C++ [![Build Status](https://travis-ci.com/wx9698/xviz.svg?branch=master)](https://travis-ci.com/wx9698/xviz) [![codecov](https://codecov.io/gh/wx9698/xviz/branch/master/graph/badge.svg)](https://codecov.io/gh/wx9698/xviz)
+# XVIZ Protocol In C++
+[![libxviz CI](https://github.com/mjxu96/xviz/actions/workflows/ci.yml/badge.svg)](https://github.com/mjxu96/xviz/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/mjxu96/xviz/branch/master/graph/badge.svg?token=JDDAW7YU7B)](https://codecov.io/gh/mjxu96/xviz)
 
-```bash
-find . -iname *.h -not -path "./build/*" -o -iname *.cc -not -path "./build/*" | xargs clang-format -i -style=file
-```
+## Overview
+This is an _incomplete_ implementation of [XVIZ protocol](https://github.com/aurora-opensource/xviz) in C++.
 
-## Minimum Requirements
-1. CMake 3.5.0+
-2. Protobuf 3.11.0+
+This project has been migrated to [Conan](https://conan.io/). Please checkout to [old](https://github.com/mjxu96/xviz/tree/old) branch for legacy build mechanism.
+
+## Requirements
+1. Conan 1.55.0+
+2. C++20 compiler
 
 ## Example
-
-Please see [example.cpp](https://github.com/wx9698/xviz/blob/master/examples/example.cpp), [example_xviz_server.cpp](https://github.com/wx9698/xviz/blob/master/examples/example_xviz_server.cpp) and [CMakeLists.txt](https://github.com/wx9698/xviz/blob/master/CMakeLists.txt) for more information.
+Please see [example.cc](examples/example.cc), [example_server.cc](examples/example_server.cc) for more information.
 
 ## Use Case
-1. [CarlaViz](https://github.com/wx9698/carlaviz)
+1. [CarlaViz](https://github.com/mjxu96/carlaviz)
 
-## Build
-
+## Build and Test
 ### Build xviz builder example
 ```bash
 mkdir build && cd build
-cmake ../
-make example -j12
-../bin/example
+conan install -pr gcc11 --build=missing ..
+conan build .. --build
+./examples/example
 ```
 
 ### Build xviz server example
 Frontend is needed. You can refer to these two repos for frontend:
-1. [CarlaViz Frontend](https://github.com/wx9698/carlaviz/tree/master/frontend)
-2. [uber streetscape.gl](https://github.com/uber/streetscape.gl)
+1. [CarlaViz Frontend](https://github.com/mjxu96/carlaviz/tree/master/frontend)
+2. [Aurora streetscape.gl](https://github.com/aurora-opensource/streetscape.gl)
 ```bash
 mkdir build && cd build
-cmake ../
-make example-server -j12
-../bin/example-server [PNG FILE PATH (this is optional)]
+conan install -pr gcc11 --build=missing ..
+conan build .. --build
+./examples/example_server [PNG FILE PATH (this is optional)]
 ```
 
 ### Build tests
 ```bash
 mkdir build && cd build
-cmake ../ -DBUILD_XVIZ_TESTS=ON
-make xviz-test -j12
-../bin/xviz-test
+conan install -pr gcc11 --build=missing ..
+conan build .. --test
 ```
 
-### Install
+## Format script
 ```bash
-mkdir build && cd build
-cmake ../ -DCMAKE_INSTALL_PREFIX=/path/you/want/to/install/
-make example example-server xviz-test -j12
-make install
+find . -iname *.h -not -path "./build/*" -o -iname *.cc -not -path "./build/*" | xargs clang-format -i -style=file
 ```
-
-## Related Work
-1. [uber xviz](https://github.com/uber/xviz)
-2. [cmpute xviz.py](https://github.com/cmpute/xviz.py)
-
-## Third-Party Libraries
-1. [zaphoyd websocketpp](https://github.com/zaphoyd/websocketpp)
-2. [chriskohlhoff asio](https://github.com/chriskohlhoff/asio)
-3. [mcrodrigues macro-logger](https://github.com/dmcrodrigues/macro-logger)
-4. [nlohmann json](https://github.com/nlohmann/json)
-5. [jessey-git fx-gltf](https://github.com/jessey-git/fx-gltf)
-6. [ReneNyffenegger cpp-base64](https://github.com/ReneNyffenegger/cpp-base64)

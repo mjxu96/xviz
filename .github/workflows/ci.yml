@@ -1,0 +1,52 @@
+name: libxviz CI
+on:
+  push:
+      branches: [ master ]
+  pull_request:
+      branches: [ master ]
+jobs:
+  build:
+    strategy:
+      matrix:
+        profile: [gcc11, clang14]
+        build_type: [Debug, Release]
+    runs-on: ubuntu-latest
+    steps:
+    # git checkout
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    # clang format check
+    - name: Run clang-format style check
+      uses: jidicula/clang-format-action@v4.10.2
+      with:
+        clang-format-version: '14'
+        exclude-regex: '^.*\.proto$'
+    # dependencies
+    - name: Install cmake and compilers
+      run: sudo apt install -y cmake g++-11 clang-14 libc++-14-dev lcov valgrind
+    - name: Install conan and coverage tool
+      run: pip install conan==1.55.0 lcov_cobertura==2.0.2 && conan user
+    - name: Copy conan profiles
+      run: bash misc/cicd/conan/copy_conan_profiles.sh ${HOME}/
+    # install packages and build
+    - name: Install libraries
+      run: conan install . --build=missing -pr ${HOME}/${{ matrix.profile }} -s build_type=${{ matrix.build_type }}
+    - name: Build
+      run: conan build . --build
+    # test
+    - name: Run unit tests
+      run: conan build . --test
+    # memory leak check
+    - name: Run valgrind memory leak check
+      run: pushd ./build/${{ matrix.build_type }}/ && valgrind ctest && popd
+    # code coverage
+    - name: Generate coverage information
+      run: ls . && bash misc/cicd/codecov/generate_coverage_xml.sh . && ls .
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./coverage.xml
+        fail_ci_if_error: True
+      if: matrix.profile == 'gcc11' && matrix.build_type == 'Debug'
