@@ -26,32 +26,18 @@
  */
 
 #pragma once
-#include "primitive_base.h"
 
-#include <array>
+#include <xviz/utils/style_utils.h>
+#include <xviz/v2/style.pb.h>
 
-namespace xviz {
+#include <unordered_map>
 
-template <typename PrimitiveBuilderType, typename BuilderType>
-class PrimitiveTextBuilder
-    : public PrimitiveBaseBuilder<
-          PrimitiveTextBuilder<PrimitiveBuilderType, BuilderType>, Text,
-          PrimitiveBuilderType, BuilderType> {
-  using BaseType = PrimitiveBaseBuilder<
-      PrimitiveTextBuilder<PrimitiveBuilderType, BuilderType>, Text,
-      PrimitiveBuilderType, BuilderType>;
+namespace xviz::tests {
 
- public:
-  using BaseType::BaseType;
-  using BaseType::End;
-  using BaseType::Start;
+std::unordered_map<std::string, xviz::v2::StyleObjectValue>
+ConvertStyleClassToMap(
+    const google::protobuf::RepeatedPtrField<xviz::v2::StyleClass>&);
 
-  PrimitiveTextBuilder& Position(const std::array<float, 3>& positions) {
-    for (float pos : positions) {
-      this->Data().add_position(pos);
-    }
-    return *this;
-  }
-};
-
-}  // namespace xviz
+std::unordered_map<std::string, xviz::v2::StyleObjectValue>
+ConvertMapToStyleClass(const std::unordered_map<std::string, xviz::StyleType>&);
+}  // namespace xviz::tests

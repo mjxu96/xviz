@@ -26,32 +26,12 @@
  */
 
 #pragma once
-#include "primitive_base.h"
 
-#include <array>
+#include <google/protobuf/stubs/common.h>
 
-namespace xviz {
-
-template <typename PrimitiveBuilderType, typename BuilderType>
-class PrimitiveTextBuilder
-    : public PrimitiveBaseBuilder<
-          PrimitiveTextBuilder<PrimitiveBuilderType, BuilderType>, Text,
-          PrimitiveBuilderType, BuilderType> {
-  using BaseType = PrimitiveBaseBuilder<
-      PrimitiveTextBuilder<PrimitiveBuilderType, BuilderType>, Text,
-      PrimitiveBuilderType, BuilderType>;
-
- public:
-  using BaseType::BaseType;
-  using BaseType::End;
-  using BaseType::Start;
-
-  PrimitiveTextBuilder& Position(const std::array<float, 3>& positions) {
-    for (float pos : positions) {
-      this->Data().add_position(pos);
-    }
-    return *this;
-  }
-};
-
-}  // namespace xviz
+namespace xviz::tests {
+struct GlobalDesctructor {
+  GlobalDesctructor() {}
+  ~GlobalDesctructor() { google::protobuf::ShutdownProtobufLibrary(); }
+} global_destructor;
+}  // namespace xviz::tests

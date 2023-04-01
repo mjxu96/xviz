@@ -43,6 +43,12 @@ class PrimitiveImageBuilder
   using BaseType::BaseType;
   using BaseType::End;
   using BaseType::Start;
+
+  PrimitiveImageBuilder& Dimensions(uint32_t width_px, uint32_t height_px) {
+    this->Data().set_width_px(width_px);
+    this->Data().set_height_px(height_px);
+    return *this;
+  }
 };
 
 }  // namespace xviz

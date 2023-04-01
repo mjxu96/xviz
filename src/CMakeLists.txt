@@ -1,6 +1,5 @@
 find_package(protobuf REQUIRED)
 find_package(fmt REQUIRED)
-find_package(websocketpp REQUIRED)
 
 # generate protobuf source files
 add_library(
@@ -34,9 +33,8 @@ protobuf_generate(
 add_library(xviz ${CMAKE_CURRENT_SOURCE_DIR}/xviz.cc
                  ${CMAKE_CURRENT_SOURCE_DIR}/utils/utils.cc)
 
-target_link_libraries(xviz xviz_pb protobuf::libprotobuf fmt::fmt
-                      websocketpp::websocketpp)
-  
+target_link_libraries(xviz xviz_pb protobuf::libprotobuf fmt::fmt)
+
 target_compile_definitions(xviz PUBLIC XVIZ_VERSION="${XVIZ_VERSION}")
 
 target_include_directories(

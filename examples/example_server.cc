@@ -25,9 +25,7 @@
  * IN THE SOFTWARE.
  */
 
-#include <xviz/builder/builder.h>
-#include <xviz/message.h>
-#include <xviz/utils/utils.h>
+#include <xviz/xviz.h>
 
 #include <google/protobuf/stubs/common.h>
 #include <google/protobuf/util/json_util.h>
@@ -35,12 +33,25 @@
 #include <websocketpp/config/asio_no_tls.hpp>
 #include <websocketpp/server.hpp>
 
+#include <lodepng.h>
+
 #include <chrono>
 #include <iostream>
 
 using namespace xviz;
 
 websocketpp::server<websocketpp::config::asio> server;
+// minimal example of a PNG file
+std::vector<unsigned char> image = {
+    0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A, 0x00, 0x00, 0x00, 0x0D,
+    0x49, 0x48, 0x44, 0x52, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00,
+    0x01, 0x03, 0x00, 0x00, 0x00, 0x66, 0xBC, 0x3A, 0x25, 0x00, 0x00, 0x00,
+    0x03, 0x50, 0x4C, 0x54, 0x45, 0xB5, 0xD0, 0xD0, 0x63, 0x04, 0x16, 0xEA,
+    0x00, 0x00, 0x00, 0x1F, 0x49, 0x44, 0x41, 0x54, 0x68, 0x81, 0xED, 0xC1,
+    0x01, 0x0D, 0x00, 0x00, 0x00, 0xC2, 0xA0, 0xF7, 0x4F, 0x6D, 0x0E, 0x37,
+    0xA0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xBE, 0x0D, 0x21,
+    0x00, 0x00, 0x01, 0x9A, 0x60, 0xE1, 0xD5, 0x00, 0x00, 0x00, 0x00, 0x49,
+    0x45, 0x4E, 0x44, 0xAE, 0x42, 0x60, 0x82};
 
 xviz::Message<xviz::Metadata> GetMetadata() {
   xviz::MetadataBuilder meta_builder;
@@ -72,6 +83,22 @@ xviz::Message<xviz::Metadata> GetMetadata() {
       .Category<xviz::StreamMetadata::PRIMITIVE>()
         .Type(xviz::StreamMetadata::POLYLINE)
         .Coordinate(xviz::StreamMetadata::IDENTITY)
+
+    .Stream("/sensor/camera/1")
+      .Category<xviz::StreamMetadata::PRIMITIVE>()
+        .Type(xviz::StreamMetadata::IMAGE)
+    .Stream("/sensor/camera/2")
+      .Category<xviz::StreamMetadata::PRIMITIVE>()
+        .Type(xviz::StreamMetadata::IMAGE)
+
+    .Stream("/other/text/1")
+      .Category<xviz::StreamMetadata::PRIMITIVE>()
+        .Type(xviz::StreamMetadata::TEXT)
+
+    .UI("Camera")
+      .Container("Camera", xviz::LayoutType::HORIZONTAL)
+        .Video({"/sensor/camera/1", "/sensor/camera/2"})
+      .EndContainer()
     .GetMessage();
   // clang-format on
 
@@ -103,6 +130,13 @@ xviz::Message<xviz::StateUpdate> GetUpdate(float x) {
     .Primitive("/object/lines")
       .Polyline({{x, 0, 0}, {13, 6, 0}, {13, 6, 10}})
       .Polyline({{x, 30, 0}, {13, 6, 0}, {13, 6, 10}})
+    .Primitive("/sensor/camera/1")
+      .Image(image.data(), image.size())
+    .Primitive("/sensor/camera/2")
+      .Image(image.data(), image.size())
+    .Primitive("/other/text/1")
+      .Text("Hello World!")
+      .Position({0, 0, 10})
     .GetMessage();
   // clang-format on
 
@@ -128,9 +162,21 @@ void UpdatePeriodcally(
   std::cout << "disconnected " << err << std::endl;
 }
 
-int main() {
+void LoadPNGImage(char* file_name) {
+  lodepng::load_file(image, file_name);
+  std::cout << "loaded file size: " << image.size() << std::endl;
+}
+
+int main(int argc, char* argv[]) {
   server.init_asio();
   server.set_reuse_addr(true);
+
+  if (argc > 1) {
+    std::cout << "loading png file at " << argv[1] << std::endl;
+    LoadPNGImage(argv[1]);
+  } else {
+    std::cout << "no png file provided, will use a default one" << std::endl;
+  }
 
   std::vector<std::thread> threads;
 

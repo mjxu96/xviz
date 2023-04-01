@@ -145,6 +145,18 @@ int main() {
       .Category(xviz::StreamMetadata::PRIMITIVE)
         .Type(xviz::StreamMetadata::TEXT)
         .Coordinate(xviz::StreamMetadata::IDENTITY)
+
+    .UI("Metrics")
+      .NeededStream("/ui/stream1")
+      .NeededStream("/ui/stream2")
+      .Container("Metrics", xviz::LayoutType::HORIZONTAL)
+        .Metric("metric1", "hh", {"/ui/metric1", "/ui/metric2"})
+        .Container("Sub 1", xviz::LayoutType::HORIZONTAL)
+          .Video({"/ui/camera1", "/ui/camera2"})
+          .Metric("metric2", "hh", {"/ui/metric1", "/ui/metric2"})
+        .EndContainer()
+        .Video({"/ui/camera3", "/ui/camera4"})
+      .EndContainer()
     .GetMessage();
   // clang-format on
 
@@ -152,12 +164,13 @@ int main() {
 
   google::protobuf::util::JsonPrintOptions option;
   option.add_whitespace = true;
-  option.always_print_primitive_fields = true;
+  // option.always_print_primitive_fields = true;
+  option.preserve_proto_field_names = true;
 
   std::string str;
-  google::protobuf::util::MessageToJsonString(data, &str);
+  google::protobuf::util::MessageToJsonString(data, &str, option);
   std::cout << str << std::endl;
-  std::cout << data.DebugString() << std::endl;
+  // std::cout << data.DebugString() << std::endl;
 
   xviz::Builder builder;
   // clang-format off
@@ -177,17 +190,17 @@ int main() {
       .ID("object-1")
     .GetMessage();
   // clang-format on
-  std::cout << a.DebugString() << std::endl;
+  // std::cout << a.DebugString() << std::endl;
   str.clear();
-  google::protobuf::util::MessageToJsonString(a, &str);
-  std::cout << str << std::endl;
+  // google::protobuf::util::MessageToJsonString(a, &str);
+  // std::cout << str << std::endl;
 
   xviz::Message<xviz::StateUpdate> msg(std::move(a));
 
   auto msg2 = msg;
 
-  std::cout << msg.ToJsonString().size() << std::endl;
-  std::cout << msg2.ToProtobufBinary().size() << std::endl;
+  // std::cout << msg.ToJsonString().size() << std::endl;
+  // std::cout << msg2.ToProtobufBinary().size() << std::endl;
 
   google::protobuf::ShutdownProtobufLibrary();
 }

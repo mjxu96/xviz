@@ -26,32 +26,28 @@
  */
 
 #pragma once
-#include "primitive_base.h"
 
-#include <array>
+#include <type_traits>
 
-namespace xviz {
+#include <optional>
+#include <unordered_map>
 
-template <typename PrimitiveBuilderType, typename BuilderType>
-class PrimitiveTextBuilder
-    : public PrimitiveBaseBuilder<
-          PrimitiveTextBuilder<PrimitiveBuilderType, BuilderType>, Text,
-          PrimitiveBuilderType, BuilderType> {
-  using BaseType = PrimitiveBaseBuilder<
-      PrimitiveTextBuilder<PrimitiveBuilderType, BuilderType>, Text,
-      PrimitiveBuilderType, BuilderType>;
+namespace xviz::tests {
 
- public:
-  using BaseType::BaseType;
-  using BaseType::End;
-  using BaseType::Start;
+template <typename T, template <typename...> typename Tpl>
+struct IsTemplateClass : std::false_type {};
 
-  PrimitiveTextBuilder& Position(const std::array<float, 3>& positions) {
-    for (float pos : positions) {
-      this->Data().add_position(pos);
-    }
-    return *this;
-  }
-};
+template <template <typename...> typename Tpl, typename... Args>
+struct IsTemplateClass<Tpl<Args...>, Tpl> : std::true_type {};
 
-}  // namespace xviz
+template <typename T, template <typename...> typename Tpl>
+constexpr bool IsTemplateClassValue = IsTemplateClass<T, Tpl>::value;
+
+template <typename T>
+using IsOptional = IsTemplateClass<std::remove_cvref_t<T>, std::optional>;
+
+template <typename T>
+using IsUnorderedMap =
+    IsTemplateClass<std::remove_cvref_t<T>, std::unordered_map>;
+
+}  // namespace xviz::tests
