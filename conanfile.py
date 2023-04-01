@@ -20,7 +20,7 @@ class XVIZ(ConanFile):
         "fPIC": True,
         "build_tests": True,
         "build_examples": True,
-        "coverage": False,
+        "coverage": True,
     }
 
     # Sources are located in the same place as this recipe, copy them to the recipe
@@ -42,7 +42,7 @@ class XVIZ(ConanFile):
         if self.options.build_examples:
             variables["XVIZ_BUILD_EXAMPLES"] = "ON"
         if self.options.coverage:
-            variables["XVIZ_BUILD_COVERAGE"] = "ON"
+            variables["XVIZ_TEST_COVERAGE"] = "ON"
         cmake.configure(variables=variables)
         return cmake
 

@@ -12,6 +12,11 @@ project(
 
 set(CMAKE_CXX_STANDARD 20)
 
+if(XVIZ_BUILD_TESTS AND XVIZ_TEST_COVERAGE)
+  include(cmake/CodeCoverage.cmake)
+  append_coverage_compiler_flags()
+endif()
+
 add_subdirectory("src")
 
 if(XVIZ_BUILD_TESTS)

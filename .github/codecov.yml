@@ -1,0 +1,8 @@
+coverage:
+  status:
+    patch: off  # TODO enable this one later
+    project:
+      default:
+        target: 85%
+        threshold: 1%
+comment: false

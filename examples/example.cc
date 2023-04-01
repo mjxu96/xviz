@@ -192,15 +192,15 @@ int main() {
   // clang-format on
   // std::cout << a.DebugString() << std::endl;
   str.clear();
-  // google::protobuf::util::MessageToJsonString(a, &str);
-  // std::cout << str << std::endl;
+  google::protobuf::util::MessageToJsonString(a, &str);
+  std::cout << str << std::endl;
 
   xviz::Message<xviz::StateUpdate> msg(std::move(a));
 
   auto msg2 = msg;
 
-  // std::cout << msg.ToJsonString().size() << std::endl;
-  // std::cout << msg2.ToProtobufBinary().size() << std::endl;
+  std::cout << msg.ToJsonString().size() << std::endl;
+  std::cout << msg2.ToProtobufBinary().size() << std::endl;
 
   google::protobuf::ShutdownProtobufLibrary();
 }
