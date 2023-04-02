@@ -27,15 +27,22 @@
 
 #pragma once
 
+#include "pose.h"
+#include "time_series.h"
+#include "ui_primitive.h"
+
 #include <xviz/builder/metadata/metadata.h>
-#include <xviz/builder/pose.h>
 #include <xviz/builder/primitive/primitive.h>
 
 namespace xviz {
 
 class Builder {
  public:
-  Builder() : pose_builder_(*this), primitive_builder_(*this) {
+  Builder()
+      : pose_builder_(*this),
+        primitive_builder_(*this),
+        time_series_builder_(*this),
+        ui_primitive_builder_(*this) {
     data_.set_update_type(StateUpdate::SNAPSHOT);
     data_.add_updates();
   }
@@ -45,9 +52,8 @@ class Builder {
     return *this;
   }
 
-  template <typename... Args>
-  requires(std::constructible_from<std::string, Args...>) PoseBuilder<Builder>
-  &Pose(Args&&... args) {
+  template <xviz::concepts::CanConstructString... Args>
+  PoseBuilder<Builder>& Pose(Args&&... args) {
     pose_builder_.End();
     std::string stream_id = std::string(std::forward<Args>(args)...);
 
@@ -65,10 +71,8 @@ class Builder {
     return pose_builder_.Start(poses_itr->second);
   }
 
-  template <typename... Args>
-  requires(std::constructible_from<std::string, Args...>)
-      PrimitiveBuilder<Builder>
-  &Primitive(Args&&... args) {
+  template <xviz::concepts::CanConstructString... Args>
+  PrimitiveBuilder<Builder>& Primitive(Args&&... args) {
     primitive_builder_.End();
     std::string stream_id = std::string(std::forward<Args>(args)...);
 
@@ -87,9 +91,39 @@ class Builder {
     return primitive_builder_.Start(primitives_itr->second);
   }
 
+  template <xviz::concepts::CanConstructString... Args>
+  TimeSeriesBuilder<Builder>& TimeSeries(Args&&... args) {
+    time_series_builder_.End();
+    std::string stream_id = std::string(std::forward<Args>(args)...);
+    auto new_time_series_ptr = data_.mutable_updates()->at(0).add_time_series();
+    new_time_series_ptr->add_streams(stream_id);
+    return time_series_builder_.Start(*new_time_series_ptr);
+  }
+
+  template <xviz::concepts::CanConstructString... Args>
+  UIPrimitiveBuilder<Builder>& UIPrimitive(Args&&... args) {
+    ui_primitive_builder_.End();
+    std::string stream_id = std::string(std::forward<Args>(args)...);
+    auto ui_primitives_itr =
+        data_.mutable_updates()->at(0).mutable_ui_primitives()->find(stream_id);
+    if (ui_primitives_itr ==
+        data_.mutable_updates()->at(0).mutable_ui_primitives()->end()) {
+      auto insertion_res =
+          data_.mutable_updates()->at(0).mutable_ui_primitives()->insert(
+              {stream_id, UIPrimitiveState()});
+      if (!insertion_res.second) [[unlikely]] {
+        throw std::runtime_error("TODO Cannot insert ui primitive");
+      }
+      ui_primitives_itr = insertion_res.first;
+    }
+    return ui_primitive_builder_.Start(ui_primitives_itr->second);
+  }
+
   StateUpdate&& GetMessage() {
     pose_builder_.End();
     primitive_builder_.End();
+    time_series_builder_.End();
+    ui_primitive_builder_.End();
 
     return std::move(data_);
   }
@@ -98,6 +132,8 @@ class Builder {
   StateUpdate data_;
   PoseBuilder<Builder> pose_builder_;
   PrimitiveBuilder<Builder> primitive_builder_;
+  TimeSeriesBuilder<Builder> time_series_builder_;
+  UIPrimitiveBuilder<Builder> ui_primitive_builder_;
 };
 
 }  // namespace xviz

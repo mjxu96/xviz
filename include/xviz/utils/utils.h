@@ -30,9 +30,72 @@
 #include <xviz/def.h>
 
 #include <string>
+#include <type_traits>
+#include <variant>
 #include <vector>
 
 namespace xviz::util {
+
+class TreeTableValueVariant {
+ public:
+  TreeTableValueVariant(const std::string& v) : storage_(v) {}
+  TreeTableValueVariant(std::string&& v) : storage_(std::move(v)) {}
+  TreeTableValueVariant(const char* v) : storage_(v) {}
+  TreeTableValueVariant(int v) : storage_(v) {}
+  TreeTableValueVariant(double v) : storage_(v) {}
+  TreeTableValueVariant(bool v) : storage_(v) {}
+
+  bool IsSameType(xviz::TreeTableColumn::ColumnType column_type) const {
+    switch (column_type) {
+      case xviz::TreeTableColumn::INT32:
+        return std::holds_alternative<int>(storage_);
+      case xviz::TreeTableColumn::DOUBLE:
+        return std::holds_alternative<double>(storage_);
+      case xviz::TreeTableColumn::STRING:
+        return std::holds_alternative<std::string>(storage_);
+      case xviz::TreeTableColumn::BOOLEAN:
+        return std::holds_alternative<bool>(storage_);
+      default:
+        return false;
+    }
+  }
+
+  xviz::TreeTableColumn::ColumnType GetHoldType() const {
+    switch (storage_.index()) {
+      case 0:
+        return xviz::TreeTableColumn::INT32;
+      case 1:
+        return xviz::TreeTableColumn::DOUBLE;
+      case 2:
+        return xviz::TreeTableColumn::STRING;
+      case 3:
+        return xviz::TreeTableColumn::BOOLEAN;
+      default:
+        return xviz::TreeTableColumn::TREE_TABLE_COLUMN_COLUMN_TYPE_INVALID;
+    }
+  }
+
+  std::string ToString() const {
+    return std::visit(
+        [](const auto& value) -> std::string {
+          if constexpr (std::is_same_v<std::remove_cvref_t<decltype(value)>,
+                                       std::string>) {
+            return value;
+          } else {
+            return std::to_string(value);
+          }
+        },
+        storage_);
+  }
+
+  static std::string GetColumnTypeString(
+      xviz::TreeTableColumn::ColumnType type) {
+    return TreeTableColumn_ColumnType_Name(type);
+  }
+
+ private:
+  std::variant<int, double, std::string, bool> storage_;
+};
 
 std::vector<uint8_t> GetBytesArrayFromHexString(std::string_view hexstring);
 

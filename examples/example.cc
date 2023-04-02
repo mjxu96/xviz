@@ -146,6 +146,28 @@ int main() {
         .Type(xviz::StreamMetadata::TEXT)
         .Coordinate(xviz::StreamMetadata::IDENTITY)
 
+    .Stream("/time_series/demo/1")
+      .Category<xviz::StreamMetadata::TIME_SERIES>()
+        .Type(xviz::StreamMetadata::FLOAT)
+        .Unit("m/s")
+
+    .Stream("/time_series/demo/2")
+      .Category<xviz::StreamMetadata::TIME_SERIES>()
+        .Type(xviz::StreamMetadata::BOOL)
+
+    .Stream("/time_series/demo/3")
+      .Category<xviz::StreamMetadata::TIME_SERIES>()
+        .Type(xviz::StreamMetadata::INT32)
+
+    .Stream("/time_series/demo/4")
+      .Category<xviz::StreamMetadata::TIME_SERIES>()
+        .Type(xviz::StreamMetadata::STRING)
+
+    .Stream("/ui_primitive/demo/1")
+      .Category<xviz::StreamMetadata::UI_PRIMITIVE>()
+    .Stream("/ui_primitive/demo/2")
+      .Category<xviz::StreamMetadata::UI_PRIMITIVE>()
+
     .UI("Metrics")
       .NeededStream("/ui/stream1")
       .NeededStream("/ui/stream2")
@@ -188,11 +210,39 @@ int main() {
     .Primitive("/object/shape")
       .Polygon({{10, 14, 0}, {7, 10, 0}, {13, 6, 0}})
       .ID("object-1")
+
+    .TimeSeries("/time_series/demo/1")
+      .Timestamp(1000)
+      .Value(1.3)
+      .ID("time-series-1")
+
+    .TimeSeries("/time_series/demo/2")
+      .Timestamp(1000)
+      .Value(true)
+      .ID("time-series-2")
+
+    .TimeSeries("/time_series/demo/3")
+      .Timestamp(1000)
+      .Value(1)
+      .ID("time-series-3")
+
+    .TimeSeries("/time_series/demo/4")
+      .Timestamp(1000)
+      .Value("hello world")
+      .ID("time-series-4")
+
+    .UIPrimitive("/ui_primitive/demo/1")
+      .Column("object_id", xviz::TreeTableColumn::INT32)
+      .Column("value", xviz::TreeTableColumn::DOUBLE)
+      .Column("comment", xviz::TreeTableColumn::STRING)
+        .Row(0, {1, 0.1, "this is one"})
+        .Row(1, {2, 0.2, "this is two"})
+
     .GetMessage();
   // clang-format on
   // std::cout << a.DebugString() << std::endl;
   str.clear();
-  google::protobuf::util::MessageToJsonString(a, &str);
+  google::protobuf::util::MessageToJsonString(a, &str, option);
   std::cout << str << std::endl;
 
   xviz::Message<xviz::StateUpdate> msg(std::move(a));

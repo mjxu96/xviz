@@ -28,11 +28,23 @@
 #pragma once
 
 #include <concepts>
+#include <cstdint>
 #include <string>
+#include <type_traits>
 
 namespace xviz::concepts {
 
 template <typename... Args>
+using FirstArgType = std::tuple_element_t<0, std::tuple<Args...>>;
+
+template <typename... Args>
 concept CanConstructString = std::constructible_from<std::string, Args...>;
+
+template <typename... ValueArgsT>
+concept TimeSeriesAcceptableType = CanConstructString<ValueArgsT...> ||
+    ((sizeof...(ValueArgsT) == 1) &&
+     (std::same_as<FirstArgType<ValueArgsT...>, bool> ||
+      std::same_as<FirstArgType<ValueArgsT...>, double> ||
+      std::same_as<FirstArgType<ValueArgsT...>, int32_t>));
 
 }  // namespace xviz::concepts

@@ -95,10 +95,35 @@ xviz::Message<xviz::Metadata> GetMetadata() {
       .Category<xviz::StreamMetadata::PRIMITIVE>()
         .Type(xviz::StreamMetadata::TEXT)
 
+    .Stream("/game/time")
+      .Category<xviz::StreamMetadata::UI_PRIMITIVE>()
+
+    .Stream("/sensor/gnss/1")
+      .Category<xviz::StreamMetadata::UI_PRIMITIVE>()
+
+    .Stream("/metric/steer")
+      .Category<xviz::StreamMetadata::TIME_SERIES>()
+        .Type(xviz::StreamMetadata::FLOAT)
+        .Unit("rad/s")
+
+    .Stream("/vehicle/acceleration")
+      .Category(xviz::StreamMetadata::TIME_SERIES)
+        .Unit("m/s^2")
+        .Type(xviz::StreamMetadata::FLOAT)
+
     .UI("Camera")
       .Container("Camera", xviz::LayoutType::HORIZONTAL)
         .Video({"/sensor/camera/1", "/sensor/camera/2"})
       .EndContainer()
+    
+    .UI("Tables")
+      .Container("Tables", xviz::LayoutType::HORIZONTAL)
+        .TreeeTable("game time", "game time", "/game/time", false)
+        .TreeeTable("gnss", "gnss", "/sensor/gnss/1", false)
+
+    .UI("Metrics")
+      .Container("Metrics", xviz::LayoutType::HORIZONTAL)
+        .Metric("steer", "steer", {"/metric/steer"})
     .GetMessage();
   // clang-format on
 
@@ -137,6 +162,18 @@ xviz::Message<xviz::StateUpdate> GetUpdate(float x) {
     .Primitive("/other/text/1")
       .Text("Hello World!")
       .Position({0, 0, 10})
+
+    .UIPrimitive("/game/time")
+      .Column("game time", xviz::TreeTableColumn::DOUBLE)
+      .Column("real time", xviz::TreeTableColumn::STRING)
+        .Row(0, {now, "test"})
+
+    .TimeSeries("/metric/steer")
+      .Timestamp(now)
+      .Value(3.0)
+    .TimeSeries("/vehicle/acceleration")
+      .Timestamp(now)
+      .Value(3.0)
     .GetMessage();
   // clang-format on
 

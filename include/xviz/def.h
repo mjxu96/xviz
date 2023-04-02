@@ -32,6 +32,7 @@
 #include <xviz/v2/primitives.pb.h>
 #include <xviz/v2/session.pb.h>
 #include <xviz/v2/style.pb.h>
+#include <xviz/v2/uiprimitives.pb.h>
 
 #include <xviz/utils/concepts.h>
 
@@ -42,6 +43,7 @@
 #ifdef __cpp_lib_format
 #include <format>
 #else
+#include <fmt/chrono.h>
 #include <fmt/format.h>
 namespace std {
 using fmt::format;
