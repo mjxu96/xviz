@@ -13,6 +13,7 @@ project(
 set(CMAKE_CXX_STANDARD 20)
 
 if(XVIZ_BUILD_TESTS AND XVIZ_TEST_COVERAGE)
+  message(STATUS "Appending coverage flags to compile command")
   include(cmake/CodeCoverage.cmake)
   append_coverage_compiler_flags()
 endif()

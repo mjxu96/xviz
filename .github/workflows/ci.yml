@@ -31,15 +31,26 @@ jobs:
       run: bash misc/cicd/conan/copy_conan_profiles.sh ${HOME}/
     # install packages and build
     - name: Install libraries
-      run: conan install . --build=missing -pr ${HOME}/${{ matrix.profile }} -s build_type=${{ matrix.build_type }}
+      run: conan install . --build=missing -pr ${HOME}/${{ matrix.profile }} -s build_type=${{ matrix.build_type }} -o build_tests=True -o build_examples=True -o coverage=True
     - name: Build
       run: conan build . --build
     # test
     - name: Run unit tests
       run: conan build . --test
-    # memory leak check
-    - name: Run valgrind memory leak check
+    # memory leak check TODO: add leak check on examples
+    - name: Run valgrind memory leak check on test
       run: pushd ./build/${{ matrix.build_type }}/ && valgrind ctest && popd
+    # package consume check for Debug create and Release consume
+    - name: Consume the package for checking
+      if: matrix.profile == 'gcc11'  # TODO add clang back when valgrind fixes the issue https://bugzilla.mozilla.org/show_bug.cgi?id=1758782
+      run: |
+        conan create -pr ${HOME}/${{ matrix.profile }} -s build_type=${{ matrix.build_type }} . local/test
+        cp examples/*.cc misc/cicd/consumer/
+        pushd misc/cicd/consumer/
+        conan install . --build=missing -pr ${HOME}/${{ matrix.profile }} -s build_type=${{ matrix.build_type }}
+        conan build . --build
+        valgrind ./build/${{ matrix.build_type }}/example
+        popd
     # code coverage
     - name: Generate coverage information
       run: ls . && bash misc/cicd/codecov/generate_coverage_xml.sh . && ls .

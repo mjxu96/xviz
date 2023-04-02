@@ -17,6 +17,12 @@ Please see [example.cc](examples/example.cc), [example_server.cc](examples/examp
 1. [CarlaViz](https://github.com/mjxu96/carlaviz)
 
 ## Build and Test
+
+### Download from Conan remote
+```bash
+conan remote add gitlab https://gitlab.com/api/v4/projects/44829659/packages/conan
+conan install xviz --remote=gitlab
+```
 ### Build xviz builder example
 ```bash
 mkdir build && cd build
