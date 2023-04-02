@@ -1,6 +1,7 @@
 from conans import ConanFile
 from conan.tools.cmake import CMakeToolchain, CMakeDeps, CMake, cmake_layout
 from conans.tools import Git
+import os
 
 
 class XVIZ(ConanFile):
@@ -18,9 +19,9 @@ class XVIZ(ConanFile):
     default_options = {
         "shared": False,
         "fPIC": True,
-        "build_tests": True,
-        "build_examples": True,
-        "coverage": True,
+        "build_tests": False,
+        "build_examples": False,
+        "coverage": False,
     }
 
     # Sources are located in the same place as this recipe, copy them to the recipe
@@ -31,7 +32,9 @@ class XVIZ(ConanFile):
         "cmake/*",
         "CMakeLists.txt",
         "README.md",
-        "docs/*",
+        "LICENSE.md",
+        "tests/*",
+        "examples/*"
     )
 
     def _configure_cmake(self) -> CMake:
@@ -52,7 +55,7 @@ class XVIZ(ConanFile):
                 Git(folder=self.recipe_folder).run("describe --tags --abbr=0") or "1.0.0"
             )
         except:
-            self.version = "1.0.0"
+            self.version = "0.0.1"
 
     def requirements(self):
         self.requires("protobuf/3.21.9")
@@ -95,3 +98,6 @@ class XVIZ(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = ["xviz"]
+        # We will use our installed cmake files
+        self.cpp_info.set_property("cmake_find_mode", "none")
+        self.cpp_info.builddirs.append(os.path.join("lib", "cmake", "xviz"))

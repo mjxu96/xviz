@@ -1,0 +1,43 @@
+name: libxviz CD
+on:
+  push:
+    tags:
+    - '[0-9]+.[0-9]+.[0-9]+'  # semantic version
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        profile: [gcc11, clang14]
+        build_type: [Debug, Release]
+    runs-on: ubuntu-latest
+    steps:
+    # git checkout
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    # dependencies
+    - name: Install cmake and compilers
+      run: sudo apt install -y cmake g++-11 clang-14 libc++-14-dev
+    - name: Install conan and coverage tool
+      run: pip install conan==1.55.0
+    - name: Login Conan remote
+      run: |
+        conan remote add gitlab https://gitlab.com/api/v4/projects/44829659/packages/conan
+        conan user ${{ secrets.XVIZ_CONAN_DEPLOY_GITLAB_NAME }} -r gitlab -p ${{ secrets.XVIZ_CONAN_DEPLOY_GITLAB_TOKEN }}
+    - name: Copy conan profiles
+      run: bash misc/cicd/conan/copy_conan_profiles.sh ${HOME}/
+    # install packages and build
+    - name: Install libraries
+      run: conan install . --build=missing -pr ${HOME}/${{ matrix.profile }} -s build_type=${{ matrix.build_type }} -o build_tests=True -o build_examples=True
+    - name: Build
+      run: conan build . --build
+    # test
+    - name: Run unit tests
+      run: conan build . --test
+    # create package
+    - name: Create package
+      run: conan create -pr ${HOME}/${{ matrix.profile }} -s build_type=${{ matrix.build_type }} . mjxu96/stable
+    # upload
+    - name: Upload package
+      run: conan upload xviz/${{ github.ref_name }}@mjxu96/stable -r gitlab --all
