@@ -53,6 +53,11 @@ class BuilderMixin {
     return builder_.TimeSeries(std::forward<Args>(args)...);
   }
 
+  template <typename... Args>
+  auto&& UIPrimitive(Args&&... args) {
+    return builder_.UIPrimitive(std::forward<Args>(args)...);
+  }
+
  protected:
   friend class Builder;
   DataT* data_{nullptr};
