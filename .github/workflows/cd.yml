@@ -37,7 +37,7 @@ jobs:
       run: conan build . --test
     # create package
     - name: Create package
-      run: conan create -pr ${HOME}/${{ matrix.profile }} -s build_type=${{ matrix.build_type }} . mjxu96/stable
+      run: conan create -pr ${HOME}/${{ matrix.profile }} -s build_type=${{ matrix.build_type }} . 
     # upload
     - name: Upload package
-      run: conan upload xviz/${{ github.ref_name }}@mjxu96/stable -r gitlab --all
+      run: conan upload xviz/${{ github.ref_name }}@ -r gitlab --all
