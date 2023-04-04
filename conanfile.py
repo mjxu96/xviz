@@ -52,9 +52,10 @@ class XVIZ(ConanFile):
     def set_version(self):
         try:
             self.version = (
-                Git(folder=self.recipe_folder).run("describe --tags --abbr=0") or "1.0.0"
+                Git(folder=self.recipe_folder).run("describe --tags --abbr=0") or "0.0.1"
             )
         except:
+            # this version is for local recipe consumer test
             self.version = "0.0.1"
 
     def requirements(self):
