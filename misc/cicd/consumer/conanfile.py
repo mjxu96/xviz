@@ -1,5 +1,6 @@
 from conans import ConanFile
 from conan.tools.cmake import CMakeToolchain, CMakeDeps, CMake, cmake_layout
+import os
 
 
 class XVIZConsumerExample(ConanFile):
@@ -22,7 +23,9 @@ class XVIZConsumerExample(ConanFile):
         return cmake
 
     def requirements(self):
-        self.requires("xviz/0.0.1@local/test")
+        # read version from CI env
+        xviz_version = os.environ["XVIZ_CI_VERSION_OVERRIDE"]
+        self.requires(f"xviz/{xviz_version}@local/test")
         self.requires("websocketpp/0.8.2")
         self.requires("lodepng/cci.20200615")
         self.options["websocketpp"].asio = "standalone"

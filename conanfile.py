@@ -51,9 +51,13 @@ class XVIZ(ConanFile):
 
     def set_version(self):
         try:
-            self.version = (
-                Git(folder=self.recipe_folder).run("describe --tags --abbr=0") or "0.0.1"
-            )
+            if "XVIZ_CI_VERSION_OVERRIDE" in os.environ:
+                # this version is for local recipe consumer test
+                self.version = os.environ["XVIZ_CI_VERSION_OVERRIDE"]
+            else:
+                self.version = (
+                    Git(folder=self.recipe_folder).run("describe --tags --abbr=0") or "0.0.1"
+                )
         except:
             # this version is for local recipe consumer test
             self.version = "0.0.1"

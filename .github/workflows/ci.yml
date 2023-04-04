@@ -4,6 +4,10 @@ on:
       branches: [ master ]
   pull_request:
       branches: [ master ]
+
+env:
+  XVIZ_CI_VERSION_OVERRIDE: "0.0.1"
+
 jobs:
   build:
     strategy:
@@ -45,7 +49,7 @@ jobs:
       if: matrix.profile == 'gcc11'
     # TODO add clang back when valgrind fixes the issue https://bugzilla.mozilla.org/show_bug.cgi?id=1758782
       run: |
-        conan create -pr ${HOME}/${{ matrix.profile }} -s build_type=${{ matrix.build_type }} . 0.0.1@local/test
+        conan create -pr ${HOME}/${{ matrix.profile }} -s build_type=${{ matrix.build_type }} . $XVIZ_CI_VERSION_OVERRIDE@local/test
         cp examples/*.cc misc/cicd/consumer/
         pushd misc/cicd/consumer/
         conan install . --build=missing -pr ${HOME}/${{ matrix.profile }} -s build_type=${{ matrix.build_type }}
