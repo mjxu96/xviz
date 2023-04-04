@@ -23,7 +23,7 @@ jobs:
       run: pip install conan==1.55.0
     - name: Login Conan remote
       run: |
-        conan remote add gitlab https://gitlab.com/api/v4/projects/44829659/packages/conan
+        conan remote add gitlab https://gitlab.com/api/v4/projects/44861904/packages/conan
         conan user ${{ secrets.XVIZ_CONAN_DEPLOY_GITLAB_NAME }} -r gitlab -p ${{ secrets.XVIZ_CONAN_DEPLOY_GITLAB_TOKEN }}
     - name: Copy conan profiles
       run: bash misc/cicd/conan/copy_conan_profiles.sh ${HOME}/
