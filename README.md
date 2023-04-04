@@ -20,7 +20,7 @@ Please see [example.cc](examples/example.cc), [example_server.cc](examples/examp
 
 ### Download from Conan remote
 ```bash
-conan remote add gitlab https://gitlab.com/api/v4/projects/44829659/packages/conan
+conan remote add gitlab https://gitlab.com/api/v4/projects/44861904/packages/conan
 conan install xviz --remote=gitlab
 ```
 ### Build xviz builder example
