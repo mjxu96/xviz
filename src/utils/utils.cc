@@ -25,13 +25,18 @@
  * IN THE SOFTWARE.
  */
 
+#include <xviz/utils/base64.h>
 #include <xviz/utils/utils.h>
 
 #include <cstdint>
+#include <iomanip>
+#include <sstream>
 #include <stdexcept>
+#include <string>
 
-std::vector<uint8_t> xviz::util::GetBytesArrayFromHexString(
-    std::string_view hexstring) {
+namespace xviz::util {
+
+std::vector<uint8_t> GetBytesArrayFromHexString(std::string_view hexstring) {
   if (hexstring.size() % 2 == 1) [[unlikely]] {
     throw std::runtime_error("TODO hex string should has even numbers of data");
   }
@@ -41,3 +46,40 @@ std::vector<uint8_t> xviz::util::GetBytesArrayFromHexString(
         (hexstring[j] % 32 + 9) % 25 * 16 + (hexstring[j + 1] % 32 + 9) % 25;
   return bytearray;
 }
+
+std::string GetHexStringFromBytesArray(
+    const std::vector<uint8_t>& bytes_array) {
+  std::stringstream ss;
+  ss << std::hex;
+  for (uint8_t byte : bytes_array)
+    ss << std::setw(2) << std::setfill('0') << (int)byte;
+  return ss.str();
+}
+
+void PatchMap(google::protobuf::Struct& ret) {
+  for (auto& [key, value] : *ret.mutable_fields()) {
+    if ((key == "fill_color" || key == "stroke_color") &&
+        (value.has_string_value())) {
+      // decode base64 back to string
+      value.set_string_value(
+          "#" + GetHexStringFromBytesArray(Base64Decode(value.string_value())));
+    }
+    if (value.has_struct_value()) {
+      PatchMap(*value.mutable_struct_value());
+    } else if (value.has_list_value()) {
+      PatchList(*value.mutable_list_value());
+    }
+  }
+}
+
+void PatchList(google::protobuf::ListValue& ret) {
+  for (auto& value : *ret.mutable_values()) {
+    if (value.has_struct_value()) {
+      PatchMap(*value.mutable_struct_value());
+    } else if (value.has_list_value()) {
+      PatchList(*value.mutable_list_value());
+    }
+  }
+}
+
+}  // namespace xviz::util

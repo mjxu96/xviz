@@ -29,6 +29,9 @@
 
 #include <xviz/def.h>
 
+#include <google/protobuf/struct.pb.h>
+#include <google/protobuf/util/json_util.h>
+
 #include <string>
 #include <type_traits>
 #include <variant>
@@ -98,5 +101,32 @@ class TreeTableValueVariant {
 };
 
 std::vector<uint8_t> GetBytesArrayFromHexString(std::string_view hexstring);
+std::string GetHexStringFromBytesArray(const std::vector<uint8_t>&);
+
+void PatchMap(google::protobuf::Struct& ret);
+void PatchList(google::protobuf::ListValue& ret);
+
+template <typename MessageType>
+google::protobuf::Struct PatchMessage(const Envelope& message) requires(
+    std::same_as<MessageType, xviz::Metadata>) {
+  google::protobuf::util::JsonPrintOptions json_print_option;
+  json_print_option.preserve_proto_field_names = true;
+  std::string json_str;
+  google::protobuf::util::MessageToJsonString(message, &json_str,
+                                              json_print_option);
+  google::protobuf::Struct ret;
+  google::protobuf::util::JsonStringToMessage(json_str, &ret);
+
+  // patch the metadata since the style's color is stored in base64 encoded
+  // bytes
+  PatchMap(ret);
+  return ret;
+}
+
+template <typename MessageType>
+const Envelope& PatchMessage(const Envelope& message) requires(
+    !std::same_as<MessageType, xviz::Metadata>) {
+  return message;
+}
 
 }  // namespace xviz::util

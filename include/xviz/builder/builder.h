@@ -119,13 +119,13 @@ class Builder {
     return ui_primitive_builder_.Start(ui_primitives_itr->second);
   }
 
-  StateUpdate&& GetMessage() {
+  StateUpdate& GetMessage() {
     pose_builder_.End();
     primitive_builder_.End();
     time_series_builder_.End();
     ui_primitive_builder_.End();
 
-    return std::move(data_);
+    return data_;
   }
 
  private:

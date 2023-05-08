@@ -31,7 +31,9 @@ protobuf_generate(
 
 # xviz source files
 add_library(xviz ${CMAKE_CURRENT_SOURCE_DIR}/xviz.cc
-                 ${CMAKE_CURRENT_SOURCE_DIR}/utils/utils.cc)
+                 ${CMAKE_CURRENT_SOURCE_DIR}/utils/utils.cc
+                 ${CMAKE_CURRENT_SOURCE_DIR}/utils/base64.cc
+                 )
 
 target_link_libraries(xviz xviz_pb protobuf::libprotobuf fmt::fmt)
 
