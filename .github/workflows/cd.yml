@@ -10,7 +10,7 @@ jobs:
       matrix:
         profile: [gcc11, clang14]
         build_type: [Debug, Release]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     # git checkout
     - uses: actions/checkout@v3
@@ -38,6 +38,11 @@ jobs:
     # create package
     - name: Create package
       run: conan create -pr ${HOME}/${{ matrix.profile }} -s build_type=${{ matrix.build_type }} . 
+    # TODO setup test_package
+    # TODO grant permission to GITHUB_TOKEN
+    # limit the max concurrency of upload
+    - name: Set up mutex
+      uses: ben-z/gh-action-mutex@v1.0-alpha-7
     # upload
     - name: Upload package
       run: conan upload xviz/${{ github.ref_name }}@ -r gitlab --all

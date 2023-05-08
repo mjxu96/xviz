@@ -29,6 +29,7 @@
 
 #include <xviz/builder/builder.h>
 
+#include <google/protobuf/struct.pb.h>
 #include <google/protobuf/stubs/common.h>
 #include <google/protobuf/util/json_util.h>
 
@@ -50,8 +51,9 @@ struct MessageTypeStr<Metadata> {
 template <typename MessageType>
 class Message {
  public:
-  explicit Message(MessageType&& message)
-      : message_(std::forward<MessageType>(message)) {
+  template <typename MessageT>
+  explicit Message(MessageT&& message)
+      : message_(std::forward<MessageT>(message)) {
     json_print_option_.preserve_proto_field_names = true;
   }
 
@@ -65,9 +67,17 @@ class Message {
     Envelope evenlope;
     evenlope.set_type(type_.data());
     evenlope.mutable_data()->PackFrom(message_);
-    google::protobuf::util::MessageToJsonString(evenlope, &ret,
-                                                json_print_option_);
+    google::protobuf::util::MessageToJsonString(
+        util::PatchMessage<MessageType>(evenlope), &ret, json_print_option_);
     return ret;
+  }
+
+  google::protobuf::Struct ToProtobufStruct() requires(
+      std::same_as<MessageType, xviz::Metadata>) {
+    Envelope evenlope;
+    evenlope.set_type(type_.data());
+    evenlope.mutable_data()->PackFrom(message_);
+    return util::PatchMessage<MessageType>(evenlope);
   }
 
   std::string ToProtobufBinary() {

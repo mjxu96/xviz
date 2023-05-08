@@ -137,7 +137,7 @@ xviz::Message<xviz::StateUpdate> GetUpdate(float x) {
 
   xviz::Builder builder;
   // clang-format off
-  auto a = builder
+  auto& a = builder
     .Timestamp(now)
     .Pose("/vehicle_pose")
       .MapOrigin(0, 0, 0)
@@ -183,8 +183,8 @@ xviz::Message<xviz::StateUpdate> GetUpdate(float x) {
 void UpdatePeriodcally(
     std::shared_ptr<websocketpp::connection<websocketpp::config::asio>> conn) {
   auto metadata = GetMetadata();
-  auto metadata_string = metadata.ToProtobufBinary();
-  // auto metadata_string = metadata.ToJsonString();
+  // auto metadata_string = metadata.ToProtobufBinary();
+  auto metadata_string = metadata.ToJsonString();
   conn->send(metadata_string.data(), metadata_string.size(),
              websocketpp::frame::opcode::binary);
   std::error_code err;

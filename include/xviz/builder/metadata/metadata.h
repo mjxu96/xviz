@@ -88,9 +88,9 @@ class MetadataBuilder {
     return ui_builder_.Start(ui_config_itr->second, panel_key);
   }
 
-  Metadata&& GetMessage() {
+  Metadata& GetMessage() {
     EndAllBuilders();
-    return std::move(data_);
+    return data_;
   }
 
  private:

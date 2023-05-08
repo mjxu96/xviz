@@ -71,6 +71,8 @@ class XVIZ(ConanFile):
             self.requires("websocketpp/0.8.2")
             self.requires("lodepng/cci.20200615")
             self.options["websocketpp"].asio = "standalone"
+            # we don't need openssl for example
+            self.options["websocketpp"].with_openssl = False
 
     def config_options(self):
         if self.settings.os == "Windows":
