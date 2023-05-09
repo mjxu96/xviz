@@ -136,6 +136,7 @@ xviz::Message<xviz::StateUpdate> GetUpdate(float x) {
                  .count();
 
   xviz::Builder builder;
+  builder.Reset();
   // clang-format off
   auto& a = builder
     .Timestamp(now)

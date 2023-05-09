@@ -107,6 +107,21 @@ TEST_F(MetadataBuilderTest, StreamExistTest) {
   EXPECT_NE(msg.streams().find("/test/stream1"), msg.streams().end());
 }
 
+TEST_F(MetadataBuilderTest, StreamNotExistAfterResetTest) {
+  // clang-format off
+  auto msg = builder_
+    .Stream("/test/stream1")
+    .GetMessage();
+  // clang-format on
+
+  EXPECT_EQ(msg.streams_size(), 1);
+  EXPECT_NE(msg.streams().find("/test/stream1"), msg.streams().end());
+
+  builder_.Reset();
+  msg = builder_.GetMessage();
+  EXPECT_EQ(msg.streams_size(), 0);
+}
+
 TEST_F(MetadataBuilderTest, PoseCategoryTest) {
   auto msg = builder_.Stream("/test/pose")
                  .Category<xviz::StreamMetadata::POSE>()
