@@ -47,6 +47,8 @@ class Builder {
     data_.add_updates();
   }
 
+  void Reset() { data_.Clear(); }
+
   Builder& Timestamp(double timestamp) {
     data_.mutable_updates()->at(0).set_timestamp(timestamp);
     return *this;

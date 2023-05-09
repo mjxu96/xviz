@@ -44,6 +44,8 @@ class MetadataBuilder {
     data_.set_version("2.0.0");
   }
 
+  void Reset() { data_.Clear(); }
+
   template <concepts::CanConstructString... Args>
   MetadataBuilder& Version(Args&&... args) {
     data_.set_version(std::forward<Args>(args)...);
