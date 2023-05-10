@@ -43,11 +43,14 @@ class Builder {
         primitive_builder_(*this),
         time_series_builder_(*this),
         ui_primitive_builder_(*this) {
+    Reset();
+  }
+
+  void Reset() {
+    data_.Clear();
     data_.set_update_type(StateUpdate::SNAPSHOT);
     data_.add_updates();
   }
-
-  void Reset() { data_.Clear(); }
 
   Builder& Timestamp(double timestamp) {
     data_.mutable_updates()->at(0).set_timestamp(timestamp);
