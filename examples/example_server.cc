@@ -83,6 +83,24 @@ xviz::Message<xviz::Metadata> GetMetadata() {
       .Category<xviz::StreamMetadata::PRIMITIVE>()
         .Type(xviz::StreamMetadata::POLYLINE)
         .Coordinate(xviz::StreamMetadata::IDENTITY)
+    .Stream("/object/points/1")
+      .Category<xviz::StreamMetadata::PRIMITIVE>()
+        .Type(xviz::StreamMetadata::POINT)
+        .Coordinate(xviz::StreamMetadata::IDENTITY)
+        .StreamStyle(
+            {
+              {"point_color_mode", xviz::PointColorMode::ELEVATION},
+              {"radius_pixels", 10u}
+            })
+    .Stream("/object/points/2")
+      .Category<xviz::StreamMetadata::PRIMITIVE>()
+        .Type(xviz::StreamMetadata::POINT)
+        .Coordinate(xviz::StreamMetadata::IDENTITY)
+        .StreamStyle(
+            {
+              {"point_color_mode", xviz::PointColorMode::ELEVATION},
+              {"radius_pixels", 20u}
+            })
 
     .Stream("/sensor/camera/1")
       .Category<xviz::StreamMetadata::PRIMITIVE>()
@@ -153,6 +171,14 @@ xviz::Message<xviz::StateUpdate> GetUpdate(float x) {
     .Primitive("/object/shape")
       .Polygon({{x, 14, 0}, {7, 10, 0}, {13, 6, 0}})
       .ID("object-1")
+    .Primitive("/object/points/1")
+      .Point({{10, 14, 0}, {7, 10, 0}, {13, 6, 0}})
+      .Color({{255, 0, 0}, {255, 0, 0}, {255, 0, 0}})
+      .ID("point-1")
+    .Primitive("/object/points/2")
+      .Point({{10, 14, 0}, {7, 10, 0}, {13, 6, 0}})
+      .Color({{255, 0, 0}, {255, 0, 0}, {255, 0, 0}})
+      .ID("point-2")
     .Primitive("/object/lines")
       .Polyline({{x, 0, 0}, {13, 6, 0}, {13, 6, 10}})
       .Polyline({{x, 30, 0}, {13, 6, 0}, {13, 6, 10}})

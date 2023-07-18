@@ -79,6 +79,28 @@ class PrimitiveBuilder : public BuilderMixin<PrimitiveBuilder<BaseBuilder>,
     return polyline_builder_.Start(*new_polyline);
   }
 
+  PrimitivePointBuilder<PrimitiveBuilder<BaseBuilder>, BaseBuilder>& Point(
+      const std::vector<std::array<float, 3>>& points) {
+    point_builder_.End();
+    auto new_points = this->Data().add_points();
+    for (const auto& point : points) {
+      for (float p : point) {
+        new_points->add_points(p);
+      }
+    }
+    return point_builder_.Start(*new_points);
+  }
+
+  PrimitivePointBuilder<PrimitiveBuilder<BaseBuilder>, BaseBuilder>& Point(
+      const std::vector<float>& flatten_points) {
+    point_builder_.End();
+    auto new_points = this->Data().add_points();
+    for (auto point : flatten_points) {
+      new_points->add_points(point);
+    }
+    return point_builder_.Start(*new_points);
+  }
+
   PrimitiveCircleBuilder<PrimitiveBuilder<BaseBuilder>, BaseBuilder>& Circle(
       const std::array<float, 3>& center, float radius) {
     circle_builder_.End();

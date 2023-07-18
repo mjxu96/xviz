@@ -137,9 +137,13 @@ int main() {
             {"stroke_width", 2.0f},
             {"stroke_color", "#FFD700"},
           })
-    .Stream("/drawing/points")
+    .Stream("/drawing/points/1")
       .Category(xviz::StreamMetadata::PRIMITIVE)
-        .Type(xviz::StreamMetadata::POLYLINE)
+        .Type(xviz::StreamMetadata::POINT)
+        .Coordinate(xviz::StreamMetadata::IDENTITY)
+    .Stream("/drawing/points/2")
+      .Category(xviz::StreamMetadata::PRIMITIVE)
+        .Type(xviz::StreamMetadata::POINT)
         .Coordinate(xviz::StreamMetadata::IDENTITY)
     .Stream("/drawing/texts")
       .Category(xviz::StreamMetadata::PRIMITIVE)
@@ -210,6 +214,14 @@ int main() {
     .Primitive("/object/shape")
       .Polygon({{10, 14, 0}, {7, 10, 0}, {13, 6, 0}})
       .ID("object-1")
+
+    .Primitive("/drawing/points/1")
+      .Point({1.1, 1.2, 1.3})
+      .Color({0, 0, 0})
+
+    .Primitive("/drawing/points/2")
+      .Point({1.1, 1.2, 1.3})
+      .Color({1, 1, 1})
 
     .TimeSeries("/time_series/demo/1")
       .Timestamp(1000)
