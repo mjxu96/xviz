@@ -89,7 +89,7 @@ xviz::Message<xviz::Metadata> GetMetadata() {
         .Coordinate(xviz::StreamMetadata::IDENTITY)
         .StreamStyle(
             {
-              {"point_color_mode", xviz::PointColorMode::ELEVATION},
+              // {"point_color_mode", xviz::PointColorMode::ELEVATION},
               {"radius_pixels", 10u}
             })
     .Stream("/object/points/2")
@@ -98,7 +98,7 @@ xviz::Message<xviz::Metadata> GetMetadata() {
         .Coordinate(xviz::StreamMetadata::IDENTITY)
         .StreamStyle(
             {
-              {"point_color_mode", xviz::PointColorMode::ELEVATION},
+              // {"point_color_mode", xviz::PointColorMode::ELEVATION},
               {"radius_pixels", 20u}
             })
 
@@ -173,11 +173,13 @@ xviz::Message<xviz::StateUpdate> GetUpdate(float x) {
       .ID("object-1")
     .Primitive("/object/points/1")
       .Point({{10, 14, 0}, {7, 10, 0}, {13, 6, 0}})
-      .Color({{255, 0, 0}, {255, 0, 0}, {255, 0, 0}})
+      .Color({{255, 0, 0, 255}, {0, 255, 0, 255}, {0, 0, 255, 255}})
       .ID("point-1")
     .Primitive("/object/points/2")
       .Point({{10, 14, 0}, {7, 10, 0}, {13, 6, 0}})
-      .Color({{255, 0, 0}, {255, 0, 0}, {255, 0, 0}})
+      .Color({255, 0, 0, 255, 
+      0, 0, 255, 255,
+      0, 0, 255, 255})
       .ID("point-2")
     .Primitive("/object/lines")
       .Polyline({{x, 0, 0}, {13, 6, 0}, {13, 6, 10}})
@@ -231,7 +233,14 @@ void LoadPNGImage(char* file_name) {
   std::cout << "loaded file size: " << image.size() << std::endl;
 }
 
+void CheckBytes() {
+  for (auto c : util::GetBytesArrayFromHexString("FF00FF")) {
+    std::cout << (int)c << std::endl;
+  }
+}
+
 int main(int argc, char* argv[]) {
+  CheckBytes();
   server.init_asio();
   server.set_reuse_addr(true);
 

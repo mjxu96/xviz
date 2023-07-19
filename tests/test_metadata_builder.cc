@@ -208,6 +208,104 @@ TEST_F(MetadataBuilderTest, PrimitiveCategoryMultipleStreamsTest) {
                                std::string(), std::nullopt, std::nullopt));
 }
 
+TEST_F(MetadataBuilderTest, PrimitiveCategoryMultipleStreamsResetTest) {
+  // clang-format off
+  auto msg = builder_
+    .Stream("/test1/stream1")
+      .Category(xviz::StreamMetadata::PRIMITIVE)
+        .Type(xviz::StreamMetadata::CIRCLE)
+        .Coordinate(xviz::StreamMetadata::IDENTITY)
+        .StreamStyle(to_check_style_stream)
+        // .Unit("m/s")  <-- This will throw exception
+        .StyleClass("class1", to_check_style_class["class1"])
+        .StyleClass("class2", to_check_style_class["class2"])
+    .Stream("/test2/stream2")
+      .Category<xviz::StreamMetadata::PRIMITIVE>()
+        .Type(xviz::StreamMetadata::POLYGON)
+        .Coordinate(xviz::StreamMetadata::DYNAMIC)
+        // .Unit("m/s")  <-- This will not be compiled
+        // no stream style and style classes for this stream
+    .Stream("/test3/stream3")
+      .Category<xviz::StreamMetadata::PRIMITIVE>()
+        .Type(xviz::StreamMetadata::POINT)
+        .Coordinate(xviz::StreamMetadata::VEHICLE_RELATIVE)
+        // no stream style and style classes for this stream
+    .GetMessage();
+  // clang-format on
+
+  EXPECT_EQ(msg.streams_size(), 3);
+
+  Check(msg, "/test1/stream1",
+        MetadataBuilderChecker(
+            xviz::StreamMetadata::PRIMITIVE, std::nullopt,
+            xviz::StreamMetadata::CIRCLE, xviz::StreamMetadata::IDENTITY,
+            std::string(),
+            detail::ConvertInternalTypeToProtobufType<StyleStreamValue>(
+                to_check_style_stream),
+            ConvertMapToStyleClass(to_check_style_class)));
+
+  Check(msg, "/test2/stream2",
+        MetadataBuilderChecker(xviz::StreamMetadata::PRIMITIVE, std::nullopt,
+                               xviz::StreamMetadata::POLYGON,
+                               xviz::StreamMetadata::DYNAMIC, std::string(),
+                               std::nullopt, std::nullopt));
+
+  Check(msg, "/test3/stream3",
+        MetadataBuilderChecker(xviz::StreamMetadata::PRIMITIVE, std::nullopt,
+                               xviz::StreamMetadata::POINT,
+                               xviz::StreamMetadata::VEHICLE_RELATIVE,
+                               std::string(), std::nullopt, std::nullopt));
+
+  builder_.Reset();
+
+  // clang-format off
+  auto msg2 = builder_
+    .Stream("/test1/stream1")
+      .Category(xviz::StreamMetadata::PRIMITIVE)
+        .Type(xviz::StreamMetadata::CIRCLE)
+        .Coordinate(xviz::StreamMetadata::IDENTITY)
+        .StreamStyle(to_check_style_stream)
+        // .Unit("m/s")  <-- This will throw exception
+        .StyleClass("class1", to_check_style_class["class1"])
+        .StyleClass("class2", to_check_style_class["class2"])
+    .Stream("/test2/stream2")
+      .Category<xviz::StreamMetadata::PRIMITIVE>()
+        .Type(xviz::StreamMetadata::POLYGON)
+        .Coordinate(xviz::StreamMetadata::DYNAMIC)
+        // .Unit("m/s")  <-- This will not be compiled
+        // no stream style and style classes for this stream
+    .Stream("/test3/stream3")
+      .Category<xviz::StreamMetadata::PRIMITIVE>()
+        .Type(xviz::StreamMetadata::POINT)
+        .Coordinate(xviz::StreamMetadata::VEHICLE_RELATIVE)
+        // no stream style and style classes for this stream
+    .GetMessage();
+  // clang-format on
+
+  EXPECT_EQ(msg2.streams_size(), 3);
+
+  Check(msg2, "/test1/stream1",
+        MetadataBuilderChecker(
+            xviz::StreamMetadata::PRIMITIVE, std::nullopt,
+            xviz::StreamMetadata::CIRCLE, xviz::StreamMetadata::IDENTITY,
+            std::string(),
+            detail::ConvertInternalTypeToProtobufType<StyleStreamValue>(
+                to_check_style_stream),
+            ConvertMapToStyleClass(to_check_style_class)));
+
+  Check(msg2, "/test2/stream2",
+        MetadataBuilderChecker(xviz::StreamMetadata::PRIMITIVE, std::nullopt,
+                               xviz::StreamMetadata::POLYGON,
+                               xviz::StreamMetadata::DYNAMIC, std::string(),
+                               std::nullopt, std::nullopt));
+
+  Check(msg2, "/test3/stream3",
+        MetadataBuilderChecker(xviz::StreamMetadata::PRIMITIVE, std::nullopt,
+                               xviz::StreamMetadata::POINT,
+                               xviz::StreamMetadata::VEHICLE_RELATIVE,
+                               std::string(), std::nullopt, std::nullopt));
+}
+
 TEST_F(MetadataBuilderTest, TimeseriesCategorySingleStreamTest) {
   // clang-format off
   auto msg = builder_
@@ -257,5 +355,6 @@ TEST_F(MetadataBuilderTest, TimeseriesCategoryMultipleStreamsTest) {
 }
 
 // TODO add more tests for UI metadata
+// TODO add Reset tests for UI metadata
 
 }  // namespace xviz::tests

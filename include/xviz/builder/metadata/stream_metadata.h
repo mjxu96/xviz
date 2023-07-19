@@ -109,6 +109,8 @@ class StreamMetadataCategoryBuilderBase
   template <typename>
   friend class StreamMetadataBuilder;
 
+  void Reset() { data_ = nullptr; }
+
   template <bool ForceCheck, typename T>
   void SetType(T type) {
     if (static_cast<std::underlying_type_t<T>>(type) == 0) [[unlikely]] {
@@ -204,6 +206,11 @@ class StreamMetadataBuilder : public MetadataBuilderMixin<BaseBuilder> {
  public:
   StreamMetadataBuilder(BaseBuilder& parent_builder)
       : BaseT(parent_builder), category_builder_(*this, parent_builder) {}
+
+  void Reset() {
+    data_ = nullptr;
+    category_builder_.Reset();
+  }
 
   StreamMetadataBuilder& Category(StreamMetadata::Category category) {
     category_builder_.EndCategory();

@@ -44,16 +44,16 @@ class PrimitivePointBuilder
   using BaseType::End;
   using BaseType::Start;
 
+  // must be R,G,B,A
   PrimitivePointBuilder& Color(const std::vector<uint8_t>& flatten_colors) {
-    assert(flatten_colors.size() % 3 == 0 || flatten_colors.size() % 4 == 0);
-    assert(flatten_colors.size() / 3 == this->Data().points_size() / 3 ||
-           flatten_colors.size() / 4 == this->Data().points_size() / 3);
+    assert(flatten_colors.size() % 4 == 0);
+    assert(flatten_colors.size() / 4 == this->Data().points_size() / 3);
     this->Data().set_colors(flatten_colors.data(), flatten_colors.size());
     return *this;
   }
 
   PrimitivePointBuilder& Color(
-      const std::vector<std::array<uint8_t, 3>>& colors) {
+      const std::vector<std::array<uint8_t, 4>>& colors) {
     assert(colors.size() == this->Data().points_size() / 3);
     std::vector<uint8_t> flatten_colors;
     flatten_colors.reserve(3 * colors.size());
