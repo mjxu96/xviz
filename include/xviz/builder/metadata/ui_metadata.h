@@ -124,6 +124,12 @@ class UIContainerMetadataBuilder
  protected:
   template <typename>
   friend class UIMetadataBuilder;
+
+  void Reset() {
+    data_ = nullptr;
+    all_data_.clear();
+  }
+
   SelfT& Start(UIPanel* data) {
     assert(!data_);
     assert(data);
@@ -169,6 +175,12 @@ class UIMetadataBuilder : public MetadataBuilderMixin<BaseBuilderT> {
     option_.preserve_proto_field_names = true;
   }
 
+  void Reset() {
+    data_ = nullptr;
+    internal_data_.Clear();
+    container_builder_.Reset();
+  }
+
   template <typename... Args>
   requires(std::constructible_from<std::string, Args...>)
       UIMetadataBuilder& NeededStream(Args&&... args) {
@@ -198,6 +210,7 @@ class UIMetadataBuilder : public MetadataBuilderMixin<BaseBuilderT> {
     internal_data_.set_name(name);
     return *this;
   }
+
   void End() {
     if (!data_) {
       return;

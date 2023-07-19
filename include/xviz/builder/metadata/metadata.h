@@ -44,7 +44,11 @@ class MetadataBuilder {
     data_.set_version("2.0.0");
   }
 
-  void Reset() { data_.Clear(); }
+  void Reset() {
+    data_.Clear();
+    stream_builder_.Reset();
+    ui_builder_.Reset();
+  }
 
   template <concepts::CanConstructString... Args>
   MetadataBuilder& Version(Args&&... args) {
