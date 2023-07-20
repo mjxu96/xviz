@@ -217,11 +217,11 @@ int main() {
 
     .Primitive("/drawing/points/1")
       .Point({1.1, 1.2, 1.3})
-      .Color({0, 0, 0})
+      .Color({0, 0, 0, 0})
 
     .Primitive("/drawing/points/2")
       .Point({1.1, 1.2, 1.3})
-      .Color({1, 1, 1})
+      .Color({1, 1, 1, 0})
 
     .TimeSeries("/time_series/demo/1")
       .Timestamp(1000)

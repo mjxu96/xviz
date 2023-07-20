@@ -56,7 +56,7 @@ class PrimitivePointBuilder
       const std::vector<std::array<uint8_t, 4>>& colors) {
     assert(colors.size() == this->Data().points_size() / 3);
     std::vector<uint8_t> flatten_colors;
-    flatten_colors.reserve(3 * colors.size());
+    flatten_colors.reserve(4 * colors.size());
     for (const auto& color : colors) {
       for (uint8_t c : color) {
         flatten_colors.push_back(c);
