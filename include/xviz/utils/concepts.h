@@ -35,7 +35,7 @@
 namespace xviz::concepts {
 
 template <typename... Args>
-using FirstArgType = std::tuple_element_t<0, std::tuple<Args...>>;
+using FirstArgType = std::decay_t<std::tuple_element_t<0, std::tuple<Args...>>>;
 
 template <typename... Args>
 concept CanConstructString = std::constructible_from<std::string, Args...>;
