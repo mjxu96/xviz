@@ -52,7 +52,8 @@ jobs:
     # TODO grant permission to GITHUB_TOKEN
     # limit the max concurrency of upload
     - name: Set up mutex
+      if: matrix.os == 'ubuntu-22.04'
       uses: ben-z/gh-action-mutex@v1.0-alpha-7
     # upload
     - name: Upload package
-      run: conan upload xviz/${{ github.ref_name }}@ -r gitlab --all
+      run: conan upload xviz/${{ github.ref_name }}@ -r gitlab --all --retry 5 --retry-wait 2
