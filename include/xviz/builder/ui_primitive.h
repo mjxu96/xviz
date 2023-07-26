@@ -71,14 +71,15 @@ class UIPrimitiveBuilder : public BuilderMixin<UIPrimitiveBuilder<BaseBuilder>,
       auto expected_type =
           this->Data().mutable_treetable()->columns().at(idx).type();
       if (!v.IsSameType(expected_type)) [[unlikely]] {
-        throw std::runtime_error(
-            std::format("TODO value type {} at index {} does not match the "
-                        "required column type {}",
-                        xviz::util::TreeTableValueVariant::GetColumnTypeString(
-                            v.GetHoldType()),
-                        idx,
-                        xviz::util::TreeTableValueVariant::GetColumnTypeString(
-                            expected_type)));
+        throw std::runtime_error(std::format(
+            "TODO column {} value type {} at row {} does not match the "
+            "required column type {}",
+            this->Data().treetable().columns(idx).display_text(),
+            xviz::util::TreeTableValueVariant::GetColumnTypeString(
+                v.GetHoldType()),
+            idx,
+            xviz::util::TreeTableValueVariant::GetColumnTypeString(
+                expected_type)));
       }
       new_row->add_column_values(v.ToString());
       idx++;

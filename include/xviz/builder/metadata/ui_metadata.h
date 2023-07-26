@@ -92,8 +92,8 @@ class UIContainerMetadataBuilder
     return *this;
   }
 
-  SelfT& TreeeTable(const std::string& title, const std::string& description,
-                    const std::string& stream, bool display_object_id) {
+  SelfT& TreeTable(const std::string& title, const std::string& description,
+                   const std::string& stream, bool display_object_id) {
     auto new_data = SetCommonInformation(xviz::ComponentType::TREETABLE, title,
                                          description);
     new_data->set_stream(stream);
