@@ -26,7 +26,7 @@ conan install xviz
 ### Build xviz builder example
 ```bash
 mkdir build && cd build
-conan install -pr gcc11 --build=missing ..
+conan install -pr gcc11 --build=missing -o build_examples=True ..
 conan build .. --build
 ./examples/example
 ```
@@ -37,7 +37,7 @@ Frontend is needed. You can refer to these two repos for frontend:
 2. [Aurora streetscape.gl](https://github.com/aurora-opensource/streetscape.gl)
 ```bash
 mkdir build && cd build
-conan install -pr gcc11 --build=missing ..
+conan install -pr gcc11 --build=missing -o build_examples=True ..
 conan build .. --build
 ./examples/example_server [PNG FILE PATH (this is optional)]
 ```
@@ -45,7 +45,7 @@ conan build .. --build
 ### Build tests
 ```bash
 mkdir build && cd build
-conan install -pr gcc11 --build=missing ..
+conan install -pr gcc11 --build=missing -o build_tests=True ..
 conan build .. --test
 ```
 

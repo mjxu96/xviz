@@ -36,7 +36,7 @@ class BuilderMixin {
  public:
   BuilderMixin(BaseBuilderT& builder) : builder_(builder) {}
 
-  auto&& GetMessage() { return builder_.GetMessage(); }
+  auto&& GetData() { return builder_.GetData(); }
 
   template <typename... Args>
   auto&& Primitive(Args&&... args) {

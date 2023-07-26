@@ -142,7 +142,8 @@ class StreamMetadataCategoryBuilderBase
       if ((data_->category() != StreamMetadata::TIME_SERIES) &&
           (data_->category() != StreamMetadata::VARIABLE)) [[unlikely]] {
         throw std::runtime_error(
-            std::format("TODO {} category cannot set unit", data_->category()));
+            std::format("TODO {} category cannot set unit",
+                        static_cast<int>(data_->category())));
       }
     }
     data_->set_units(std::forward<Args>(args)...);

@@ -78,10 +78,11 @@ class XVIZ(ConanFile):
         if self.settings.os == "Windows":
             del self.options.fPIC
             self.options.coverage = False
-        if not self.options.build_tests:
-            self.options.coverage = False
-        if self.settings.build_type != "Debug":
-            self.options.coverage = False
+        else:
+            if not self.options.build_tests:
+                self.options.coverage = False
+            if self.settings.build_type != "Debug":
+                self.options.coverage = False
 
     def layout(self):
         cmake_layout(self)
@@ -97,7 +98,10 @@ class XVIZ(ConanFile):
         if self.should_build or self.should_test:
             cmake.build()
         if self.options.build_tests and self.should_test:
-            cmake.test(cli_args=["ARGS=-V"])
+            if self.settings.os == "Windows":
+                cmake.test()
+            else:
+                cmake.test(cli_args=["ARGS=-V"])
 
     def package(self):
         cmake = CMake(self)

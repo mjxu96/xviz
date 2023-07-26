@@ -9,11 +9,7 @@ env:
   XVIZ_CI_VERSION_OVERRIDE: "0.0.1"
 
 jobs:
-  build:
-    strategy:
-      matrix:
-        profile: [gcc11, clang14]
-        build_type: [Debug, Release]
+  clang-format-check:
     runs-on: ubuntu-22.04
     steps:
     # git checkout
@@ -26,12 +22,34 @@ jobs:
       with:
         clang-format-version: '14'
         exclude-regex: '^.*\.proto$'
+
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-22.04]
+        profile: [gcc11, clang14]
+        build_type: [Debug, Release]
+        include:
+          - os: windows-2022
+            profile: msvc17
+            build_type: Debug
+          - os: windows-2022
+            profile: msvc17
+            build_type: Release
+    runs-on: ${{ matrix.os }}
+    steps:
+    # git checkout
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     # dependencies
     - name: Install cmake and compilers
+      if: matrix.os == 'ubuntu-22.04'
       run: sudo apt install -y cmake g++-11 clang-14 libc++-14-dev lcov valgrind
     - name: Install conan and coverage tool
       run: pip install conan==1.55.0 lcov_cobertura==2.0.2 && conan user
     - name: Copy conan profiles
+      shell: bash
       run: bash misc/cicd/conan/copy_conan_profiles.sh ${HOME}/
     # install packages and build
     - name: Install libraries
@@ -43,9 +61,10 @@ jobs:
       run: conan build . --test
     # memory leak check TODO: add leak check on examples
     - name: Run valgrind memory leak check on test
+      if: matrix.os == 'ubuntu-22.04'
       run: pushd ./build/${{ matrix.build_type }}/ && valgrind ctest && popd
     # package consume check for Debug create and Release consume
-    - name: Consume the package for checking
+    - name: Consume the package for checking on Linux
       if: matrix.profile == 'gcc11'
     # TODO add clang back when valgrind fixes the issue https://bugzilla.mozilla.org/show_bug.cgi?id=1758782
       run: |
@@ -56,8 +75,18 @@ jobs:
         conan build . --build
         valgrind ./build/${{ matrix.build_type }}/example
         popd
+    - name: Consume the package for checking on Windows
+      shell: bash
+      if: matrix.os == 'windows-2022'
+      run: |
+        conan create -pr ${HOME}/${{ matrix.profile }} -s build_type=${{ matrix.build_type }} . $XVIZ_CI_VERSION_OVERRIDE@local/test
+        cp examples/*.cc misc/cicd/consumer/
+        pushd misc/cicd/consumer/
+        conan install . --build=missing -pr ${HOME}/${{ matrix.profile }} -s build_type=${{ matrix.build_type }}
+        conan build . --build
     # code coverage
     - name: Generate coverage information
+      if: matrix.profile == 'gcc11'
       run: ls . && bash misc/cicd/codecov/generate_coverage_xml.sh . && ls .
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
