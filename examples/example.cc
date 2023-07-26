@@ -183,7 +183,7 @@ int main() {
         .EndContainer()
         .Video({"/ui/camera3", "/ui/camera4"})
       .EndContainer()
-    .GetMessage();
+    .GetData();
   // clang-format on
 
   std::cout << &data << std::endl;
@@ -250,7 +250,7 @@ int main() {
         .Row(0, {1, 0.1, "this is one"})
         .Row(1, {2, 0.2, "this is two"})
 
-    .GetMessage();
+    .GetData();
   // clang-format on
   // std::cout << a.DebugString() << std::endl;
   str.clear();

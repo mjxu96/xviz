@@ -100,7 +100,7 @@ TEST_F(MetadataBuilderTest, StreamExistTest) {
   // clang-format off
   auto msg = builder_
     .Stream("/test/stream1")
-    .GetMessage();
+    .GetData();
   // clang-format on
 
   EXPECT_EQ(msg.streams_size(), 1);
@@ -111,21 +111,21 @@ TEST_F(MetadataBuilderTest, StreamNotExistAfterResetTest) {
   // clang-format off
   auto msg = builder_
     .Stream("/test/stream1")
-    .GetMessage();
+    .GetData();
   // clang-format on
 
   EXPECT_EQ(msg.streams_size(), 1);
   EXPECT_NE(msg.streams().find("/test/stream1"), msg.streams().end());
 
   builder_.Reset();
-  msg = builder_.GetMessage();
+  msg = builder_.GetData();
   EXPECT_EQ(msg.streams_size(), 0);
 }
 
 TEST_F(MetadataBuilderTest, PoseCategoryTest) {
   auto msg = builder_.Stream("/test/pose")
                  .Category<xviz::StreamMetadata::POSE>()
-                 .GetMessage();
+                 .GetData();
   EXPECT_EQ(msg.streams_size(), 1);
 
   Check(msg, "/test/pose",
@@ -144,7 +144,7 @@ TEST_F(MetadataBuilderTest, PrimitiveCategorySingleStreamTest) {
         .StreamStyle(to_check_style_stream)
         .StyleClass("class1", to_check_style_class["class1"])
         .StyleClass("class2", to_check_style_class["class2"])
-    .GetMessage();
+    .GetData();
   // clang-format on
 
   EXPECT_EQ(msg.streams_size(), 1);
@@ -181,7 +181,7 @@ TEST_F(MetadataBuilderTest, PrimitiveCategoryMultipleStreamsTest) {
         .Type(xviz::StreamMetadata::POINT)
         .Coordinate(xviz::StreamMetadata::VEHICLE_RELATIVE)
         // no stream style and style classes for this stream
-    .GetMessage();
+    .GetData();
   // clang-format on
 
   EXPECT_EQ(msg.streams_size(), 3);
@@ -230,7 +230,7 @@ TEST_F(MetadataBuilderTest, PrimitiveCategoryMultipleStreamsResetTest) {
         .Type(xviz::StreamMetadata::POINT)
         .Coordinate(xviz::StreamMetadata::VEHICLE_RELATIVE)
         // no stream style and style classes for this stream
-    .GetMessage();
+    .GetData();
   // clang-format on
 
   EXPECT_EQ(msg.streams_size(), 3);
@@ -279,7 +279,7 @@ TEST_F(MetadataBuilderTest, PrimitiveCategoryMultipleStreamsResetTest) {
         .Type(xviz::StreamMetadata::POINT)
         .Coordinate(xviz::StreamMetadata::VEHICLE_RELATIVE)
         // no stream style and style classes for this stream
-    .GetMessage();
+    .GetData();
   // clang-format on
 
   EXPECT_EQ(msg2.streams_size(), 3);
@@ -313,7 +313,7 @@ TEST_F(MetadataBuilderTest, TimeseriesCategorySingleStreamTest) {
       .Category<xviz::StreamMetadata::TIME_SERIES>()
         .Type(xviz::StreamMetadata::FLOAT)
         .Unit("m/s")
-    .GetMessage();
+    .GetData();
   // clang-format on
 
   EXPECT_EQ(msg.streams_size(), 1);
@@ -336,7 +336,7 @@ TEST_F(MetadataBuilderTest, TimeseriesCategoryMultipleStreamsTest) {
       .Category<xviz::StreamMetadata::TIME_SERIES>()
         .Type(xviz::StreamMetadata::STRING)
         // no unit for this stream
-    .GetMessage();
+    .GetData();
   // clang-format on
 
   EXPECT_EQ(msg.streams_size(), 2);

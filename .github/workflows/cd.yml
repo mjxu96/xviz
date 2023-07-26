@@ -10,7 +10,14 @@ jobs:
       matrix:
         profile: [gcc11, clang14]
         build_type: [Debug, Release]
-    runs-on: ubuntu-22.04
+        include:
+          - os: windows-2022
+            profile: msvc17
+            build_type: Debug
+          - os: windows-2022
+            profile: msvc17
+            build_type: Release
+    runs-on: ${{ matrix.os }}
     steps:
     # git checkout
     - uses: actions/checkout@v3
@@ -18,6 +25,7 @@ jobs:
         fetch-depth: 0
     # dependencies
     - name: Install cmake and compilers
+      if: matrix.os == 'ubuntu-22.04'
       run: sudo apt install -y cmake g++-11 clang-14 libc++-14-dev
     - name: Install conan and coverage tool
       run: pip install conan==1.55.0
@@ -26,6 +34,7 @@ jobs:
         conan remote add gitlab https://gitlab.com/api/v4/projects/44861904/packages/conan
         conan user ${{ secrets.XVIZ_CONAN_DEPLOY_GITLAB_NAME }} -r gitlab -p ${{ secrets.XVIZ_CONAN_DEPLOY_GITLAB_TOKEN }}
     - name: Copy conan profiles
+      shell: bash
       run: bash misc/cicd/conan/copy_conan_profiles.sh ${HOME}/
     # install packages and build
     - name: Install libraries

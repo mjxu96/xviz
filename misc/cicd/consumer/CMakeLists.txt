@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 
+project(xviz_test_package)
+
 find_package(websocketpp REQUIRED)
 find_package(lodepng REQUIRED)
 find_package(xviz REQUIRED)

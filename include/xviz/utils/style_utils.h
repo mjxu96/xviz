@@ -43,7 +43,7 @@ namespace xviz {
 class StyleValueVariant {
  public:
   StyleValueVariant(const std::string& v) : storage_(v) {}
-  StyleValueVariant(const char* v) : storage_(v) {}
+  StyleValueVariant(const char* v) : storage_(std::string(v)) {}
   StyleValueVariant(uint32_t v) : storage_(v) {}
   StyleValueVariant(float v) : storage_(v) {}
   StyleValueVariant(bool v) : storage_(v) {}
@@ -71,7 +71,8 @@ class StyleValueVariant {
                            std::string_view type_name) const {
     if (!CheckType<T>()) {
       throw std::runtime_error(
-          std::format("TODO {}'s type is not {}", style_name, type_name));
+          std::format("TODO {}'s type is not {} but actually {}", style_name,
+                      type_name, storage_.index()));
     }
   }
 

@@ -48,7 +48,7 @@ class MetadataBuilderMixin {
     return builder_.UI(std::forward<Args>(args)...);
   }
 
-  auto&& GetMessage() { return builder_.GetMessage(); }
+  auto&& GetData() { return builder_.GetData(); }
 
  private:
   MetadataBuilderT& builder_;

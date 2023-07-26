@@ -142,7 +142,7 @@ xviz::Message<xviz::Metadata> GetMetadata() {
     .UI("Metrics")
       .Container("Metrics", xviz::LayoutType::HORIZONTAL)
         .Metric("steer", "steer", {"/metric/steer"})
-    .GetMessage();
+    .GetData();
   // clang-format on
 
   return xviz::Message<xviz::Metadata>(std::move(metadata));
@@ -203,7 +203,7 @@ xviz::Message<xviz::StateUpdate> GetUpdate(float x) {
     .TimeSeries("/vehicle/acceleration")
       .Timestamp(now)
       .Value(3.0)
-    .GetMessage();
+    .GetData();
   // clang-format on
 
   return xviz::Message<xviz::StateUpdate>(std::move(a));
