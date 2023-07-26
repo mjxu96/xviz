@@ -136,8 +136,8 @@ xviz::Message<xviz::Metadata> GetMetadata() {
     
     .UI("Tables")
       .Container("Tables", xviz::LayoutType::HORIZONTAL)
-        .TreeeTable("game time", "game time", "/game/time", false)
-        .TreeeTable("gnss", "gnss", "/sensor/gnss/1", false)
+        .TreeTable("game time", "game time", "/game/time", false)
+        .TreeTable("gnss", "gnss", "/sensor/gnss/1", false)
 
     .UI("Metrics")
       .Container("Metrics", xviz::LayoutType::HORIZONTAL)
